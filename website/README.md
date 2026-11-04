@@ -1,30 +1,40 @@
-# Roofscapes RePowered — the 3D map
+# MATCHSOL — the 3D map
 
-The site shows the **Ajuntament de Barcelona 3D model** with four screens, as tabs in the top bar:
+> Homes are empty at noon. Schools are empty on weekends. MATCHSOL matches them, so every solar kilowatt-hour is used in the neighbourhood.
 
-| Tab | What it shows | Its data |
-|---|---|---|
-| **Area** | **Every building of the 9 blocks** as a whole 3D volume, coloured in 5 equal groups from the best 20% for solar panels to the worst 20% (kWh a year per m² of roof). Click a building: its rating, number in the ranking, kWh, panels, and a button to its Roof Report. Panel: how much of the blocks' own use their roofs can cover, totals, block by block, the best roofs | `data/roofs/index.json` (step 4), `data/sharing.json` (step 5), `data/buildings.json` (or the city server) |
-| **Building** | The Roof Report of one roof: panels on the roof, kWh a year, month by month, a typical day, shade, step 5's use and coverage, who gets the energy | `data/roofs/<refcat>.json` |
-| **Sharing** | Step 5's sharing groups on the map (the roof with extra sun in a strong colour, the buildings it supplies in a light one, arcs between them); with and without sharing; one card per group; 500 m / 2 km / 5 km rule | `data/sharing.json` |
-| **How it works** | The problem, and the five steps with real pictures from the pipeline | `img/` |
+The site shows the **Ajuntament de Barcelona 3D model** with four tabs in the top bar:
 
-The **time bar** at the bottom (month and hour) moves the real sun on the map, and the typical-day chart in the Roof Report. Tick **Shadows** to see the sun's shadows on the model.
+| Tab | What it shows |
+|---|---|
+| **Matches** | Every building of the 9 blocks, coloured by what it is: homes with solar panels, homes whose roof is too shaded or small for panels, schools, offices, and buildings in no match. **Power lines** (arcs with arrows) show who sends power to whom at the day and hour chosen in the time bar: on a weekday at noon from home roofs to schools and offices, at the weekend and in the summer holidays from school and office roofs to the homes, at night nothing. The panel: how much of the neighbourhood's solar power is used each building alone vs. matched, and the list of matches. **Click a match** (on the map or in the list): every other building turns grey; the panel shows a chart of its day (sun, homes' use, school and office use), who is in it, who gives and who gets at this hour, and what it shares and keeps a year. |
+| **Hourly split** | For one roof of a match: the share of its power for every member and every hour (weekday, weekend, summer holidays), and a **year file** to download: one share per member for each of the 8,760 hours, adding up to 1, as the electricity company needs it. |
+| **Money** | Who pays whom. A slider sets the price of a shared kWh, between what the grid pays for extra power (0.05 €) and what it charges (0.16 €), and shows what the buildings that give earn and what the buildings that get save, per building. How the bill works, and the two ways to pay (per kWh, or investing together). |
+| **How it works** | The idea, the law (5 km, a share for every hour), how success is measured, and the four steps. |
+
+**Find its match** (top bar): type an address in the 9 blocks; the map opens the match that building belongs to.
 
 No account, no API key, no credit card.
 
+## How the matching works (`match.js`)
+
+1. **Every building, hour by hour.** For 24 typical days (12 months × weekday and weekend), each building gets its solar power and its use, hour by hour. It first uses its own roof's power; what is left is its **surplus**, what is missing its **need**.
+2. **Grow the matches.** Start with the schools and offices (biggest first), then the home buildings with the most surplus. Each match keeps adding the building that lets it use the most extra solar power in a year: the one whose need falls when the others have surplus, or the other way round. Nearer buildings are preferred (the law allows 5 km; a match should stay a neighbourhood). A building joins only if it adds at least 200 kWh a year; at most 10 buildings per match (`config.js`, `MATCH`).
+3. **Inside a match**, every hour the pooled surplus goes to the pooled need, in proportion. That gives the power lines, the hourly split table and the money.
+
+**Success** = the share of the solar power used in the neighbourhood: each building alone, and matched.
+
 ## Where the numbers come from
 
-Every Roof Report says it at the top:
+This is a **preview, computed in your browser** (the page says so):
 
-| Label | Meaning |
-|---|---|
-| **Our pipeline** (green) | The roof was run by our Python pipeline (steps 2–4) and sent here with `--web`. The page only **shows** its results. Nothing is recalculated in the browser. |
-| **Quick estimate** (grey) | The roof was not run yet. The browser makes a fast estimate (`solar.js`): neighbours as simple blocks, flat panels, 25% of the roof assumed lost to obstacles (or step 2's usable area, if step 2 ran). Good for exploring, not for the final numbers. |
+| What | Now (preview) | Next |
+|---|---|---|
+| What each building is (homes, school, office; flats, floor area) | the city's 3D model (`data/buildings.json`): use, floors, footprint | Catastro (our step 1 already reads it) |
+| Each building's use, hour by hour | step 5's patterns (`config.js`, `USE`, same as `pipeline/step5/demand.py`) | Open Data BCN's meter data by postal code, user type and time of day (`python -m step5.bcn_data`) |
+| Solar power, hour by hour | our pipeline (steps 2–4) for the roofs in `data/roofs/`, with their own typical days; the quick estimate (`solar.js`) for the others, scaled to match the pipeline, with the pipeline roofs' average sun shape | every roof run by the pipeline (`python -m web.export --all`) |
+| Prices, CO₂ | `config.js`: 0.16 € per kWh bought, 0.05 € per kWh sold (step 5c), CO₂ 0.10 kg per kWh (ASSUMPTION, check with Red Eléctrica) | sourced values |
 
-**Area** rates every building: with our pipeline's result where it ran, and with a quick estimate (sun and shade at a few roof points, `solar.js` → `roofPotential`) everywhere else. The pipeline's tilted rows and real obstacles give fewer kWh per m² than the quick estimate's flat panels, so the quick estimates are scaled to match the pipeline (the median ratio on the roofs that have both; the legend shows the factor). The Roof Report's quick estimate uses the same scale. The more roofs the pipeline runs, the more of the ranking is exact.
-
-**Sharing** only uses step 5's results. Until they exist, it says which command fills it.
+About CO₂: the panels avoid the same CO₂ whether their power is used next door or sold to the grid. What matching changes is **who gets the money**: the 0.11 € between the two prices stays in the neighbourhood instead of going to the grid.
 
 ## Run it
 
@@ -36,20 +46,18 @@ Open with a local web server (not by double-clicking):
 ## Fill it with data (from the `pipeline` folder)
 
 ```
-python -m web.buildings                                   # once: the study area's buildings (fast clicks, roof colours)
+python -m web.buildings                                   # once: the study area's buildings (fast start)
 python -m step4.roof_test_set --out data\roof_test_set    # once: every roof of the 9 blocks
 python -m step4.batch data\roof_test_set\roof_test_set.csv --laz-dir data\lidar --out data\yield_all --web
-python -m step5.sharing                                   # use and sharing groups
-python -m web.sharing                                     # step 5 -> data/sharing.json
 ```
 
-Then reload the page. For the 2 km and 5 km buttons in Sharing, run step 5 again with `--max-distance 2000 --out data\sharing_2000` and send it with `python -m web.sharing --sharing data\sharing_2000 --rule 2000`.
+Already ran step 4 without `--web`? `python -m web.export --all data\yield_all` sends the whole folder. Then reload the page: those roofs use the exact numbers.
 
 ## Keeping it fast
 
-- **The heavy work happens once, in Python**, not in every visitor's browser.
-- **One small file per roof** in `data/roofs/`, opened only when someone clicks that roof. 10 or 500 roofs make no difference to how fast the page opens. `index.json` and `sharing.json` stay small (a few hundred kB for all the 9 blocks).
-- **Our study area in one file** (`data/buildings.json`): a click inside it does not wait for the city server.
+- **The heavy work happens once, in Python**, not in every visitor's browser. The matching is the exception for now: it takes well under a second for the 9 blocks.
+- **One small file per roof** in `data/roofs/`. `index.json` stays small.
+- **Our study area in one file** (`data/buildings.json`): the page does not wait for the city server.
 - The page starts at medium quality with shadows off, and **Hours of shadow** only runs while its box is open.
 
 Still slow on your laptop? In `config.js`, put the "simple volumes" 3D model first in `SCENE_LAYERS`.
@@ -58,14 +66,14 @@ Still slow on your laptop? In `config.js`, put the "simple volumes" 3D model fir
 
 | File | What it does |
 |---|---|
-| `index.html` | Page structure: top bar, the four tabs, time bar |
+| `index.html` | Page structure: top bar, the four tabs, the panel, the pages, time bar |
 | `style.css` | Look of the page (colours and fonts at the top) |
-| `config.js` | Service addresses, data files, speed settings, roof colour steps and **all assumptions** of the quick estimate |
-| `solar.js` | Quick-estimate engine: sun path, panel slots, shade rays, sky view, energy, demand, sharing |
-| `app.js` | 3D map, the four tabs, time bar, reading our data files, drawing on the model, Roof Report |
+| `config.js` | Service addresses, data files, the matching rules (`MATCH`), use patterns (`USE`), prices, colours, and **all assumptions** of the quick estimate |
+| `solar.js` | Quick roof estimate: sun path, shade rays, sky view |
+| `match.js` | The matching engine: typical days, use and sun shapes, growing the matches, the hourly split, the year file |
+| `app.js` | 3D map, reading our data files, the buildings, the power lines, the four tabs, time bar |
 | `data/buildings.json` | Our study area's buildings (`python -m web.buildings`) |
 | `data/roofs/` | One file per roof run by the pipeline, and `index.json` |
-| `data/sharing.json` | Step 5's groups (`python -m web.sharing`) |
 | `img/` | Pictures for How it works (from `pipeline/examples`) |
 
 ## Data and tools
@@ -77,12 +85,13 @@ Still slow on your laptop? In `config.js`, put the "simple volumes" 3D model fir
 | Background map | Ajuntament de Barcelona vector map (falls back to OpenStreetMap) |
 | 3D engine | ArcGIS Maps SDK for JavaScript 4.31, free with these public layers |
 | Pipeline results | our Python code, `../pipeline` |
+| The law | Real Decreto 244/2019 (shared self-consumption), Orden TED/1247/2021 (a share for every hour), Real Decreto-ley 7/2026 (up to 5 km) |
 
 ## Known limits (next steps)
 
-- Panels on lower roof levels are drawn at the top roof height (the numbers are right; only the drawing is flat).
-- Area rates the buildings within 350 m of the centre of the 9 blocks. Without `data/buildings.json` it loads them from the city server once per visit (slower); run `python -m web.buildings` once to make it instant.
-- In Area, the city's own model is hidden inside that circle so our coloured volumes show; the volumes are simple (outline × height), without roof details.
-- "Homes it could power" uses one assumption: 2,500 kWh a year per home (`HOME_KWH_YEAR` in `config.js`).
-- The quick estimate's "Who gets the energy" uses yearly totals; step 5 (Sharing tab) does it hour by hour.
-- Values marked ASSUMPTION in `config.js` need sources (PVGIS, Barcelona Energy Observatory).
+- Ground-floor shops are not counted yet (they use power by day too), and buildings with other uses (shops, industry, parking) are left out of the matching.
+- The preview counts flats from the city model (floor area ÷ 100 m²); Catastro has the real numbers.
+- Every building of one kind follows the same day pattern; real meter data will make them differ.
+- The split shares come from typical days. The real table is fixed in advance and can change every four months, so a building that uses less than planned sends its unused share to the grid.
+- The map covers the buildings within 350 m of the centre of the 9 blocks. Without `data/buildings.json` it loads them from the city server once per visit (slower).
+- Values marked ASSUMPTION in `config.js` need sources (PVGIS, Red Eléctrica, Barcelona Energy Observatory).

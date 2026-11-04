@@ -1,0 +1,8 @@
+Delete these files from your folder, if you have them:
+
+pipeline/web/sharing.py
+pipeline/tests/test_sharing_web.py
+pipeline/web/communities.py          (only if you unzipped the earlier "groups" update)
+pipeline/tests/test_communities_web.py   (same)
+
+Then delete this file (DELETE_THESE.txt) too.

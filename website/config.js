@@ -1,4 +1,4 @@
-// Roofscapes RePowered — settings and assumptions.
+// MATCHSOL — settings and assumptions.
 // Every number marked ASSUMPTION should be replaced with a sourced value before the final review.
 
 window.APP_CONFIG = {
@@ -9,68 +9,86 @@ window.APP_CONFIG = {
     "https://geo.bcn.cat/agisserver/rest/services/Hosted/BCN_3DtoFeat/SceneServer", // detailed LOD2 model
     "https://geo.bcn.cat/agisserver/rest/services/Hosted/3D_MTM/SceneServer/layers/0", // simple volumes
   ],
-  // Same buildings as 2D footprints with height, roof form and use (used for the calculation).
+  // Same buildings as 2D footprints with height, roof form and use (used without data/buildings.json).
   BUILDINGS_FEATURE_LAYER: "https://geo.bcn.cat/agisserver/rest/services/Hosted/BCN_3DtoFeat/FeatureServer/22",
   // City background map.
   BASEMAP_STYLE: "https://geo.bcn.cat/agisportal/sharing/rest/content/items/31ee4f5c2b52411b8d1a43b9c56ec808/resources/styles/root.json",
 
-  // Area loaded around a clicked building (metres): neighbours that cast shade and can receive energy.
-  // Used only outside our study area; inside it, the buildings come from BUILDINGS_FILE.
-  LOAD_RADIUS_M: 350,
-
   // ---- Our own data (made by the Python pipeline, see ../pipeline/README.md) ----
-  // The study area's buildings, saved once with `python -m web.buildings`. Clicks inside the study
-  // area read this file instead of asking the city server. Without the file the map still works.
+  // The study area's buildings, saved once with `python -m web.buildings` (without it they come
+  // from the city server, a few seconds slower).
   BUILDINGS_FILE: "data/buildings.json",
-  // One file per roof run by the pipeline (`--web`), plus index.json, the list of those roofs.
+  // One file per roof run by the pipeline (step 4 with `--web`), plus index.json, the list of those roofs.
   ROOFS_FOLDER: "data/roofs/",
-  // Step 5's sharing groups, made with `python -m web.sharing` after `python -m step5.sharing`.
-  SHARING_FILE: "data/sharing.json",
 
-  // ---- Area screen ----
-  // Building colours, from the worst 20% for solar panels to the best 20% (kWh a year per m² of roof).
-  POTENTIAL_COLORS: ["#7d8a99", "#c2a26b", "#eaa733", "#f6c444", "#ffe27a"],
-  HOME_KWH_YEAR: 2500,             // ASSUMPTION: one home's yearly use (step 5's typical 85 m² flat), for "homes it could power"
+  // ---- Matching (step 4 of MATCHSOL) ----
+  MATCH: {
+    MAX_DISTANCE_M: 5000,  // Real Decreto-ley 7/2026: buildings up to 5 km apart can share one roof's solar power
+    NEAR_M: 600,           // nearer buildings are preferred: one 600 m away must add 2.7 times as much to be picked
+    MAX_MEMBERS: 10,       // ASSUMPTION: at most 10 buildings in one match, so it stays easy to agree on
+    MIN_GAIN_KWH: 200,     // a building joins only if the match then uses at least this much more solar power a year
+    MIN_SHARED_KWH: 500,   // a match must share at least this much a year to be worth the paperwork
+    MIN_PANELS: 6,         // a roof needs room for at least 6 panels...
+    MIN_SUN_FACTOR: 0.6,   // ...and at least 60% of the sun of an open roof, or it counts as "too shaded for panels"
+  },
+
+  // ---- Money and CO2 ----
+  GRID_PRICE_EUR: 0.16,      // what a kWh bought from the grid costs (step 5c)
+  SURPLUS_PRICE_EUR: 0.05,   // what a kWh sold to the grid earns (step 5c)
+  SHARED_PRICE_EUR: 0.10,    // ASSUMPTION: the price one building pays another for a shared kWh (the Money tab changes it)
+  CO2_KG_PER_KWH: 0.10,      // ASSUMPTION: CO2 of a kWh from Spain's grid. Check with Red Eléctrica before the review.
+
+  // ---- Each building's use, hour by hour: the same rules as pipeline/step5/demand.py ----
+  USE: {
+    FLAT_GROSS_M2: 100,        // ASSUMPTION: floor area per flat, to count flats from the city model
+    FLAT_BASE_KWH: 1000,       // a flat uses 1,000 kWh a year...
+    FLAT_KWH_PER_M2: 18,       // ...plus 18 kWh per m² (85 m² -> about 2,500 kWh)
+    OFFICE_KWH_PER_M2: 120,
+    SCHOOL_KWH_PER_M2: 60,     // schools, health centres, other public services
+    // Homes: low at night, a small morning peak, a big evening peak (hours 0-23)
+    HOME_DAY: [0.75, 0.6, 0.5, 0.45, 0.45, 0.5, 0.65, 0.85, 0.95, 0.95, 0.95, 0.95,
+               1.0, 1.05, 1.05, 0.95, 0.9, 0.95, 1.1, 1.3, 1.5, 1.55, 1.35, 1.0],
+    MONTH: [1.15, 1.1, 1.0, 0.9, 0.85, 0.95, 1.1, 1.05, 0.95, 0.9, 1.0, 1.15],   // January..December
+    WEEKEND_HOME: 1.1,         // people are at home more at the weekend
+    OFFICE_OPEN: [8, 18], OFFICE_CLOSED: 0.15, OFFICE_AUGUST: 0.6,   // weekdays; a small base load when closed
+    SCHOOL_OPEN: [8, 17], SCHOOL_CLOSED: 0.1,
+    SCHOOL_HOLIDAY_MONTHS: [6, 7],                                     // July and August (0 = January)
+  },
+
+  // The three days you can pick in the time bar (date: for the sun on the map).
+  DAYS: {
+    weekday: { label: "Weekday", month: 5, weekend: false, date: [2026, 5, 17] },
+    weekend: { label: "Weekend", month: 5, weekend: true, date: [2026, 5, 20] },
+    summer: { label: "Summer holidays", month: 6, weekend: false, date: [2026, 6, 15] },
+  },
+
+  // ---- Colours ----
+  COLORS: {
+    HOME: "#eaa733",          // homes with solar panels
+    HOME_NO_PANELS: "#f5d38f",// homes whose roof is too shaded or too small for panels
+    SCHOOL: "#1f5f8b",
+    OFFICE: "#8fb8de",
+    NOT_MATCHED: "#ebe5df",
+    OUT: "#cdc8c2",           // one match open: every building outside it
+    FROM_HOMES: "#b06f00",    // power lines from home roofs
+    FROM_DAYTIME: "#1f5f8b",  // power lines from school and office roofs
+  },
 
   // ---- Speed ----
   QUALITY: "medium",               // "high" is sharper but much heavier for a laptop
-  SHADOWS_AT_START: false,         // live sun shadows on the 3D model; can be turned on in "Sun and shadows"
+  SHADOWS_AT_START: false,         // live sun shadows on the 3D model; the Shadows switch in the time bar
 
-  // ---- Sun and climate (Barcelona) ----
+  // ---- Quick roof estimate (roofs our pipeline has not run yet) ----
   GHI_KWH_M2_YEAR: 1600,   // ASSUMPTION: yearly sun on a flat open surface. Check with PVGIS for your point.
   DIFFUSE_FRACTION: 0.38,  // ASSUMPTION: share of that sun that comes from the sky, not directly from the sun.
-
-  // ---- Panels ----
   PANEL_LENGTH_M: 1.76,
   PANEL_WIDTH_M: 1.13,
   PANEL_GAP_M: 0.05,
-  PANEL_EFFICIENCY: 0.21,          // typical 2026 monocrystalline panel
+  PANEL_EFFICIENCY: 0.21,          // typical 2026 monocrystalline panel (420 W for this size, as in step 3)
   PERFORMANCE_RATIO: 0.8,          // losses: heat, inverter, cables, dirt
   PANEL_HEIGHT_ABOVE_ROOF_M: 0.5,
   ROOF_SETBACK_M: 1.0,             // free strip along the roof edge and courtyards (parapet, safety, access)
-  PANEL_PACKING: 0.9,              // share of the free roof the panels cover in the quick estimate (flat panels, small gaps)
-  OBSTACLE_FACTOR: 0.75,           // ASSUMPTION: 25% of slots lost to stairs, tanks, AC units. The AI roof reading will replace this.
-
-  // ---- Buildings and demand ----
+  PANEL_PACKING: 0.9,              // share of the free roof the panels cover (flat panels, small gaps)
+  OBSTACLE_FACTOR: 0.75,           // ASSUMPTION: 25% of the roof lost to stairs, tanks, AC units (step 2 measures it)
   FLOOR_HEIGHT_M: 3.2,
-  DEMAND_KWH_M2_YEAR: 30,          // ASSUMPTION: default electricity per m² of floor per year
-  // ASSUMPTION: electricity per m² of floor per year by use (matched against the city's "uso_desc").
-  DEMAND_BY_USE: [
-    { match: "residencial", kwh: 30 },
-    { match: "oficina", kwh: 90 },
-    { match: "comercial", kwh: 110 },
-    { match: "industrial", kwh: 60 },
-    { match: "almac", kwh: 20 },
-    { match: "aparcamiento", kwh: 10 },
-    { match: "educa", kwh: 35 },
-    { match: "cultural", kwh: 45 },
-    { match: "sanid", kwh: 120 },
-    { match: "deport", kwh: 50 },
-    { match: "religio", kwh: 15 },
-    { match: "ocio", kwh: 100 },
-    { match: "hosteler", kwh: 100 },
-  ],
-
-  // ---- Sharing rule ----
-  SHARE_RADIUS_M: 2000,            // Spanish collective self-consumption: up to 2 km from the panels
 };

@@ -56,3 +56,24 @@ cd pipeline
 pip install -r requirements.txt
 python -m pytest tests
 ```
+
+## The Groups map (3 November 2026)
+
+The site now answers one question for the city: where to put solar panels. Two tabs instead of four:
+
+- **Groups**: every group of buildings in its own colour (the roof with panels strong, the buildings that share it light, the rest pale). Click a group: everything else turns grey, and inside the group each roof shows how good it is for panels (best 20% to worst 20%), with the roof with panels outlined and our pipeline's panels on it. The panel lists the groups, and for one group: panels, kWh, cost, payback, how much of the members' use it covers, who joins and their share.
+- The groups are Breno's step 5c (`data/communities.json`). Until that file is in, the browser makes a **preview** with the same rules (`COMMUNITY` in `website/config.js`), clearly labelled.
+- **How it works** stays; step 5 is now "Groups".
+- Removed: Area, Building (Roof Report) and Sharing tabs; `pipeline/web/sharing.py` and `tests/test_sharing_web.py`.
+- New for the pipeline: `python -m web.communities` (step 5c → `website/data/communities.json`), test `tests/test_communities_web.py`.
+
+## MATCHSOL (3 November 2026, later)
+
+The question changed from "where to put panels" (on every roof that can take them) to "who shares power with whom".
+
+- **Matches**: buildings coloured by what they are (homes with panels, homes whose roof is too shaded for panels, schools, offices), with power lines that change direction with the day and hour in the time bar. Click a match: the rest turns grey, and the panel shows its day, its members, who gives and who gets now, and what it shares a year.
+- **Hourly split**: the share of a roof's power for each member and each hour, and the year file (8,760 hours) for the electricity company.
+- **Money**: who pays whom, with a price slider; how the bill works.
+- **How it works**: the idea, the law (5 km, a share for every hour), the success measure, the four steps.
+- New `website/match.js`: the matching engine (typical days, step 5's use patterns, the pipeline's sun, growing matches by complementary schedules). It runs in the browser as a preview.
+- Removed: the Groups tab, `pipeline/web/communities.py` and its test (step 5c itself stays in the pipeline).
