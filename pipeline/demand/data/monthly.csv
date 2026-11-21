@@ -1,0 +1,12 @@
+type,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec,note
+home,1.00,1.00,1.00,1.00,1.00,1.00,1.00,0.85,1.00,1.00,1.00,1.00,August: many families are away (08018 homes use about 13% less in August)
+office,1.00,1.00,1.00,1.00,1.00,1.00,0.90,0.60,1.00,1.00,1.00,0.95,August: many offices half empty
+shop,1.00,1.00,1.00,1.00,1.00,1.00,1.00,0.85,1.00,1.00,1.00,1.05,August: some small shops close; December: Christmas shopping
+supermarket,1.00,1.00,1.00,1.00,1.00,1.00,1.00,0.95,1.00,1.00,1.00,1.00,
+restaurant,0.95,0.95,1.00,1.00,1.00,1.00,1.00,0.85,1.00,1.00,1.00,1.05,August: some close for holidays
+bar,0.95,0.95,1.00,1.00,1.00,1.05,1.05,0.90,1.00,1.00,1.00,1.00,
+cinema,1.05,1.00,1.00,1.00,0.95,0.95,1.00,1.00,0.95,1.00,1.00,1.05,
+school,1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,Closures come from the school calendar
+university,1.00,1.00,1.00,1.00,1.00,1.00,0.80,1.00,1.00,1.00,1.00,1.00,July: exams end; August closure comes from the calendar
+hotel,1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,No month factor: AC and heating already follow the weather (assumption: Barcelona hotels stay busy all year)
+gym,1.00,1.00,1.00,1.00,1.00,1.00,0.90,0.75,1.00,1.00,1.00,1.00,July-August: fewer members train (assumption)

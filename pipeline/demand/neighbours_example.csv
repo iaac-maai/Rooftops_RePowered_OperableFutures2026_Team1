@@ -1,0 +1,9 @@
+id,name,role,type,floor_area_m2,annual_kwh,hours_weekday,hours_saturday,hours_sunday,closed_august,address,notes
+A160,A160 office building,host,office,4000,,,,,,Carrer dels Almogavers 160,EXAMPLE area: replace with the Catastro floor area
+N1,Homes (example block),neighbour,home,2500,,,,,,,EXAMPLE: about 30 flats of 85 m2
+N2,Bar (example),neighbour,bar,120,,7-24,9-24,9-17,,,EXAMPLE: replace with the real opening hours from Google Maps
+N3,Restaurant (example),neighbour,restaurant,200,,13-16,13-16,13-16,yes,,EXAMPLE: lunch only and closed in August
+N4,Supermarket (example),neighbour,supermarket,600,,9-22,9-22,closed,,,EXAMPLE
+N5,Shop (example),neighbour,shop,150,,"10-14,17-21","10-14,17-21",closed,,,EXAMPLE
+N6,Cinema (example),neighbour,cinema,1500,,,,,,,EXAMPLE: uses the type's schedule
+N7,University building (example),neighbour,university,3000,,,,,,,EXAMPLE

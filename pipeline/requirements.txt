@@ -1,4 +1,4 @@
-# Steps 1-4 and the website export
+# Steps 1-4, the website export and demand/ (neighbour demand)
 requests
 shapely>=2.0
 pyproj
@@ -7,3 +7,5 @@ numpy
 scipy
 pillow
 pytest
+pandas
+matplotlib
