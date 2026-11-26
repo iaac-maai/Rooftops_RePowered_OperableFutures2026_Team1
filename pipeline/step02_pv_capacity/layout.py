@@ -10,49 +10,73 @@ Rows are spaced so the row in front does not shade the next one when the sun
 is at WINTER_NOON_ELEVATION_DEG. Several grid shifts are tried and the one
 that fits the most panels is kept.
 """
+import csv
 import math
 from dataclasses import dataclass
+from pathlib import Path
 
 import numpy as np
 import shapely
 from shapely import affinity
 from shapely.geometry import box
 
-PANEL_LONG_M = 1.76        # along the row
-PANEL_SHORT_M = 1.13       # up the slope (landscape)
-PANEL_WP = 420             # peak watts per panel (about 21% efficient)
 TILT_DEG = 10.0
 GAP_M = 0.05               # between panels in a row
 WINTER_NOON_ELEVATION_DEG = 25.0  # Barcelona, 21 December at noon
 SHIFT_STEP_M = 0.25
+PANELS_CSV = Path(__file__).resolve().parent / "panels.csv"   # the panel catalogue: the only place panel sizes live
+DEFAULT_KEY = "residential_420"
 
 
 @dataclass(frozen=True)
 class Module:
-    """One panel model: peak watts and size. Both sizes are ASSUMPTIONS (typical
-    catalogue panels), listed in docs/SOURCES.md."""
+    """One panel model from panels.csv: peak watts and size (sources in panels.csv and docs/SOURCES.md)."""
     wp: int
     long_m: float          # along the row
     short_m: float         # up the slope (landscape)
     label: str
+    key: str = ""
+    status: str = ""       # REAL (from the project documents) or ASSUMPTION
+
+    @property
+    def area_m2(self):
+        return self.long_m * self.short_m
 
 
-MODULES = {
-    # Our default since V1: a 108-cell panel of about 21% efficiency.
-    420: Module(420, PANEL_LONG_M, PANEL_SHORT_M, "420 W, 1.76 x 1.13 m (default)"),
-    # The CEP9 school's system works out at 540 W a panel (58.32 kWp / 108 panels).
-    # A typical 540 W panel (144 half-cells) is about 2.28 x 1.13 m.
-    540: Module(540, 2.28, 1.13, "540 W, 2.28 x 1.13 m (as on the CEP9 school)"),
-}
-DEFAULT_MODULE = MODULES[PANEL_WP]
+NAMES = {"residential_420": "residential", "cep9_540": "CEP9 real"}
 
 
-def get_module(wp):
-    """The Module for a wattage in MODULES (420 or 540)."""
+def load_catalogue(path=PANELS_CSV):
+    """{key: Module} from panels.csv (sizes in mm there, metres here)."""
+    out = {}
+    with open(path, newline="", encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            long_m, short_m = int(r["length_mm"]) / 1000, int(r["width_mm"]) / 1000
+            wp = int(r["wp"])
+            name = NAMES.get(r["key"], r["key"])
+            out[r["key"]] = Module(wp, long_m, short_m, f"{wp} W {name}, {long_m:.2f} x {short_m:.2f} m",
+                                   r["key"], r["status"])
+    return out
+
+
+CATALOGUE = load_catalogue()
+# keyed by wattage (420, 540) and by catalogue key ("residential_420", "cep9_540")
+MODULES = {**{m.wp: m for m in CATALOGUE.values()}, **CATALOGUE}
+WATTAGES = sorted({m.wp for m in CATALOGUE.values()})
+DEFAULT_MODULE = CATALOGUE[DEFAULT_KEY]
+PANEL_WP = DEFAULT_MODULE.wp
+PANEL_LONG_M = DEFAULT_MODULE.long_m
+PANEL_SHORT_M = DEFAULT_MODULE.short_m
+
+
+def get_module(wp_or_key):
+    """The Module for a wattage (420, 540) or a catalogue key (residential_420, cep9_540)."""
+    if str(wp_or_key) in CATALOGUE:
+        return CATALOGUE[str(wp_or_key)]
     try:
-        return MODULES[int(wp)]
+        return MODULES[int(wp_or_key)]
     except (KeyError, ValueError):
-        raise SystemExit(f"unknown panel wattage {wp}; choose from {sorted(MODULES)}")
+        raise SystemExit(f"unknown panel {wp_or_key}; choose a wattage {WATTAGES} or a key {sorted(CATALOGUE)}")
 
 
 @dataclass

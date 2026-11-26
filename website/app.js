@@ -381,7 +381,7 @@
       return [v, r];
     });
     const usedV = V.find((v) => v.option === chosen.option && v.panel_wp === chosen.panel_wp);
-    $("layout-used").textContent = (D.roof.separate ? (D.roof.below_note || `The sections below use another roof (${D.meta.address}).`) : `The rest of this page (spare power, neighbours, battery and money) uses ${usedV ? usedV.name.toLowerCase() + " with " + usedV.panel_wp + " W panels" : "the pipeline's layout"}.`) + ` Block sizes and the share of the best panel are our assumptions (step 03, options.py); 540 W panel size is a typical catalogue panel. Next: to see the money for another layout, run steps 03-10 with --layout and --panel-wp for it.`;
+    $("layout-used").textContent = (D.roof.separate ? (D.roof.below_note || `The sections below use another roof (${D.meta.address}).`) : `The rest of this page (spare power, neighbours, battery and money) uses ${usedV ? usedV.name.toLowerCase() + " with " + usedV.panel_wp + " W panels" : "the pipeline's layout"}.`) + ` Block sizes and the share of the best panel are our assumptions (step 03, options.py). Panel sizes come from the panel catalogue (step 02, panels.csv): the 540 W panel is the CEP9 one from the project documents, the 420 W size is a typical residential panel (assumption). Next: to see the money for another layout, run steps 03-10 with --layout and --panel-wp for it.`;
 
     function draw() {
       const v = pick();
@@ -446,7 +446,7 @@
         r.addEventListener("pointermove", show); r.addEventListener("focus", (e) => show({ clientX: e.target.getBoundingClientRect().x, clientY: e.target.getBoundingClientRect().y }));
         r.addEventListener("pointerleave", hideTip); r.addEventListener("blur", hideTip);
       });
-      $("panels-key").textContent = v.actual ? "outlined = real panel blocks" : (actualV && actualV.traced ? "pink outline = real panels; " : "") + "darker = produces more; grey = left out; cream = usable roof";
+      $("panels-key").textContent = v.actual ? "outlined = real panel blocks" : (actualV && actualV.traced ? "pink rectangles = real panels (step 02); " : "") + "darker = produces more; grey = left out; cream = usable roof";
       $("how-card").hidden = !!v.actual;
       if (v.actual) { drawActual(v); return; }
       // panel drawing: same frame for every layout, same colours for every layout of one panel model
@@ -539,7 +539,7 @@
         " Bold green: within 10% of the real value.";
       const det = act.detected;
       $("validation-detected").textContent = `Real panel counts by roof: ${act.by_roof_source}.` +
-        (det ? ` For comparison, step 02 finds ${Object.entries(det).map(([r, x]) => `${fmt(x.existing_panels_m2)} m² of panel-like surface on the ${r} roof (about ${fmt(x.existing_panels_estimate)} panels of 540 W)`).join(" and ")}; the rows on the red roof are mostly panels (Breno).` : "") +
+        (det ? ` For comparison, step 02 finds ${Object.entries(det).map(([r, x]) => `${fmt(x.existing_panels_m2)} m² of panel rectangles on the ${r} roof (about ${fmt(x.existing_panels_estimate)} panels of ${act.panel_wp} W)`).join(" and ")}. The project documents put all 108 real panels on the Institut (yellow); the light-blue rows on the red roof may be another installation.` : "") +
         (act.check_notes && act.check_notes.length ? " " + act.check_notes.map((t) => t[0].toUpperCase() + t.slice(1) + ".").join(" ") : "");
     }
 
@@ -591,7 +591,7 @@
       }
       const area = v.traced.reduce((a, t) => a + t.area_m2, 0);
       const diff = v.model_kwh_per_kwp ? (v.model_kwh_per_kwp / v.kwh_per_kwp - 1) : null;
-      $("panel-note").textContent = `Outlined: ${v.traced.length} panel areas (${fmt(area)} m²) found by ${v.traced_by}. Not checked against an installer plan. ` +
+      $("panel-note").textContent = `Outlined: ${v.traced.length} panel rectangles (${fmt(area)} m²) found by ${v.traced_by}. Not checked against an installer plan. ` +
         (v.model_kwh_per_kwp ? `On these spots our model gives ${fmt(v.model_kwh_per_kwp)} kWh per kWp, against ${fmt(v.kwh_per_kwp)} reported (${diff >= 0 ? "+" : ""}${pct(diff)}), from the ${v.model_panels_on_blocks} model panels inside the blocks.` : "") +
         (ph ? ` Photo: ${ph.source}.` : "");
     }

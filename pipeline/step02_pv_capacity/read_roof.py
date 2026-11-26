@@ -91,14 +91,21 @@ def _edge(mask):
     return mask & ~ndimage.binary_erosion(mask)
 
 
-def preview(rgb, classes, roof, usable, path, alpha=0.45):
-    """Photo + class colours on the roof, roof outline in white, usable area outlined in yellow."""
+PANEL_EDGE_COLOR = (0, 70, 170)   # dark blue outline: existing panel rectangles
+
+
+def preview(rgb, classes, roof, usable, path, alpha=0.45, panels=None):
+    """Photo + class colours on the roof, roof outline in white, usable area outlined in yellow,
+    existing panel rectangles outlined in dark blue."""
     overlay = classes_to_colors(classes).astype(np.float32)
     base = rgb.astype(np.float32) if rgb is not None else np.full(overlay.shape, 128.0)
     out = base.copy()
     out[roof] = (1 - alpha) * base[roof] + alpha * overlay[roof]
     out[_edge(roof)] = 255
     out[_edge(usable)] = USABLE_COLOR
+    if panels is not None and panels.any():
+        edge = _edge(panels)
+        out[edge | ndimage.binary_dilation(edge)] = PANEL_EDGE_COLOR
     Image.fromarray(out.clip(0, 255).astype(np.uint8)).save(path)
 
 
@@ -164,9 +171,12 @@ def read_roof(laz_dir, address=None, lat=None, lon=None, out="roof", roof_state=
     panels_fine = None
     if rgb is not None:
         not_panels = existing_panels.load_not_panels(record.refcat)
-        panels_fine, panels, blobs, look_alikes = existing_panels.detect(rgb, lroof, FACTOR, not_panels)
         module = get_module(panel_wp)
-        summary.update(existing_panels.summary(blobs, module.long_m * module.short_m))
+        found = existing_panels.detect(rgb, lroof, FACTOR, not_panels,
+                                       roof_angle_deg=existing_panels.roof_edge_angle(fp), module=module)
+        panels_fine, panels, look_alikes = found["rect_fine"], found["rect_coarse"], found["look_alikes"]
+        summary.update(existing_panels.summary(found, module))
+        summary["roof_angle_deg"] = found["roof_angle_deg"]
         summary["not_panels"] = sorted({w for *_, w in not_panels}) if look_alikes.any() else []
         reserved = None
         if reserved_path:
@@ -199,14 +209,21 @@ def read_roof(laz_dir, address=None, lat=None, lon=None, out="roof", roof_state=
                                                "properties": {"usable_area_m2": summary["usable_area_m2"]}}]}
     Path(f"{out}_usable.geojson").write_text(json.dumps(fc), encoding="utf-8")
     if panels_fine is not None:
-        ppoly = grid.finer(FACTOR).cells_to_polygon(panels_fine)
-        pfc = {"type": "FeatureCollection",
-               "crs": {"type": "name", "properties": {"name": "urn:ogc:def:crs:EPSG::25831"}},
+        crs = {"type": "name", "properties": {"name": "urn:ogc:def:crs:EPSG::25831"}}
+        # one feature per rectangle: what step 03, the usable area and the website use
+        rfc = {"type": "FeatureCollection", "crs": crs, "features": [
+            {"type": "Feature", "geometry": {"type": "Polygon", "coordinates": [r["corners"]]},
+             "properties": {k: v for k, v in r.items() if k != "corners"}}
+            for r in summary["existing_panel_rectangles"]]}
+        Path(f"{out}_existing_panels.geojson").write_text(json.dumps(rfc), encoding="utf-8")
+        # the raw pixels, for debugging the detector
+        ppoly = grid.finer(FACTOR).cells_to_polygon(found["pixels"])
+        pfc = {"type": "FeatureCollection", "crs": crs,
                "features": [] if ppoly is None else [{"type": "Feature", "geometry": mapping(ppoly.simplify(0.1)),
-                                                     "properties": {"existing_panels_m2": summary["existing_panels_m2"]}}]}
-        Path(f"{out}_existing_panels.geojson").write_text(json.dumps(pfc), encoding="utf-8")
+                                                     "properties": {"pixels_m2": summary["existing_panels_pixels_m2"]}}]}
+        Path(f"{out}_existing_panels_pixels.geojson").write_text(json.dumps(pfc), encoding="utf-8")
     roof_fine = upsample(lroof.roof, FACTOR)
-    preview(rgb, classes, roof_fine, upsample(usable, FACTOR), f"{out}_preview.png")
+    preview(rgb, classes, roof_fine, upsample(usable, FACTOR), f"{out}_preview.png", panels=panels_fine)
     if rgb is not None:
         Image.fromarray(rgb).save(f"{out}_photo.png")
     height_image(upsample(height_above_roof(lroof), FACTOR), roof_fine, f"{out}_height.png")
@@ -222,7 +239,8 @@ def main():
     ap.add_argument("--out", default="roof", help="output name, without extension")
     ap.add_argument("--roof-state", choices=["empty", "existing"], default="empty",
                     help="empty (default): ignore panels already on the roof; existing: keep them, usable = room for new ones")
-    ap.add_argument("--panel-wp", type=int, default=540, help="panel size used to estimate the existing panel count")
+    ap.add_argument("--panel-wp", type=int, default=540,
+                    help="panel (watts) whose catalogue size counts the existing panels: 540 (default, cep9_540) or 420")
     ap.add_argument("--reserved", help="GeoJSON (EPSG:25831) of roof areas kept free on purpose, e.g. for a future extension; "
                     "never usable. Optional 'refcat' and 'reason' properties per feature")
     args = ap.parse_args()
@@ -230,7 +248,7 @@ def main():
         ap.error("give an address, or both --lat and --lon")
     result = read_roof(args.laz_dir, args.address, args.lat, args.lon, args.out, args.roof_state, args.panel_wp,
                        args.reserved)
-    roof = {k: v for k, v in result["roof"].items() if k != "existing_panel_blocks"}
+    roof = {k: v for k, v in result["roof"].items() if k not in ("existing_panel_blocks", "existing_panel_rectangles")}
     print(json.dumps({"building": result["building"], "roof": roof, "photo_error": result["photo_error"]}, indent=2, default=str))
 
 

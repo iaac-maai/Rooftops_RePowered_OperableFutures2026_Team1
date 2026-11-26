@@ -166,9 +166,10 @@ def test_a_block_counts_the_same_whichever_way_it_runs():
 
 
 def test_block_size_is_an_area_so_big_panels_need_fewer():
+    from step02_pv_capacity.layout import MODULES
     neat = layout_options.OPTIONS[1]
-    small = layout_options.min_cells(neat, 1.76 * 1.13)      # 420 W
-    big = layout_options.min_cells(neat, 2.28 * 1.13)        # 540 W
+    small = layout_options.min_cells(neat, MODULES[420].area_m2)   # 420 W residential, 1.95 m2
+    big = layout_options.min_cells(neat, MODULES[540].area_m2)     # 540 W CEP9, 2.58 m2
     assert small == 6 and big == 5
 
 
@@ -198,6 +199,7 @@ def test_540_w_panels_are_bigger_and_count_more_kwp():
     small = lay_out(roof, eixample, module=MODULES[420])
     big = lay_out(roof, eixample, module=MODULES[540])
     assert big.count < small.count
+    assert MODULES["cep9_540"] is MODULES[540] and MODULES["residential_420"] is MODULES[420]
     assert big.kwp == pytest.approx(big.count * 0.54)
     assert len(small.cells) == small.count
 

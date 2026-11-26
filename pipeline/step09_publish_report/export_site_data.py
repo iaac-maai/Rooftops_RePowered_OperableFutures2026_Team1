@@ -26,6 +26,7 @@ from pathlib import Path
 import numpy as np
 
 from step01_select_host.cases import site_cases
+from step02_pv_capacity.layout import DEFAULT_MODULE
 from step04_read_host_demand.host_table import read_host_table
 from step06_prices_and_battery import battery_types as bt
 from step06_prices_and_battery import dispatch
@@ -62,7 +63,7 @@ def layout_variants(y, options=SITE_OPTIONS):
                  "panel_list": [{"c": p["corners"], "k": p["kwh_year"]} for p in v["panel_list"]]}
                 for v in y["variants"] if v["option"] in options]
     yl = y["yield"]
-    return [{"panel_wp": 420, "panel": "420 W, 1.76 x 1.13 m (default)", "option": "max",
+    return [{"panel_wp": DEFAULT_MODULE.wp, "panel": DEFAULT_MODULE.label, "option": "max",
              "name": "Fill the roof", "rule": "every panel that fits and loses at most 40% of its sun to shade",
              "blocks": None, **{k: yl.get(k) for k in ("panels", "kwp", "yearly_kwh", "kwh_per_kwp",
                                                         "mean_shade_loss", "monthly_kwh")},

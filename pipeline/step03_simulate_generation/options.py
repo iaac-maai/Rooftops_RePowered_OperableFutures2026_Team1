@@ -30,6 +30,8 @@ rectangle is big enough. `classify` also says why each other panel was left out:
 """
 import numpy as np
 
+from step02_pv_capacity.layout import DEFAULT_MODULE
+
 OPTIONS = [
     {"id": "max", "name": "Fill the roof", "min_share": None, "min_area_m2": 0, "min_short": 1, "min_long": 1,
      "rule": "every panel that fits and loses at most 40% of its sun to shade"},
@@ -41,7 +43,7 @@ OPTIONS = [
              "each panel at least 93% of the roof's best"},
 ]
 REFERENCE_PERCENTILE = 90   # "the roof's best panel" = this percentile of yearly kWh per panel
-DEFAULT_PANEL_M2 = 1.76 * 1.13
+DEFAULT_PANEL_M2 = DEFAULT_MODULE.area_m2   # from the panel catalogue (step02_pv_capacity/panels.csv)
 
 
 def min_cells(option, panel_m2=DEFAULT_PANEL_M2):

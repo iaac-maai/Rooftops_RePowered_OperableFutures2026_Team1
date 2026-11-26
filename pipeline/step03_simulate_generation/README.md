@@ -6,7 +6,7 @@ Carried over from V1's steps 3 and 4. Step 3 places panel rows on the usable roo
 
 | | What it uses | What it gives |
 |---|---|---|
-| Layout, `../step02_pv_capacity/layout.py` | Step 2 usable area, building footprint | Panel rows: 1.76 × 1.13 m panels, 420 W, 10° tilt, facing the building side closest to south, rows spaced for no row-to-row shade at winter noon |
+| Layout, `../step02_pv_capacity/layout.py` | Step 2 usable area, building footprint | Panel rows of a panel from the catalogue (`../step02_pv_capacity/panels.csv`; default `residential_420`, 1.722 × 1.134 m), 10° tilt, facing the building side closest to south, rows spaced for no row-to-row shade at winter noon |
 | Shade and yield, this folder | ICGC LiDAR within 150 m (roofs, ground, trees, rooftop structures), PVGIS typical year | kWh per panel per hour, shade loss per panel, yearly and monthly totals, kWh per kWp |
 
 ## Setup (once)
@@ -88,6 +88,6 @@ By default every panel that fits is placed (team decision, 15 Nov 2026: fill the
 
 ## Panel size and several roofs (added 15 Nov 2026)
 
-- **Your own panel size:** `--panel-wp 540 --panel-size 2.38x1.13` replaces the catalogue size of that wattage for the run (length x width in metres). `--portrait` puts the long side up the slope. The two built-in sizes (420 W, 1.76 x 1.13 m and 540 W, 2.28 x 1.13 m) are ASSUMPTIONS from typical catalogue panels. Use the datasheet of the panel really installed when you know it. The layout block rules count an area, so a bigger panel needs fewer cells per block.
+- **Panel and size:** `--panel cep9_540` (or `residential_420`) picks a panel from the catalogue, `step02_pv_capacity/panels.csv`, the only place panel sizes live. `--panel-wp 540` does the same by watts. `--panel-size 2.38x1.13` replaces the catalogue size for one run (length x width in metres), and `--portrait` puts the long side up the slope. The 540 W size (2279 × 1134 mm) is the real CEP9 panel from the tender; the 420 W size (1722 × 1134 mm) is a typical residential panel and stays an ASSUMPTION until a datasheet is checked. The layout block rules count an area, so a bigger panel needs fewer cells per block.
 - **A host with panels on more than one building** (CEP9 is the Escola Pere IV and the Institut Quatre Cantons): run this step once per roof, then `python -m step03_simulate_generation.combine_roofs --roof red=data\pv\cep9_red_yield.json --roof yellow=data\pv\cep9_yellow_yield.json --out data\pv\cep9`. It adds panels, kWp and hourly solar for every layout and keeps a `roof` label on each panel.
 

@@ -37,7 +37,7 @@ from shapely.ops import unary_union
 from step01_select_host.find_building import find_building
 from step02_pv_capacity.lidar_roof import read_roof_from_tiles
 from step02_pv_capacity.read_roof import lidar_only
-from step02_pv_capacity.layout import DEFAULT_MODULE, MODULES, Layout, Module, get_module, lay_out_oriented
+from step02_pv_capacity.layout import CATALOGUE, DEFAULT_MODULE, MODULES, Layout, Module, get_module, lay_out_oriented
 
 from .energy import yield_for_layout
 from .horizon import horizons, surface_model
@@ -218,7 +218,9 @@ def shade_yield(laz_dir, address=None, lat=None, lon=None, usable_path=None,
         raise SystemExit(f"unknown layout {layout_option}; choose from {[o['id'] for o in OPTIONS]}")
     modules = dict(MODULES)
     if panel_size or portrait:
-        base = modules.get(int(panel_wp)) or Module(int(panel_wp), 2.28, 1.13, "")
+        base = modules.get(int(panel_wp))
+        if base is None and not panel_size:
+            get_module(panel_wp)   # --portrait alone needs a catalogue size: stops with a clear message
         long_m, short_m = panel_size if panel_size else (base.long_m, base.short_m)
         if portrait:
             long_m, short_m = short_m, long_m   # long side up the slope
@@ -318,7 +320,11 @@ def main():
     ap.add_argument("--max-panels", type=int,
                     help="keep only this many panels, best first (default: every panel that fits)")
     ap.add_argument("--panel-wp", type=int, default=420,
-                    help="panel watts for the main outputs: 420 (default) or 540 W, or any number with --panel-size")
+                    help="panel watts for the main outputs: 420 (default, residential_420) or 540 W (cep9_540), "
+                         "or any number with --panel-size")
+    ap.add_argument("--panel", choices=sorted(CATALOGUE),
+                    help="panel from the catalogue (step02_pv_capacity/panels.csv): residential_420 or cep9_540; "
+                         "sets --panel-wp to that panel's watts")
     ap.add_argument("--panel-size", help="panel length x width in metres, e.g. 2.38x1.13 (replaces the catalogue size "
                                          "of --panel-wp for this run; use the size of the panel really installed)")
     ap.add_argument("--portrait", action="store_true",
@@ -335,6 +341,8 @@ def main():
     args = ap.parse_args()
     if not args.address and (args.lat is None or args.lon is None):
         ap.error("give an address, or both --lat and --lon")
+    if args.panel:
+        args.panel_wp = CATALOGUE[args.panel].wp
     compare = [int(w) for w in args.compare_wp.split(",") if w.strip()]
     size = None
     if args.panel_size:
