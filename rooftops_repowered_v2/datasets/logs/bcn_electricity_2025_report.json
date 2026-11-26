@@ -1,0 +1,33 @@
+{
+  "id": "bcn_electricity_2025",
+  "local_file": "raw/barcelona_electricity/2025_consum_electricitat_BCN.csv",
+  "url": "https://opendata-ajuntament.barcelona.cat/data/dataset/d9479057-781f-42b4-85e6-721bd0284130/resource/635923fe-9e3b-40d3-857d-aaa9a6913531/download",
+  "catalog": "https://opendata-ajuntament.barcelona.cat/data/dataset/consum-electricitat-bcn",
+  "purpose": "Barcelona daily electricity by postal code, sector, time band; local contextual comparison, not building training.",
+  "size_note": "~12 MB on catalog (2025 distribution)",
+  "provenance": "OBSERVED_AGGREGATE",
+  "format": "CSV (publisher original; encoding and separator inspected after download)",
+  "license_status": "Consult publisher metadata/license; public access does not imply unrestricted reuse",
+  "started_utc": "2026-11-14T20:56:24.098816+00:00",
+  "status": "downloaded",
+  "attempts": [],
+  "http_status": "200",
+  "resolved_url": "https://opendata-ajuntament.barcelona.cat/resources/bcn/EstadisticaDatadis/2025_consum_electricitat_BCN.csv",
+  "bytes": 12376371,
+  "sha256": "e451d236985ab415e5281a2e13545e35e33d34765eef33bb8721428b92cbda35",
+  "encoding": "utf-8-sig",
+  "delimiter": ",",
+  "columns": [
+    "Any",
+    "Data",
+    "Codi_Postal",
+    "Sector_Economic",
+    "Tram_Horari",
+    "Valor"
+  ],
+  "row_count": 209105,
+  "column_count": 6,
+  "validation": "CSV structure only; units/missingness/timezones need data audit",
+  "downloaded_from": "https://opendata-ajuntament.barcelona.cat/data/dataset/d9479057-781f-42b4-85e6-721bd0284130/resource/635923fe-9e3b-40d3-857d-aaa9a6913531/download",
+  "finished_utc": "2026-11-14T20:56:30.346659+00:00"
+}

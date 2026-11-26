@@ -1,0 +1,79 @@
+# Research sources and URLs — 15 November 2026
+
+Research evidence and official software documentation. Local synthetic source files are in the companion package. The archived GrowSmarter original URL sometimes fails; an accessible mirror is listed as [65].
+
+- **[01] V2 repository** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2
+- **[02] Latest technical status** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/reports/NEXT_STEPS.md
+- **[03] A160 rooftop research report** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/reports/roof_capacity/A160/README.md
+- **[04] A160 rooftop readiness** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/reports/roof_capacity/A160/readiness.json
+- **[05] A160 retrospective validation** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/reports/roof_capacity/A160/retrospective_validation.csv
+- **[06] V2 simulation model card** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/reports/simulation_surrogate/MODEL_CARD.md
+- **[07] V2 simulation metrics** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/reports/simulation_surrogate/model_metrics.csv
+- **[08] V2 measured-model card** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/reports/demand_model/MODEL_CARD.md
+- **[09] V2 methods / limitations** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/docs/METHOD.md
+- **[10] V2 end-to-end pipeline** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/PIPELINE.md
+- **[11] V2 data contracts** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/docs/DATA_CONTRACTS.md
+- **[12] V1 source repository** — https://github.com/iaac-maai/Rooftops_RePowered_OperableFutures2026_Team1
+- **[13] V1 LiDAR + roof analysis** — https://github.com/iaac-maai/Rooftops_RePowered_OperableFutures2026_Team1/blob/main/pipeline/step2/README.md
+- **[14] V1 panel layout code** — https://github.com/iaac-maai/Rooftops_RePowered_OperableFutures2026_Team1/blob/main/pipeline/step3/layout.py
+- **[15] Batlleiroig A160 architecture** — https://www.batlleiroig.com/en/projects/oficines-almogavers-160-a-barcelona/
+- **[16] A160 developer facts** — https://www.conrentramway.com/portfolio/a160/
+- **[17] ITAEB official teaching schedule** — https://agora.xtec.cat/ins-itaeb/estudis/cfgs-produccio-daudiovisuals-i-espectacles/
+- **[18] IMHAB social housing: 18 homes** — https://www.consorcihabitatge.barcelona/es/noticias/el-imhab-entrega-las-llaves-de-18-pisos-de-alquiler-social-en-el-barrio-del-parc-i-la-llacuna-del-poblenou-1405102
+- **[19] NH Diagonal Poblenou hotel** — https://www.nh-hotels.com/en/hotel/nh-barcelona-diagonal-poblenou
+- **[20] Barcelona Energy Resources Map** — https://www.energia.barcelona/en/generate-energy/generar-energia/map-how-much-energy-can-you-generate
+- **[21] A160 municipal-map comparison** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/datasets/processed/roof_capacity/A160/municipal_map_comparison.csv
+- **[22] ICGC LiDAR Territorial** — https://www.icgc.cat/es/Geoinformacion-y-mapas/Datos-y-productos/Elevaciones/Elevaciones-territorial/LiDAR-Territorial
+- **[23] ICGC WMS ortho imagery** — https://www.icgc.cat/en/Geoinformation-and-Maps/Online-services-Geoservices/WMS-Orthoimages/WMS-Territorial-Orthophoto
+- **[24] JRC PVGIS: official page** — https://joint-research-centre.ec.europa.eu/photovoltaic-geographical-information-system-pvgis_en
+- **[25] JRC PVGIS: hourly simulations** — https://joint-research-centre.ec.europa.eu/photovoltaic-geographical-information-system-pvgis/using-pvgis-5/pvgis-5-tools/hourly-radiation_en
+- **[26] Building Data Genome 2 publication** — https://doi.org/10.1038/s41597-020-00712-x
+- **[27] Barcelona electricity open data** — https://datos.gob.es/es/catalogo/l01080193-consumo-de-electricidad-mwh-por-codigo-postal-sector-economico-y-tramo-horario
+- **[28] EnergyPlus official software** — https://energyplus.net/
+- **[29] XGBoost documentation** — https://xgboost.readthedocs.io/en/stable/
+- **[30] MITECO self-consumption FAQ** — https://www.miteco.gob.es/es/energia/energia-electrica/electricidad/autoconsumo-electrico/preguntas-frecuentes-autoconsumo.html
+- **[31] BOE RD 244/2019 (consolidated)** — https://www.boe.es/buscar/act.php?id=BOE-A-2019-5089
+- **[32] Google Project Sunroof** — https://sunroof.withgoogle.com/
+- **[33] Global Solar Atlas** — https://globalsolaratlas.info/
+- **[34] City Energy Analyst (CEA)** — https://www.cityenergyanalyst.com/
+- **[35] V2 sharing calculation code** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/pipeline/step_07_energy_balance/evaluate.py
+- **[36] V2 environmental/economic code** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/pipeline/step_08_impact_metrics/screen.py
+- **[37] A160 assessment image** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/reports/roof_capacity/A160/A160_two_assessments.png
+- **[38] V2 A160 test verification** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/reports/roof_capacity/A160/verification.json
+- **[39] V2 source inventory** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/datasets/dataset_sources.json
+- **[40] V2 A160 case-study candidates** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/datasets/inputs/case_study_candidates.csv
+- **[41] V2 PVGIS input handoffs** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/datasets/inputs/roof_capacity/pvgis/A160_pvgis_inputs.csv
+- **[42] Open reference building methodology** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/pipeline/step_05_simulation_surrogate/README.md
+- **[43] V2 rooftop reference separation** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/reports/roof_capacity/A160/reference_separation.json
+- **[44] WEATHER-5K research data** — https://github.com/taohan10200/WEATHER-5K
+- **[45] A160 existing PV imagery report** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/reports/roof_capacity/A160/latest_imagery_check.json
+- **[46] Catalonia electricity certificates data** — https://analisi.transparenciacatalunya.cat/
+- **[47] REE national electricity statistics** — https://www.ree.es/en
+- **[48] V2 data-audit summary** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/reports/data_audit/audit_summary.json
+- **[49] Almogavers 165 public PV specification** — https://contractaciopublica.cat/portal-api/descarrega-document-antic/98714834/60a3aa56303d45a8a07094fc635811e3
+- **[50] Care Economy Hub educational use** — https://www.hmarfp.cat/en/about-us/resources/
+- **[51] Current UI guide** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/ui/README.md
+- **[52] UI PV integration and verification** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/ui/docs/pv-integration/README.md
+- **[53] UI verification JSON** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/ui/docs/pv-integration/verification.json
+- **[54] Existing PV evidence contract** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/config/a160_existing_pv.json
+- **[55] PVGIS hypothetical setup** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/config/pvgis_hypothetical.json
+- **[56] Barcelona 2026 3D DWG portal** — https://portaldades.ajuntament.barcelona.cat/mapes/146
+- **[57] Rhino 8 DWG import official** — https://docs.mcneel.com/rhino/8/help/en-us/fileio/autocad_dwg_dxf_import_export.htm
+- **[58] LBT Grasshopper 1.10 releases** — https://github.com/ladybug-tools/lbt-grasshopper/releases
+- **[59] Honeybee model to OpenStudio/EnergyPlus** — https://docs.ladybug.tools/hb-energy-primer/components/5_simulate/model_to_osm
+- **[60] DOE prototype building models** — https://www.energycodes.gov/prototype-building-models
+- **[61] EMAS VOPI4 electricity benchmark** — https://www.gencat.cat/mediamb/declaracions_ambientals/ES-CAT-000320.pdf
+- **[62] Office electric intensity literature** — https://www.sciencedirect.com/science/article/pii/S0378778823004310
+- **[63] ICAEN school audit benchmarks** — https://icaen.gencat.cat/web/.content/10_ICAEN/17_publicacions_informes/04_coleccio_QuadernPractic/quadern_practic/arxius/Exemple_6_QP7.pdf
+- **[64] IDAE Spanish households 2025** — https://www.idae.es/sites/default/files/estudios_informes_y_estadisticas/20250911_Estudio_CONSUMO_y_GASTO_ENERGETICO_HOGARES_espanoles.pdf
+- **[65] GrowSmarter hotel analysis – archived mirror** — https://offenedaten-koeln.de/sites/default/files/GrowSmarter_Validation.pdf
+- **[66] Hotel Madison room benchmark source** — https://www.h10hotels.com/en/barcelona-hotels/h10-madison
+- **[67] City 3D data map viewer** — https://w20.bcn.cat/cartobcn/?prod=146
+- **[68] Official PVGIS API documentation** — https://joint-research-centre.ec.europa.eu/photovoltaic-geographical-information-system-pvgis/using-pvgis-5/api-non-interactive-service_en
+- **[69] PVGIS A160 provenance manifest** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/reports/pvgis/A160/hypothetical_acquisition.json
+- **[70] Community/UI source contracts** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/ui/API.md
+- **[71] A160 synthetic source files – companion ZIP** — Companion project artifact only; not yet uploaded to GitHub
+- **[72] Latest uploaded VS Code handover – companion file** — Companion project artifact only; not yet uploaded to GitHub
+- **[73] V2 rooftop test report** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/reports/roof_capacity/A160/verification.json
+- **[74] V2 simulation train procedure** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/pipeline/step_05_simulation_surrogate/README.md
+- **[75] V2 sharing gate code** — https://github.com/SindhujaDavuluri/rooftops_repowered_v2/blob/main/pipeline/case_study.py

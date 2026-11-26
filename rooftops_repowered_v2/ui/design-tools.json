@@ -1,0 +1,46 @@
+{
+  "provider": "Google Stitch",
+  "homepage": "https://stitch.google.com/?pli=1",
+  "mcp_url": "https://stitch.googleapis.com/mcp",
+  "project_title": "Roofscapes Research Studio",
+  "project_url": "https://stitch.google.com/projects/15516450235999637621",
+  "project_resource": "projects/15516450235999637621",
+  "project_created": true,
+  "connection_status": "authenticated_mcp_verified",
+  "approved_ui_source": "UI Interface/Roofscapes_UI_Template_Editable_Package/index.html",
+  "integrated_ui": "ui/index.html",
+  "purpose": "Future graphic refinement of the approved seven-view research dashboard; preserve data contracts and research evidence.",
+  "available_tools": [
+    "create_project",
+    "get_project",
+    "update_project",
+    "delete_project",
+    "list_projects",
+    "list_screens",
+    "get_screen",
+    "update_screen",
+    "download_file",
+    "generate_screen_from_text",
+    "edit_screens",
+    "generate_variants",
+    "upload_design_md",
+    "create_design_system",
+    "create_design_system_from_design_md",
+    "update_design_system",
+    "list_design_systems",
+    "apply_design_system"
+  ],
+  "project_creation_state": "created",
+  "approved_template_upload": {
+    "state": "uploaded",
+    "sha256": "5959ae5c207ed8fb56fa500e3fe6e677afa9c35f72052dbd3fb086043cf4c7f8",
+    "source": "UI Interface/Roofscapes_UI_Template_Editable_Package/index.html",
+    "bytes": 500831,
+    "mime_type": "text/html",
+    "screen_resources": [
+      "projects/15516450235999637621/screens/9202160637716145544"
+    ],
+    "verification": "Read-only list_screens match after upload response needed review"
+  },
+  "project_url_basis": "Stitch UI project route for API-verified private resource; sign-in required"
+}

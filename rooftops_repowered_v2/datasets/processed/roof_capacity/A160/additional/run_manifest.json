@@ -1,0 +1,48 @@
+{
+  "created_utc": "2026-11-15T00:24:34.091756+00:00",
+  "assessment": "additional",
+  "parameters": {
+    "structural": {
+      "grid_resolution_m": 0.5,
+      "dominant_surface_selection": "largest_flat_component_by_area",
+      "v1_plane_growing_height_tolerance_m": 0.15,
+      "low_relief_structural_band_m": 0.45,
+      "minimum_source_coverage": 0.9,
+      "note": "Fixed before scoring: a dominant-plane height band absorbs shallow relief without using the observed PV mask. It is not a verified reconstruction of hidden bare-roof elevations; low equipment and panel-induced geometry remain uncertainty sources. Only the dominant high roof is assessed; lower terraces and secondary service roofs are excluded."
+    },
+    "module": {
+      "long_m": 1.76,
+      "short_m": 1.13,
+      "wp": 420,
+      "tilt_degrees": 10,
+      "azimuth_degrees_from_north": null,
+      "panel_gap_m": 0.05,
+      "winter_design_elevation_degrees": 25,
+      "grid_shift_step_m": 0.25,
+      "source": "V1 illustrative design assumptions; not the installed A160 module specifications"
+    },
+    "scenarios": {
+      "conservative": {
+        "edge_setback_m": 2.0,
+        "obstacle_clearance_m": 1.0
+      },
+      "base": {
+        "edge_setback_m": 1.0,
+        "obstacle_clearance_m": 0.5
+      },
+      "optimistic": {
+        "edge_setback_m": 0.5,
+        "obstacle_clearance_m": 0.3
+      }
+    }
+  },
+  "source_hashes": {
+    "occupied_arrays": "ee55ebac8db09b05ea3ce3cb4f28414fb7f5df5b68dc2e2ec89174f4e694e336",
+    "current_access_exclusions": "3bbda3e7af4a53cb1c5dd7bf77581e64e140bf75702390df2c8e12e41964e775",
+    "current_high_roof_boundary": "5ec0060c158eb276f7eab4579f284aa15e36abaf53288f22be3fd9f86e768680",
+    "retrospective_manifest": "8c76990093af899e92c83ea2d0896cf4c93688ddb0f74ea93a2a91999f0caa71"
+  },
+  "scenario_csv_sha256": "773e97a43f38051848ec185b2613367290adb13422b3855cc87a8fc9e90c58fa",
+  "lidar_contains_existing_installation": true,
+  "limitations": "Post-installation 2022 LiDAR and 2025 image annotation. Structural low-relief approximation can suppress small equipment and does not recover verified hidden bare-roof geometry. Not an independent pre-installation study or a maximum-capacity certification."
+}

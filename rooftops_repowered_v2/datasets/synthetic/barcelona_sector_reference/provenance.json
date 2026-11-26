@@ -1,0 +1,16 @@
+{
+  "source_file": "energy_clean23-25.csv",
+  "source_sha256": "beeb4f23f3deb5f7da94c2486d93e027d54bf4343628d8bced1aee8e78a6c6de",
+  "postal_code_assumption": "08018",
+  "year": 2023,
+  "excluded_no_consta_source_values": {
+    "Residencial": 11554.0,
+    "Serveis": 9480.0
+  },
+  "source_unit": "unverified; normalized ratios only",
+  "timestamp": "nominal local hour; DST and interval basis unverified",
+  "method": "Each six-hour postal-sector total split evenly across six nominal hours and normalized over the year.",
+  "limits": "Aggregate sector, not an individual building; no within-band hourly evidence, kWh magnitude, weather alignment, meter, AI label or sharing input.",
+  "training_eligible": false,
+  "energy_sharing_eligible": false
+}

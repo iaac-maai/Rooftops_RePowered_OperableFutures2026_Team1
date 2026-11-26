@@ -1,0 +1,2438 @@
+{
+  "id" : "hx6q-ykhb",
+  "name" : "Demanda d’energia elèctrica horària a Catalunya per MWh",
+  "assetType" : "dataset",
+  "attribution" : "Institut Català d'Energia (ICAEN)",
+  "attributionLink" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+  "averageRating" : 0,
+  "category" : "Energia",
+  "createdAt" : 1604304204,
+  "description" : "Conjunt de dades de la demanda d’energia elèctrica horària en barres de central (EBC), en MWh, de la xarxa de la principal distribuïdora elèctrica de Catalunya.\n(Fins a setembre de 2021 la demanda d'energia elèctrica incloïa també l'energia elèctrica vehiculada cap a altres distribuïdores).",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "downloadCount" : 2010,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "SEE_TERMS_OF_USE",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 2075229,
+  "provenance" : "official",
+  "publicationAppendEnabled" : true,
+  "publicationDate" : 1620905090,
+  "publicationGroup" : 1277301,
+  "publicationStage" : "published",
+  "rowIdentifierColumnId" : 19512942,
+  "rowsUpdatedAt" : 1792083007,
+  "rowsUpdatedBy" : "a4b5-gx6v",
+  "tableId" : 1409053,
+  "totalTimesRated" : 0,
+  "viewCount" : 6670,
+  "viewLastModified" : 1792083001,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1604321797,
+    "reviewedAutomatically" : true,
+    "state" : "approved",
+    "submissionId" : 911132,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1604321797,
+    "targetAudience" : "public",
+    "workflowId" : 182,
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1604321797,
+      "failureCount" : 0,
+      "startedAt" : 1604321797,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "a4b5-gx6v",
+      "displayName" : "Dades Obertes Catalunya"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 19512942,
+    "name" : "DATA",
+    "dataTypeName" : "calendar_date",
+    "description" : "Dia de registre de la demanda",
+    "fieldName" : "data",
+    "position" : 1,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 11201393,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "2026-09-30T00:00:00.000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2005-01-02T00:00:00.000",
+        "count" : "1"
+      }, {
+        "item" : "2005-01-03T00:00:00.000",
+        "count" : "1"
+      }, {
+        "item" : "2005-01-04T00:00:00.000",
+        "count" : "1"
+      }, {
+        "item" : "2005-01-05T00:00:00.000",
+        "count" : "1"
+      }, {
+        "item" : "2005-01-06T00:00:00.000",
+        "count" : "1"
+      }, {
+        "item" : "2005-01-07T00:00:00.000",
+        "count" : "1"
+      }, {
+        "item" : "2005-01-08T00:00:00.000",
+        "count" : "1"
+      }, {
+        "item" : "2005-01-09T00:00:00.000",
+        "count" : "1"
+      }, {
+        "item" : "2005-01-10T00:00:00.000",
+        "count" : "1"
+      }, {
+        "item" : "2005-01-11T00:00:00.000",
+        "count" : "1"
+      }, {
+        "item" : "2005-01-12T00:00:00.000",
+        "count" : "1"
+      }, {
+        "item" : "2005-01-13T00:00:00.000",
+        "count" : "1"
+      }, {
+        "item" : "2005-01-14T00:00:00.000",
+        "count" : "1"
+      }, {
+        "item" : "2005-01-15T00:00:00.000",
+        "count" : "1"
+      }, {
+        "item" : "2005-01-16T00:00:00.000",
+        "count" : "1"
+      }, {
+        "item" : "2005-01-17T00:00:00.000",
+        "count" : "1"
+      }, {
+        "item" : "2005-01-18T00:00:00.000",
+        "count" : "1"
+      }, {
+        "item" : "2005-01-19T00:00:00.000",
+        "count" : "1"
+      }, {
+        "item" : "2005-01-20T00:00:00.000",
+        "count" : "1"
+      }, {
+        "item" : "2005-01-01T00:00:00.000",
+        "count" : "1"
+      } ],
+      "smallest" : "2005-01-01T00:00:00.000",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "view" : "date_dmy"
+    }
+  }, {
+    "id" : 19512943,
+    "name" : "DIA",
+    "dataTypeName" : "text",
+    "description" : "Dia específic de la setmana indicat pel seu nom",
+    "fieldName" : "dia",
+    "position" : 2,
+    "renderTypeName" : "text",
+    "tableColumnId" : 11201395,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "Divendres",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Dimecres",
+        "count" : "1135"
+      }, {
+        "item" : "Dilluns",
+        "count" : "1135"
+      }, {
+        "item" : "Dimarts",
+        "count" : "1135"
+      }, {
+        "item" : "Dissabte",
+        "count" : "1135"
+      }, {
+        "item" : "Diumenge",
+        "count" : "1135"
+      }, {
+        "item" : "Dijous",
+        "count" : "1134"
+      }, {
+        "item" : "Divendres",
+        "count" : "1134"
+      } ],
+      "smallest" : "Dijous",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : { }
+  }, {
+    "id" : 19512944,
+    "name" : "H01",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 00:00h a les 00:59h ",
+    "fieldName" : "h01",
+    "position" : 3,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201392,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "6054.34",
+      "null" : "0",
+      "top" : [ {
+        "item" : "4898.12",
+        "count" : "3"
+      }, {
+        "item" : "4385.80",
+        "count" : "2"
+      }, {
+        "item" : "3518.83",
+        "count" : "2"
+      }, {
+        "item" : "4252.52",
+        "count" : "2"
+      }, {
+        "item" : "4324.33",
+        "count" : "2"
+      }, {
+        "item" : "4344.49",
+        "count" : "2"
+      }, {
+        "item" : "3981.13",
+        "count" : "2"
+      }, {
+        "item" : "4107.62",
+        "count" : "2"
+      }, {
+        "item" : "4217.95",
+        "count" : "2"
+      }, {
+        "item" : "4225.75",
+        "count" : "2"
+      }, {
+        "item" : "4304.33",
+        "count" : "2"
+      }, {
+        "item" : "4320.21",
+        "count" : "2"
+      }, {
+        "item" : "4339.19",
+        "count" : "2"
+      }, {
+        "item" : "4340.20",
+        "count" : "2"
+      }, {
+        "item" : "4156.43",
+        "count" : "2"
+      }, {
+        "item" : "3892.49",
+        "count" : "2"
+      }, {
+        "item" : "4009.07",
+        "count" : "2"
+      }, {
+        "item" : "4060.31",
+        "count" : "2"
+      }, {
+        "item" : "4156.84",
+        "count" : "2"
+      }, {
+        "item" : "4265.48",
+        "count" : "2"
+      } ],
+      "smallest" : "2804.506",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512945,
+    "name" : "H02",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 01:00h a les 01:59h ",
+    "fieldName" : "h02",
+    "position" : 4,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201391,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "5572.71",
+      "null" : "0",
+      "top" : [ {
+        "item" : "4091.01",
+        "count" : "3"
+      }, {
+        "item" : "4423.29",
+        "count" : "3"
+      }, {
+        "item" : "4277.53",
+        "count" : "3"
+      }, {
+        "item" : "3926.07",
+        "count" : "3"
+      }, {
+        "item" : "4505.69",
+        "count" : "3"
+      }, {
+        "item" : "4085.77",
+        "count" : "2"
+      }, {
+        "item" : "4056.37",
+        "count" : "2"
+      }, {
+        "item" : "4089.98",
+        "count" : "2"
+      }, {
+        "item" : "3917.03",
+        "count" : "2"
+      }, {
+        "item" : "3977.29",
+        "count" : "2"
+      }, {
+        "item" : "4048.09",
+        "count" : "2"
+      }, {
+        "item" : "4054.76",
+        "count" : "2"
+      }, {
+        "item" : "4069.35",
+        "count" : "2"
+      }, {
+        "item" : "4081.36",
+        "count" : "2"
+      }, {
+        "item" : "3792.49",
+        "count" : "2"
+      }, {
+        "item" : "3872.28",
+        "count" : "2"
+      }, {
+        "item" : "3664.83",
+        "count" : "2"
+      }, {
+        "item" : "3832.058",
+        "count" : "2"
+      }, {
+        "item" : "3908.38",
+        "count" : "2"
+      }, {
+        "item" : "3631.51",
+        "count" : "2"
+      } ],
+      "smallest" : "3031.179332",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512946,
+    "name" : "H03",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 02:00h a les 02:59h, és 0 en el canvi a horari d’estiu",
+    "fieldName" : "h03",
+    "position" : 5,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201418,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "5261.08",
+      "null" : "0",
+      "top" : [ {
+        "item" : "0",
+        "count" : "21"
+      }, {
+        "item" : "4268.47",
+        "count" : "3"
+      }, {
+        "item" : "3792.38",
+        "count" : "3"
+      }, {
+        "item" : "3707.77",
+        "count" : "2"
+      }, {
+        "item" : "3694.85",
+        "count" : "2"
+      }, {
+        "item" : "3768.34",
+        "count" : "2"
+      }, {
+        "item" : "3671.88",
+        "count" : "2"
+      }, {
+        "item" : "3633.54",
+        "count" : "2"
+      }, {
+        "item" : "3665.74",
+        "count" : "2"
+      }, {
+        "item" : "3668.71",
+        "count" : "2"
+      }, {
+        "item" : "3469.91",
+        "count" : "2"
+      }, {
+        "item" : "3706.92",
+        "count" : "2"
+      }, {
+        "item" : "3711.00",
+        "count" : "2"
+      }, {
+        "item" : "3744.40",
+        "count" : "2"
+      }, {
+        "item" : "3551.50",
+        "count" : "2"
+      }, {
+        "item" : "3651.11",
+        "count" : "2"
+      }, {
+        "item" : "3552.67",
+        "count" : "2"
+      }, {
+        "item" : "3565.755",
+        "count" : "2"
+      }, {
+        "item" : "3665.53",
+        "count" : "2"
+      }, {
+        "item" : "3693.77",
+        "count" : "2"
+      } ],
+      "smallest" : "0",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512947,
+    "name" : "H04",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 03:00h a les 03:59h",
+    "fieldName" : "h04",
+    "position" : 6,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201417,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "5122.58",
+      "null" : "0",
+      "top" : [ {
+        "item" : "4056.43",
+        "count" : "3"
+      }, {
+        "item" : "3841.93",
+        "count" : "2"
+      }, {
+        "item" : "3339.40",
+        "count" : "2"
+      }, {
+        "item" : "3721.80",
+        "count" : "2"
+      }, {
+        "item" : "3753.74",
+        "count" : "2"
+      }, {
+        "item" : "3837.20",
+        "count" : "2"
+      }, {
+        "item" : "3490.17",
+        "count" : "2"
+      }, {
+        "item" : "3585.17",
+        "count" : "2"
+      }, {
+        "item" : "3691.46",
+        "count" : "2"
+      }, {
+        "item" : "3698.28",
+        "count" : "2"
+      }, {
+        "item" : "3725.68",
+        "count" : "2"
+      }, {
+        "item" : "3743.97",
+        "count" : "2"
+      }, {
+        "item" : "3806.20",
+        "count" : "2"
+      }, {
+        "item" : "3837.00",
+        "count" : "2"
+      }, {
+        "item" : "3664.77",
+        "count" : "2"
+      }, {
+        "item" : "3475.25",
+        "count" : "2"
+      }, {
+        "item" : "3530.59",
+        "count" : "2"
+      }, {
+        "item" : "3556.85",
+        "count" : "2"
+      }, {
+        "item" : "3686.50",
+        "count" : "2"
+      }, {
+        "item" : "3723.712",
+        "count" : "2"
+      } ],
+      "smallest" : "2800.416995",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512948,
+    "name" : "H05",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 04:00h a les 04:59h",
+    "fieldName" : "h05",
+    "position" : 7,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201416,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "5068.79",
+      "null" : "0",
+      "top" : [ {
+        "item" : "4379.39",
+        "count" : "3"
+      }, {
+        "item" : "3825.65",
+        "count" : "3"
+      }, {
+        "item" : "3931.26",
+        "count" : "2"
+      }, {
+        "item" : "3817.66",
+        "count" : "2"
+      }, {
+        "item" : "3880.41",
+        "count" : "2"
+      }, {
+        "item" : "3927.33",
+        "count" : "2"
+      }, {
+        "item" : "3582.29",
+        "count" : "2"
+      }, {
+        "item" : "3421.66",
+        "count" : "2"
+      }, {
+        "item" : "3687.40",
+        "count" : "2"
+      }, {
+        "item" : "3763.925",
+        "count" : "2"
+      }, {
+        "item" : "3836.14",
+        "count" : "2"
+      }, {
+        "item" : "3869.99",
+        "count" : "2"
+      }, {
+        "item" : "3882.26",
+        "count" : "2"
+      }, {
+        "item" : "3889.80",
+        "count" : "2"
+      }, {
+        "item" : "3381.39",
+        "count" : "2"
+      }, {
+        "item" : "3488.77",
+        "count" : "2"
+      }, {
+        "item" : "3500.42",
+        "count" : "2"
+      }, {
+        "item" : "3519.53",
+        "count" : "2"
+      }, {
+        "item" : "3652.73",
+        "count" : "2"
+      }, {
+        "item" : "3612.20",
+        "count" : "2"
+      } ],
+      "smallest" : "2783.270806",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512949,
+    "name" : "H06",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 05:00h a les 05:59h",
+    "fieldName" : "h06",
+    "position" : 8,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201415,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "5235.69",
+      "null" : "0",
+      "top" : [ {
+        "item" : "4317.49",
+        "count" : "3"
+      }, {
+        "item" : "3915.11",
+        "count" : "2"
+      }, {
+        "item" : "3230.93",
+        "count" : "2"
+      }, {
+        "item" : "3680.42",
+        "count" : "2"
+      }, {
+        "item" : "3829.28",
+        "count" : "2"
+      }, {
+        "item" : "3887.59",
+        "count" : "2"
+      }, {
+        "item" : "3400.82",
+        "count" : "2"
+      }, {
+        "item" : "3545.45",
+        "count" : "2"
+      }, {
+        "item" : "3593.44",
+        "count" : "2"
+      }, {
+        "item" : "3602.19",
+        "count" : "2"
+      }, {
+        "item" : "3778.18",
+        "count" : "2"
+      }, {
+        "item" : "3798.19",
+        "count" : "2"
+      }, {
+        "item" : "3876.41",
+        "count" : "2"
+      }, {
+        "item" : "3878.92",
+        "count" : "2"
+      }, {
+        "item" : "3575.78",
+        "count" : "2"
+      }, {
+        "item" : "3328.45",
+        "count" : "2"
+      }, {
+        "item" : "3483.569",
+        "count" : "2"
+      }, {
+        "item" : "3520.28",
+        "count" : "2"
+      }, {
+        "item" : "3578.42",
+        "count" : "2"
+      }, {
+        "item" : "3698.85",
+        "count" : "2"
+      } ],
+      "smallest" : "2813.230405",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512950,
+    "name" : "H07",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 06:00h a les 06:59h",
+    "fieldName" : "h07",
+    "position" : 9,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201414,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "5918.13",
+      "null" : "0",
+      "top" : [ {
+        "item" : "5295.08",
+        "count" : "3"
+      }, {
+        "item" : "4901.84",
+        "count" : "3"
+      }, {
+        "item" : "4259.20",
+        "count" : "2"
+      }, {
+        "item" : "3893.27",
+        "count" : "2"
+      }, {
+        "item" : "4090.03",
+        "count" : "2"
+      }, {
+        "item" : "4214.11",
+        "count" : "2"
+      }, {
+        "item" : "3673.89",
+        "count" : "2"
+      }, {
+        "item" : "3597.25",
+        "count" : "2"
+      }, {
+        "item" : "3728.50",
+        "count" : "2"
+      }, {
+        "item" : "3877.67",
+        "count" : "2"
+      }, {
+        "item" : "3945.68",
+        "count" : "2"
+      }, {
+        "item" : "3991.20",
+        "count" : "2"
+      }, {
+        "item" : "4199.28",
+        "count" : "2"
+      }, {
+        "item" : "4203.09",
+        "count" : "2"
+      }, {
+        "item" : "3594.22",
+        "count" : "2"
+      }, {
+        "item" : "3609.49",
+        "count" : "2"
+      }, {
+        "item" : "3629.73",
+        "count" : "2"
+      }, {
+        "item" : "3664.61",
+        "count" : "2"
+      }, {
+        "item" : "3706.457",
+        "count" : "2"
+      }, {
+        "item" : "3697.30",
+        "count" : "2"
+      } ],
+      "smallest" : "2848.551114",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512951,
+    "name" : "H08",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 07:00h a les 07:59h",
+    "fieldName" : "h08",
+    "position" : 10,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201413,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "6999.75",
+      "null" : "0",
+      "top" : [ {
+        "item" : "5792.95",
+        "count" : "3"
+      }, {
+        "item" : "5210.00",
+        "count" : "2"
+      }, {
+        "item" : "3519.25",
+        "count" : "2"
+      }, {
+        "item" : "4910.34",
+        "count" : "2"
+      }, {
+        "item" : "5112.32",
+        "count" : "2"
+      }, {
+        "item" : "5180.82",
+        "count" : "2"
+      }, {
+        "item" : "3645.47",
+        "count" : "2"
+      }, {
+        "item" : "4186.15",
+        "count" : "2"
+      }, {
+        "item" : "4441.99",
+        "count" : "2"
+      }, {
+        "item" : "4599.25",
+        "count" : "2"
+      }, {
+        "item" : "5079.26",
+        "count" : "2"
+      }, {
+        "item" : "5107.32",
+        "count" : "2"
+      }, {
+        "item" : "5121.35",
+        "count" : "2"
+      }, {
+        "item" : "5145.99",
+        "count" : "2"
+      }, {
+        "item" : "4222.46",
+        "count" : "2"
+      }, {
+        "item" : "3551.93",
+        "count" : "2"
+      }, {
+        "item" : "3764.32",
+        "count" : "2"
+      }, {
+        "item" : "4099.33",
+        "count" : "2"
+      }, {
+        "item" : "4266.28",
+        "count" : "2"
+      }, {
+        "item" : "5057.68",
+        "count" : "2"
+      } ],
+      "smallest" : "2871.04",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512952,
+    "name" : "H09",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 08:00h a les 08:59h",
+    "fieldName" : "h09",
+    "position" : 11,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201412,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "7736.78",
+      "null" : "0",
+      "top" : [ {
+        "item" : "4941.64",
+        "count" : "2"
+      }, {
+        "item" : "5651.23",
+        "count" : "2"
+      }, {
+        "item" : "4526.77",
+        "count" : "2"
+      }, {
+        "item" : "4802.58",
+        "count" : "2"
+      }, {
+        "item" : "5386.02",
+        "count" : "2"
+      }, {
+        "item" : "5601.62",
+        "count" : "2"
+      }, {
+        "item" : "4003.18",
+        "count" : "2"
+      }, {
+        "item" : "4394.48",
+        "count" : "2"
+      }, {
+        "item" : "4772.02",
+        "count" : "2"
+      }, {
+        "item" : "4782.80",
+        "count" : "2"
+      }, {
+        "item" : "4960.10",
+        "count" : "2"
+      }, {
+        "item" : "4973.15",
+        "count" : "2"
+      }, {
+        "item" : "5521.12",
+        "count" : "2"
+      }, {
+        "item" : "5571.26",
+        "count" : "2"
+      }, {
+        "item" : "3948.88",
+        "count" : "2"
+      }, {
+        "item" : "3959.28",
+        "count" : "2"
+      }, {
+        "item" : "4239.58",
+        "count" : "2"
+      }, {
+        "item" : "4240.86",
+        "count" : "2"
+      }, {
+        "item" : "4536.65",
+        "count" : "2"
+      }, {
+        "item" : "5676.12",
+        "count" : "2"
+      } ],
+      "smallest" : "2959.49",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512953,
+    "name" : "H10",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 09:00h a les 09:59h",
+    "fieldName" : "h10",
+    "position" : 12,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201411,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "7986.11",
+      "null" : "0",
+      "top" : [ {
+        "item" : "3911.72",
+        "count" : "3"
+      }, {
+        "item" : "6177.08",
+        "count" : "2"
+      }, {
+        "item" : "4620.89",
+        "count" : "2"
+      }, {
+        "item" : "5984.10",
+        "count" : "2"
+      }, {
+        "item" : "6076.69",
+        "count" : "2"
+      }, {
+        "item" : "6150.02",
+        "count" : "2"
+      }, {
+        "item" : "5758.88",
+        "count" : "2"
+      }, {
+        "item" : "5696.76",
+        "count" : "2"
+      }, {
+        "item" : "5796.46",
+        "count" : "2"
+      }, {
+        "item" : "5951.82",
+        "count" : "2"
+      }, {
+        "item" : "6025.33",
+        "count" : "2"
+      }, {
+        "item" : "6064.65",
+        "count" : "2"
+      }, {
+        "item" : "6098.58",
+        "count" : "2"
+      }, {
+        "item" : "6141.73",
+        "count" : "2"
+      }, {
+        "item" : "6023.42",
+        "count" : "2"
+      }, {
+        "item" : "4051.78",
+        "count" : "2"
+      }, {
+        "item" : "4701.33",
+        "count" : "2"
+      }, {
+        "item" : "5193.74",
+        "count" : "2"
+      }, {
+        "item" : "5760.73",
+        "count" : "2"
+      }, {
+        "item" : "6187.59",
+        "count" : "2"
+      } ],
+      "smallest" : "3106.494",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512954,
+    "name" : "H11",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 10:00h a les 10:59h",
+    "fieldName" : "h11",
+    "position" : 13,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201410,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "8127.74",
+      "null" : "0",
+      "top" : [ {
+        "item" : "5849.119",
+        "count" : "2"
+      }, {
+        "item" : "6172.02",
+        "count" : "2"
+      }, {
+        "item" : "5183.50",
+        "count" : "2"
+      }, {
+        "item" : "5722.12",
+        "count" : "2"
+      }, {
+        "item" : "6076.97",
+        "count" : "2"
+      }, {
+        "item" : "6169.43",
+        "count" : "2"
+      }, {
+        "item" : "4341.61",
+        "count" : "2"
+      }, {
+        "item" : "5012.01",
+        "count" : "2"
+      }, {
+        "item" : "5464.78",
+        "count" : "2"
+      }, {
+        "item" : "5664.92",
+        "count" : "2"
+      }, {
+        "item" : "5926.58",
+        "count" : "2"
+      }, {
+        "item" : "5956.77",
+        "count" : "2"
+      }, {
+        "item" : "6153.45",
+        "count" : "2"
+      }, {
+        "item" : "6164.13",
+        "count" : "2"
+      }, {
+        "item" : "4314.46",
+        "count" : "2"
+      }, {
+        "item" : "4324.21",
+        "count" : "2"
+      }, {
+        "item" : "4584.55",
+        "count" : "2"
+      }, {
+        "item" : "4601.20",
+        "count" : "2"
+      }, {
+        "item" : "5422.30",
+        "count" : "2"
+      }, {
+        "item" : "6231.74",
+        "count" : "2"
+      } ],
+      "smallest" : "3319.238",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512955,
+    "name" : "H12",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 11:00h a les 11:59h",
+    "fieldName" : "h12",
+    "position" : 14,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201409,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "8219.33",
+      "null" : "0",
+      "top" : [ {
+        "item" : "5693.51",
+        "count" : "2"
+      }, {
+        "item" : "6255.58",
+        "count" : "2"
+      }, {
+        "item" : "5143.71",
+        "count" : "2"
+      }, {
+        "item" : "5457.62",
+        "count" : "2"
+      }, {
+        "item" : "6131.57",
+        "count" : "2"
+      }, {
+        "item" : "6214.04",
+        "count" : "2"
+      }, {
+        "item" : "4704.39",
+        "count" : "2"
+      }, {
+        "item" : "5027.61",
+        "count" : "2"
+      }, {
+        "item" : "5349.00",
+        "count" : "2"
+      }, {
+        "item" : "5386.79",
+        "count" : "2"
+      }, {
+        "item" : "6028.65",
+        "count" : "2"
+      }, {
+        "item" : "6128.89",
+        "count" : "2"
+      }, {
+        "item" : "6146.85",
+        "count" : "2"
+      }, {
+        "item" : "6156.58",
+        "count" : "2"
+      }, {
+        "item" : "4511.38",
+        "count" : "2"
+      }, {
+        "item" : "4573.58",
+        "count" : "2"
+      }, {
+        "item" : "4903.59",
+        "count" : "2"
+      }, {
+        "item" : "4979.44",
+        "count" : "2"
+      }, {
+        "item" : "5216.57",
+        "count" : "2"
+      }, {
+        "item" : "6292.21",
+        "count" : "2"
+      } ],
+      "smallest" : "3403.274",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512956,
+    "name" : "H13",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 12:00h a les 12:59h",
+    "fieldName" : "h13",
+    "position" : 15,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201408,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "8306.35",
+      "null" : "0",
+      "top" : [ {
+        "item" : "6703.96",
+        "count" : "3"
+      }, {
+        "item" : "5365.33",
+        "count" : "2"
+      }, {
+        "item" : "4443.13",
+        "count" : "2"
+      }, {
+        "item" : "4964.23",
+        "count" : "2"
+      }, {
+        "item" : "5222.71",
+        "count" : "2"
+      }, {
+        "item" : "5264.06",
+        "count" : "2"
+      }, {
+        "item" : "4510.57",
+        "count" : "2"
+      }, {
+        "item" : "4592.28",
+        "count" : "2"
+      }, {
+        "item" : "4847.02",
+        "count" : "2"
+      }, {
+        "item" : "4943.98",
+        "count" : "2"
+      }, {
+        "item" : "5170.76",
+        "count" : "2"
+      }, {
+        "item" : "5216.71",
+        "count" : "2"
+      }, {
+        "item" : "5222.89",
+        "count" : "2"
+      }, {
+        "item" : "5260.62",
+        "count" : "2"
+      }, {
+        "item" : "4635.55",
+        "count" : "2"
+      }, {
+        "item" : "4449.69",
+        "count" : "2"
+      }, {
+        "item" : "4564.31",
+        "count" : "2"
+      }, {
+        "item" : "4574.97",
+        "count" : "2"
+      }, {
+        "item" : "4833.96",
+        "count" : "2"
+      }, {
+        "item" : "4997.06",
+        "count" : "2"
+      } ],
+      "smallest" : "2674.781",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512957,
+    "name" : "H14",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 13:00h a les 13:59h",
+    "fieldName" : "h14",
+    "position" : 16,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201407,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "8390.38",
+      "null" : "0",
+      "top" : [ {
+        "item" : "5962.79",
+        "count" : "2"
+      }, {
+        "item" : "6131.16",
+        "count" : "2"
+      }, {
+        "item" : "5219.67",
+        "count" : "2"
+      }, {
+        "item" : "5863.78",
+        "count" : "2"
+      }, {
+        "item" : "6041.82",
+        "count" : "2"
+      }, {
+        "item" : "6087.11",
+        "count" : "2"
+      }, {
+        "item" : "4925.55",
+        "count" : "2"
+      }, {
+        "item" : "5124.47",
+        "count" : "2"
+      }, {
+        "item" : "5558.19",
+        "count" : "2"
+      }, {
+        "item" : "5617.29",
+        "count" : "2"
+      }, {
+        "item" : "6015.66",
+        "count" : "2"
+      }, {
+        "item" : "6036.79",
+        "count" : "2"
+      }, {
+        "item" : "6053.99",
+        "count" : "2"
+      }, {
+        "item" : "6062.48",
+        "count" : "2"
+      }, {
+        "item" : "4343.49",
+        "count" : "2"
+      }, {
+        "item" : "4494.94",
+        "count" : "2"
+      }, {
+        "item" : "4934.16",
+        "count" : "2"
+      }, {
+        "item" : "5031.37",
+        "count" : "2"
+      }, {
+        "item" : "5382.85",
+        "count" : "2"
+      }, {
+        "item" : "6137.86",
+        "count" : "2"
+      } ],
+      "smallest" : "38.284",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512958,
+    "name" : "H15",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 14:00h a les 14:59h",
+    "fieldName" : "h15",
+    "position" : 17,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201406,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "8205.07",
+      "null" : "0",
+      "top" : [ {
+        "item" : "5497.78",
+        "count" : "2"
+      }, {
+        "item" : "5904.01",
+        "count" : "2"
+      }, {
+        "item" : "4901.98",
+        "count" : "2"
+      }, {
+        "item" : "5396.54",
+        "count" : "2"
+      }, {
+        "item" : "5767.10",
+        "count" : "2"
+      }, {
+        "item" : "5859.00",
+        "count" : "2"
+      }, {
+        "item" : "4440.69",
+        "count" : "2"
+      }, {
+        "item" : "4616.22",
+        "count" : "2"
+      }, {
+        "item" : "5206.78",
+        "count" : "2"
+      }, {
+        "item" : "5283.23",
+        "count" : "2"
+      }, {
+        "item" : "5526.02",
+        "count" : "2"
+      }, {
+        "item" : "5736.05",
+        "count" : "2"
+      }, {
+        "item" : "5769.81",
+        "count" : "2"
+      }, {
+        "item" : "5851.65",
+        "count" : "2"
+      }, {
+        "item" : "4332.34",
+        "count" : "2"
+      }, {
+        "item" : "4344.06",
+        "count" : "2"
+      }, {
+        "item" : "4571.456",
+        "count" : "2"
+      }, {
+        "item" : "4593.76",
+        "count" : "2"
+      }, {
+        "item" : "5111.357",
+        "count" : "2"
+      }, {
+        "item" : "5931.26",
+        "count" : "2"
+      } ],
+      "smallest" : "269.331",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512959,
+    "name" : "H16",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 15:00h a les 15:59h",
+    "fieldName" : "h16",
+    "position" : 18,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201405,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "8328.88",
+      "null" : "0",
+      "top" : [ {
+        "item" : "5191.84",
+        "count" : "2"
+      }, {
+        "item" : "5788.17",
+        "count" : "2"
+      }, {
+        "item" : "4785.08",
+        "count" : "2"
+      }, {
+        "item" : "5094.52",
+        "count" : "2"
+      }, {
+        "item" : "5622.30",
+        "count" : "2"
+      }, {
+        "item" : "5712.39",
+        "count" : "2"
+      }, {
+        "item" : "4338.30",
+        "count" : "2"
+      }, {
+        "item" : "4598.66",
+        "count" : "2"
+      }, {
+        "item" : "4889.43",
+        "count" : "2"
+      }, {
+        "item" : "4972.57",
+        "count" : "2"
+      }, {
+        "item" : "5192.72",
+        "count" : "2"
+      }, {
+        "item" : "5309.70",
+        "count" : "2"
+      }, {
+        "item" : "5626.03",
+        "count" : "2"
+      }, {
+        "item" : "5699.79",
+        "count" : "2"
+      }, {
+        "item" : "4219.07",
+        "count" : "2"
+      }, {
+        "item" : "4261.22",
+        "count" : "2"
+      }, {
+        "item" : "4461.44",
+        "count" : "2"
+      }, {
+        "item" : "4538.37",
+        "count" : "2"
+      }, {
+        "item" : "4842.11",
+        "count" : "2"
+      }, {
+        "item" : "5879.43",
+        "count" : "2"
+      } ],
+      "smallest" : "592.341",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512960,
+    "name" : "H17",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 16:00h a les 16:59h",
+    "fieldName" : "h17",
+    "position" : 19,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201404,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "8411.45",
+      "null" : "0",
+      "top" : [ {
+        "item" : "4804.88",
+        "count" : "2"
+      }, {
+        "item" : "5663.07",
+        "count" : "2"
+      }, {
+        "item" : "4500.03",
+        "count" : "2"
+      }, {
+        "item" : "4803.60",
+        "count" : "2"
+      }, {
+        "item" : "5057.026",
+        "count" : "2"
+      }, {
+        "item" : "5611.02",
+        "count" : "2"
+      }, {
+        "item" : "4379.87",
+        "count" : "2"
+      }, {
+        "item" : "4459.66",
+        "count" : "2"
+      }, {
+        "item" : "4645.99",
+        "count" : "2"
+      }, {
+        "item" : "4659.07",
+        "count" : "2"
+      }, {
+        "item" : "4892.54",
+        "count" : "2"
+      }, {
+        "item" : "5047.40",
+        "count" : "2"
+      }, {
+        "item" : "5119.62",
+        "count" : "2"
+      }, {
+        "item" : "5287.65",
+        "count" : "2"
+      }, {
+        "item" : "4183.15",
+        "count" : "2"
+      }, {
+        "item" : "4303.34",
+        "count" : "2"
+      }, {
+        "item" : "4396.21",
+        "count" : "2"
+      }, {
+        "item" : "4433.11",
+        "count" : "2"
+      }, {
+        "item" : "4503.34",
+        "count" : "2"
+      }, {
+        "item" : "5666.77",
+        "count" : "2"
+      } ],
+      "smallest" : "850.988",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512961,
+    "name" : "H18",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 17:00h a les 17:59h",
+    "fieldName" : "h18",
+    "position" : 20,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201403,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "8416.54",
+      "null" : "0",
+      "top" : [ {
+        "item" : "5554.76",
+        "count" : "2"
+      }, {
+        "item" : "5848.63",
+        "count" : "2"
+      }, {
+        "item" : "4911.35",
+        "count" : "2"
+      }, {
+        "item" : "5472.39",
+        "count" : "2"
+      }, {
+        "item" : "5705.54",
+        "count" : "2"
+      }, {
+        "item" : "5800.79",
+        "count" : "2"
+      }, {
+        "item" : "4507.49",
+        "count" : "2"
+      }, {
+        "item" : "4804.89",
+        "count" : "2"
+      }, {
+        "item" : "5287.85",
+        "count" : "2"
+      }, {
+        "item" : "5376.16",
+        "count" : "2"
+      }, {
+        "item" : "5584.50",
+        "count" : "2"
+      }, {
+        "item" : "5685.92",
+        "count" : "2"
+      }, {
+        "item" : "5752.36",
+        "count" : "2"
+      }, {
+        "item" : "5756.04",
+        "count" : "2"
+      }, {
+        "item" : "4365.64",
+        "count" : "2"
+      }, {
+        "item" : "4464.93",
+        "count" : "2"
+      }, {
+        "item" : "4783.972",
+        "count" : "2"
+      }, {
+        "item" : "4803.45",
+        "count" : "2"
+      }, {
+        "item" : "5243.45",
+        "count" : "2"
+      }, {
+        "item" : "5885.05",
+        "count" : "2"
+      } ],
+      "smallest" : "999.858",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512962,
+    "name" : "H19",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 18:00h a les 18:59h",
+    "fieldName" : "h19",
+    "position" : 21,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201402,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "8594.11",
+      "null" : "0",
+      "top" : [ {
+        "item" : "5763.00",
+        "count" : "2"
+      }, {
+        "item" : "5934.25",
+        "count" : "2"
+      }, {
+        "item" : "4760.53",
+        "count" : "2"
+      }, {
+        "item" : "5740.63",
+        "count" : "2"
+      }, {
+        "item" : "5859.87",
+        "count" : "2"
+      }, {
+        "item" : "5904.38",
+        "count" : "2"
+      }, {
+        "item" : "4538.65",
+        "count" : "2"
+      }, {
+        "item" : "4719.57",
+        "count" : "2"
+      }, {
+        "item" : "5214.39",
+        "count" : "2"
+      }, {
+        "item" : "5223.44",
+        "count" : "2"
+      }, {
+        "item" : "5803.59",
+        "count" : "2"
+      }, {
+        "item" : "5831.82",
+        "count" : "2"
+      }, {
+        "item" : "5875.27",
+        "count" : "2"
+      }, {
+        "item" : "5896.14",
+        "count" : "2"
+      }, {
+        "item" : "4332.93",
+        "count" : "2"
+      }, {
+        "item" : "4443.97",
+        "count" : "2"
+      }, {
+        "item" : "4581.45",
+        "count" : "2"
+      }, {
+        "item" : "4665.193",
+        "count" : "2"
+      }, {
+        "item" : "4829.39",
+        "count" : "2"
+      }, {
+        "item" : "5937.75",
+        "count" : "2"
+      } ],
+      "smallest" : "1473.399",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512963,
+    "name" : "H20",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 19:00h a les 19:59h",
+    "fieldName" : "h20",
+    "position" : 22,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201401,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "8470.77",
+      "null" : "0",
+      "top" : [ {
+        "item" : "6037.53",
+        "count" : "3"
+      }, {
+        "item" : "5977.27",
+        "count" : "2"
+      }, {
+        "item" : "4396.60",
+        "count" : "2"
+      }, {
+        "item" : "5841.17",
+        "count" : "2"
+      }, {
+        "item" : "5886.08",
+        "count" : "2"
+      }, {
+        "item" : "5902.42",
+        "count" : "2"
+      }, {
+        "item" : "5151.55",
+        "count" : "2"
+      }, {
+        "item" : "5385.35",
+        "count" : "2"
+      }, {
+        "item" : "5610.58",
+        "count" : "2"
+      }, {
+        "item" : "5817.24",
+        "count" : "2"
+      }, {
+        "item" : "5858.13",
+        "count" : "2"
+      }, {
+        "item" : "5866.50",
+        "count" : "2"
+      }, {
+        "item" : "5894.98",
+        "count" : "2"
+      }, {
+        "item" : "5895.19",
+        "count" : "2"
+      }, {
+        "item" : "5463.37",
+        "count" : "2"
+      }, {
+        "item" : "4831.87",
+        "count" : "2"
+      }, {
+        "item" : "5161.67",
+        "count" : "2"
+      }, {
+        "item" : "5266.55",
+        "count" : "2"
+      }, {
+        "item" : "5559.82",
+        "count" : "2"
+      }, {
+        "item" : "5854.12",
+        "count" : "2"
+      } ],
+      "smallest" : "1641.048",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512964,
+    "name" : "H21",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 20:00h a les 20:59h",
+    "fieldName" : "h21",
+    "position" : 23,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201400,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "8283.30",
+      "null" : "0",
+      "top" : [ {
+        "item" : "5814.29",
+        "count" : "2"
+      }, {
+        "item" : "6015.79",
+        "count" : "2"
+      }, {
+        "item" : "5584.79",
+        "count" : "2"
+      }, {
+        "item" : "5783.27",
+        "count" : "2"
+      }, {
+        "item" : "5958.85",
+        "count" : "2"
+      }, {
+        "item" : "5991.27",
+        "count" : "2"
+      }, {
+        "item" : "5078.13",
+        "count" : "2"
+      }, {
+        "item" : "5571.31",
+        "count" : "2"
+      }, {
+        "item" : "5749.77",
+        "count" : "2"
+      }, {
+        "item" : "5773.16",
+        "count" : "2"
+      }, {
+        "item" : "5879.11",
+        "count" : "2"
+      }, {
+        "item" : "5958.36",
+        "count" : "2"
+      }, {
+        "item" : "5974.28",
+        "count" : "2"
+      }, {
+        "item" : "5982.49",
+        "count" : "2"
+      }, {
+        "item" : "4941.81",
+        "count" : "2"
+      }, {
+        "item" : "4978.85",
+        "count" : "2"
+      }, {
+        "item" : "5381.32",
+        "count" : "2"
+      }, {
+        "item" : "5433.15",
+        "count" : "2"
+      }, {
+        "item" : "5705.54",
+        "count" : "2"
+      }, {
+        "item" : "6074.60",
+        "count" : "2"
+      } ],
+      "smallest" : "1994.838",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512965,
+    "name" : "H22",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 21:00h a les 21:59h",
+    "fieldName" : "h22",
+    "position" : 24,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201399,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "7995.50",
+      "null" : "0",
+      "top" : [ {
+        "item" : "5237.46",
+        "count" : "2"
+      }, {
+        "item" : "5438.18",
+        "count" : "2"
+      }, {
+        "item" : "4987.41",
+        "count" : "2"
+      }, {
+        "item" : "5183.71",
+        "count" : "2"
+      }, {
+        "item" : "5338.988",
+        "count" : "2"
+      }, {
+        "item" : "5417.02",
+        "count" : "2"
+      }, {
+        "item" : "4945.76",
+        "count" : "2"
+      }, {
+        "item" : "4979.94",
+        "count" : "2"
+      }, {
+        "item" : "5109.99",
+        "count" : "2"
+      }, {
+        "item" : "5134.58",
+        "count" : "2"
+      }, {
+        "item" : "5289.02",
+        "count" : "2"
+      }, {
+        "item" : "5328.19",
+        "count" : "2"
+      }, {
+        "item" : "5366.50",
+        "count" : "2"
+      }, {
+        "item" : "5383.65",
+        "count" : "2"
+      }, {
+        "item" : "4791.91",
+        "count" : "2"
+      }, {
+        "item" : "4899.97",
+        "count" : "2"
+      }, {
+        "item" : "4969.14",
+        "count" : "2"
+      }, {
+        "item" : "4979.19",
+        "count" : "2"
+      }, {
+        "item" : "5058.44",
+        "count" : "2"
+      }, {
+        "item" : "5486.57",
+        "count" : "2"
+      } ],
+      "smallest" : "2480.177",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512966,
+    "name" : "H23",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 22:00h a les 22:59h",
+    "fieldName" : "h23",
+    "position" : 25,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201398,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "7259.77",
+      "null" : "0",
+      "top" : [ {
+        "item" : "5912.93",
+        "count" : "3"
+      }, {
+        "item" : "5482.49",
+        "count" : "3"
+      }, {
+        "item" : "5286.20",
+        "count" : "2"
+      }, {
+        "item" : "5024.12",
+        "count" : "2"
+      }, {
+        "item" : "5206.12",
+        "count" : "2"
+      }, {
+        "item" : "5280.18",
+        "count" : "2"
+      }, {
+        "item" : "4911.27",
+        "count" : "2"
+      }, {
+        "item" : "4689.57",
+        "count" : "2"
+      }, {
+        "item" : "4986.11",
+        "count" : "2"
+      }, {
+        "item" : "5023.71",
+        "count" : "2"
+      }, {
+        "item" : "5062.18",
+        "count" : "2"
+      }, {
+        "item" : "5165.859",
+        "count" : "2"
+      }, {
+        "item" : "5216.27",
+        "count" : "2"
+      }, {
+        "item" : "5254.80",
+        "count" : "2"
+      }, {
+        "item" : "4522.17",
+        "count" : "2"
+      }, {
+        "item" : "4690.45",
+        "count" : "2"
+      }, {
+        "item" : "4784.66",
+        "count" : "2"
+      }, {
+        "item" : "4828.77",
+        "count" : "2"
+      }, {
+        "item" : "4965.92",
+        "count" : "2"
+      }, {
+        "item" : "4965.58",
+        "count" : "2"
+      } ],
+      "smallest" : "2624.922",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512967,
+    "name" : "H24",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 23:00h a les 23:59h",
+    "fieldName" : "h24",
+    "position" : 26,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201397,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "6678.92",
+      "null" : "0",
+      "top" : [ {
+        "item" : "4550.61",
+        "count" : "2"
+      }, {
+        "item" : "4747.39",
+        "count" : "2"
+      }, {
+        "item" : "4469.71",
+        "count" : "2"
+      }, {
+        "item" : "4528.68",
+        "count" : "2"
+      }, {
+        "item" : "4640.01",
+        "count" : "2"
+      }, {
+        "item" : "4726.88",
+        "count" : "2"
+      }, {
+        "item" : "4182.15",
+        "count" : "2"
+      }, {
+        "item" : "4452.05",
+        "count" : "2"
+      }, {
+        "item" : "4521.94",
+        "count" : "2"
+      }, {
+        "item" : "4525.84",
+        "count" : "2"
+      }, {
+        "item" : "4557.92",
+        "count" : "2"
+      }, {
+        "item" : "4578.919",
+        "count" : "2"
+      }, {
+        "item" : "4646.17",
+        "count" : "2"
+      }, {
+        "item" : "4702.90",
+        "count" : "2"
+      }, {
+        "item" : "4150.52",
+        "count" : "2"
+      }, {
+        "item" : "4161.57",
+        "count" : "2"
+      }, {
+        "item" : "4421.96",
+        "count" : "2"
+      }, {
+        "item" : "4424.81",
+        "count" : "2"
+      }, {
+        "item" : "4504.94",
+        "count" : "2"
+      }, {
+        "item" : "4768.32",
+        "count" : "2"
+      } ],
+      "smallest" : "2759.078",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512968,
+    "name" : "H25",
+    "dataTypeName" : "number",
+    "description" : "Franja horària des de les 02:00h a les 02:59 h en el canvi a horari d’hivern",
+    "fieldName" : "h25",
+    "position" : 27,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201394,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "4731.92",
+      "null" : "0",
+      "top" : [ {
+        "item" : "0",
+        "count" : "7922"
+      }, {
+        "item" : "3479.792742",
+        "count" : "1"
+      }, {
+        "item" : "3733.08118",
+        "count" : "1"
+      }, {
+        "item" : "3792.449",
+        "count" : "1"
+      }, {
+        "item" : "3853.979",
+        "count" : "1"
+      }, {
+        "item" : "3953.541",
+        "count" : "1"
+      }, {
+        "item" : "4020.82",
+        "count" : "1"
+      }, {
+        "item" : "4089.67",
+        "count" : "1"
+      }, {
+        "item" : "4094.21",
+        "count" : "1"
+      }, {
+        "item" : "4109.14",
+        "count" : "1"
+      }, {
+        "item" : "4124.22",
+        "count" : "1"
+      }, {
+        "item" : "4206.30",
+        "count" : "1"
+      }, {
+        "item" : "4255.89",
+        "count" : "1"
+      }, {
+        "item" : "4290.10",
+        "count" : "1"
+      }, {
+        "item" : "4340.77",
+        "count" : "1"
+      }, {
+        "item" : "4366.65",
+        "count" : "1"
+      }, {
+        "item" : "4399.71",
+        "count" : "1"
+      }, {
+        "item" : "4407.63",
+        "count" : "1"
+      }, {
+        "item" : "4414.86",
+        "count" : "1"
+      }, {
+        "item" : "4467.22",
+        "count" : "1"
+      } ],
+      "smallest" : "0",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 19512969,
+    "name" : "TOTAL",
+    "dataTypeName" : "number",
+    "description" : "Total diari",
+    "fieldName" : "total",
+    "position" : 28,
+    "renderTypeName" : "number",
+    "tableColumnId" : 11201396,
+    "cachedContents" : {
+      "non_null" : "7943",
+      "largest" : "169067.58",
+      "null" : "0",
+      "top" : [ {
+        "item" : "140990.74",
+        "count" : "2"
+      }, {
+        "item" : "129565.04",
+        "count" : "2"
+      }, {
+        "item" : "82547.40",
+        "count" : "1"
+      }, {
+        "item" : "83119.003",
+        "count" : "1"
+      }, {
+        "item" : "83268.07819",
+        "count" : "1"
+      }, {
+        "item" : "83471.988",
+        "count" : "1"
+      }, {
+        "item" : "83804.443",
+        "count" : "1"
+      }, {
+        "item" : "85393.313",
+        "count" : "1"
+      }, {
+        "item" : "84381.424",
+        "count" : "1"
+      }, {
+        "item" : "84612.309",
+        "count" : "1"
+      }, {
+        "item" : "84777.296",
+        "count" : "1"
+      }, {
+        "item" : "84921.062",
+        "count" : "1"
+      }, {
+        "item" : "85303.75",
+        "count" : "1"
+      }, {
+        "item" : "85329.549",
+        "count" : "1"
+      }, {
+        "item" : "85370.28",
+        "count" : "1"
+      }, {
+        "item" : "83708.91",
+        "count" : "1"
+      }, {
+        "item" : "85435.80",
+        "count" : "1"
+      }, {
+        "item" : "85626.01",
+        "count" : "1"
+      }, {
+        "item" : "85697.34",
+        "count" : "1"
+      }, {
+        "item" : "82975.56",
+        "count" : "1"
+      } ],
+      "smallest" : "69386.676",
+      "count" : "7943",
+      "cardinality" : "7943"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "false",
+      "precision" : "3",
+      "groupSeparator" : "."
+    }
+  } ],
+  "grants" : [ {
+    "inherited" : false,
+    "type" : "viewer",
+    "flags" : [ "public" ]
+  } ],
+  "license" : {
+    "name" : "See Terms of Use"
+  },
+  "metadata" : {
+    "jsonQuery" : {
+      "order" : [ {
+        "columnFieldName" : "data",
+        "ascending" : false
+      } ]
+    },
+    "custom_fields" : {
+      "Freqüència d'actualització" : {
+        "Freqüència d'actualització" : "Mensual"
+      },
+      "Idioma" : {
+        "Idioma" : "Català",
+        "Dataset name (EN)" : "Hourly electricity demand in Catalonia per MWh",
+        "Nombre del conjunto de datos (ES)" : "Demanda de energía eléctrica horaria en Catalunya por MWh"
+      },
+      "Informació de gènere o sexe" : {
+        "Informació de gènere o sexe" : "No aplicable"
+      },
+      "Actors" : {
+        "Departament" : "Territori, Habitatge i Transició Ecològica",
+        "Tipus actor" : "Generalitat de Catalunya"
+      },
+      "Àmbit geogràfic" : {
+        "Informació geogràfica" : "Sense informació geogràfica",
+        "Àmbit geogràfic" : "Catalunya"
+      }
+    },
+    "rowIdentifier" : 19512942,
+    "availableDisplayTypes" : [ "table", "fatrow", "page" ]
+  },
+  "owner" : {
+    "id" : "a4b5-gx6v",
+    "displayName" : "Dades Obertes Catalunya",
+    "profileImageUrlLarge" : "/api/users/a4b5-gx6v/profile_images/LARGE",
+    "profileImageUrlMedium" : "/api/users/a4b5-gx6v/profile_images/THUMB",
+    "profileImageUrlSmall" : "/api/users/a4b5-gx6v/profile_images/TINY",
+    "screenName" : "Dades Obertes Catalunya",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula" ]
+  },
+  "query" : {
+    "orderBys" : [ {
+      "ascending" : false,
+      "expression" : {
+        "columnId" : 19512942,
+        "type" : "column"
+      }
+    } ]
+  },
+  "rights" : [ "read" ],
+  "tableAuthor" : {
+    "id" : "a4b5-gx6v",
+    "displayName" : "Dades Obertes Catalunya",
+    "profileImageUrlLarge" : "/api/users/a4b5-gx6v/profile_images/LARGE",
+    "profileImageUrlMedium" : "/api/users/a4b5-gx6v/profile_images/THUMB",
+    "profileImageUrlSmall" : "/api/users/a4b5-gx6v/profile_images/TINY",
+    "screenName" : "Dades Obertes Catalunya",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula" ]
+  },
+  "tags" : [ "consum", "energia", "elèctrica", "mwh", "covid19", "smartcatalonia", "ebc", "ods7_energia assequible i no contaminant" ],
+  "flags" : [ "default", "ownerMayBeContacted", "restorable", "restorePossibleForType" ]
+}

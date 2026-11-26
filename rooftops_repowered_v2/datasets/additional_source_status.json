@@ -1,0 +1,78 @@
+{
+  "updated_utc": "2026-11-14T21:01:58.100640+00:00",
+  "sources": [
+    {
+      "id": "pvgis",
+      "status": "pending_site_selection",
+      "format": "hourly CSV export",
+      "requires": [
+        "host coordinates",
+        "kWp",
+        "tilt",
+        "azimuth",
+        "losses",
+        "weather year"
+      ]
+    },
+    {
+      "id": "barcelona_solar_map",
+      "status": "pending_site_selection",
+      "requires": [
+        "selected roof",
+        "manual map estimates"
+      ]
+    },
+    {
+      "id": "icgc_lidar_imagery",
+      "status": "optional_pending_area_product_selection",
+      "requires": [
+        "study area",
+        "survey/product",
+        "selected tiles"
+      ]
+    },
+    {
+      "id": "doe_nrel_end_use_load_profiles",
+      "status": "optional_pending_subset_selection",
+      "requires": [
+        "release",
+        "building archetype",
+        "scenario"
+      ]
+    },
+    {
+      "id": "ree_redata",
+      "status": "pending_accounting_assumptions",
+      "requires": [
+        "year",
+        "emissions boundary",
+        "tariff reference"
+      ]
+    },
+    {
+      "id": "esios",
+      "status": "excluded_by_project_scope",
+      "reason": "authenticated API dependency"
+    },
+    {
+      "id": "barcelona_energy_agency",
+      "status": "guidance_portal_not_a_defined_dataset"
+    },
+    {
+      "id": "cea_energyplus",
+      "status": "EnergyPlus_portable_available_CEA_not_installed",
+      "details": "Office EnergyPlus route selected and implemented. Setup/weather provenance: reports/simulation_surrogate/setup_manifest.json."
+    },
+    {
+      "id": "rid_weather5k",
+      "status": "historical_deprioritized_outside_core_scope"
+    },
+    {
+      "id": "barcelona_iwec_reference_weather",
+      "status": "downloaded",
+      "format": "EPW and companion DDY",
+      "path": "datasets/raw/simulation_weather",
+      "provenance": "Typical/reference station weather for physical simulations; not actual 2026 weather"
+    }
+  ]
+}

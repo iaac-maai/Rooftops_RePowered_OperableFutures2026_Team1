@@ -1,0 +1,16 @@
+ ReadVarsESO
+ processing:D:\MaAI IAAC\Term 1\Research Studio\rooftops_repowered_v2\datasets\synthetic\energyplus\office_025\model.rvi
+ input file:D:\MaAI IAAC\Term 1\Research Studio\rooftops_repowered_v2\datasets\synthetic\energyplus\office_025\eplusout.eso
+ output file:D:\MaAI IAAC\Term 1\Research Studio\rooftops_repowered_v2\datasets\synthetic\energyplus\office_025\eplusout.csv
+ getting all vars from:D:\MaAI IAAC\Term 1\Research Studio\rooftops_repowered_v2\datasets\synthetic\energyplus\office_025\eplusout.eso
+  number variables requested for output=          29
+ ReadVars Run Time=00hr 00min  0.59sec
+ ReadVarsESO program completed successfully.
+ ReadVarsESO
+ processing:D:\MaAI IAAC\Term 1\Research Studio\rooftops_repowered_v2\datasets\synthetic\energyplus\office_025\model.mvi
+ input file:D:\MaAI IAAC\Term 1\Research Studio\rooftops_repowered_v2\datasets\synthetic\energyplus\office_025\eplusout.mtr
+ output file:D:\MaAI IAAC\Term 1\Research Studio\rooftops_repowered_v2\datasets\synthetic\energyplus\office_025\eplusmtr.csv
+ getting all vars from:D:\MaAI IAAC\Term 1\Research Studio\rooftops_repowered_v2\datasets\synthetic\energyplus\office_025\eplusout.mtr
+  number variables requested for output=          28
+ ReadVars Run Time=00hr 00min  0.50sec
+ ReadVarsESO program completed successfully.

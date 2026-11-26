@@ -1,0 +1,344 @@
+{
+  "source": "ICGC 2025 orthophoto; user confirms the visible arrays are existing PV",
+  "capture_date": "2025-06-18",
+  "native_gsd_m": 0.25,
+  "visual_rotation_ccw_degrees": 45.893548,
+  "rotated_image_size_pixels": [
+    1214,
+    1212
+  ],
+  "pv_row_rectangles_rotated_pixels": [
+    [
+      430,
+      471,
+      500,
+      490
+    ],
+    [
+      452,
+      495,
+      500,
+      515
+    ],
+    [
+      451,
+      520,
+      728,
+      541
+    ],
+    [
+      559,
+      545,
+      727,
+      566
+    ],
+    [
+      451,
+      577,
+      588,
+      597
+    ],
+    [
+      451,
+      602,
+      578,
+      622
+    ],
+    [
+      451,
+      626,
+      576,
+      647
+    ],
+    [
+      451,
+      650,
+      576,
+      671
+    ],
+    [
+      451,
+      675,
+      576,
+      696
+    ],
+    [
+      476,
+      700,
+      576,
+      721
+    ],
+    [
+      501,
+      724,
+      728,
+      744
+    ],
+    [
+      524,
+      748,
+      728,
+      769
+    ],
+    [
+      546,
+      773,
+      728,
+      794
+    ],
+    [
+      571,
+      796,
+      728,
+      817
+    ],
+    [
+      674,
+      572,
+      728,
+      593
+    ],
+    [
+      703,
+      596,
+      728,
+      616
+    ],
+    [
+      703,
+      620,
+      728,
+      641
+    ],
+    [
+      703,
+      645,
+      728,
+      666
+    ],
+    [
+      703,
+      670,
+      728,
+      691
+    ],
+    [
+      703,
+      694,
+      728,
+      715
+    ],
+    [
+      622,
+      604,
+      653,
+      627
+    ],
+    [
+      622,
+      629,
+      653,
+      651
+    ],
+    [
+      622,
+      653,
+      653,
+      675
+    ],
+    [
+      622,
+      677,
+      653,
+      700
+    ],
+    [
+      622,
+      702,
+      668,
+      719
+    ]
+  ],
+  "pv_pixel_rule": {
+    "maximum_mean_rgb": 165,
+    "minimum_mean_rgb": 40,
+    "maximum_red_minus_blue": 45
+  },
+  "annotation_sensitivity_thresholds": [
+    145,
+    165,
+    185
+  ],
+  "occupied_array_envelope_buffer_m": 0.35,
+  "current_perimeter_roof_polygon_rotated_pixels": [
+    [
+      409,
+      450
+    ],
+    [
+      754,
+      450
+    ],
+    [
+      754,
+      853
+    ],
+    [
+      571,
+      853
+    ],
+    [
+      409,
+      709
+    ]
+  ],
+  "current_perimeter_access_reserve_m": 2.0,
+  "current_access_polygons_rotated_pixels": [
+    [
+      [
+        420,
+        491
+      ],
+      [
+        449,
+        493
+      ],
+      [
+        449,
+        696
+      ],
+      [
+        579,
+        827
+      ],
+      [
+        579,
+        853
+      ],
+      [
+        420,
+        706
+      ]
+    ],
+    [
+      [
+        729,
+        495
+      ],
+      [
+        752,
+        495
+      ],
+      [
+        752,
+        853
+      ],
+      [
+        729,
+        853
+      ]
+    ],
+    [
+      [
+        470,
+        719
+      ],
+      [
+        576,
+        823
+      ],
+      [
+        727,
+        823
+      ],
+      [
+        727,
+        848
+      ],
+      [
+        576,
+        848
+      ],
+      [
+        447,
+        718
+      ]
+    ],
+    [
+      [
+        588,
+        571
+      ],
+      [
+        620,
+        571
+      ],
+      [
+        620,
+        725
+      ],
+      [
+        586,
+        725
+      ]
+    ],
+    [
+      [
+        500,
+        456
+      ],
+      [
+        754,
+        456
+      ],
+      [
+        754,
+        521
+      ],
+      [
+        500,
+        521
+      ]
+    ],
+    [
+      [
+        409,
+        490
+      ],
+      [
+        754,
+        490
+      ],
+      [
+        754,
+        520
+      ],
+      [
+        409,
+        520
+      ]
+    ]
+  ],
+  "reliable_panel_count": null,
+  "installed_module_wp": null,
+  "count_limitation": "Native 0.25m imagery and resampling do not establish reliable individual module count or product specifications. Row blocks are not module counts.",
+  "reference_limitations": "Independent image interpretation of horizontal PV coverage within manually digitized row blocks; threshold/occlusion/georegistration uncertainty. Array envelopes preserve inter-row service spacing. Current access/plant exclusions affect only assessment B, never assessment A. The existing perimeter circulation zone is reserved conservatively at 2m; this is a planning assumption from visual QA, not a prescribed fire-safety width. Potential that requires access reconfiguration is not counted as current additional capacity.",
+  "created_utc": "2026-11-15T00:24:33.497767+00:00",
+  "image_sha256": "19191cbecb1e91ba6650d20e0e68d4e69a100d5baa9fdd50a954de5884a59378",
+  "annotation_protocol_sha256": "d58fcd8992bb2ed0fa9a0c94e5bc293194e22e0d50ecab7131598a88fe6e56a0",
+  "observed_projected_panel_coverage_m2": 410.71715529220364,
+  "occupied_array_envelopes_m2": 654.0509557905445,
+  "access_plant_exclusions_m2": 521.6244070198426,
+  "area_sensitivity_m2": {
+    "145": 350.35287609898165,
+    "165": 410.71715529095803,
+    "185": 447.965966510663
+  },
+  "resampled_pixel_size_m": [
+    0.10003685322875946,
+    0.09998681226428202
+  ],
+  "retrospective_prediction_manifest_sha256_at_annotation": "8c76990093af899e92c83ea2d0896cf4c93688ddb0f74ea93a2a91999f0caa71",
+  "prediction_completed_before_this_annotation": true,
+  "retrospective_image_annotation_is_not_maximum_capacity_truth": true
+}

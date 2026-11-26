@@ -1,0 +1,72 @@
+{
+  "created_utc": "2026-11-15T00:01:36.326553+00:00",
+  "results": [
+    {
+      "name": "A160_ortho_2022.png",
+      "status": "downloaded",
+      "bytes": 1887196,
+      "url": "https://geoserveis.icgc.cat/servei/catalunya/orto-territorial/wms?SERVICE=WMS&VERSION=1.1.1&LAYERS=ortofoto_color_2022&STYLES=&SRS=EPSG%3A25831&BBOX=432521.91713384876%2C4583327.221910713%2C432599.3456582478%2C4583421.209514242&WIDTH=774&HEIGHT=940&REQUEST=GetMap&FORMAT=image%2Fpng"
+    },
+    {
+      "name": "ortho_2022_feature_info.txt",
+      "status": "downloaded",
+      "bytes": 358,
+      "url": "https://geoserveis.icgc.cat/servei/catalunya/orto-territorial/wms?SERVICE=WMS&VERSION=1.1.1&LAYERS=ortofoto_color_2022&STYLES=&SRS=EPSG%3A25831&BBOX=432521.91713384876%2C4583327.221910713%2C432599.3456582478%2C4583421.209514242&WIDTH=774&HEIGHT=940&REQUEST=GetFeatureInfo&QUERY_LAYERS=ortofoto_color_2022&INFO_FORMAT=text%2Fhtml&X=387&Y=470"
+    },
+    {
+      "name": "architect_floor_plan.jpg",
+      "status": "downloaded",
+      "bytes": 87303,
+      "url": "https://batlleiroig.com/wp-content/uploads/2022/04/1007-almogavers160-planta2-1536x1086.jpg"
+    },
+    {
+      "name": "architect_section.jpg",
+      "status": "downloaded",
+      "bytes": 65369,
+      "url": "https://batlleiroig.com/wp-content/uploads/2022/04/1007-almogavers160-seccio-1536x1086.jpg"
+    },
+    {
+      "name": "catastro_parcel_details.json",
+      "status": "downloaded",
+      "bytes": 2413,
+      "url": "https://ovc.catastro.meh.es/OVCServWeb/OVCWcfCallejero/COVCCallejero.svc/json/Consulta_DNPRC?Provincia=BARCELONA&Municipio=BARCELONA&RefCat=2635601DF3823F"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://geoserveis.icgc.cat/servei/catalunya/orto-territorial/wms?SERVICE=WMS&VERSION=1.1.1&LAYERS=ortofoto_color_2022&STYLES=&SRS=EPSG%3A25831&BBOX=432521.91713384876%2C4583327.221910713%2C432599.3456582478%2C4583421.209514242&WIDTH=774&HEIGHT=940&REQUEST=GetMap&FORMAT=image%2Fpng",
+      "retrieved_utc": "2026-11-15T00:01:34.229688+00:00",
+      "status": 200,
+      "sha256": "b9986bfe7f85bf24194cfa36fb30523ce3a4d063f5b14758f99f73d470b20eff",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\timeline_responses\\00_bd0553b77608.response"
+    },
+    {
+      "url": "https://geoserveis.icgc.cat/servei/catalunya/orto-territorial/wms?SERVICE=WMS&VERSION=1.1.1&LAYERS=ortofoto_color_2022&STYLES=&SRS=EPSG%3A25831&BBOX=432521.91713384876%2C4583327.221910713%2C432599.3456582478%2C4583421.209514242&WIDTH=774&HEIGHT=940&REQUEST=GetFeatureInfo&QUERY_LAYERS=ortofoto_color_2022&INFO_FORMAT=text%2Fhtml&X=387&Y=470",
+      "retrieved_utc": "2026-11-15T00:01:34.574194+00:00",
+      "status": 200,
+      "sha256": "b6fca1cc4e285b7748bcb8f19a476b64bef3afc666a14ceda51483154ac549cc",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\timeline_responses\\01_c84e80affe12.response"
+    },
+    {
+      "url": "https://batlleiroig.com/wp-content/uploads/2022/04/1007-almogavers160-planta2-1536x1086.jpg",
+      "retrieved_utc": "2026-11-15T00:01:35.086449+00:00",
+      "status": 200,
+      "sha256": "50872e8997852cbfe642bf79e75a0522a19fd5d9e1dc23a3f4d9d271964f5bb1",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\timeline_responses\\02_bc9468ddf72c.response"
+    },
+    {
+      "url": "https://batlleiroig.com/wp-content/uploads/2022/04/1007-almogavers160-seccio-1536x1086.jpg",
+      "retrieved_utc": "2026-11-15T00:01:35.264702+00:00",
+      "status": 200,
+      "sha256": "880cb8b539e5b1d9016c4e36abe03389bf60e0fb7ac40eea4336798a49cf3854",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\timeline_responses\\03_b3f7b6e40b7c.response"
+    },
+    {
+      "url": "https://ovc.catastro.meh.es/OVCServWeb/OVCWcfCallejero/COVCCallejero.svc/json/Consulta_DNPRC?Provincia=BARCELONA&Municipio=BARCELONA&RefCat=2635601DF3823F",
+      "retrieved_utc": "2026-11-15T00:01:36.326017+00:00",
+      "status": 200,
+      "sha256": "19ee1a717dbe376d73142fd0f15f534de04355a2d9416b1f9b9b819bc5a2e608",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\timeline_responses\\04_68d472c45d59.response"
+    }
+  ]
+}

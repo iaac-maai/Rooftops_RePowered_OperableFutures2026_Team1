@@ -1,0 +1,21 @@
+{
+  "created_utc": "2026-11-15T10:32:39.219287+00:00",
+  "branch": "feat/ui-integration-a160",
+  "base_sha": "3cb20b9e58152829a87f82d1805ee323e314e79d",
+  "working_base_sha": "2224f191f441468ae956709eadf35b93c9552547",
+  "baseline_python_tests_passed": 49,
+  "final_python_tests_passed": 61,
+  "browser_checks_passed": 10,
+  "browser_page_errors": [],
+  "preservation_file_count": 34,
+  "all_protected_hashes_unchanged": true,
+  "runtime_dependencies_added": false,
+  "models_retrained": false,
+  "retrospective_roof_rebuilt": false,
+  "science_validation_gates_modified": false,
+  "published": false,
+  "merged_main": false,
+  "stitch_connector_registered": true,
+  "stitch_account_authentication": "pending_user_key",
+  "secret_files_committed": false
+}

@@ -1,0 +1,4559 @@
+{
+  "id" : "j6ii-t3w2",
+  "name" : "Certificats d’eficiència energètica d’edificis",
+  "assetType" : "dataset",
+  "attribution" : "Institut Català d'Energia (ICAEN)",
+  "attributionLink" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+  "averageRating" : 0,
+  "category" : "Energia",
+  "createdAt" : 1557222801,
+  "description" : "L'edifici ha jugat i jugarà un paper cada vegada més important en el nou model energètic basat en el canvi del ciutadà passant d'element passiu consumidor a agent actiu productor i consumidor d'energia. Seria l'edifici on s'integrarà la producció d'energia distribuïda amb energies renovables, on es podrà fer efectiu l'autoconsum i on elements com el vehicle elèctric, amb la seva capacitat de càrrega, aportaran la flexibilitat per a intercanviar energia en funció de cada moment.\n\nPerò també l'edificació és el sector amb més potencial de millora energètica. El fet de que a Catalunya el 60% del nostre parc d'habitatges sigui anterior al 1980 i, per tant, anterior a l'inici del marc normatiu obligatori de l'aïllament tèrmic o que únicament un 5% dels nostres edificis i habitatges certificats energèticament pertanyin a les tres millors categories, ho demostra.\n\nÉs en aquest sentit que la Generalitat de Catalunya desenvolupa l'Estratègia Catalana de Renovació Energètica d'Edificis, per a potenciar la millora energètica del parc d'edificis de català.\nTambé a la Unió Europea, l'eficiència energètica als edificis és una prioritat dins les polítiques energètiques de la UE, que ha impulsat un paquet de mesures legislatives per aconseguir els objectius sobre energia i canvi climàtic assumits per al 2020, 2030 i 2050. Així, són les Directives Europees d'Eficiència Energètica (2012/27/EU) i d'Eficiència Energètica en Edificis (2010/31/EU) les que estableixen que tots els edificis (existents o d'obra nova) objecte de transaccions immobiliàries han d'obtenir un certificat d'eficiència energètica, i que tots els estats membres han adoptar polítiques i plans per aconseguir que els edificis de nova construcció siguin de consum d'energia gairebé zero al final del 2020.\n\nSeguint aquestes Directives, a Catalunya des de l'1 de juny de 2013 és obligatori disposar del certificat energètic per als edificis i habitatges ja existents que es lloguin o es venguin, i per als edificis o parts d'edificis que una autoritat pública ocupi més de 250 m2 i siguin freqüentats habitualment pel públic. Al 2007 ja s'havia transposat la Directiva 2002/91/CE, amb el Reial Decret 47/2007, pel qual es va aprovar el procediment per a la certificació d'eficiència energètica d'edificis de nova construcció.\n\nPer tal de donar resposta a la disposició transitòria tercera del Reial Decret 235/2013, l’Institut Català d'Energia posa a disposició dels usuaris les dades corresponents a la informació pública dels certificats d’eficiència energètica dels edificis.",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "downloadCount" : 11792,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "SEE_TERMS_OF_USE",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 2272437,
+  "provenance" : "official",
+  "publicationAppendEnabled" : true,
+  "publicationDate" : 1647265741,
+  "publicationGroup" : 878227,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1794188306,
+  "rowsUpdatedBy" : "a4b5-gx6v",
+  "tableId" : 1546230,
+  "totalTimesRated" : 0,
+  "viewCount" : 55461,
+  "viewLastModified" : 1794186026,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1557223926,
+    "reviewedAutomatically" : true,
+    "state" : "approved",
+    "submissionId" : 1100973,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1557223926,
+    "targetAudience" : "public",
+    "workflowId" : 182,
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "failureCount" : 0,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "a4b5-gx6v",
+      "displayName" : "Dades Obertes Catalunya"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 21044543,
+    "name" : "NUM_CAS",
+    "dataTypeName" : "text",
+    "description" : "Identificador del tràmit del certificat d'eficiència energètica",
+    "fieldName" : "num_cas",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802549,
+    "cachedContents" : {
+      "non_null" : "1342960",
+      "largest" : "ZZZX9VPYK",
+      "null" : "0",
+      "top" : [ {
+        "item" : "36Z1RXBW4",
+        "count" : "1"
+      }, {
+        "item" : "2Y0P8QRKY",
+        "count" : "1"
+      }, {
+        "item" : "Y4K1NVY9C",
+        "count" : "1"
+      }, {
+        "item" : "WHK2DK7GL",
+        "count" : "1"
+      }, {
+        "item" : "BN2Y3MMY7",
+        "count" : "1"
+      }, {
+        "item" : "PGSGKLYP3",
+        "count" : "1"
+      }, {
+        "item" : "Z7XKFP2PH",
+        "count" : "1"
+      }, {
+        "item" : "H1YNMZYQB",
+        "count" : "1"
+      }, {
+        "item" : "6HFXH6C56",
+        "count" : "1"
+      }, {
+        "item" : "8G9RD9JB8",
+        "count" : "1"
+      }, {
+        "item" : "0K0V42QBM",
+        "count" : "1"
+      }, {
+        "item" : "4H0VB6KZH",
+        "count" : "1"
+      }, {
+        "item" : "RXQHQNPQL",
+        "count" : "1"
+      }, {
+        "item" : "0LLV68VPZ",
+        "count" : "1"
+      }, {
+        "item" : "KLML41XX9",
+        "count" : "1"
+      }, {
+        "item" : "FW901L017",
+        "count" : "1"
+      }, {
+        "item" : "SRDCXTQXL",
+        "count" : "1"
+      }, {
+        "item" : "06GTCRCFB",
+        "count" : "1"
+      }, {
+        "item" : "GZD81Y5QX",
+        "count" : "1"
+      }, {
+        "item" : "5P6GBZR0J",
+        "count" : "1"
+      } ],
+      "smallest" : "00000BXZ6",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044544,
+    "name" : "ADREÇA",
+    "dataTypeName" : "text",
+    "description" : "Nom del carrer",
+    "fieldName" : "adre_a",
+    "position" : 2,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802579,
+    "cachedContents" : {
+      "non_null" : "1342960",
+      "largest" : "Xalet ZN AGUILO",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Carrer Major",
+        "count" : "4435"
+      }, {
+        "item" : "Carrer MAJOR",
+        "count" : "3781"
+      }, {
+        "item" : "Avinguda Catalunya",
+        "count" : "2771"
+      }, {
+        "item" : "Carrer Barcelona",
+        "count" : "2674"
+      }, {
+        "item" : "Carrer BARCELONA",
+        "count" : "2541"
+      }, {
+        "item" : "Avinguda CATALUNYA",
+        "count" : "2475"
+      }, {
+        "item" : "Carrer Girona",
+        "count" : "2113"
+      }, {
+        "item" : "Carrer Balmes",
+        "count" : "2103"
+      }, {
+        "item" : "Carrer NOU",
+        "count" : "1770"
+      }, {
+        "item" : "Carrer Nou",
+        "count" : "1753"
+      }, {
+        "item" : "Carrer Mallorca",
+        "count" : "1733"
+      }, {
+        "item" : "Carrer GIRONA",
+        "count" : "1684"
+      }, {
+        "item" : "Carrer BALMES",
+        "count" : "1573"
+      }, {
+        "item" : "Carrer VALENCIA",
+        "count" : "1518"
+      }, {
+        "item" : "Carrer Tarragona",
+        "count" : "1421"
+      }, {
+        "item" : "Carrer Lleida",
+        "count" : "1402"
+      }, {
+        "item" : "Carrer València",
+        "count" : "1400"
+      }, {
+        "item" : "Avinguda Diagonal",
+        "count" : "1397"
+      }, {
+        "item" : "Carrer Aragó",
+        "count" : "1393"
+      }, {
+        "item" : "Carrer Provença",
+        "count" : "1377"
+      } ],
+      "smallest" : "Alameda AR MARTI FOLGUERA",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044545,
+    "name" : "NUMERO",
+    "dataTypeName" : "text",
+    "description" : "Número del carrer",
+    "fieldName" : "numero",
+    "position" : 3,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802580,
+    "cachedContents" : {
+      "non_null" : "1342925",
+      "largest" : "VI 45",
+      "null" : "35",
+      "top" : [ {
+        "item" : "1",
+        "count" : "51010"
+      }, {
+        "item" : "2",
+        "count" : "48707"
+      }, {
+        "item" : "3",
+        "count" : "41164"
+      }, {
+        "item" : "5",
+        "count" : "39899"
+      }, {
+        "item" : "4",
+        "count" : "39447"
+      }, {
+        "item" : "6",
+        "count" : "38859"
+      }, {
+        "item" : "7",
+        "count" : "35337"
+      }, {
+        "item" : "8",
+        "count" : "34283"
+      }, {
+        "item" : "9",
+        "count" : "31501"
+      }, {
+        "item" : "10",
+        "count" : "31421"
+      }, {
+        "item" : "11",
+        "count" : "28856"
+      }, {
+        "item" : "12",
+        "count" : "28320"
+      }, {
+        "item" : "14",
+        "count" : "25487"
+      }, {
+        "item" : "13",
+        "count" : "25305"
+      }, {
+        "item" : "15",
+        "count" : "23164"
+      }, {
+        "item" : "16",
+        "count" : "22940"
+      }, {
+        "item" : "17",
+        "count" : "21101"
+      }, {
+        "item" : "18",
+        "count" : "20553"
+      }, {
+        "item" : "20",
+        "count" : "19171"
+      }, {
+        "item" : "19",
+        "count" : "18776"
+      } ],
+      "smallest" : "_",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044546,
+    "name" : "ESCALA",
+    "dataTypeName" : "text",
+    "description" : "Escala",
+    "fieldName" : "escala",
+    "position" : 4,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802581,
+    "cachedContents" : {
+      "non_null" : "273623",
+      "largest" : "Z",
+      "null" : "1069337",
+      "top" : [ {
+        "item" : "1",
+        "count" : "101807"
+      }, {
+        "item" : "A",
+        "count" : "38144"
+      }, {
+        "item" : "B",
+        "count" : "37009"
+      }, {
+        "item" : "2",
+        "count" : "17420"
+      }, {
+        "item" : "C",
+        "count" : "12637"
+      }, {
+        "item" : "D",
+        "count" : "8526"
+      }, {
+        "item" : "3",
+        "count" : "7551"
+      }, {
+        "item" : "-",
+        "count" : "6907"
+      }, {
+        "item" : "01",
+        "count" : "6303"
+      }, {
+        "item" : "4",
+        "count" : "4223"
+      }, {
+        "item" : "E",
+        "count" : "3285"
+      }, {
+        "item" : "5",
+        "count" : "2535"
+      }, {
+        "item" : "F",
+        "count" : "1751"
+      }, {
+        "item" : "6",
+        "count" : "1670"
+      }, {
+        "item" : "I",
+        "count" : "1288"
+      }, {
+        "item" : "G",
+        "count" : "1167"
+      }, {
+        "item" : "7",
+        "count" : "1157"
+      }, {
+        "item" : "--",
+        "count" : "1080"
+      }, {
+        "item" : "8",
+        "count" : "871"
+      }, {
+        "item" : "b",
+        "count" : "738"
+      } ],
+      "smallest" : "~",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044547,
+    "name" : "PIS",
+    "dataTypeName" : "text",
+    "description" : "Pis",
+    "fieldName" : "pis",
+    "position" : 5,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802587,
+    "cachedContents" : {
+      "non_null" : "975304",
+      "largest" : "ZZ",
+      "null" : "367656",
+      "top" : [ {
+        "item" : "1",
+        "count" : "155827"
+      }, {
+        "item" : "2",
+        "count" : "141201"
+      }, {
+        "item" : "3",
+        "count" : "99426"
+      }, {
+        "item" : "4",
+        "count" : "60203"
+      }, {
+        "item" : "5",
+        "count" : "31118"
+      }, {
+        "item" : "1º",
+        "count" : "23933"
+      }, {
+        "item" : "0",
+        "count" : "23767"
+      }, {
+        "item" : "BX",
+        "count" : "22774"
+      }, {
+        "item" : "2º",
+        "count" : "21679"
+      }, {
+        "item" : "00",
+        "count" : "20505"
+      }, {
+        "item" : "01",
+        "count" : "18880"
+      }, {
+        "item" : "Bx",
+        "count" : "18147"
+      }, {
+        "item" : "02",
+        "count" : "16708"
+      }, {
+        "item" : "6",
+        "count" : "16477"
+      }, {
+        "item" : "3º",
+        "count" : "15532"
+      }, {
+        "item" : "AT",
+        "count" : "13854"
+      }, {
+        "item" : "BJ",
+        "count" : "13285"
+      }, {
+        "item" : "EN",
+        "count" : "12475"
+      }, {
+        "item" : "1r",
+        "count" : "12101"
+      }, {
+        "item" : "03",
+        "count" : "11612"
+      } ],
+      "smallest" : "=",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044548,
+    "name" : "PORTA",
+    "dataTypeName" : "text",
+    "description" : "Porta",
+    "fieldName" : "porta",
+    "position" : 6,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802585,
+    "cachedContents" : {
+      "non_null" : "928561",
+      "largest" : "Z2",
+      "null" : "414399",
+      "top" : [ {
+        "item" : "1",
+        "count" : "225088"
+      }, {
+        "item" : "2",
+        "count" : "185956"
+      }, {
+        "item" : "3",
+        "count" : "85172"
+      }, {
+        "item" : "4",
+        "count" : "56026"
+      }, {
+        "item" : "01",
+        "count" : "34557"
+      }, {
+        "item" : "1ª",
+        "count" : "32624"
+      }, {
+        "item" : "2ª",
+        "count" : "29387"
+      }, {
+        "item" : "02",
+        "count" : "24100"
+      }, {
+        "item" : "A",
+        "count" : "20232"
+      }, {
+        "item" : "B",
+        "count" : "20217"
+      }, {
+        "item" : "1a",
+        "count" : "16622"
+      }, {
+        "item" : "2a",
+        "count" : "14199"
+      }, {
+        "item" : "5",
+        "count" : "13729"
+      }, {
+        "item" : "3ª",
+        "count" : "13123"
+      }, {
+        "item" : "03",
+        "count" : "11453"
+      }, {
+        "item" : "C",
+        "count" : "10588"
+      }, {
+        "item" : "6",
+        "count" : "8807"
+      }, {
+        "item" : "4ª",
+        "count" : "8631"
+      }, {
+        "item" : "D",
+        "count" : "7592"
+      }, {
+        "item" : "04",
+        "count" : "7589"
+      } ],
+      "smallest" : "_",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044549,
+    "name" : "CODI_POSTAL",
+    "dataTypeName" : "text",
+    "description" : "Codi postal",
+    "fieldName" : "codi_postal",
+    "position" : 7,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802602,
+    "cachedContents" : {
+      "non_null" : "1342957",
+      "largest" : "52250",
+      "null" : "3",
+      "top" : [ {
+        "item" : "08028",
+        "count" : "13067"
+      }, {
+        "item" : "08191",
+        "count" : "12502"
+      }, {
+        "item" : "08800",
+        "count" : "12460"
+      }, {
+        "item" : "08014",
+        "count" : "12258"
+      }, {
+        "item" : "08025",
+        "count" : "12149"
+      }, {
+        "item" : "08015",
+        "count" : "11599"
+      }, {
+        "item" : "08940",
+        "count" : "11585"
+      }, {
+        "item" : "08860",
+        "count" : "11276"
+      }, {
+        "item" : "08830",
+        "count" : "11173"
+      }, {
+        "item" : "08013",
+        "count" : "11142"
+      }, {
+        "item" : "08030",
+        "count" : "10608"
+      }, {
+        "item" : "43840",
+        "count" : "10489"
+      }, {
+        "item" : "43850",
+        "count" : "10432"
+      }, {
+        "item" : "08024",
+        "count" : "10049"
+      }, {
+        "item" : "08029",
+        "count" : "9729"
+      }, {
+        "item" : "08032",
+        "count" : "9639"
+      }, {
+        "item" : "17310",
+        "count" : "9584"
+      }, {
+        "item" : "08001",
+        "count" : "9459"
+      }, {
+        "item" : "08027",
+        "count" : "9417"
+      }, {
+        "item" : "08003",
+        "count" : "9408"
+      } ],
+      "smallest" : "01001",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044550,
+    "name" : "POBLACIO",
+    "dataTypeName" : "text",
+    "description" : "Municipi (d’acord amb la taula de municipis de Catalunya de l’Idescat)",
+    "fieldName" : "poblacio",
+    "position" : 8,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802577,
+    "cachedContents" : {
+      "non_null" : "1342957",
+      "largest" : "Xerta",
+      "null" : "3",
+      "top" : [ {
+        "item" : "Barcelona",
+        "count" : "292960"
+      }, {
+        "item" : "Terrassa",
+        "count" : "36095"
+      }, {
+        "item" : "Hospitalet de Llobregat (L')",
+        "count" : "35013"
+      }, {
+        "item" : "Sabadell",
+        "count" : "33929"
+      }, {
+        "item" : "Badalona",
+        "count" : "30881"
+      }, {
+        "item" : "Tarragona",
+        "count" : "22876"
+      }, {
+        "item" : "Lleida",
+        "count" : "20499"
+      }, {
+        "item" : "Mataró",
+        "count" : "19482"
+      }, {
+        "item" : "Girona",
+        "count" : "19332"
+      }, {
+        "item" : "Reus",
+        "count" : "17305"
+      }, {
+        "item" : "Santa Coloma de Gramenet",
+        "count" : "16129"
+      }, {
+        "item" : "Sant Cugat del Vallès",
+        "count" : "15195"
+      }, {
+        "item" : "Manresa",
+        "count" : "13303"
+      }, {
+        "item" : "Vilanova i la Geltrú",
+        "count" : "12448"
+      }, {
+        "item" : "Rubí",
+        "count" : "12444"
+      }, {
+        "item" : "Cornellà de Llobregat",
+        "count" : "11504"
+      }, {
+        "item" : "Sant Boi de Llobregat",
+        "count" : "11169"
+      }, {
+        "item" : "Castelldefels",
+        "count" : "10666"
+      }, {
+        "item" : "Salou",
+        "count" : "10529"
+      }, {
+        "item" : "Cambrils",
+        "count" : "10408"
+      } ],
+      "smallest" : "08019",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044551,
+    "name" : "COMARCA",
+    "dataTypeName" : "text",
+    "description" : "Comarca (d’acord amb la taula de comarques de Catalunya i de l’entitat territorial singular de l’Aran de l’Idescat) ",
+    "fieldName" : "comarca",
+    "position" : 9,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802569,
+    "cachedContents" : {
+      "non_null" : "1342960",
+      "largest" : "Vall�s Oriental",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Barcelonès",
+        "count" : "381540"
+      }, {
+        "item" : "Vallès Occidental",
+        "count" : "145807"
+      }, {
+        "item" : "Baix Llobregat",
+        "count" : "116268"
+      }, {
+        "item" : "Maresme",
+        "count" : "80096"
+      }, {
+        "item" : "Vallès Oriental",
+        "count" : "67573"
+      }, {
+        "item" : "Tarragonès",
+        "count" : "57888"
+      }, {
+        "item" : "Baix Camp",
+        "count" : "42107"
+      }, {
+        "item" : "Alt Empordà",
+        "count" : "41597"
+      }, {
+        "item" : "Baix Empordà",
+        "count" : "39598"
+      }, {
+        "item" : "Selva",
+        "count" : "37310"
+      }, {
+        "item" : "Gironès",
+        "count" : "33131"
+      }, {
+        "item" : "Baix Penedès",
+        "count" : "32461"
+      }, {
+        "item" : "Garraf",
+        "count" : "32450"
+      }, {
+        "item" : "Bages",
+        "count" : "29830"
+      }, {
+        "item" : "Segrià",
+        "count" : "29587"
+      }, {
+        "item" : "Osona",
+        "count" : "23836"
+      }, {
+        "item" : "Anoia",
+        "count" : "20793"
+      }, {
+        "item" : "Alt Penedès",
+        "count" : "18894"
+      }, {
+        "item" : "Baix Ebre",
+        "count" : "14149"
+      }, {
+        "item" : "Montsià",
+        "count" : "11824"
+      } ],
+      "smallest" : "Alta Ribagor?a",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044552,
+    "name" : "NOM_PROVINCIA",
+    "dataTypeName" : "text",
+    "description" : "Província",
+    "fieldName" : "nom_provincia",
+    "position" : 10,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802582,
+    "cachedContents" : {
+      "non_null" : "1342960",
+      "largest" : "Tarragona",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Barcelona",
+        "count" : "927374"
+      }, {
+        "item" : "Girona",
+        "count" : "176547"
+      }, {
+        "item" : "Tarragona",
+        "count" : "173747"
+      }, {
+        "item" : "Lleida",
+        "count" : "65292"
+      } ],
+      "smallest" : "Barcelona",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044553,
+    "name" : "CODI_POBLACIO",
+    "dataTypeName" : "text",
+    "description" : "Codi del municipi (d’acord amb la taula de municipis de Catalunya de l’Idescat) ",
+    "fieldName" : "codi_poblacio",
+    "position" : 11,
+    "renderTypeName" : "text",
+    "tableColumnId" : 13926653,
+    "cachedContents" : {
+      "non_null" : "1342960",
+      "largest" : "43907",
+      "null" : "0",
+      "top" : [ {
+        "item" : "08019",
+        "count" : "292912"
+      }, {
+        "item" : "08101",
+        "count" : "37621"
+      }, {
+        "item" : "08279",
+        "count" : "36105"
+      }, {
+        "item" : "08187",
+        "count" : "33930"
+      }, {
+        "item" : "08015",
+        "count" : "30949"
+      }, {
+        "item" : "43148",
+        "count" : "22874"
+      }, {
+        "item" : "25120",
+        "count" : "20499"
+      }, {
+        "item" : "08121",
+        "count" : "19501"
+      }, {
+        "item" : "17079",
+        "count" : "19330"
+      }, {
+        "item" : "43123",
+        "count" : "17310"
+      }, {
+        "item" : "08245",
+        "count" : "16126"
+      }, {
+        "item" : "08205",
+        "count" : "15224"
+      }, {
+        "item" : "08113",
+        "count" : "13313"
+      }, {
+        "item" : "08307",
+        "count" : "12466"
+      }, {
+        "item" : "08184",
+        "count" : "12461"
+      }, {
+        "item" : "08073",
+        "count" : "11520"
+      }, {
+        "item" : "08200",
+        "count" : "11166"
+      }, {
+        "item" : "43163",
+        "count" : "10990"
+      }, {
+        "item" : "08056",
+        "count" : "10666"
+      }, {
+        "item" : "43905",
+        "count" : "10529"
+      } ],
+      "smallest" : "08001",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044554,
+    "name" : "CODI_COMARCA",
+    "dataTypeName" : "text",
+    "description" : "Codi de la comarca (d’acord amb la taula de comarques de Catalunya i de l’entitat territorial singular de l’Aran de l’Idescat) ",
+    "fieldName" : "codi_comarca",
+    "position" : 12,
+    "renderTypeName" : "text",
+    "tableColumnId" : 13926652,
+    "cachedContents" : {
+      "non_null" : "1342960",
+      "largest" : "43",
+      "null" : "0",
+      "top" : [ {
+        "item" : "13",
+        "count" : "382042"
+      }, {
+        "item" : "40",
+        "count" : "146018"
+      }, {
+        "item" : "11",
+        "count" : "116270"
+      }, {
+        "item" : "21",
+        "count" : "80093"
+      }, {
+        "item" : "41",
+        "count" : "67665"
+      }, {
+        "item" : "36",
+        "count" : "57968"
+      }, {
+        "item" : "08",
+        "count" : "42107"
+      }, {
+        "item" : "02",
+        "count" : "41646"
+      }, {
+        "item" : "10",
+        "count" : "39649"
+      }, {
+        "item" : "34",
+        "count" : "37310"
+      }, {
+        "item" : "20",
+        "count" : "33191"
+      }, {
+        "item" : "12",
+        "count" : "32526"
+      }, {
+        "item" : "17",
+        "count" : "32447"
+      }, {
+        "item" : "07",
+        "count" : "29826"
+      }, {
+        "item" : "33",
+        "count" : "29622"
+      }, {
+        "item" : "24",
+        "count" : "23833"
+      }, {
+        "item" : "06",
+        "count" : "20792"
+      }, {
+        "item" : "03",
+        "count" : "18919"
+      }, {
+        "item" : "09",
+        "count" : "14150"
+      }, {
+        "item" : "22",
+        "count" : "11845"
+      } ],
+      "smallest" : "01",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044555,
+    "name" : "CODI_PROVINCIA",
+    "dataTypeName" : "text",
+    "description" : "Codi de la província (d’acord amb la taula de províncies de l’INE)",
+    "fieldName" : "codi_provincia",
+    "position" : 13,
+    "renderTypeName" : "text",
+    "tableColumnId" : 13926651,
+    "cachedContents" : {
+      "non_null" : "1342960",
+      "largest" : "43",
+      "null" : "0",
+      "top" : [ {
+        "item" : "08",
+        "count" : "927365"
+      }, {
+        "item" : "17",
+        "count" : "176552"
+      }, {
+        "item" : "43",
+        "count" : "173750"
+      }, {
+        "item" : "25",
+        "count" : "65293"
+      } ],
+      "smallest" : "08",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044556,
+    "name" : "REFERENCIA CADASTRAL",
+    "dataTypeName" : "text",
+    "description" : "Referència cadastral de l'edifici",
+    "fieldName" : "referencia_cadastral",
+    "position" : 14,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802575,
+    "cachedContents" : {
+      "non_null" : "1341982",
+      "largest" : " 7308704DF2870G0001AX",
+      "null" : "978",
+      "top" : [ {
+        "item" : "8613516DF2881D0001FH",
+        "count" : "131"
+      }, {
+        "item" : "5470401DG4057S0001TL",
+        "count" : "78"
+      }, {
+        "item" : "6308402CF7660N0001FE",
+        "count" : "67"
+      }, {
+        "item" : "2363203DG8426C0050ZI",
+        "count" : "66"
+      }, {
+        "item" : "5480901CF4458A0001FK",
+        "count" : "61"
+      }, {
+        "item" : "6502301DG9860S0001QR",
+        "count" : "48"
+      }, {
+        "item" : "8083505CG1288S0001TO",
+        "count" : "48"
+      }, {
+        "item" : "6507401CF7660N0001UE",
+        "count" : "46"
+      }, {
+        "item" : "8333061CG0183S0001DX",
+        "count" : "43"
+      }, {
+        "item" : "8802018DG1080B0001WD",
+        "count" : "43"
+      }, {
+        "item" : "9824319DF2892D0001QF",
+        "count" : "42"
+      }, {
+        "item" : "1437813DF3813E0001FB",
+        "count" : "42"
+      }, {
+        "item" : "9826317DF2892F0001HO",
+        "count" : "41"
+      }, {
+        "item" : "9929510DF2892H0001FR",
+        "count" : "41"
+      }, {
+        "item" : "8737127DF2883F0001FX",
+        "count" : "41"
+      }, {
+        "item" : "7717109DF2871F0001UU",
+        "count" : "40"
+      }, {
+        "item" : "9626430DF2892F0001UO",
+        "count" : "40"
+      }, {
+        "item" : "7018611DF2871G0001PH",
+        "count" : "40"
+      }, {
+        "item" : "3104617DF2830C0001KH",
+        "count" : "39"
+      }, {
+        "item" : "1437815DF3813E0001OB",
+        "count" : "39"
+      } ],
+      "smallest" : "--------------",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044557,
+    "name" : "ZONA CLIMATICA",
+    "dataTypeName" : "text",
+    "description" : "Zona climàtica segons DB H1 del Codi Tècnic d’Edificació.",
+    "fieldName" : "zona_climatica",
+    "position" : 15,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802606,
+    "cachedContents" : {
+      "non_null" : "1341177",
+      "largest" : "E1",
+      "null" : "1783",
+      "top" : [ {
+        "item" : "C2",
+        "count" : "976088"
+      }, {
+        "item" : "C3",
+        "count" : "107288"
+      }, {
+        "item" : "D2",
+        "count" : "89579"
+      }, {
+        "item" : "B3",
+        "count" : "64431"
+      }, {
+        "item" : "D3",
+        "count" : "56188"
+      }, {
+        "item" : "D1",
+        "count" : "24324"
+      }, {
+        "item" : "E1",
+        "count" : "18286"
+      }, {
+        "item" : "C1",
+        "count" : "4732"
+      }, {
+        "item" : "C4",
+        "count" : "151"
+      }, {
+        "item" : "B4",
+        "count" : "56"
+      }, {
+        "item" : "A4",
+        "count" : "30"
+      }, {
+        "item" : "A3",
+        "count" : "19"
+      }, {
+        "item" : "alpha3",
+        "count" : "2"
+      }, {
+        "item" : "B2",
+        "count" : "2"
+      }, {
+        "item" : "C2c",
+        "count" : "1"
+      } ],
+      "smallest" : "A3",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044627,
+    "name" : "METRES_CADASTRE",
+    "dataTypeName" : "number",
+    "description" : "Superfície (m2)",
+    "fieldName" : "metres_cadastre",
+    "position" : 16,
+    "renderTypeName" : "number",
+    "tableColumnId" : 13960054,
+    "cachedContents" : {
+      "non_null" : "1342960",
+      "largest" : "357792",
+      "null" : "0",
+      "top" : [ {
+        "item" : "60",
+        "count" : "21754"
+      }, {
+        "item" : "70",
+        "count" : "19914"
+      }, {
+        "item" : "65",
+        "count" : "19474"
+      }, {
+        "item" : "62",
+        "count" : "17784"
+      }, {
+        "item" : "63",
+        "count" : "17329"
+      }, {
+        "item" : "68",
+        "count" : "17255"
+      }, {
+        "item" : "55",
+        "count" : "17131"
+      }, {
+        "item" : "58",
+        "count" : "17046"
+      }, {
+        "item" : "64",
+        "count" : "16921"
+      }, {
+        "item" : "61",
+        "count" : "16906"
+      }, {
+        "item" : "59",
+        "count" : "16458"
+      }, {
+        "item" : "56",
+        "count" : "16246"
+      }, {
+        "item" : "75",
+        "count" : "16214"
+      }, {
+        "item" : "57",
+        "count" : "16077"
+      }, {
+        "item" : "66",
+        "count" : "15997"
+      }, {
+        "item" : "72",
+        "count" : "15853"
+      }, {
+        "item" : "67",
+        "count" : "15631"
+      }, {
+        "item" : "80",
+        "count" : "15473"
+      }, {
+        "item" : "50",
+        "count" : "15468"
+      }, {
+        "item" : "90",
+        "count" : "15338"
+      } ],
+      "smallest" : "0",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044559,
+    "name" : "ANY_CONSTRUCCIO",
+    "dataTypeName" : "text",
+    "description" : "Any de construcció",
+    "fieldName" : "any_construccio",
+    "position" : 17,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802592,
+    "cachedContents" : {
+      "non_null" : "1108405",
+      "largest" : "974",
+      "null" : "234555",
+      "top" : [ {
+        "item" : "1970",
+        "count" : "42404"
+      }, {
+        "item" : "1975",
+        "count" : "35718"
+      }, {
+        "item" : "2007",
+        "count" : "29989"
+      }, {
+        "item" : "1965",
+        "count" : "29898"
+      }, {
+        "item" : "1900",
+        "count" : "29755"
+      }, {
+        "item" : "1973",
+        "count" : "27441"
+      }, {
+        "item" : "2008",
+        "count" : "26959"
+      }, {
+        "item" : "2006",
+        "count" : "26807"
+      }, {
+        "item" : "1972",
+        "count" : "25751"
+      }, {
+        "item" : "1974",
+        "count" : "25396"
+      }, {
+        "item" : "1980",
+        "count" : "24953"
+      }, {
+        "item" : "1968",
+        "count" : "24825"
+      }, {
+        "item" : "2005",
+        "count" : "24786"
+      }, {
+        "item" : "1960",
+        "count" : "22707"
+      }, {
+        "item" : "1978",
+        "count" : "22679"
+      }, {
+        "item" : "1969",
+        "count" : "22436"
+      }, {
+        "item" : "1967",
+        "count" : "21785"
+      }, {
+        "item" : "2004",
+        "count" : "21670"
+      }, {
+        "item" : "1976",
+        "count" : "21040"
+      }, {
+        "item" : "1966",
+        "count" : "20370"
+      } ],
+      "smallest" : "1",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044560,
+    "name" : "US_EDIFICI",
+    "dataTypeName" : "text",
+    "description" : "Ús de l’edifici (habitatge, terciari)",
+    "fieldName" : "us_edifici",
+    "position" : 18,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802613,
+    "cachedContents" : {
+      "non_null" : "1342960",
+      "largest" : "Vivienda unifamiliar",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Habitatge individual en bloc d'habitatges",
+        "count" : "764330"
+      }, {
+        "item" : "Habitatge unifamiliar",
+        "count" : "274047"
+      }, {
+        "item" : "Vivienda individual en bloque de viviendas",
+        "count" : "117142"
+      }, {
+        "item" : "Terciari",
+        "count" : "97157"
+      }, {
+        "item" : "Vivienda unifamiliar",
+        "count" : "42671"
+      }, {
+        "item" : "Bloc d'habitatges plurifamiliar",
+        "count" : "25790"
+      }, {
+        "item" : "Terciario",
+        "count" : "17404"
+      }, {
+        "item" : "Bloque de viviendas plurifamiliar",
+        "count" : "2968"
+      }, {
+        "item" : "Bloc d'habitatges",
+        "count" : "1291"
+      }, {
+        "item" : "Bloque de viviendas",
+        "count" : "160"
+      } ],
+      "smallest" : "Bloc d'habitatges",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044561,
+    "name" : "Qualificació de consum d'energia primaria no renovable",
+    "dataTypeName" : "text",
+    "description" : "Lletra de qualificació d’energia primària no renovable (A-G)",
+    "fieldName" : "qualificaci_de_consum_d",
+    "position" : 19,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802617,
+    "cachedContents" : {
+      "non_null" : "1342960",
+      "largest" : "G",
+      "null" : "0",
+      "top" : [ {
+        "item" : "E",
+        "count" : "687061"
+      }, {
+        "item" : "G",
+        "count" : "235085"
+      }, {
+        "item" : "F",
+        "count" : "173109"
+      }, {
+        "item" : "D",
+        "count" : "127098"
+      }, {
+        "item" : "C",
+        "count" : "62805"
+      }, {
+        "item" : "B",
+        "count" : "29522"
+      }, {
+        "item" : "A",
+        "count" : "28280"
+      } ],
+      "smallest" : "A",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044562,
+    "name" : "Energia primària no renovable",
+    "dataTypeName" : "number",
+    "description" : "Valor d’energia primària no renovable [kWh/m2·any]",
+    "fieldName" : "energia_prim_ria_no_renovable",
+    "position" : 20,
+    "renderTypeName" : "number",
+    "tableColumnId" : 6802578,
+    "cachedContents" : {
+      "non_null" : "1342954",
+      "largest" : "178193.54",
+      "null" : "6",
+      "top" : [ {
+        "item" : "0",
+        "count" : "645"
+      }, {
+        "item" : "0.01",
+        "count" : "237"
+      }, {
+        "item" : "391.43",
+        "count" : "122"
+      }, {
+        "item" : "146.78",
+        "count" : "110"
+      }, {
+        "item" : "195.71",
+        "count" : "108"
+      }, {
+        "item" : "189.33",
+        "count" : "105"
+      }, {
+        "item" : "189.35",
+        "count" : "100"
+      }, {
+        "item" : "156.47",
+        "count" : "100"
+      }, {
+        "item" : "201.62",
+        "count" : "99"
+      }, {
+        "item" : "147.33",
+        "count" : "97"
+      }, {
+        "item" : "184.88",
+        "count" : "97"
+      }, {
+        "item" : "178.96",
+        "count" : "96"
+      }, {
+        "item" : "183.74",
+        "count" : "95"
+      }, {
+        "item" : "186.96",
+        "count" : "95"
+      }, {
+        "item" : "170.72",
+        "count" : "95"
+      }, {
+        "item" : "187.83",
+        "count" : "95"
+      }, {
+        "item" : "165.69",
+        "count" : "95"
+      }, {
+        "item" : "192.74",
+        "count" : "94"
+      }, {
+        "item" : "197.58",
+        "count" : "94"
+      }, {
+        "item" : "164.97",
+        "count" : "93"
+      } ],
+      "smallest" : "0",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044563,
+    "name" : "Qualificacio d'emissions de CO2",
+    "dataTypeName" : "text",
+    "description" : "Lletra de qualificació d’emissions de CO2 (A-G)",
+    "fieldName" : "qualificacio_d_emissions",
+    "position" : 21,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802601,
+    "cachedContents" : {
+      "non_null" : "1342960",
+      "largest" : "G",
+      "null" : "0",
+      "top" : [ {
+        "item" : "E",
+        "count" : "770797"
+      }, {
+        "item" : "D",
+        "count" : "178344"
+      }, {
+        "item" : "F",
+        "count" : "139942"
+      }, {
+        "item" : "G",
+        "count" : "102497"
+      }, {
+        "item" : "C",
+        "count" : "82660"
+      }, {
+        "item" : "A",
+        "count" : "35797"
+      }, {
+        "item" : "B",
+        "count" : "32923"
+      } ],
+      "smallest" : "A",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044564,
+    "name" : "Emissions de CO2",
+    "dataTypeName" : "number",
+    "description" : "Valor d’emissions de CO2 [kg CO2/m2·any]",
+    "fieldName" : "emissions_de_co2",
+    "position" : 22,
+    "renderTypeName" : "number",
+    "tableColumnId" : 6802586,
+    "cachedContents" : {
+      "non_null" : "1342960",
+      "largest" : "30185.29",
+      "null" : "0",
+      "top" : [ {
+        "item" : "0",
+        "count" : "872"
+      }, {
+        "item" : "34.57",
+        "count" : "405"
+      }, {
+        "item" : "37.43",
+        "count" : "404"
+      }, {
+        "item" : "36.58",
+        "count" : "404"
+      }, {
+        "item" : "32.93",
+        "count" : "397"
+      }, {
+        "item" : "35.43",
+        "count" : "397"
+      }, {
+        "item" : "36.4",
+        "count" : "396"
+      }, {
+        "item" : "34.62",
+        "count" : "392"
+      }, {
+        "item" : "35.68",
+        "count" : "390"
+      }, {
+        "item" : "36.85",
+        "count" : "389"
+      }, {
+        "item" : "34.74",
+        "count" : "389"
+      }, {
+        "item" : "33.15",
+        "count" : "388"
+      }, {
+        "item" : "35.55",
+        "count" : "388"
+      }, {
+        "item" : "35.88",
+        "count" : "387"
+      }, {
+        "item" : "37.09",
+        "count" : "387"
+      }, {
+        "item" : "34.64",
+        "count" : "385"
+      }, {
+        "item" : "39.38",
+        "count" : "384"
+      }, {
+        "item" : "34.18",
+        "count" : "384"
+      }, {
+        "item" : "36.74",
+        "count" : "383"
+      }, {
+        "item" : "36.44",
+        "count" : "383"
+      } ],
+      "smallest" : "0",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044615,
+    "name" : "Consum d'energia final",
+    "dataTypeName" : "number",
+    "description" : "Energia en el punt de consum equivalent al consum energètic [kWh/m2·any]",
+    "fieldName" : "consum_d_energia_final",
+    "position" : 23,
+    "renderTypeName" : "number",
+    "tableColumnId" : 13960042,
+    "cachedContents" : {
+      "non_null" : "1336164",
+      "largest" : "229850.54",
+      "null" : "6796",
+      "top" : [ {
+        "item" : "0",
+        "count" : "13656"
+      }, {
+        "item" : "0.01",
+        "count" : "208"
+      }, {
+        "item" : "19.06",
+        "count" : "155"
+      }, {
+        "item" : "11.43",
+        "count" : "131"
+      }, {
+        "item" : "155.34",
+        "count" : "121"
+      }, {
+        "item" : "124.54",
+        "count" : "119"
+      }, {
+        "item" : "130.23",
+        "count" : "119"
+      }, {
+        "item" : "123.92",
+        "count" : "114"
+      }, {
+        "item" : "113.04",
+        "count" : "113"
+      }, {
+        "item" : "136.72",
+        "count" : "113"
+      }, {
+        "item" : "124.99",
+        "count" : "113"
+      }, {
+        "item" : "132.49",
+        "count" : "112"
+      }, {
+        "item" : "126.32",
+        "count" : "112"
+      }, {
+        "item" : "141.77",
+        "count" : "110"
+      }, {
+        "item" : "148.92",
+        "count" : "110"
+      }, {
+        "item" : "143.36",
+        "count" : "109"
+      }, {
+        "item" : "124.02",
+        "count" : "109"
+      }, {
+        "item" : "139.21",
+        "count" : "109"
+      }, {
+        "item" : "135.39",
+        "count" : "109"
+      }, {
+        "item" : "138.26",
+        "count" : "109"
+      } ],
+      "smallest" : "-123.75",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044616,
+    "name" : "Cost anual aproximat d'energia per habitatge",
+    "dataTypeName" : "number",
+    "description" : "Cost anual aproximat d’energia per habitatge",
+    "fieldName" : "cost_anual_aproximat_d_energia",
+    "position" : 24,
+    "renderTypeName" : "number",
+    "tableColumnId" : 13960043,
+    "cachedContents" : {
+      "non_null" : "1336164",
+      "largest" : "2051753.32",
+      "null" : "6796",
+      "top" : [ {
+        "item" : "0",
+        "count" : "16378"
+      }, {
+        "item" : "10.15",
+        "count" : "914"
+      }, {
+        "item" : "9.35",
+        "count" : "901"
+      }, {
+        "item" : "9.91",
+        "count" : "897"
+      }, {
+        "item" : "9.37",
+        "count" : "893"
+      }, {
+        "item" : "9.7",
+        "count" : "889"
+      }, {
+        "item" : "8.83",
+        "count" : "887"
+      }, {
+        "item" : "9.15",
+        "count" : "886"
+      }, {
+        "item" : "9.31",
+        "count" : "885"
+      }, {
+        "item" : "10.84",
+        "count" : "877"
+      }, {
+        "item" : "10.99",
+        "count" : "877"
+      }, {
+        "item" : "10.16",
+        "count" : "873"
+      }, {
+        "item" : "9.63",
+        "count" : "873"
+      }, {
+        "item" : "10.11",
+        "count" : "872"
+      }, {
+        "item" : "9.66",
+        "count" : "871"
+      }, {
+        "item" : "10.05",
+        "count" : "871"
+      }, {
+        "item" : "10.09",
+        "count" : "870"
+      }, {
+        "item" : "10.71",
+        "count" : "870"
+      }, {
+        "item" : "8.93",
+        "count" : "868"
+      }, {
+        "item" : "8.88",
+        "count" : "865"
+      } ],
+      "smallest" : "-2441.69",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044567,
+    "name" : "VEHICLE ELECTRIC",
+    "dataTypeName" : "text",
+    "description" : "Disposa de punt de recàrrega de vehicle elèctric (Sí/no)",
+    "fieldName" : "vehicle_electric",
+    "position" : 25,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802552,
+    "cachedContents" : {
+      "non_null" : "1256200",
+      "largest" : "SI",
+      "null" : "86760",
+      "top" : [ {
+        "item" : "NO",
+        "count" : "1245864"
+      }, {
+        "item" : "SI",
+        "count" : "10336"
+      } ],
+      "smallest" : "NO",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044568,
+    "name" : "SOLAR TERMICA",
+    "dataTypeName" : "text",
+    "description" : "Disposa d’instal·lació solar tèrmica (Sí/no)",
+    "fieldName" : "solar_termica",
+    "position" : 26,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802583,
+    "cachedContents" : {
+      "non_null" : "213539",
+      "largest" : "SI",
+      "null" : "1129421",
+      "top" : [ {
+        "item" : "NO",
+        "count" : "176014"
+      }, {
+        "item" : "SI",
+        "count" : "37525"
+      } ],
+      "smallest" : "NO",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044569,
+    "name" : "SOLAR FOTOVOLTAICA",
+    "dataTypeName" : "text",
+    "description" : "Disposa d’instal·lació fotovoltaica (Sí/no)",
+    "fieldName" : "solar_fotovoltaica",
+    "position" : 27,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802597,
+    "cachedContents" : {
+      "non_null" : "213539",
+      "largest" : "SI",
+      "null" : "1129421",
+      "top" : [ {
+        "item" : "NO",
+        "count" : "153903"
+      }, {
+        "item" : "SI",
+        "count" : "59636"
+      } ],
+      "smallest" : "NO",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044570,
+    "name" : "SISTEMA BIOMASSA",
+    "dataTypeName" : "text",
+    "description" : "Disposa d’instal·lació de biomassa (Sí/no)",
+    "fieldName" : "sistema_biomassa",
+    "position" : 28,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802568,
+    "cachedContents" : {
+      "non_null" : "1326684",
+      "largest" : "SI",
+      "null" : "16276",
+      "top" : [ {
+        "item" : "NO",
+        "count" : "1287754"
+      }, {
+        "item" : "SI",
+        "count" : "38930"
+      } ],
+      "smallest" : "NO",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044571,
+    "name" : "XARXA DISTRICTE",
+    "dataTypeName" : "text",
+    "description" : "Disposa de connexió a una xarxa de districte de generació de calor i/o fred (Sí/no)",
+    "fieldName" : "xarxa_districte",
+    "position" : 29,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802598,
+    "cachedContents" : {
+      "non_null" : "1256200",
+      "largest" : "SI",
+      "null" : "86760",
+      "top" : [ {
+        "item" : "NO",
+        "count" : "1252010"
+      }, {
+        "item" : "SI",
+        "count" : "4190"
+      } ],
+      "smallest" : "NO",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044572,
+    "name" : "ENERGIA GEOTERMICA",
+    "dataTypeName" : "text",
+    "description" : "Disposa d’instal·lació geotèrmica (Sí/no)",
+    "fieldName" : "energia_geotermica",
+    "position" : 30,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802572,
+    "cachedContents" : {
+      "non_null" : "1239980",
+      "largest" : "SI",
+      "null" : "102980",
+      "top" : [ {
+        "item" : "NO",
+        "count" : "1238306"
+      }, {
+        "item" : "SI",
+        "count" : "1674"
+      } ],
+      "smallest" : "NO",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044573,
+    "name" : "INFORME_INS_TECNICA_EDIFICI",
+    "dataTypeName" : "text",
+    "description" : "Codi del certificat d’aptitud de la Inspecció Tècnica de l’Edifici d’Habitatges (IITE)",
+    "fieldName" : "informe_ins_tecnica_edifici",
+    "position" : 31,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802576,
+    "cachedContents" : {
+      "non_null" : "6975",
+      "largest" : "XXXX1234",
+      "null" : "1335985",
+      "top" : [ {
+        "item" : "AAAR4612",
+        "count" : "41"
+      }, {
+        "item" : "AAAR4054",
+        "count" : "38"
+      }, {
+        "item" : "AAAB8696",
+        "count" : "30"
+      }, {
+        "item" : "AAAR2347",
+        "count" : "24"
+      }, {
+        "item" : "ITEB1514",
+        "count" : "22"
+      }, {
+        "item" : "AAAS4636",
+        "count" : "22"
+      }, {
+        "item" : "AAAN9839",
+        "count" : "15"
+      }, {
+        "item" : "ITEB4092",
+        "count" : "12"
+      }, {
+        "item" : "ITEB1518",
+        "count" : "12"
+      }, {
+        "item" : "AAAA5046",
+        "count" : "12"
+      }, {
+        "item" : "AAAS0225",
+        "count" : "12"
+      }, {
+        "item" : "M6608HPW",
+        "count" : "11"
+      }, {
+        "item" : "AAAN0922",
+        "count" : "11"
+      }, {
+        "item" : "AAAG5641",
+        "count" : "11"
+      }, {
+        "item" : "AAAN5853",
+        "count" : "10"
+      }, {
+        "item" : "AAAC7784",
+        "count" : "10"
+      }, {
+        "item" : "AAAP2914",
+        "count" : "10"
+      }, {
+        "item" : "ITEB1086",
+        "count" : "10"
+      }, {
+        "item" : "AAAC7709",
+        "count" : "10"
+      }, {
+        "item" : "AAAN2966",
+        "count" : "9"
+      } ],
+      "smallest" : "0000AAAA",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044574,
+    "name" : "Eina de certificacio",
+    "dataTypeName" : "text",
+    "description" : "Eina utilitzada per realitzar el certificat",
+    "fieldName" : "eina_de_certificacio",
+    "position" : 32,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802571,
+    "cachedContents" : {
+      "non_null" : "1342569",
+      "largest" : "TeKton3D TK-CEEP",
+      "null" : "391",
+      "top" : [ {
+        "item" : "CE3X",
+        "count" : "1296928"
+      }, {
+        "item" : "CE3",
+        "count" : "16990"
+      }, {
+        "item" : "HULC",
+        "count" : "11735"
+      }, {
+        "item" : "CERMA",
+        "count" : "11587"
+      }, {
+        "item" : "CYPE",
+        "count" : "4072"
+      }, {
+        "item" : "TeKton3D TK-CEEP",
+        "count" : "518"
+      }, {
+        "item" : "CALENER VYP",
+        "count" : "448"
+      }, {
+        "item" : "SG SAVE",
+        "count" : "185"
+      }, {
+        "item" : "CALENER VYP + POSTCALENER",
+        "count" : "46"
+      }, {
+        "item" : "CALENER GT",
+        "count" : "32"
+      }, {
+        "item" : "0",
+        "count" : "23"
+      }, {
+        "item" : "CALENER GT + POSTCALENER",
+        "count" : "3"
+      }, {
+        "item" : "CE2",
+        "count" : "2"
+      } ],
+      "smallest" : "0",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044620,
+    "name" : "VALOR AILLAMENTS",
+    "dataTypeName" : "number",
+    "description" : "Transmitància mitjana de façana [W/m2·K]",
+    "fieldName" : "valor_aillaments",
+    "position" : 33,
+    "renderTypeName" : "number",
+    "tableColumnId" : 13960047,
+    "cachedContents" : {
+      "non_null" : "1336164",
+      "largest" : "19.9",
+      "null" : "6796",
+      "top" : [ {
+        "item" : "1.69",
+        "count" : "249588"
+      }, {
+        "item" : "2.38",
+        "count" : "245808"
+      }, {
+        "item" : "1.8",
+        "count" : "98202"
+      }, {
+        "item" : "1.4",
+        "count" : "36300"
+      }, {
+        "item" : "0.73",
+        "count" : "31602"
+      }, {
+        "item" : "0.6",
+        "count" : "21129"
+      }, {
+        "item" : "0.69",
+        "count" : "20813"
+      }, {
+        "item" : "0.53",
+        "count" : "18651"
+      }, {
+        "item" : "0.63",
+        "count" : "17306"
+      }, {
+        "item" : "1.6",
+        "count" : "15807"
+      }, {
+        "item" : "0",
+        "count" : "14391"
+      }, {
+        "item" : "0.62",
+        "count" : "12923"
+      }, {
+        "item" : "0.66",
+        "count" : "12777"
+      }, {
+        "item" : "2",
+        "count" : "11221"
+      }, {
+        "item" : "2.94",
+        "count" : "10122"
+      }, {
+        "item" : "0.75",
+        "count" : "9614"
+      }, {
+        "item" : "0.81",
+        "count" : "9552"
+      }, {
+        "item" : "0.54",
+        "count" : "7491"
+      }, {
+        "item" : "0.47",
+        "count" : "7131"
+      }, {
+        "item" : "1.72",
+        "count" : "7016"
+      } ],
+      "smallest" : "0",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044621,
+    "name" : "VALOR FINESTRES",
+    "dataTypeName" : "number",
+    "description" : "Transmitància mitjana de finestres [W/m2·K]",
+    "fieldName" : "valor_finestres",
+    "position" : 34,
+    "renderTypeName" : "number",
+    "tableColumnId" : 13960048,
+    "cachedContents" : {
+      "non_null" : "1336164",
+      "largest" : "99999999.99",
+      "null" : "6796",
+      "top" : [ {
+        "item" : "3.78",
+        "count" : "249223"
+      }, {
+        "item" : "5.7",
+        "count" : "159855"
+      }, {
+        "item" : "3.44",
+        "count" : "75279"
+      }, {
+        "item" : "5",
+        "count" : "73531"
+      }, {
+        "item" : "3.08",
+        "count" : "46476"
+      }, {
+        "item" : "0",
+        "count" : "13896"
+      }, {
+        "item" : "3.54",
+        "count" : "11912"
+      }, {
+        "item" : "3.66",
+        "count" : "8592"
+      }, {
+        "item" : "2.96",
+        "count" : "6825"
+      }, {
+        "item" : "3.51",
+        "count" : "5648"
+      }, {
+        "item" : "3.9",
+        "count" : "4791"
+      }, {
+        "item" : "4.02",
+        "count" : "4763"
+      }, {
+        "item" : "3.4",
+        "count" : "4695"
+      }, {
+        "item" : "5.35",
+        "count" : "4683"
+      }, {
+        "item" : "3.37",
+        "count" : "4624"
+      }, {
+        "item" : "3.47",
+        "count" : "3934"
+      }, {
+        "item" : "3.38",
+        "count" : "3836"
+      }, {
+        "item" : "3.88",
+        "count" : "3801"
+      }, {
+        "item" : "3.95",
+        "count" : "3726"
+      }, {
+        "item" : "3.75",
+        "count" : "3700"
+      } ],
+      "smallest" : "0",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044577,
+    "name" : "Motiu de la certificacio",
+    "dataTypeName" : "text",
+    "description" : "Motiu per fer la certificació (nova construcció, lloguer, compravenda,…)",
+    "fieldName" : "motiu_de_la_certificacio",
+    "position" : 35,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802600,
+    "cachedContents" : {
+      "non_null" : "1342956",
+      "largest" : "Sol·licitut d'ajuts",
+      "null" : "4",
+      "top" : [ {
+        "item" : "Compravenda",
+        "count" : "581760"
+      }, {
+        "item" : "Lloguer",
+        "count" : "359986"
+      }, {
+        "item" : "Certificació voluntària",
+        "count" : "117257"
+      }, {
+        "item" : "Compraventa",
+        "count" : "110716"
+      }, {
+        "item" : "Sol·licitud d'ajuts",
+        "count" : "60416"
+      }, {
+        "item" : "Alquiler",
+        "count" : "36173"
+      }, {
+        "item" : "Certificación voluntaria",
+        "count" : "19336"
+      }, {
+        "item" : "Nova construcció o gran rehabilitació",
+        "count" : "10799"
+      }, {
+        "item" : "Nova construcció",
+        "count" : "10670"
+      }, {
+        "item" : "Solicitud de ayudas",
+        "count" : "8652"
+      }, {
+        "item" : "Renovació (en cas de caducitat de l'antic certificat energètic)",
+        "count" : "6898"
+      }, {
+        "item" : "Edificis o parts d'edificis on es realitzin reformes o ampliacions",
+        "count" : "4446"
+      }, {
+        "item" : "Edifici existent de l’administració pública",
+        "count" : "3746"
+      }, {
+        "item" : "Altres (cap de les anteriores opcions)",
+        "count" : "1895"
+      }, {
+        "item" : "Complement a informe d¿avaluació de l¿edifici (IEE) o a inspecció tècnica de l¿edifici (ITE)",
+        "count" : "1619"
+      }, {
+        "item" : "Complement a informe d'avaluació de l'edifici (IEE) o a inspecció tècnica de l'edifici (ITE)",
+        "count" : "1124"
+      }, {
+        "item" : "Edificis o parts d'edificis (+500 m2) amb ús administratiu, sanitari, comercial, docent, restauració",
+        "count" : "1023"
+      }, {
+        "item" : "Renovación (en caso de caducidad del antiguo certificado energético)",
+        "count" : "940"
+      }, {
+        "item" : "Edificio existente de la administración pública",
+        "count" : "939"
+      }, {
+        "item" : "Nueva construcción  o gran rehabilitación",
+        "count" : "881"
+      } ],
+      "smallest" : "Alquiler",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044578,
+    "name" : "VALOR AILLAMENTS CTE",
+    "dataTypeName" : "number",
+    "description" : "Transmitància màxima de façana segons CTE [W/m2·K]",
+    "fieldName" : "valor_aillaments_cte",
+    "position" : 36,
+    "renderTypeName" : "number",
+    "tableColumnId" : 6802605,
+    "cachedContents" : {
+      "non_null" : "1342957",
+      "largest" : "0.56",
+      "null" : "3",
+      "top" : [ {
+        "item" : "0.49",
+        "count" : "1088257"
+      }, {
+        "item" : "0.41",
+        "count" : "170091"
+      }, {
+        "item" : "0.56",
+        "count" : "64489"
+      }, {
+        "item" : "0.37",
+        "count" : "18286"
+      }, {
+        "item" : "0",
+        "count" : "1834"
+      } ],
+      "smallest" : "0",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044579,
+    "name" : "VALOR FINESTRES CTE",
+    "dataTypeName" : "number",
+    "description" : "Transmitància màxima de finestres segons CTE [W/m2·K]",
+    "fieldName" : "valor_finestres_cte",
+    "position" : 37,
+    "renderTypeName" : "number",
+    "tableColumnId" : 6802611,
+    "cachedContents" : {
+      "non_null" : "1342957",
+      "largest" : "2.3",
+      "null" : "3",
+      "top" : [ {
+        "item" : "2.1",
+        "count" : "1088257"
+      }, {
+        "item" : "1.8",
+        "count" : "188377"
+      }, {
+        "item" : "2.3",
+        "count" : "64489"
+      }, {
+        "item" : "0",
+        "count" : "1834"
+      } ],
+      "smallest" : "0",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044580,
+    "name" : "UTM_X",
+    "dataTypeName" : "number",
+    "description" : "Coordenades UTM X",
+    "fieldName" : "utm_x",
+    "position" : 38,
+    "renderTypeName" : "number",
+    "tableColumnId" : 6802619,
+    "cachedContents" : {
+      "non_null" : "1319472",
+      "largest" : "524470.79",
+      "null" : "23488",
+      "top" : [ {
+        "item" : "512184.08",
+        "count" : "236"
+      }, {
+        "item" : "347393.47",
+        "count" : "210"
+      }, {
+        "item" : "427022.29",
+        "count" : "189"
+      }, {
+        "item" : "434174.94",
+        "count" : "188"
+      }, {
+        "item" : "432987.98",
+        "count" : "184"
+      }, {
+        "item" : "428475.31",
+        "count" : "172"
+      }, {
+        "item" : "510219.27",
+        "count" : "162"
+      }, {
+        "item" : "511688.52",
+        "count" : "153"
+      }, {
+        "item" : "433270.42",
+        "count" : "152"
+      }, {
+        "item" : "427226.81",
+        "count" : "150"
+      }, {
+        "item" : "344397.65",
+        "count" : "149"
+      }, {
+        "item" : "434873.59",
+        "count" : "146"
+      }, {
+        "item" : "330850.56",
+        "count" : "144"
+      }, {
+        "item" : "428968.15",
+        "count" : "143"
+      }, {
+        "item" : "505406.98",
+        "count" : "136"
+      }, {
+        "item" : "432918.83",
+        "count" : "135"
+      }, {
+        "item" : "430309.63",
+        "count" : "131"
+      }, {
+        "item" : "428564.74",
+        "count" : "131"
+      }, {
+        "item" : "422049.22",
+        "count" : "130"
+      }, {
+        "item" : "485062.47",
+        "count" : "128"
+      } ],
+      "smallest" : "268756.5",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044581,
+    "name" : "UTM_Y",
+    "dataTypeName" : "number",
+    "description" : "Coordenades UTM Y",
+    "fieldName" : "utm_y",
+    "position" : 39,
+    "renderTypeName" : "number",
+    "tableColumnId" : 6802612,
+    "cachedContents" : {
+      "non_null" : "1319472",
+      "largest" : "4745405.67",
+      "null" : "23488",
+      "top" : [ {
+        "item" : "4679038.24",
+        "count" : "236"
+      }, {
+        "item" : "4549275.47",
+        "count" : "210"
+      }, {
+        "item" : "4596849.89",
+        "count" : "189"
+      }, {
+        "item" : "4584356.37",
+        "count" : "188"
+      }, {
+        "item" : "4585483.02",
+        "count" : "184"
+      }, {
+        "item" : "4582590.05",
+        "count" : "184"
+      }, {
+        "item" : "4581248.71",
+        "count" : "172"
+      }, {
+        "item" : "4676313.5",
+        "count" : "162"
+      }, {
+        "item" : "4679725.36",
+        "count" : "153"
+      }, {
+        "item" : "4585376.87",
+        "count" : "152"
+      }, {
+        "item" : "4581605.92",
+        "count" : "150"
+      }, {
+        "item" : "4549098.18",
+        "count" : "149"
+      }, {
+        "item" : "4585641",
+        "count" : "146"
+      }, {
+        "item" : "4729100.81",
+        "count" : "144"
+      }, {
+        "item" : "4587244.96",
+        "count" : "143"
+      }, {
+        "item" : "4628368.18",
+        "count" : "136"
+      }, {
+        "item" : "4584202.39",
+        "count" : "135"
+      }, {
+        "item" : "4583608.56",
+        "count" : "131"
+      }, {
+        "item" : "4581153.13",
+        "count" : "131"
+      }, {
+        "item" : "4581392.96",
+        "count" : "130"
+      } ],
+      "smallest" : "4489509.38",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044582,
+    "name" : "Normativa construcció",
+    "dataTypeName" : "text",
+    "description" : "Normativa de construcció (CTE)",
+    "fieldName" : "normativa_construcci",
+    "position" : 40,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802593,
+    "cachedContents" : {
+      "non_null" : "1342960",
+      "largest" : "NRE-AT-87",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Abans de 1979",
+        "count" : "721829"
+      }, {
+        "item" : "NBE-CT-79",
+        "count" : "303693"
+      }, {
+        "item" : "NRE-AT-87",
+        "count" : "154406"
+      }, {
+        "item" : "CTE 2006",
+        "count" : "97546"
+      }, {
+        "item" : "CTE 2013",
+        "count" : "27431"
+      }, {
+        "item" : "CTE 2019",
+        "count" : "23000"
+      }, {
+        "item" : "Antes de 1979",
+        "count" : "15030"
+      }, {
+        "item" : "0",
+        "count" : "22"
+      }, {
+        "item" : "Anterior a la NBE-CT-79",
+        "count" : "3"
+      } ],
+      "smallest" : "0",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044583,
+    "name" : "Tipus Tramit",
+    "dataTypeName" : "text",
+    "description" : "Tipus de tràmit (nova construcció, existent)",
+    "fieldName" : "tipus_tramit",
+    "position" : 41,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802573,
+    "cachedContents" : {
+      "non_null" : "1342960",
+      "largest" : "Edificis existents acabats",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Edificis existents",
+        "count" : "1292629"
+      }, {
+        "item" : "Edificis existents acabats",
+        "count" : "26751"
+      }, {
+        "item" : "Edificis acabats",
+        "count" : "23580"
+      } ],
+      "smallest" : "Edificis acabats",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044584,
+    "name" : "TIPUS_TERCIARI",
+    "dataTypeName" : "text",
+    "description" : "Tipus de terciari (oficines, restauració,…)",
+    "fieldName" : "tipus_terciari",
+    "position" : 42,
+    "renderTypeName" : "text",
+    "tableColumnId" : 13926649,
+    "cachedContents" : {
+      "non_null" : "114544",
+      "largest" : "Terciari",
+      "null" : "1228416",
+      "top" : [ {
+        "item" : "Local",
+        "count" : "33966"
+      }, {
+        "item" : "Comerç",
+        "count" : "25679"
+      }, {
+        "item" : "Oficines",
+        "count" : "17455"
+      }, {
+        "item" : "Restauració",
+        "count" : "7585"
+      }, {
+        "item" : "Altres",
+        "count" : "7544"
+      }, {
+        "item" : "Comercio",
+        "count" : "4042"
+      }, {
+        "item" : "Oficinas",
+        "count" : "3275"
+      }, {
+        "item" : "Oficines en edifici industrial",
+        "count" : "3092"
+      }, {
+        "item" : "Educació",
+        "count" : "2597"
+      }, {
+        "item" : "Hotel",
+        "count" : "1693"
+      }, {
+        "item" : "Otros",
+        "count" : "1545"
+      }, {
+        "item" : "Sanitat",
+        "count" : "1403"
+      }, {
+        "item" : "Cultural",
+        "count" : "1173"
+      }, {
+        "item" : "Restauración",
+        "count" : "892"
+      }, {
+        "item" : "Esportiu",
+        "count" : "852"
+      }, {
+        "item" : "Oficinas en edificio industrial",
+        "count" : "756"
+      }, {
+        "item" : "Sanidad",
+        "count" : "465"
+      }, {
+        "item" : "Educación",
+        "count" : "393"
+      }, {
+        "item" : "Deportivo",
+        "count" : "134"
+      }, {
+        "item" : "Comercial",
+        "count" : "1"
+      } ],
+      "smallest" : "Altres",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044585,
+    "name" : "Qualificació emissions calefacció",
+    "dataTypeName" : "text",
+    "description" : "Qualificació d’emissions de CO2 associades al servei de calefacció (A-G",
+    "fieldName" : "qualificaci_emissions",
+    "position" : 43,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802609,
+    "cachedContents" : {
+      "non_null" : "1336585",
+      "largest" : "G",
+      "null" : "6375",
+      "top" : [ {
+        "item" : "E",
+        "count" : "772283"
+      }, {
+        "item" : "D",
+        "count" : "204429"
+      }, {
+        "item" : "F",
+        "count" : "103889"
+      }, {
+        "item" : "G",
+        "count" : "94683"
+      }, {
+        "item" : "C",
+        "count" : "87163"
+      }, {
+        "item" : "A",
+        "count" : "40051"
+      }, {
+        "item" : "B",
+        "count" : "34087"
+      } ],
+      "smallest" : "A",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044617,
+    "name" : "Emissions calefacció",
+    "dataTypeName" : "number",
+    "description" : "Emissions de CO2 associades al servei de calefacció [kg CO2/m2·any]",
+    "fieldName" : "emissions_calefacci",
+    "position" : 44,
+    "renderTypeName" : "number",
+    "tableColumnId" : 13960044,
+    "cachedContents" : {
+      "non_null" : "1341167",
+      "largest" : "27606.2",
+      "null" : "1793",
+      "top" : [ {
+        "item" : "0",
+        "count" : "2569"
+      }, {
+        "item" : "22.52",
+        "count" : "475"
+      }, {
+        "item" : "20.63",
+        "count" : "460"
+      }, {
+        "item" : "23.24",
+        "count" : "458"
+      }, {
+        "item" : "24.32",
+        "count" : "458"
+      }, {
+        "item" : "21.31",
+        "count" : "456"
+      }, {
+        "item" : "20.92",
+        "count" : "452"
+      }, {
+        "item" : "23.88",
+        "count" : "450"
+      }, {
+        "item" : "21.94",
+        "count" : "449"
+      }, {
+        "item" : "24",
+        "count" : "449"
+      }, {
+        "item" : "21.91",
+        "count" : "448"
+      }, {
+        "item" : "21.76",
+        "count" : "447"
+      }, {
+        "item" : "20.68",
+        "count" : "446"
+      }, {
+        "item" : "22.08",
+        "count" : "446"
+      }, {
+        "item" : "24.25",
+        "count" : "446"
+      }, {
+        "item" : "20.73",
+        "count" : "444"
+      }, {
+        "item" : "23.99",
+        "count" : "444"
+      }, {
+        "item" : "20.76",
+        "count" : "444"
+      }, {
+        "item" : "20.04",
+        "count" : "444"
+      }, {
+        "item" : "21.29",
+        "count" : "444"
+      } ],
+      "smallest" : "0",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044587,
+    "name" : "Qualificació emissions refrigeració",
+    "dataTypeName" : "text",
+    "description" : "Qualificació d’emissions de CO2 associades al servei de refrigeració (A-G)",
+    "fieldName" : "qualificaci_emissions_1",
+    "position" : 45,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802618,
+    "cachedContents" : {
+      "non_null" : "1293832",
+      "largest" : "G",
+      "null" : "49128",
+      "top" : [ {
+        "item" : "B",
+        "count" : "420520"
+      }, {
+        "item" : "A",
+        "count" : "356326"
+      }, {
+        "item" : "C",
+        "count" : "342315"
+      }, {
+        "item" : "D",
+        "count" : "125909"
+      }, {
+        "item" : "E",
+        "count" : "25588"
+      }, {
+        "item" : "F",
+        "count" : "12096"
+      }, {
+        "item" : "G",
+        "count" : "11078"
+      } ],
+      "smallest" : "A",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044624,
+    "name" : "Emissions refrigeració",
+    "dataTypeName" : "number",
+    "description" : "Emissions de CO2 associades al servei de refrigeració [kg CO2/m2·any]",
+    "fieldName" : "emissions_refrigeraci",
+    "position" : 46,
+    "renderTypeName" : "number",
+    "tableColumnId" : 13960051,
+    "cachedContents" : {
+      "non_null" : "1341165",
+      "largest" : "365.07",
+      "null" : "1795",
+      "top" : [ {
+        "item" : "0",
+        "count" : "54847"
+      }, {
+        "item" : "0.01",
+        "count" : "8978"
+      }, {
+        "item" : "0.83",
+        "count" : "8444"
+      }, {
+        "item" : "0.81",
+        "count" : "8278"
+      }, {
+        "item" : "0.8",
+        "count" : "8260"
+      }, {
+        "item" : "0.78",
+        "count" : "8236"
+      }, {
+        "item" : "0.88",
+        "count" : "8233"
+      }, {
+        "item" : "0.9",
+        "count" : "8230"
+      }, {
+        "item" : "0.87",
+        "count" : "8178"
+      }, {
+        "item" : "0.84",
+        "count" : "8177"
+      }, {
+        "item" : "0.89",
+        "count" : "8155"
+      }, {
+        "item" : "0.85",
+        "count" : "8142"
+      }, {
+        "item" : "0.82",
+        "count" : "8106"
+      }, {
+        "item" : "0.91",
+        "count" : "8105"
+      }, {
+        "item" : "0.93",
+        "count" : "8048"
+      }, {
+        "item" : "0.86",
+        "count" : "8027"
+      }, {
+        "item" : "0.77",
+        "count" : "7999"
+      }, {
+        "item" : "0.79",
+        "count" : "7990"
+      }, {
+        "item" : "0.92",
+        "count" : "7955"
+      }, {
+        "item" : "0.74",
+        "count" : "7883"
+      } ],
+      "smallest" : "0",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044589,
+    "name" : "Qualificació emissions ACS",
+    "dataTypeName" : "text",
+    "description" : "Qualificació d’emissions de CO2 associades al servei d’ACS",
+    "fieldName" : "qualificaci_emissions_acs",
+    "position" : 47,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802604,
+    "cachedContents" : {
+      "non_null" : "1303954",
+      "largest" : "G",
+      "null" : "39006",
+      "top" : [ {
+        "item" : "G",
+        "count" : "975216"
+      }, {
+        "item" : "E",
+        "count" : "78386"
+      }, {
+        "item" : "F",
+        "count" : "74256"
+      }, {
+        "item" : "A",
+        "count" : "68995"
+      }, {
+        "item" : "D",
+        "count" : "61942"
+      }, {
+        "item" : "C",
+        "count" : "28537"
+      }, {
+        "item" : "B",
+        "count" : "16622"
+      } ],
+      "smallest" : "A",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044619,
+    "name" : "Emissions ACS",
+    "dataTypeName" : "number",
+    "description" : "Emissions de CO2 associades al servei d’ACS [kg CO2/m2·any]",
+    "fieldName" : "emissions_acs",
+    "position" : 48,
+    "renderTypeName" : "number",
+    "tableColumnId" : 13960046,
+    "cachedContents" : {
+      "non_null" : "1341167",
+      "largest" : "7289.41",
+      "null" : "1793",
+      "top" : [ {
+        "item" : "0",
+        "count" : "43577"
+      }, {
+        "item" : "4.49",
+        "count" : "2052"
+      }, {
+        "item" : "8.9",
+        "count" : "1733"
+      }, {
+        "item" : "9.89",
+        "count" : "1708"
+      }, {
+        "item" : "8.48",
+        "count" : "1484"
+      }, {
+        "item" : "10.17",
+        "count" : "1437"
+      }, {
+        "item" : "10.03",
+        "count" : "1395"
+      }, {
+        "item" : "7.74",
+        "count" : "1392"
+      }, {
+        "item" : "9.5",
+        "count" : "1366"
+      }, {
+        "item" : "9.76",
+        "count" : "1359"
+      }, {
+        "item" : "11.87",
+        "count" : "1356"
+      }, {
+        "item" : "10.47",
+        "count" : "1347"
+      }, {
+        "item" : "10.96",
+        "count" : "1326"
+      }, {
+        "item" : "6.36",
+        "count" : "1307"
+      }, {
+        "item" : "8.68",
+        "count" : "1294"
+      }, {
+        "item" : "9.03",
+        "count" : "1291"
+      }, {
+        "item" : "10.32",
+        "count" : "1277"
+      }, {
+        "item" : "7.91",
+        "count" : "1270"
+      }, {
+        "item" : "6.45",
+        "count" : "1258"
+      }, {
+        "item" : "4.26",
+        "count" : "1250"
+      } ],
+      "smallest" : "-0.86",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044591,
+    "name" : "Qualificació emissions enllumenament",
+    "dataTypeName" : "text",
+    "description" : "Qualificació d’emissions de CO2 associades al servei d’il·luminació (A-G)",
+    "fieldName" : "qualificaci_emissions_2",
+    "position" : 49,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802584,
+    "cachedContents" : {
+      "non_null" : "92027",
+      "largest" : "G",
+      "null" : "1250933",
+      "top" : [ {
+        "item" : "A",
+        "count" : "45249"
+      }, {
+        "item" : "B",
+        "count" : "24034"
+      }, {
+        "item" : "C",
+        "count" : "7553"
+      }, {
+        "item" : "G",
+        "count" : "5737"
+      }, {
+        "item" : "D",
+        "count" : "4092"
+      }, {
+        "item" : "F",
+        "count" : "3155"
+      }, {
+        "item" : "E",
+        "count" : "2203"
+      }, {
+        "item" : "-",
+        "count" : "4"
+      } ],
+      "smallest" : "-",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044628,
+    "name" : "Emissions enllumenament",
+    "dataTypeName" : "number",
+    "description" : "Emissions de CO2 associades al servei d’il·luminació[kg CO2/m2·any]",
+    "fieldName" : "emissions_enllumenament",
+    "position" : 50,
+    "renderTypeName" : "number",
+    "tableColumnId" : 13960055,
+    "cachedContents" : {
+      "non_null" : "1300866",
+      "largest" : "2166.08",
+      "null" : "42094",
+      "top" : [ {
+        "item" : "0",
+        "count" : "1211440"
+      }, {
+        "item" : "6.31",
+        "count" : "5438"
+      }, {
+        "item" : "7.27",
+        "count" : "3975"
+      }, {
+        "item" : "5.25",
+        "count" : "2933"
+      }, {
+        "item" : "8.94",
+        "count" : "2386"
+      }, {
+        "item" : "7.4",
+        "count" : "2220"
+      }, {
+        "item" : "3.78",
+        "count" : "2187"
+      }, {
+        "item" : "31.11",
+        "count" : "1969"
+      }, {
+        "item" : "10.3",
+        "count" : "1520"
+      }, {
+        "item" : "5.13",
+        "count" : "1213"
+      }, {
+        "item" : "7.43",
+        "count" : "1047"
+      }, {
+        "item" : "10.49",
+        "count" : "993"
+      }, {
+        "item" : "3.15",
+        "count" : "975"
+      }, {
+        "item" : "4.36",
+        "count" : "963"
+      }, {
+        "item" : "5.36",
+        "count" : "731"
+      }, {
+        "item" : "4.44",
+        "count" : "670"
+      }, {
+        "item" : "44.08",
+        "count" : "580"
+      }, {
+        "item" : "18.67",
+        "count" : "448"
+      }, {
+        "item" : "6.18",
+        "count" : "371"
+      }, {
+        "item" : "3.08",
+        "count" : "342"
+      } ],
+      "smallest" : "-16.89",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044593,
+    "name" : "Qualificació energia calefacció",
+    "dataTypeName" : "text",
+    "description" : "Qualificació de consum d’energia primària no renovable pel servei de calefacció (A-G)",
+    "fieldName" : "qualificaci_energia_calefacci",
+    "position" : 51,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802596,
+    "cachedContents" : {
+      "non_null" : "1336632",
+      "largest" : "G",
+      "null" : "6328",
+      "top" : [ {
+        "item" : "E",
+        "count" : "758934"
+      }, {
+        "item" : "D",
+        "count" : "177139"
+      }, {
+        "item" : "G",
+        "count" : "151452"
+      }, {
+        "item" : "F",
+        "count" : "133302"
+      }, {
+        "item" : "C",
+        "count" : "58712"
+      }, {
+        "item" : "A",
+        "count" : "31300"
+      }, {
+        "item" : "B",
+        "count" : "25793"
+      } ],
+      "smallest" : "A",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044626,
+    "name" : "Energia calefacció",
+    "dataTypeName" : "number",
+    "description" : "Consum d’energia primària no renovable pel servei de calefacció [kWh/m2·any]",
+    "fieldName" : "energia_calefacci",
+    "position" : 52,
+    "renderTypeName" : "number",
+    "tableColumnId" : 13960053,
+    "cachedContents" : {
+      "non_null" : "1341166",
+      "largest" : "162968.33",
+      "null" : "1794",
+      "top" : [ {
+        "item" : "0",
+        "count" : "2535"
+      }, {
+        "item" : "111.02",
+        "count" : "121"
+      }, {
+        "item" : "122.4",
+        "count" : "120"
+      }, {
+        "item" : "113.87",
+        "count" : "119"
+      }, {
+        "item" : "134.76",
+        "count" : "118"
+      }, {
+        "item" : "108.06",
+        "count" : "118"
+      }, {
+        "item" : "100.09",
+        "count" : "117"
+      }, {
+        "item" : "106.58",
+        "count" : "115"
+      }, {
+        "item" : "120.89",
+        "count" : "115"
+      }, {
+        "item" : "110.37",
+        "count" : "115"
+      }, {
+        "item" : "108.96",
+        "count" : "114"
+      }, {
+        "item" : "119.83",
+        "count" : "114"
+      }, {
+        "item" : "119.62",
+        "count" : "114"
+      }, {
+        "item" : "116.46",
+        "count" : "113"
+      }, {
+        "item" : "124.12",
+        "count" : "113"
+      }, {
+        "item" : "117.85",
+        "count" : "112"
+      }, {
+        "item" : "122.98",
+        "count" : "112"
+      }, {
+        "item" : "106.83",
+        "count" : "112"
+      }, {
+        "item" : "117.3",
+        "count" : "112"
+      }, {
+        "item" : "105.04",
+        "count" : "112"
+      } ],
+      "smallest" : "0",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044595,
+    "name" : "Qualificació energia refrigeració",
+    "dataTypeName" : "text",
+    "description" : "Qualificació de consum d’energia primària no renovable pel servei de refrigeració (A-G)",
+    "fieldName" : "qualificaci_energia",
+    "position" : 53,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802567,
+    "cachedContents" : {
+      "non_null" : "1293855",
+      "largest" : "G",
+      "null" : "49105",
+      "top" : [ {
+        "item" : "C",
+        "count" : "396291"
+      }, {
+        "item" : "D",
+        "count" : "276823"
+      }, {
+        "item" : "B",
+        "count" : "250866"
+      }, {
+        "item" : "A",
+        "count" : "228805"
+      }, {
+        "item" : "E",
+        "count" : "65552"
+      }, {
+        "item" : "F",
+        "count" : "39959"
+      }, {
+        "item" : "G",
+        "count" : "35559"
+      } ],
+      "smallest" : "A",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044623,
+    "name" : "Energia refrigeració",
+    "dataTypeName" : "number",
+    "description" : "Consum d’energia primària no renovable pel servei de refrigeració [kWh/m2·any]",
+    "fieldName" : "energia_refrigeraci",
+    "position" : 54,
+    "renderTypeName" : "number",
+    "tableColumnId" : 13960050,
+    "cachedContents" : {
+      "non_null" : "1341043",
+      "largest" : "2155.12",
+      "null" : "1917",
+      "top" : [ {
+        "item" : "0",
+        "count" : "46578"
+      }, {
+        "item" : "0.01",
+        "count" : "4340"
+      }, {
+        "item" : "0.02",
+        "count" : "2850"
+      }, {
+        "item" : "0.03",
+        "count" : "2177"
+      }, {
+        "item" : "0.04",
+        "count" : "1767"
+      }, {
+        "item" : "0.05",
+        "count" : "1624"
+      }, {
+        "item" : "4.63",
+        "count" : "1521"
+      }, {
+        "item" : "4.88",
+        "count" : "1512"
+      }, {
+        "item" : "5.2",
+        "count" : "1478"
+      }, {
+        "item" : "4.9",
+        "count" : "1460"
+      }, {
+        "item" : "4.72",
+        "count" : "1446"
+      }, {
+        "item" : "4.79",
+        "count" : "1441"
+      }, {
+        "item" : "5.33",
+        "count" : "1439"
+      }, {
+        "item" : "4.71",
+        "count" : "1432"
+      }, {
+        "item" : "5.39",
+        "count" : "1424"
+      }, {
+        "item" : "4.95",
+        "count" : "1423"
+      }, {
+        "item" : "0.06",
+        "count" : "1422"
+      }, {
+        "item" : "5.49",
+        "count" : "1421"
+      }, {
+        "item" : "5.12",
+        "count" : "1419"
+      }, {
+        "item" : "4.89",
+        "count" : "1419"
+      } ],
+      "smallest" : "-4.73",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044597,
+    "name" : "Qualificació energia ACS",
+    "dataTypeName" : "text",
+    "description" : "Qualificació de consum d’energia primària no renovable pel servei d’aigua calenta sanitària (A-G",
+    "fieldName" : "qualificaci_energia_acs",
+    "position" : 55,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802591,
+    "cachedContents" : {
+      "non_null" : "1304988",
+      "largest" : "G",
+      "null" : "37972",
+      "top" : [ {
+        "item" : "G",
+        "count" : "1058271"
+      }, {
+        "item" : "E",
+        "count" : "63370"
+      }, {
+        "item" : "A",
+        "count" : "53824"
+      }, {
+        "item" : "D",
+        "count" : "49183"
+      }, {
+        "item" : "F",
+        "count" : "40739"
+      }, {
+        "item" : "C",
+        "count" : "25602"
+      }, {
+        "item" : "B",
+        "count" : "13999"
+      } ],
+      "smallest" : "A",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044614,
+    "name" : "Energia ACS",
+    "dataTypeName" : "number",
+    "description" : "Consum d’energia primària no renovable pel servei d’ACS [kWh/m2·any]",
+    "fieldName" : "energia_acs",
+    "position" : 56,
+    "renderTypeName" : "number",
+    "tableColumnId" : 13960041,
+    "cachedContents" : {
+      "non_null" : "1341166",
+      "largest" : "43031.74",
+      "null" : "1794",
+      "top" : [ {
+        "item" : "0",
+        "count" : "43543"
+      }, {
+        "item" : "21.19",
+        "count" : "1540"
+      }, {
+        "item" : "46.71",
+        "count" : "900"
+      }, {
+        "item" : "25.12",
+        "count" : "870"
+      }, {
+        "item" : "42.04",
+        "count" : "864"
+      }, {
+        "item" : "56.05",
+        "count" : "807"
+      }, {
+        "item" : "40.03",
+        "count" : "791"
+      }, {
+        "item" : "30.03",
+        "count" : "721"
+      }, {
+        "item" : "60.05",
+        "count" : "699"
+      }, {
+        "item" : "48.04",
+        "count" : "680"
+      }, {
+        "item" : "38.06",
+        "count" : "661"
+      }, {
+        "item" : "52.54",
+        "count" : "643"
+      }, {
+        "item" : "49.45",
+        "count" : "609"
+      }, {
+        "item" : "44.25",
+        "count" : "596"
+      }, {
+        "item" : "53.29",
+        "count" : "590"
+      }, {
+        "item" : "37.37",
+        "count" : "575"
+      }, {
+        "item" : "26.93",
+        "count" : "570"
+      }, {
+        "item" : "33.63",
+        "count" : "554"
+      }, {
+        "item" : "59.21",
+        "count" : "551"
+      }, {
+        "item" : "25.08",
+        "count" : "542"
+      } ],
+      "smallest" : "-5.06",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044599,
+    "name" : "Qualificació energia enllumenament",
+    "dataTypeName" : "text",
+    "description" : "Qualificació de consum d’energia primària no renovable pel servei de il·luminació (A-G)",
+    "fieldName" : "qualificaci_energia_1",
+    "position" : 57,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802563,
+    "cachedContents" : {
+      "non_null" : "91976",
+      "largest" : "G",
+      "null" : "1250984",
+      "top" : [ {
+        "item" : "A",
+        "count" : "45113"
+      }, {
+        "item" : "B",
+        "count" : "24005"
+      }, {
+        "item" : "C",
+        "count" : "7363"
+      }, {
+        "item" : "G",
+        "count" : "5846"
+      }, {
+        "item" : "D",
+        "count" : "4267"
+      }, {
+        "item" : "F",
+        "count" : "3164"
+      }, {
+        "item" : "E",
+        "count" : "2214"
+      }, {
+        "item" : "-",
+        "count" : "4"
+      } ],
+      "smallest" : "-",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044625,
+    "name" : "Energia enllumenament",
+    "dataTypeName" : "number",
+    "description" : "Consum d’energia primària no renovable pel servei de il·luminació [kWh/m2·any]",
+    "fieldName" : "energia_enllumenament",
+    "position" : 58,
+    "renderTypeName" : "number",
+    "tableColumnId" : 13960052,
+    "cachedContents" : {
+      "non_null" : "1318002",
+      "largest" : "12787.1",
+      "null" : "24958",
+      "top" : [ {
+        "item" : "0",
+        "count" : "1228490"
+      }, {
+        "item" : "37.24",
+        "count" : "5407"
+      }, {
+        "item" : "42.92",
+        "count" : "3385"
+      }, {
+        "item" : "30.97",
+        "count" : "2907"
+      }, {
+        "item" : "52.76",
+        "count" : "2360"
+      }, {
+        "item" : "43.69",
+        "count" : "2178"
+      }, {
+        "item" : "22.34",
+        "count" : "2159"
+      }, {
+        "item" : "183.66",
+        "count" : "1967"
+      }, {
+        "item" : "60.81",
+        "count" : "1509"
+      }, {
+        "item" : "30.3",
+        "count" : "1187"
+      }, {
+        "item" : "43.88",
+        "count" : "1022"
+      }, {
+        "item" : "61.9",
+        "count" : "972"
+      }, {
+        "item" : "25.75",
+        "count" : "791"
+      }, {
+        "item" : "18.58",
+        "count" : "741"
+      }, {
+        "item" : "31.66",
+        "count" : "703"
+      }, {
+        "item" : "26.21",
+        "count" : "642"
+      }, {
+        "item" : "260.24",
+        "count" : "578"
+      }, {
+        "item" : "42.93",
+        "count" : "564"
+      }, {
+        "item" : "110.2",
+        "count" : "442"
+      }, {
+        "item" : "36.49",
+        "count" : "355"
+      } ],
+      "smallest" : "-99.71",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044601,
+    "name" : "Qualificació energia calefacció demanda",
+    "dataTypeName" : "text",
+    "description" : "Qualificació de la demanda energia de calefacció (A-G)",
+    "fieldName" : "qualificaci_energia_calefacci_1",
+    "position" : 59,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802610,
+    "cachedContents" : {
+      "non_null" : "1337399",
+      "largest" : "G",
+      "null" : "5561",
+      "top" : [ {
+        "item" : "E",
+        "count" : "570036"
+      }, {
+        "item" : "G",
+        "count" : "404705"
+      }, {
+        "item" : "D",
+        "count" : "146624"
+      }, {
+        "item" : "F",
+        "count" : "138033"
+      }, {
+        "item" : "C",
+        "count" : "43626"
+      }, {
+        "item" : "B",
+        "count" : "22282"
+      }, {
+        "item" : "A",
+        "count" : "12093"
+      } ],
+      "smallest" : "A",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044629,
+    "name" : "Energia calefacció demanda",
+    "dataTypeName" : "number",
+    "description" : "Demanda energia de calefacció [kWh/m2·any]",
+    "fieldName" : "energia_calefacci_demanda",
+    "position" : 60,
+    "renderTypeName" : "number",
+    "tableColumnId" : 13960056,
+    "cachedContents" : {
+      "non_null" : "1341176",
+      "largest" : "3622.3",
+      "null" : "1784",
+      "top" : [ {
+        "item" : "0",
+        "count" : "1111"
+      }, {
+        "item" : "75.34",
+        "count" : "172"
+      }, {
+        "item" : "76.96",
+        "count" : "170"
+      }, {
+        "item" : "77.41",
+        "count" : "167"
+      }, {
+        "item" : "84.62",
+        "count" : "166"
+      }, {
+        "item" : "79.34",
+        "count" : "166"
+      }, {
+        "item" : "77.61",
+        "count" : "163"
+      }, {
+        "item" : "75.91",
+        "count" : "163"
+      }, {
+        "item" : "87.26",
+        "count" : "161"
+      }, {
+        "item" : "72.25",
+        "count" : "161"
+      }, {
+        "item" : "79.05",
+        "count" : "161"
+      }, {
+        "item" : "86.37",
+        "count" : "161"
+      }, {
+        "item" : "91.18",
+        "count" : "160"
+      }, {
+        "item" : "72.9",
+        "count" : "160"
+      }, {
+        "item" : "82.93",
+        "count" : "160"
+      }, {
+        "item" : "83.04",
+        "count" : "159"
+      }, {
+        "item" : "79.29",
+        "count" : "159"
+      }, {
+        "item" : "82.54",
+        "count" : "158"
+      }, {
+        "item" : "85.25",
+        "count" : "158"
+      }, {
+        "item" : "76.65",
+        "count" : "158"
+      } ],
+      "smallest" : "0",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044603,
+    "name" : "Qualificació energia refrigeració demanda",
+    "dataTypeName" : "text",
+    "description" : "Qualificació de la demanda energia de refrigeració (A-G)",
+    "fieldName" : "qualificaci_energia_2",
+    "position" : 61,
+    "renderTypeName" : "text",
+    "tableColumnId" : 6802594,
+    "cachedContents" : {
+      "non_null" : "1294033",
+      "largest" : "G",
+      "null" : "48927",
+      "top" : [ {
+        "item" : "C",
+        "count" : "432666"
+      }, {
+        "item" : "D",
+        "count" : "274977"
+      }, {
+        "item" : "B",
+        "count" : "256771"
+      }, {
+        "item" : "A",
+        "count" : "218786"
+      }, {
+        "item" : "E",
+        "count" : "57378"
+      }, {
+        "item" : "F",
+        "count" : "30853"
+      }, {
+        "item" : "G",
+        "count" : "22601"
+      }, {
+        "item" : "-",
+        "count" : "1"
+      } ],
+      "smallest" : "-",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044622,
+    "name" : "Energia refrigeració demanda",
+    "dataTypeName" : "number",
+    "description" : "Demanda energia de refrigeració [kWh/m2·any]",
+    "fieldName" : "energia_refrigeraci_demanda",
+    "position" : 62,
+    "renderTypeName" : "number",
+    "tableColumnId" : 13960049,
+    "cachedContents" : {
+      "non_null" : "1340850",
+      "largest" : "1573.1",
+      "null" : "2110",
+      "top" : [ {
+        "item" : "0",
+        "count" : "41268"
+      }, {
+        "item" : "0.01",
+        "count" : "4305"
+      }, {
+        "item" : "0.02",
+        "count" : "2936"
+      }, {
+        "item" : "0.03",
+        "count" : "2094"
+      }, {
+        "item" : "0.04",
+        "count" : "1746"
+      }, {
+        "item" : "0.05",
+        "count" : "1617"
+      }, {
+        "item" : "5.18",
+        "count" : "1589"
+      }, {
+        "item" : "4.83",
+        "count" : "1582"
+      }, {
+        "item" : "4.8",
+        "count" : "1579"
+      }, {
+        "item" : "4.9",
+        "count" : "1578"
+      }, {
+        "item" : "4.91",
+        "count" : "1576"
+      }, {
+        "item" : "4.89",
+        "count" : "1573"
+      }, {
+        "item" : "5.35",
+        "count" : "1569"
+      }, {
+        "item" : "4.74",
+        "count" : "1568"
+      }, {
+        "item" : "4.72",
+        "count" : "1562"
+      }, {
+        "item" : "5.23",
+        "count" : "1561"
+      }, {
+        "item" : "4.54",
+        "count" : "1560"
+      }, {
+        "item" : "4.98",
+        "count" : "1557"
+      }, {
+        "item" : "4.93",
+        "count" : "1557"
+      }, {
+        "item" : "4.76",
+        "count" : "1557"
+      } ],
+      "smallest" : "0",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044618,
+    "name" : "VENTILACIO US RESIDENCIAL",
+    "dataTypeName" : "number",
+    "description" : "Taxa de ventilació per a ús residencial [ren/h]",
+    "fieldName" : "ventilacio_us_residencial",
+    "position" : 63,
+    "renderTypeName" : "number",
+    "tableColumnId" : 13960045,
+    "cachedContents" : {
+      "non_null" : "264340",
+      "largest" : "10",
+      "null" : "1078620",
+      "top" : [ {
+        "item" : "0.63",
+        "count" : "190353"
+      }, {
+        "item" : "0.86",
+        "count" : "10161"
+      }, {
+        "item" : "0.8",
+        "count" : "9413"
+      }, {
+        "item" : "0.82",
+        "count" : "6836"
+      }, {
+        "item" : "0.83",
+        "count" : "4216"
+      }, {
+        "item" : "1",
+        "count" : "2027"
+      }, {
+        "item" : "0.85",
+        "count" : "1893"
+      }, {
+        "item" : "0.97",
+        "count" : "1742"
+      }, {
+        "item" : "0.72",
+        "count" : "1701"
+      }, {
+        "item" : "0.77",
+        "count" : "1315"
+      }, {
+        "item" : "0.98",
+        "count" : "1309"
+      }, {
+        "item" : "0.96",
+        "count" : "1184"
+      }, {
+        "item" : "0.9",
+        "count" : "1155"
+      }, {
+        "item" : "0.84",
+        "count" : "1137"
+      }, {
+        "item" : "0.64",
+        "count" : "1117"
+      }, {
+        "item" : "0.68",
+        "count" : "1018"
+      }, {
+        "item" : "0.5",
+        "count" : "968"
+      }, {
+        "item" : "0.7",
+        "count" : "924"
+      }, {
+        "item" : "0.6",
+        "count" : "896"
+      }, {
+        "item" : "0.79",
+        "count" : "883"
+      } ],
+      "smallest" : "0",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 21044606,
+    "name" : "LONGITUD",
+    "dataTypeName" : "number",
+    "description" : "Longitud expressada en graus decimals. Sistema de referència WGS84",
+    "fieldName" : "longitud",
+    "position" : 64,
+    "renderTypeName" : "number",
+    "tableColumnId" : 7260760,
+    "cachedContents" : {
+      "non_null" : "1319472",
+      "largest" : "3.296821258758338",
+      "null" : "23488",
+      "top" : [ {
+        "item" : "3.147730325116754",
+        "count" : "236"
+      }, {
+        "item" : "1.183280783660244",
+        "count" : "210"
+      }, {
+        "item" : "2.1253611137990136",
+        "count" : "189"
+      }, {
+        "item" : "2.212440301854343",
+        "count" : "188"
+      }, {
+        "item" : "2.1981155290045464",
+        "count" : "184"
+      }, {
+        "item" : "2.144621478451286",
+        "count" : "172"
+      }, {
+        "item" : "3.123859308092391",
+        "count" : "162"
+      }, {
+        "item" : "3.1417356067060673",
+        "count" : "153"
+      }, {
+        "item" : "2.2015066793534164",
+        "count" : "152"
+      }, {
+        "item" : "2.129649150917297",
+        "count" : "150"
+      }, {
+        "item" : "1.1476792291481717",
+        "count" : "149"
+      }, {
+        "item" : "2.2206602195427076",
+        "count" : "146"
+      }, {
+        "item" : "0.9349547290206127",
+        "count" : "144"
+      }, {
+        "item" : "2.149811069785827",
+        "count" : "143"
+      }, {
+        "item" : "3.065091641371508",
+        "count" : "136"
+      }, {
+        "item" : "2.1974301239470546",
+        "count" : "135"
+      }, {
+        "item" : "2.166284719049913",
+        "count" : "131"
+      }, {
+        "item" : "2.1457021421223983",
+        "count" : "131"
+      }, {
+        "item" : "2.067761345726252",
+        "count" : "130"
+      }, {
+        "item" : "2.0777815236346653",
+        "count" : "128"
+      } ],
+      "smallest" : "0.2500649601286721",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ","
+    }
+  }, {
+    "id" : 21044607,
+    "name" : "LATITUD",
+    "dataTypeName" : "number",
+    "description" : "Latitud expressada en graus decimals. Sistema de referència WGS84",
+    "fieldName" : "latitud",
+    "position" : 65,
+    "renderTypeName" : "number",
+    "tableColumnId" : 7260761,
+    "cachedContents" : {
+      "non_null" : "1319472",
+      "largest" : "42.8389027866784",
+      "null" : "23488",
+      "top" : [ {
+        "item" : "42.263452033110056",
+        "count" : "236"
+      }, {
+        "item" : "41.0804275943369",
+        "count" : "210"
+      }, {
+        "item" : "41.51996425093887",
+        "count" : "189"
+      }, {
+        "item" : "41.40805939127703",
+        "count" : "188"
+      }, {
+        "item" : "41.41810872121006",
+        "count" : "184"
+      }, {
+        "item" : "41.37958294856443",
+        "count" : "172"
+      }, {
+        "item" : "42.2389405520842",
+        "count" : "162"
+      }, {
+        "item" : "42.26964796912995",
+        "count" : "153"
+      }, {
+        "item" : "41.417176164002115",
+        "count" : "152"
+      }, {
+        "item" : "41.38268824634368",
+        "count" : "150"
+      }, {
+        "item" : "41.078263678246905",
+        "count" : "149"
+      }, {
+        "item" : "41.41968664756037",
+        "count" : "146"
+      }, {
+        "item" : "42.69578663719078",
+        "count" : "144"
+      }, {
+        "item" : "41.4336324805251",
+        "count" : "143"
+      }, {
+        "item" : "41.807163163687115",
+        "count" : "136"
+      }, {
+        "item" : "41.40656869311785",
+        "count" : "135"
+      }, {
+        "item" : "41.400998307303986",
+        "count" : "131"
+      }, {
+        "item" : "41.378730038468575",
+        "count" : "131"
+      }, {
+        "item" : "41.38028525004093",
+        "count" : "130"
+      }, {
+        "item" : "41.47897748860859",
+        "count" : "128"
+      } ],
+      "smallest" : "40.529617568383856",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "decimalSeparator" : ","
+    }
+  }, {
+    "id" : 21044608,
+    "name" : "GEOREFERÈNCIA",
+    "dataTypeName" : "point",
+    "description" : "Columna de georeferència",
+    "fieldName" : "georeferencia",
+    "position" : 66,
+    "renderTypeName" : "point",
+    "tableColumnId" : 7260762,
+    "cachedContents" : {
+      "non_null" : "1319472",
+      "null" : "23488",
+      "top" : [ {
+        "item" : {
+          "coordinates" : [ 3.147730325117, 42.26345203311 ],
+          "type" : "Point"
+        },
+        "count" : "236"
+      }, {
+        "item" : {
+          "coordinates" : [ 1.18328078366, 41.080427594337 ],
+          "type" : "Point"
+        },
+        "count" : "210"
+      }, {
+        "item" : {
+          "coordinates" : [ 2.125361113799, 41.519964250939 ],
+          "type" : "Point"
+        },
+        "count" : "189"
+      }, {
+        "item" : {
+          "coordinates" : [ 2.212440301854, 41.408059391277 ],
+          "type" : "Point"
+        },
+        "count" : "188"
+      }, {
+        "item" : {
+          "coordinates" : [ 2.198115529005, 41.41810872121 ],
+          "type" : "Point"
+        },
+        "count" : "184"
+      }, {
+        "item" : {
+          "coordinates" : [ 2.144621478451, 41.379582948564 ],
+          "type" : "Point"
+        },
+        "count" : "172"
+      }, {
+        "item" : {
+          "coordinates" : [ 3.123859308092, 42.238940552084 ],
+          "type" : "Point"
+        },
+        "count" : "162"
+      }, {
+        "item" : {
+          "coordinates" : [ 3.141735606706, 42.26964796913 ],
+          "type" : "Point"
+        },
+        "count" : "153"
+      }, {
+        "item" : {
+          "coordinates" : [ 2.201506679353, 41.417176164002 ],
+          "type" : "Point"
+        },
+        "count" : "152"
+      }, {
+        "item" : {
+          "coordinates" : [ 2.129649150917, 41.382688246344 ],
+          "type" : "Point"
+        },
+        "count" : "150"
+      }, {
+        "item" : {
+          "coordinates" : [ 1.147679229148, 41.078263678247 ],
+          "type" : "Point"
+        },
+        "count" : "149"
+      }, {
+        "item" : {
+          "coordinates" : [ 2.220660219543, 41.41968664756 ],
+          "type" : "Point"
+        },
+        "count" : "146"
+      }, {
+        "item" : {
+          "coordinates" : [ 0.934954729021, 42.695786637191 ],
+          "type" : "Point"
+        },
+        "count" : "144"
+      }, {
+        "item" : {
+          "coordinates" : [ 2.149811069786, 41.433632480525 ],
+          "type" : "Point"
+        },
+        "count" : "143"
+      }, {
+        "item" : {
+          "coordinates" : [ 3.065091641372, 41.807163163687 ],
+          "type" : "Point"
+        },
+        "count" : "136"
+      }, {
+        "item" : {
+          "coordinates" : [ 2.197430123947, 41.406568693118 ],
+          "type" : "Point"
+        },
+        "count" : "135"
+      }, {
+        "item" : {
+          "coordinates" : [ 2.16628471905, 41.400998307304 ],
+          "type" : "Point"
+        },
+        "count" : "131"
+      }, {
+        "item" : {
+          "coordinates" : [ 2.145702142122, 41.378730038469 ],
+          "type" : "Point"
+        },
+        "count" : "131"
+      }, {
+        "item" : {
+          "coordinates" : [ 2.067761345726, 41.380285250041 ],
+          "type" : "Point"
+        },
+        "count" : "130"
+      }, {
+        "item" : {
+          "coordinates" : [ 2.819723575026, 41.968065063416 ],
+          "type" : "Point"
+        },
+        "count" : "128"
+      } ],
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044609,
+    "name" : "REHABILITACIO_ENERGETICA",
+    "dataTypeName" : "text",
+    "description" : "S’ha realitzat una rehabilitació energètica [Sí/no]",
+    "fieldName" : "rehabilitacio_energetica",
+    "position" : 67,
+    "renderTypeName" : "text",
+    "tableColumnId" : 13926654,
+    "cachedContents" : {
+      "non_null" : "1233326",
+      "largest" : "SI",
+      "null" : "109634",
+      "top" : [ {
+        "item" : "NO",
+        "count" : "1206538"
+      }, {
+        "item" : "SI",
+        "count" : "26788"
+      } ],
+      "smallest" : "NO",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044610,
+    "name" : "ACTUACIONS_REHABILITACIO",
+    "dataTypeName" : "text",
+    "description" : "Actuacions de la rehabilitació",
+    "fieldName" : "actuacions_rehabilitacio",
+    "position" : 68,
+    "renderTypeName" : "text",
+    "tableColumnId" : 13926648,
+    "cachedContents" : {
+      "non_null" : "25503",
+      "largest" : "Va ser una obra de rehabilitació parcial de l’edifici amb la corresponent llicència d’obres i visat del COAC, amb llicència nº 2009/14 de 18-03-2010 i final d’obra de 16 de novembre de 2011, on es van seguir les següents actuacions:-       Substitució de la coberta complint el CTE 2006 a nivell d’aïllaments.-       Modificació d’obertures de la façanes a carrer i pati a carrer de planta 2a, complint CTE 2006 a nivell d’aïllaments.-       Reforç de sostres.-       Canvis de distribució interior.-       Noves instal.lacions tèrmiques: solar segons CTE i D.Ecoeficiència, calefacció amb caldera de gas i radiadors d’aigua segons RITE, AC en pl.2a.-       Renovació de la resta d’instal.lacions: elèctrica, aigua, telecomunicacions, sanejament, ...-       Repàs i nous revestiments i paviments.",
+      "null" : "1317457",
+      "top" : [ {
+        "item" : "Millora de les instal·lacions (calefacció, climatització, ACS, enllumenat,...)",
+        "count" : "5167"
+      }, {
+        "item" : "Renovació de finestres i/o proteccions solars.",
+        "count" : "4280"
+      }, {
+        "item" : "Aïllament en façanes i/o coberta. || Renovació de finestres i/o proteccions solars. || Millora de les instal·lacions (calefacció, climatització, ACS, enllumenat,...)",
+        "count" : "3018"
+      }, {
+        "item" : "Renovació de finestres i/o proteccions solars. || Millora de les instal·lacions (calefacció, climatització, ACS, enllumenat,...)",
+        "count" : "1365"
+      }, {
+        "item" : "Aïllament en façanes i/o coberta.",
+        "count" : "675"
+      }, {
+        "item" : "Aïllament en façanes i/o coberta. || Renovació de finestres i/o proteccions solars.",
+        "count" : "581"
+      }, {
+        "item" : "0,1,2",
+        "count" : "568"
+      }, {
+        "item" : "1",
+        "count" : "537"
+      }, {
+        "item" : "2",
+        "count" : "446"
+      }, {
+        "item" : "Mejora de las instalaciones (calefacción, climatización, ACS, alumbrado,...)",
+        "count" : "364"
+      }, {
+        "item" : "Aïllament en façanes i/o coberta. || Millora de les instal·lacions (calefacció, climatització, ACS, enllumenat,...)",
+        "count" : "333"
+      }, {
+        "item" : "3",
+        "count" : "306"
+      }, {
+        "item" : "INSTALACION SOLAR FOTOVOLTAICA",
+        "count" : "259"
+      }, {
+        "item" : "1,2",
+        "count" : "217"
+      }, {
+        "item" : "Aislamiento en fachadas y/o cubierta. || Renovación de ventanas y/o protecciones solares. || Mejora de las instalaciones (calefacción, climatización, ACS, alumbrado,...)",
+        "count" : "195"
+      }, {
+        "item" : "Renovación de ventanas y/o protecciones solares.",
+        "count" : "181"
+      }, {
+        "item" : "Renovación de ventanas y/o protecciones solares. || Mejora de las instalaciones (calefacción, climatización, ACS, alumbrado,...)",
+        "count" : "134"
+      }, {
+        "item" : "Instal·lació de plaques fotovoltaiques",
+        "count" : "131"
+      }, {
+        "item" : "INSTAL·LACIÓ FOTOVOLTAICA PER AUTOCONSUM",
+        "count" : "130"
+      }, {
+        "item" : "0",
+        "count" : "127"
+      } ],
+      "smallest" : "0",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : { }
+  }, {
+    "id" : 21044611,
+    "name" : "DATA_ENTRADA",
+    "dataTypeName" : "calendar_date",
+    "description" : "Data d’inscripció al registre",
+    "fieldName" : "data_entrada",
+    "position" : 69,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 13926650,
+    "cachedContents" : {
+      "non_null" : "1342960",
+      "largest" : "2026-11-07T00:00:00.000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2025-06-17T00:00:00.000",
+        "count" : "1226"
+      }, {
+        "item" : "2025-05-21T00:00:00.000",
+        "count" : "1090"
+      }, {
+        "item" : "2023-07-06T00:00:00.000",
+        "count" : "1066"
+      }, {
+        "item" : "2023-12-27T00:00:00.000",
+        "count" : "1063"
+      }, {
+        "item" : "2026-06-18T00:00:00.000",
+        "count" : "930"
+      }, {
+        "item" : "2025-12-15T00:00:00.000",
+        "count" : "899"
+      }, {
+        "item" : "2017-01-18T00:00:00.000",
+        "count" : "844"
+      }, {
+        "item" : "2025-06-18T00:00:00.000",
+        "count" : "829"
+      }, {
+        "item" : "2025-05-20T00:00:00.000",
+        "count" : "827"
+      }, {
+        "item" : "2023-12-14T00:00:00.000",
+        "count" : "807"
+      }, {
+        "item" : "2025-05-22T00:00:00.000",
+        "count" : "796"
+      }, {
+        "item" : "2025-12-23T00:00:00.000",
+        "count" : "795"
+      }, {
+        "item" : "2024-03-20T00:00:00.000",
+        "count" : "793"
+      }, {
+        "item" : "2023-05-09T00:00:00.000",
+        "count" : "789"
+      }, {
+        "item" : "2025-12-17T00:00:00.000",
+        "count" : "788"
+      }, {
+        "item" : "2025-12-16T00:00:00.000",
+        "count" : "788"
+      }, {
+        "item" : "2022-07-25T00:00:00.000",
+        "count" : "785"
+      }, {
+        "item" : "2023-12-18T00:00:00.000",
+        "count" : "784"
+      }, {
+        "item" : "2026-09-15T00:00:00.000",
+        "count" : "782"
+      }, {
+        "item" : "2025-12-03T00:00:00.000",
+        "count" : "773"
+      } ],
+      "smallest" : "2016-11-07T00:00:00.000",
+      "count" : "1342960",
+      "cardinality" : "1342960"
+    },
+    "format" : {
+      "view" : "date_dmy"
+    }
+  }, {
+    "id" : 21044612,
+    "name" : "LIMADM_MUNICIPI",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : ":@computed_region_bh64_c7uy",
+    "position" : 70,
+    "renderTypeName" : "number",
+    "tableColumnId" : 7260763,
+    "computationStrategy" : {
+      "source_columns" : [ "georeferencia" ],
+      "type" : "georegion_match_on_point",
+      "parameters" : {
+        "region" : "_bh64-c7uy",
+        "primary_key" : "_feature_id"
+      }
+    },
+    "format" : { }
+  }, {
+    "id" : 21044613,
+    "name" : "LIMADM COMARCA",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : ":@computed_region_wvic_k925",
+    "position" : 71,
+    "renderTypeName" : "number",
+    "tableColumnId" : 7260764,
+    "computationStrategy" : {
+      "source_columns" : [ "georeferencia" ],
+      "type" : "georegion_match_on_point",
+      "parameters" : {
+        "region" : "_wvic-k925",
+        "primary_key" : "_feature_id"
+      }
+    },
+    "format" : { }
+  } ],
+  "grants" : [ {
+    "inherited" : false,
+    "type" : "viewer",
+    "flags" : [ "public" ]
+  } ],
+  "license" : {
+    "name" : "See Terms of Use"
+  },
+  "metadata" : {
+    "custom_fields" : {
+      "Freqüència d'actualització" : {
+        "Freqüència d'actualització" : "Setmanal"
+      },
+      "Idioma" : {
+        "Idioma" : "Català",
+        "Dataset name (EN)" : "Certificates of energetic efficiency of buildings",
+        "Nombre del conjunto de datos (ES)" : "Certificados de eficiencia energética de edificios"
+      },
+      "Informació de gènere o sexe" : {
+        "Informació de gènere o sexe" : "No aplicable"
+      },
+      "Actors" : {
+        "Departament" : "Territori, Habitatge i Transició Ecològica",
+        "Tipus actor" : "Generalitat de Catalunya"
+      },
+      "Àmbit geogràfic" : {
+        "Informació geogràfica" : "Coordenades",
+        "Àmbit geogràfic" : "Catalunya"
+      }
+    },
+    "availableDisplayTypes" : [ "table", "fatrow", "page" ]
+  },
+  "owner" : {
+    "id" : "a4b5-gx6v",
+    "displayName" : "Dades Obertes Catalunya",
+    "profileImageUrlLarge" : "/api/users/a4b5-gx6v/profile_images/LARGE",
+    "profileImageUrlMedium" : "/api/users/a4b5-gx6v/profile_images/THUMB",
+    "profileImageUrlSmall" : "/api/users/a4b5-gx6v/profile_images/TINY",
+    "screenName" : "Dades Obertes Catalunya",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula" ]
+  },
+  "query" : { },
+  "rights" : [ "read" ],
+  "tableAuthor" : {
+    "id" : "a4b5-gx6v",
+    "displayName" : "Dades Obertes Catalunya",
+    "profileImageUrlLarge" : "/api/users/a4b5-gx6v/profile_images/LARGE",
+    "profileImageUrlMedium" : "/api/users/a4b5-gx6v/profile_images/THUMB",
+    "profileImageUrlSmall" : "/api/users/a4b5-gx6v/profile_images/TINY",
+    "screenName" : "Dades Obertes Catalunya",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula" ]
+  },
+  "tags" : [ "certificació", "energia", "eficiència", "estalvi", "qualificació", "emissions", "energia primària no renovable", "energia final", "transmitància", "fotovoltaica", "geotèrmica", "solar tèrmica", "vehicle elèctric", "cte", "eina de certificació", "smartcatalonia", "ods7_energia assequible i no contaminant" ],
+  "flags" : [ "default", "ownerMayBeContacted", "restorable", "restorePossibleForType" ]
+}

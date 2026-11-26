@@ -1,0 +1,645 @@
+{
+  "slide_count": 67,
+  "repository_snapshot_sha": "de3ea0ca5f2c022af5f4d50d054a0c897e5eb914",
+  "date": "2026-11-15",
+  "notes_embedded": true,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Roofscapes (Re)Powered V2",
+      "chapter": "PROJECT STORY",
+      "source_ids": [
+        1,
+        2,
+        15
+      ]
+    },
+    {
+      "number": 2,
+      "title": "A roof makes electricity. Buildings use it.",
+      "chapter": "PROJECT STORY",
+      "source_ids": [
+        24,
+        30
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Three puzzles that need to become one decision",
+      "chapter": "PROJECT STORY",
+      "source_ids": [
+        20,
+        24,
+        28
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Research question",
+      "chapter": "PROJECT STORY",
+      "source_ids": [
+        10,
+        35
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Scope: what we are \u2014 and are not \u2014 building",
+      "chapter": "PROJECT STORY",
+      "source_ids": [
+        10,
+        11,
+        30
+      ]
+    },
+    {
+      "number": 6,
+      "title": "How the project evolved",
+      "chapter": "DECISIONS & EVOLUTION",
+      "source_ids": [
+        12,
+        10
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Faculty feedback became design rules",
+      "chapter": "DECISIONS & EVOLUTION",
+      "source_ids": [
+        44,
+        26,
+        42
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Major decision checkpoints",
+      "chapter": "DECISIONS & EVOLUTION",
+      "source_ids": [
+        9,
+        10,
+        52
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Barcelona is the urban laboratory",
+      "chapter": "PROJECT STORY",
+      "source_ids": [
+        15,
+        20,
+        40
+      ]
+    },
+    {
+      "number": 10,
+      "title": "A160: the primary host",
+      "chapter": "THE CASE STUDY",
+      "source_ids": [
+        15,
+        16,
+        3
+      ]
+    },
+    {
+      "number": 11,
+      "title": "The four-building cluster",
+      "chapter": "PROJECT STORY",
+      "source_ids": [
+        15,
+        17,
+        18
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Why select each building?",
+      "chapter": "THE CASE STUDY",
+      "source_ids": [
+        15,
+        17,
+        18
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Why not Almog\u00e0vers 165 as main host?",
+      "chapter": "THE CASE STUDY",
+      "source_ids": [
+        15,
+        49,
+        50
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Four data classes",
+      "chapter": "DATA & TRUST",
+      "source_ids": [
+        11,
+        52
+      ]
+    },
+    {
+      "number": 15,
+      "title": "What public sources contribute",
+      "chapter": "DATA & TRUST",
+      "source_ids": [
+        22,
+        23,
+        26
+      ]
+    },
+    {
+      "number": 16,
+      "title": "V1 rooftop intelligence: code worth preserving",
+      "chapter": "ROOF & SOLAR",
+      "source_ids": [
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Two A160 rooftop assessments",
+      "chapter": "ROOF & SOLAR",
+      "source_ids": [
+        3,
+        4,
+        43
+      ]
+    },
+    {
+      "number": 18,
+      "title": "Geometric potential is not installed PV",
+      "chapter": "ROOF & SOLAR",
+      "source_ids": [
+        3,
+        4
+      ]
+    },
+    {
+      "number": 19,
+      "title": "The roof model does not exactly place the panels",
+      "chapter": "ROOF & SOLAR",
+      "source_ids": [
+        3,
+        5,
+        43
+      ]
+    },
+    {
+      "number": 20,
+      "title": "The municipal benchmark predates A160",
+      "chapter": "ROOF & SOLAR",
+      "source_ids": [
+        20,
+        21,
+        3
+      ]
+    },
+    {
+      "number": 21,
+      "title": "Existing A160 PV remains unidentified in kWp",
+      "chapter": "ROOF & SOLAR",
+      "source_ids": [
+        54,
+        3,
+        52
+      ]
+    },
+    {
+      "number": 22,
+      "title": "PVGIS: a physics engine, not a new AI model",
+      "chapter": "ROOF & SOLAR",
+      "source_ids": [
+        52,
+        68,
+        69
+      ]
+    },
+    {
+      "number": 23,
+      "title": "PVGIS results are complete only for hypotheses",
+      "chapter": "ROOF & SOLAR",
+      "source_ids": [
+        52,
+        69,
+        55
+      ]
+    },
+    {
+      "number": 24,
+      "title": "The time and weather mismatch",
+      "chapter": "ROOF & SOLAR",
+      "source_ids": [
+        52,
+        74,
+        11
+      ]
+    },
+    {
+      "number": 25,
+      "title": "The complete analytical pipeline",
+      "chapter": "ARCHITECTURE & AI",
+      "source_ids": [
+        10,
+        11,
+        52
+      ]
+    },
+    {
+      "number": 26,
+      "title": "The measured-data route was tested and not selected",
+      "chapter": "ARCHITECTURE & AI",
+      "source_ids": [
+        8,
+        9,
+        26
+      ]
+    },
+    {
+      "number": 27,
+      "title": "EnergyPlus is the virtual building laboratory",
+      "chapter": "ARCHITECTURE & AI",
+      "source_ids": [
+        28,
+        60,
+        74
+      ]
+    },
+    {
+      "number": 28,
+      "title": "The first trained AI uses a small reference office",
+      "chapter": "ARCHITECTURE & AI",
+      "source_ids": [
+        6,
+        7,
+        74
+      ]
+    },
+    {
+      "number": 29,
+      "title": "What the simulator-based XGBoost actually achieved",
+      "chapter": "ARCHITECTURE & AI",
+      "source_ids": [
+        6,
+        7,
+        74
+      ]
+    },
+    {
+      "number": 30,
+      "title": "Where AI intervenes \u2014 and where it does not",
+      "chapter": "ARCHITECTURE & AI",
+      "source_ids": [
+        12,
+        29,
+        35
+      ]
+    },
+    {
+      "number": 31,
+      "title": "Why create synthetic data?",
+      "chapter": "SYNTHETIC DATA",
+      "source_ids": [
+        11,
+        26,
+        71
+      ]
+    },
+    {
+      "number": 32,
+      "title": "Published facts anchor the synthetic cases",
+      "chapter": "SYNTHETIC DATA",
+      "source_ids": [
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "number": 33,
+      "title": "Where the annual electricity numbers came from",
+      "chapter": "SYNTHETIC DATA",
+      "source_ids": [
+        61,
+        63,
+        64
+      ]
+    },
+    {
+      "number": 34,
+      "title": "Synthetic annual electricity ranges",
+      "chapter": "SYNTHETIC DATA",
+      "source_ids": [
+        61,
+        63,
+        64
+      ]
+    },
+    {
+      "number": 35,
+      "title": "How the synthetic hourly proxy is constructed",
+      "chapter": "SYNTHETIC DATA",
+      "source_ids": [
+        71,
+        61,
+        64
+      ]
+    },
+    {
+      "number": 36,
+      "title": "Illustrative hourly shapes are not measured",
+      "chapter": "SYNTHETIC DATA",
+      "source_ids": [
+        17,
+        18,
+        19
+      ]
+    },
+    {
+      "number": 37,
+      "title": "What exactly was generated and verified",
+      "chapter": "SYNTHETIC DATA",
+      "source_ids": [
+        71,
+        11,
+        60
+      ]
+    },
+    {
+      "number": 38,
+      "title": "Rhino 8 can contribute the architectural intelligence",
+      "chapter": "RHINO 8 WORKFLOW",
+      "source_ids": [
+        56,
+        57,
+        58
+      ]
+    },
+    {
+      "number": 39,
+      "title": "Rhino workstation: what to download",
+      "chapter": "RHINO 8 WORKFLOW",
+      "source_ids": [
+        56,
+        57,
+        58
+      ]
+    },
+    {
+      "number": 40,
+      "title": "Prepare the A160 3D base without faking fidelity",
+      "chapter": "RHINO 8 WORKFLOW",
+      "source_ids": [
+        56,
+        57,
+        15
+      ]
+    },
+    {
+      "number": 41,
+      "title": "A Rhino file needs a clear layer contract",
+      "chapter": "RHINO 8 WORKFLOW",
+      "source_ids": [
+        57,
+        59,
+        11
+      ]
+    },
+    {
+      "number": 42,
+      "title": "From Rhino to hourly electricity in EnergyPlus",
+      "chapter": "RHINO 8 WORKFLOW",
+      "source_ids": [
+        59,
+        28,
+        74
+      ]
+    },
+    {
+      "number": 43,
+      "title": "Inputs and outputs for A160 simulation",
+      "chapter": "RHINO 8 WORKFLOW",
+      "source_ids": [
+        11,
+        60,
+        74
+      ]
+    },
+    {
+      "number": 44,
+      "title": "A required simulation validation gate",
+      "chapter": "VALIDATION & NEXT STEPS",
+      "source_ids": [
+        74,
+        11,
+        9
+      ]
+    },
+    {
+      "number": 45,
+      "title": "AI training: only after validated EnergyPlus runs",
+      "chapter": "VALIDATION & NEXT STEPS",
+      "source_ids": [
+        74,
+        7,
+        29
+      ]
+    },
+    {
+      "number": 46,
+      "title": "Avoid circular scientific validation",
+      "chapter": "VALIDATION & NEXT STEPS",
+      "source_ids": [
+        74,
+        11,
+        35
+      ]
+    },
+    {
+      "number": 47,
+      "title": "Next expand to the other three typologies",
+      "chapter": "VALIDATION & NEXT STEPS",
+      "source_ids": [
+        17,
+        18,
+        19
+      ]
+    },
+    {
+      "number": 48,
+      "title": "Sharing is a comparison of four accounting rules",
+      "chapter": "DECISION ENGINE",
+      "source_ids": [
+        35,
+        30,
+        31
+      ]
+    },
+    {
+      "number": 49,
+      "title": "Energy conservation: the claim must be able to fail",
+      "chapter": "DECISION ENGINE",
+      "source_ids": [
+        35,
+        36,
+        11
+      ]
+    },
+    {
+      "number": 50,
+      "title": "Impact = environment + economics + participation",
+      "chapter": "DECISION ENGINE",
+      "source_ids": [
+        36,
+        47,
+        11
+      ]
+    },
+    {
+      "number": 51,
+      "title": "The tool now has seven connected UI views",
+      "chapter": "USER INTERFACE",
+      "source_ids": [
+        51,
+        52,
+        53
+      ]
+    },
+    {
+      "number": 52,
+      "title": "Planned UI update \u2014 not a task to run today",
+      "chapter": "USER INTERFACE",
+      "source_ids": [
+        51,
+        70,
+        52
+      ]
+    },
+    {
+      "number": 53,
+      "title": "Current development status",
+      "chapter": "PROJECT STATUS",
+      "source_ids": [
+        2,
+        52,
+        53
+      ]
+    },
+    {
+      "number": 54,
+      "title": "Roadmap for the next development session",
+      "chapter": "PROJECT STATUS",
+      "source_ids": [
+        10,
+        74,
+        56
+      ]
+    },
+    {
+      "number": 55,
+      "title": "Codex assignment for this break: READ ONLY",
+      "chapter": "PROJECT STATUS",
+      "source_ids": [
+        1,
+        2,
+        51
+      ]
+    },
+    {
+      "number": 56,
+      "title": "Known limitations are visible by design",
+      "chapter": "LIMITATIONS",
+      "source_ids": [
+        3,
+        9,
+        11
+      ]
+    },
+    {
+      "number": 57,
+      "title": "The research is stronger because the claims are smaller",
+      "chapter": "CLOSING",
+      "source_ids": [
+        1,
+        2,
+        10
+      ]
+    },
+    {
+      "number": 58,
+      "title": "Decision history: research direction",
+      "chapter": "APPENDIX / DECISION RECORD",
+      "source_ids": [
+        12,
+        10,
+        9
+      ]
+    },
+    {
+      "number": 59,
+      "title": "Decision history: implementation and evidence",
+      "chapter": "APPENDIX / DECISION RECORD",
+      "source_ids": [
+        8,
+        52,
+        71
+      ]
+    },
+    {
+      "number": 60,
+      "title": "Ten terms in plain language",
+      "chapter": "APPENDIX / GLOSSARY",
+      "source_ids": [
+        28,
+        29,
+        24
+      ]
+    },
+    {
+      "number": 61,
+      "title": "Research sources / 1",
+      "chapter": "APPENDIX / REFERENCES",
+      "source_ids": []
+    },
+    {
+      "number": 62,
+      "title": "Research sources / 2",
+      "chapter": "APPENDIX / REFERENCES",
+      "source_ids": []
+    },
+    {
+      "number": 63,
+      "title": "Research sources / 3",
+      "chapter": "APPENDIX / REFERENCES",
+      "source_ids": []
+    },
+    {
+      "number": 64,
+      "title": "Research sources / 4",
+      "chapter": "APPENDIX / REFERENCES",
+      "source_ids": []
+    },
+    {
+      "number": 65,
+      "title": "Research sources / 5",
+      "chapter": "APPENDIX / REFERENCES",
+      "source_ids": []
+    },
+    {
+      "number": 66,
+      "title": "Research sources / 6",
+      "chapter": "APPENDIX / REFERENCES",
+      "source_ids": []
+    },
+    {
+      "number": 67,
+      "title": "Research sources / 7",
+      "chapter": "APPENDIX / REFERENCES",
+      "source_ids": []
+    }
+  ]
+}

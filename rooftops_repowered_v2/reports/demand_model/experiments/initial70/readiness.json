@@ -1,0 +1,6 @@
+{
+  "selected_model": "demand_baseline_hour_of_week",
+  "xgboost_validation_gate_passed": false,
+  "case_study_predictions": "pending local weather and building inventory",
+  "barcelona_accuracy_validated": false
+}

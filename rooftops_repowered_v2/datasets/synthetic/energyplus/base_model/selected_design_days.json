@@ -1,0 +1,39 @@
+{
+  "BARCELONA Ann Htg 99.6% Condns DB": {
+    "barometric_pressure": 101253.0,
+    "daily_dry_bulb_temperature_range": 0.0,
+    "day_of_month": 21,
+    "day_type": "WinterDesignDay",
+    "daylight_saving_time_indicator": "No",
+    "dry_bulb_temperature_range_modifier_type": "DefaultMultipliers",
+    "humidity_condition_type": "WetBulb",
+    "maximum_dry_bulb_temperature": 0.9,
+    "month": 1,
+    "rain_indicator": "No",
+    "sky_clearness": 0.0,
+    "snow_indicator": "No",
+    "solar_model_indicator": "ASHRAEClearSky",
+    "wetbulb_or_dewpoint_at_maximum_dry_bulb": 0.9,
+    "wind_direction": 350,
+    "wind_speed": 4.3
+  },
+  "BARCELONA Ann Clg .4% Condns DB=>MWB": {
+    "ashrae_clear_sky_optical_depth_for_beam_irradiance_taub_": 0.492,
+    "ashrae_clear_sky_optical_depth_for_diffuse_irradiance_taud_": 1.927,
+    "barometric_pressure": 101253.0,
+    "daily_dry_bulb_temperature_range": 7.7,
+    "day_of_month": 21,
+    "day_type": "SummerDesignDay",
+    "daylight_saving_time_indicator": "No",
+    "dry_bulb_temperature_range_modifier_type": "DefaultMultipliers",
+    "humidity_condition_type": "WetBulb",
+    "maximum_dry_bulb_temperature": 30.2,
+    "month": 8,
+    "rain_indicator": "No",
+    "snow_indicator": "No",
+    "solar_model_indicator": "ASHRAETau",
+    "wetbulb_or_dewpoint_at_maximum_dry_bulb": 23.8,
+    "wind_direction": 210,
+    "wind_speed": 4.4
+  }
+}

@@ -1,0 +1,520 @@
+{
+  "developer_map_xy": [
+    432567.26235403086,
+    4583356.878479834
+  ],
+  "addresses": [
+    {
+      "id": "ES.SDGC.AD.08.900.102.154.2635601DF3823F",
+      "number": "154",
+      "xy": "432569.18 4583368.8",
+      "beginLifespanVersion": "2021-07-14T00:00:00"
+    },
+    {
+      "id": "ES.SDGC.AD.08.900.102.155.2535309DF3823F",
+      "number": "155",
+      "xy": "432475.8795 4583349.349",
+      "beginLifespanVersion": "2001-10-29T00:00:00"
+    },
+    {
+      "id": "ES.SDGC.AD.08.900.102.157.2535308DF3823F",
+      "number": "157",
+      "xy": "432483.4095 4583356.659",
+      "beginLifespanVersion": "2001-10-29T00:00:00"
+    },
+    {
+      "id": "ES.SDGC.AD.08.900.102.159.2636206DF3823F",
+      "number": "159",
+      "xy": "432520.53 4583406.21",
+      "beginLifespanVersion": "2001-10-29T00:00:00"
+    },
+    {
+      "id": "ES.SDGC.AD.08.900.102.163.2636211DF3823F",
+      "number": "163",
+      "xy": "432540.64 4583409.6985",
+      "beginLifespanVersion": "2001-10-29T00:00:00"
+    },
+    {
+      "id": "ES.SDGC.AD.08.900.102.165.2636210DF3823F",
+      "number": "165",
+      "xy": "432553 4583421.8285",
+      "beginLifespanVersion": "2001-10-29T00:00:00"
+    },
+    {
+      "id": "ES.SDGC.AD.08.900.102.166.2635619DF3823F",
+      "number": "166",
+      "xy": "432574.26 4583412.9285",
+      "beginLifespanVersion": "2021-07-13T00:00:00"
+    },
+    {
+      "id": "ES.SDGC.AD.08.900.102.167.2636204DF3823F",
+      "number": "167",
+      "xy": "432559.68 4583465.12",
+      "beginLifespanVersion": "2001-10-29T00:00:00"
+    }
+  ],
+  "buildings": [
+    {
+      "id": "2535302DF3823F",
+      "year_built": "1962-01-01T00:00:00",
+      "current_use": "3_industrial",
+      "area_m2": 3916.0684126249857,
+      "distance_to_developer_map_m": 95.55851192292319,
+      "xy_centroid": [
+        432419.1015246752,
+        4583360.684632416
+      ]
+    },
+    {
+      "id": "2535307DF3823F",
+      "year_built": "1940-01-01T00:00:00",
+      "current_use": "4_1_office",
+      "area_m2": 761.6191527476971,
+      "distance_to_developer_map_m": 99.42924477408357,
+      "xy_centroid": [
+        432456.71916733973,
+        4583383.728719795
+      ]
+    },
+    {
+      "id": "2535308DF3823F",
+      "year_built": "1988-01-01T00:00:00",
+      "current_use": "3_industrial",
+      "area_m2": 591.919274994826,
+      "distance_to_developer_map_m": 80.19107397092691,
+      "xy_centroid": [
+        432476.89752055367,
+        4583373.58298228
+      ]
+    },
+    {
+      "id": "2535309DF3823F",
+      "year_built": "1980-01-01T00:00:00",
+      "current_use": "1_residential",
+      "area_m2": 212.5596775054236,
+      "distance_to_developer_map_m": 85.01475241827079,
+      "xy_centroid": [
+        432469.7611672054,
+        4583355.877771279
+      ]
+    },
+    {
+      "id": "2634304DF3823D",
+      "year_built": "1939-01-01T00:00:00",
+      "current_use": "1_residential",
+      "area_m2": 266.7179774948325,
+      "distance_to_developer_map_m": 73.85519364735981,
+      "xy_centroid": [
+        432492.9573565046,
+        4583320.713368492
+      ]
+    },
+    {
+      "id": "2634305DF3823D",
+      "year_built": "1940-01-01T00:00:00",
+      "current_use": "1_residential",
+      "area_m2": 727.3366563833464,
+      "distance_to_developer_map_m": 41.16054698265054,
+      "xy_centroid": [
+        432516.23947202024,
+        4583316.869533704
+      ]
+    },
+    {
+      "id": "2634306DF3823D",
+      "year_built": "1960-01-01T00:00:00",
+      "current_use": "3_industrial",
+      "area_m2": 538.1441882436156,
+      "distance_to_developer_map_m": 41.53338940780187,
+      "xy_centroid": [
+        432529.6715037232,
+        4583304.184968196
+      ]
+    },
+    {
+      "id": "2634307DF3823D",
+      "year_built": "1936-01-01T00:00:00",
+      "current_use": "3_industrial",
+      "area_m2": 897.2403607466875,
+      "distance_to_developer_map_m": 44.775156294652426,
+      "xy_centroid": [
+        432544.56714774604,
+        4583294.1243400695
+      ]
+    },
+    {
+      "id": "2634308DF3823D",
+      "year_built": "1936-01-01T00:00:00",
+      "current_use": "1_residential",
+      "area_m2": 259.9959844968966,
+      "distance_to_developer_map_m": 58.424803039516206,
+      "xy_centroid": [
+        432562.48759589967,
+        4583285.879352462
+      ]
+    },
+    {
+      "id": "2634309DF3823D",
+      "year_built": "1960-01-01T00:00:00",
+      "current_use": "3_industrial",
+      "area_m2": 568.1232970087208,
+      "distance_to_developer_map_m": 67.73157465871999,
+      "xy_centroid": [
+        432571.24872557004,
+        4583271.768254337
+      ]
+    },
+    {
+      "id": "2634315DF3823D",
+      "year_built": "1960-01-01T00:00:00",
+      "current_use": "4_2_retail",
+      "area_m2": 1085.045414498888,
+      "distance_to_developer_map_m": 87.20327087105133,
+      "xy_centroid": [
+        432488.2513708238,
+        4583269.913932996
+      ]
+    },
+    {
+      "id": "2634316DF3823D",
+      "year_built": "1960-01-01T00:00:00",
+      "current_use": "4_3_publicServices",
+      "area_m2": 1823.8335731172056,
+      "distance_to_developer_map_m": 85.88896148363564,
+      "xy_centroid": [
+        432535.53526908066,
+        4583259.347366572
+      ]
+    },
+    {
+      "id": "2634317DF3823D",
+      "year_built": "1964-01-01T00:00:00",
+      "current_use": "1_residential",
+      "area_m2": 216.97546300769932,
+      "distance_to_developer_map_m": 105.39984746455063,
+      "xy_centroid": [
+        432472.6425120996,
+        4583296.6884301165
+      ]
+    },
+    {
+      "id": "2634318DF3823D",
+      "year_built": "1964-01-01T00:00:00",
+      "current_use": "1_residential",
+      "area_m2": 225.81716399511976,
+      "distance_to_developer_map_m": 95.95475340868539,
+      "xy_centroid": [
+        432478.94252629194,
+        4583303.733065525
+      ]
+    },
+    {
+      "id": "2634319DF3823D",
+      "year_built": "1965-01-01T00:00:00",
+      "current_use": "1_residential",
+      "area_m2": 268.6296567486034,
+      "distance_to_developer_map_m": 85.26031458189802,
+      "xy_centroid": [
+        432485.84148630087,
+        4583312.038966353
+      ]
+    },
+    {
+      "id": "2635601DF3823F",
+      "year_built": "2022-01-01T00:00:00",
+      "current_use": "4_1_office",
+      "area_m2": 1718.0309515033423,
+      "distance_to_developer_map_m": 0.04731140283889329,
+      "xy_centroid": [
+        432558.6366218781,
+        4583374.033456959
+      ]
+    },
+    {
+      "id": "2635605DF3823F",
+      "year_built": "1967-01-01T00:00:00",
+      "current_use": "3_industrial",
+      "area_m2": 132.8829450008287,
+      "distance_to_developer_map_m": 82.94949096246388,
+      "xy_centroid": [
+        432657.825015313,
+        4583364.769190285
+      ]
+    },
+    {
+      "id": "2635606DF3823F",
+      "year_built": "1945-01-01T00:00:00",
+      "current_use": "1_residential",
+      "area_m2": 163.93829999853872,
+      "distance_to_developer_map_m": 72.01694666171555,
+      "xy_centroid": [
+        432647.53648769803,
+        4583371.647595217
+      ]
+    },
+    {
+      "id": "2635607DF3823F",
+      "year_built": "1981-01-01T00:00:00",
+      "current_use": "3_industrial",
+      "area_m2": 196.12581012042895,
+      "distance_to_developer_map_m": 68.36144583563853,
+      "xy_centroid": [
+        432647.2068660341,
+        4583359.001555206
+      ]
+    },
+    {
+      "id": "2635608DF3823F",
+      "year_built": "1900-01-01T00:00:00",
+      "current_use": "1_residential",
+      "area_m2": 216.70497000624206,
+      "distance_to_developer_map_m": 61.42700444318512,
+      "xy_centroid": [
+        432641.56263789453,
+        4583352.201318305
+      ]
+    },
+    {
+      "id": "2635609DF3823F",
+      "year_built": "1900-01-01T00:00:00",
+      "current_use": "1_residential",
+      "area_m2": 165.09920000452502,
+      "distance_to_developer_map_m": 66.13617102246621,
+      "xy_centroid": [
+        432636.1658122373,
+        4583331.611031241
+      ]
+    },
+    {
+      "id": "2635610DF3823F",
+      "year_built": "1909-01-01T00:00:00",
+      "current_use": "1_residential",
+      "area_m2": 108.83310000084455,
+      "distance_to_developer_map_m": 65.69469255426922,
+      "xy_centroid": [
+        432630.17227143614,
+        4583322.029031863
+      ]
+    },
+    {
+      "id": "2635611DF3823F",
+      "year_built": "1909-01-01T00:00:00",
+      "current_use": "1_residential",
+      "area_m2": 119.08890000123486,
+      "distance_to_developer_map_m": 65.6904993286424,
+      "xy_centroid": [
+        432625.0015622269,
+        4583314.133674344
+      ]
+    },
+    {
+      "id": "2635612DF3823F",
+      "year_built": "1969-01-01T00:00:00",
+      "current_use": "4_2_retail",
+      "area_m2": 186.87534999469153,
+      "distance_to_developer_map_m": 62.5573413983152,
+      "xy_centroid": [
+        432617.3819863711,
+        4583304.915398371
+      ]
+    },
+    {
+      "id": "2635613DF3823F",
+      "year_built": "1825-01-01T00:00:00",
+      "current_use": "1_residential",
+      "area_m2": 107.35113500137388,
+      "distance_to_developer_map_m": 63.96962564247589,
+      "xy_centroid": [
+        432607.1449490375,
+        4583298.663747451
+      ]
+    },
+    {
+      "id": "2635616DF3823F",
+      "year_built": "1940-01-01T00:00:00",
+      "current_use": "4_2_retail",
+      "area_m2": 257.9952499975048,
+      "distance_to_developer_map_m": 49.923373579361495,
+      "xy_centroid": [
+        432633.67862985586,
+        4583341.719019267
+      ]
+    },
+    {
+      "id": "2635617DF3823F",
+      "year_built": "1885-01-01T00:00:00",
+      "current_use": "1_residential",
+      "area_m2": 244.49586749391025,
+      "distance_to_developer_map_m": 50.47589973413191,
+      "xy_centroid": [
+        432599.89105945866,
+        4583306.966551419
+      ]
+    },
+    {
+      "id": "2635619DF3823F",
+      "year_built": "1923-01-01T00:00:00",
+      "current_use": "1_residential",
+      "area_m2": 587.0654290664581,
+      "distance_to_developer_map_m": 42.106802632955606,
+      "xy_centroid": [
+        432587.7577713707,
+        4583403.2164182635
+      ]
+    },
+    {
+      "id": "2635620DF3823F",
+      "year_built": "2023-01-01T00:00:00",
+      "current_use": "4_1_office",
+      "area_m2": 1498.515884867075,
+      "distance_to_developer_map_m": 65.23979257267848,
+      "xy_centroid": [
+        432618.61260400165,
+        4583415.941142814
+      ]
+    },
+    {
+      "id": "2636203DF3823F",
+      "year_built": "1981-01-01T00:00:00",
+      "current_use": "4_1_office",
+      "area_m2": 2312.6185951465663,
+      "distance_to_developer_map_m": 105.404339680609,
+      "xy_centroid": [
+        432527.458760188,
+        4583483.341223671
+      ]
+    },
+    {
+      "id": "2636204DF3823F",
+      "year_built": "1985-01-01T00:00:00",
+      "current_use": "4_3_publicServices",
+      "area_m2": 2036.368957501437,
+      "distance_to_developer_map_m": 72.73686714936385,
+      "xy_centroid": [
+        432560.4223306589,
+        4583460.227348922
+      ]
+    },
+    {
+      "id": "2636206DF3823F",
+      "year_built": "1970-01-01T00:00:00",
+      "current_use": "3_industrial",
+      "area_m2": 490.73994999809213,
+      "distance_to_developer_map_m": 55.89642254143953,
+      "xy_centroid": [
+        432517.7834642149,
+        4583403.788298995
+      ]
+    },
+    {
+      "id": "2636207DF3823F",
+      "year_built": "1984-01-01T00:00:00",
+      "current_use": "3_industrial",
+      "area_m2": 286.4669999978963,
+      "distance_to_developer_map_m": 79.84270141900194,
+      "xy_centroid": [
+        432500.9989585015,
+        4583412.520596935
+      ]
+    },
+    {
+      "id": "2636208DF3823F",
+      "year_built": "1966-01-01T00:00:00",
+      "current_use": "4_1_office",
+      "area_m2": 373.90361712567494,
+      "distance_to_developer_map_m": 91.72439011095378,
+      "xy_centroid": [
+        432488.38311892323,
+        4583421.571091945
+      ]
+    },
+    {
+      "id": "2636210DF3823F",
+      "year_built": "1993-01-01T00:00:00",
+      "current_use": "3_industrial",
+      "area_m2": 973.8379619942223,
+      "distance_to_developer_map_m": 63.487412559626875,
+      "xy_centroid": [
+        432528.40770339576,
+        4583438.728272534
+      ]
+    },
+    {
+      "id": "2636211DF3823F",
+      "year_built": "1992-01-01T00:00:00",
+      "current_use": "4_2_retail",
+      "area_m2": 1087.8913387634043,
+      "distance_to_developer_map_m": 57.80574743026532,
+      "xy_centroid": [
+        432512.46573799767,
+        4583429.866178627
+      ]
+    },
+    {
+      "id": "2734701DF3823D",
+      "year_built": "1890-01-01T00:00:00",
+      "current_use": "1_residential",
+      "area_m2": 437.96497999189535,
+      "distance_to_developer_map_m": 104.46812039159424,
+      "xy_centroid": [
+        432643.4957974445,
+        4583258.604332399
+      ]
+    },
+    {
+      "id": "2834309DF3823D",
+      "year_built": "1950-01-01T00:00:00",
+      "current_use": "1_residential",
+      "area_m2": 155.14692387813108,
+      "distance_to_developer_map_m": 98.50237683472129,
+      "xy_centroid": [
+        432646.90724904696,
+        4583287.299319251
+      ]
+    },
+    {
+      "id": "2834314DF3823D",
+      "year_built": "1960-01-01T00:00:00",
+      "current_use": "1_residential",
+      "area_m2": 241.7990670024808,
+      "distance_to_developer_map_m": 98.8095052772495,
+      "xy_centroid": [
+        432663.16429184,
+        4583294.241514286
+      ]
+    },
+    {
+      "id": "2834315DF3823D",
+      "year_built": "1930-01-01T00:00:00",
+      "current_use": "1_residential",
+      "area_m2": 199.88312600174532,
+      "distance_to_developer_map_m": 101.12881622195817,
+      "xy_centroid": [
+        432668.40774144937,
+        4583301.315602629
+      ]
+    },
+    {
+      "id": "2834317DF3823D",
+      "year_built": "1940-01-01T00:00:00",
+      "current_use": "4_2_retail",
+      "area_m2": 465.9076454926848,
+      "distance_to_developer_map_m": 108.05628090385945,
+      "xy_centroid": [
+        432685.50885438576,
+        4583324.691731873
+      ]
+    },
+    {
+      "id": "2834329DF3823D",
+      "year_built": "1999-01-01T00:00:00",
+      "current_use": "3_industrial",
+      "area_m2": 558.4120122410999,
+      "distance_to_developer_map_m": 100.39919637292172,
+      "xy_centroid": [
+        432657.95877607766,
+        4583273.428610134
+      ]
+    }
+  ]
+}

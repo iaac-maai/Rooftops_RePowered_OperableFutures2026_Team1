@@ -1,0 +1,65 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2.1934936825544806,
+              41.39908411486287
+            ],
+            [
+              2.193150540998336,
+              41.39882909517208
+            ],
+            [
+              2.1929966698000527,
+              41.39894636147574
+            ],
+            [
+              2.1929837950784643,
+              41.39913085528474
+            ],
+            [
+              2.1930768804282894,
+              41.39920007017208
+            ],
+            [
+              2.1931397406092903,
+              41.39924680504222
+            ],
+            [
+              2.1931740096843844,
+              41.39927228436373
+            ],
+            [
+              2.1931980726206035,
+              41.399290184358925
+            ],
+            [
+              2.193210837175056,
+              41.39929967362753
+            ],
+            [
+              2.1934936825544806,
+              41.39908411486287
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "building_id": "A160",
+        "data_origin": "OBSERVED_IMAGE_INTERPRETATION",
+        "capture_date": "2025-06-18",
+        "native_gsd_m": 0.25,
+        "pv_identity_confirmed_by": "User manual review; ChatGPT Work conversation 2026-11-15",
+        "installed_capacity_kwp": null,
+        "module_count": null,
+        "interpretation": "current upper-roof boundary from imagery; assessment B only, with georegistration uncertainty"
+      }
+    }
+  ]
+}

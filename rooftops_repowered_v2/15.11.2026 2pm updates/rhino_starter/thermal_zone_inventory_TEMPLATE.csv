@@ -1,0 +1,2 @@
+zone_id,building_id,floor_id,room_name,source_geometry_file,geometry_source_date,assumption_scenario,thermal_zone_use,net_floor_area_m2,volume_m3,wwr_north,wwr_east,wwr_south,wwr_west,construction_set_id,hvac_system_id,schedule_id,confidence,reviewed_by,review_status,notes
+A160_F00_PLACEHOLDER,A160,F00,NOT_A_MODELED_ROOM,,,,,,,,,,,,,,unknown,,pending,Create from Rhino geometry; sample row is NOT simulation ready

@@ -1,0 +1,12 @@
+{
+  "roof_id": "A160_existing",
+  "building_id": "A160",
+  "assessment": "observed_existing",
+  "generation_role": "existing_unverified",
+  "capacity_kwp": null,
+  "tilt": null,
+  "azimuth": null,
+  "positive_capacity": false,
+  "energy_sharing_eligible": false,
+  "next_action": "Obtain installed module specifications, count, orientations/tilts or a verified installation record; do not infer installed kWp from illustrative new modules."
+}

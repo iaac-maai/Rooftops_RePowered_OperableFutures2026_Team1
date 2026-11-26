@@ -1,0 +1,24 @@
+{
+  "created_utc": "2026-11-15T00:24:57.844550+00:00",
+  "deleted": [
+    {
+      "path": "reports\\verification\\office_reference_inference_input.csv",
+      "bytes": 40386,
+      "sha256": "c4e0df133869740b36d82bd354f3d7ce1c8c0375991c41cba12ed98984154e04",
+      "reason": "Disposable Chicago-reference CLI smoke-check, not required surrogate training data or A160 input"
+    },
+    {
+      "path": "reports\\verification\\office_reference_predictions.csv",
+      "bytes": 28468,
+      "sha256": "79db906c079a3b19692fda1bff7e5d3a6a09cb8002b67ff1b48b4b97164fdc8e",
+      "reason": "Disposable Chicago-reference CLI smoke-check, not required surrogate training data or A160 input"
+    },
+    {
+      "path": "reports\\verification\\inference_check.json",
+      "bytes": 266,
+      "sha256": "34b74efc8f8488b238b6cd4587d8f1a682bd8ce603b72bb064f861048d500e16",
+      "reason": "Disposable Chicago-reference CLI smoke-check, not required surrogate training data or A160 input"
+    }
+  ],
+  "preserved": "EnergyPlus reference, 36 configurations, weather, feature schemas and all eight joblib artifacts required by the working surrogate"
+}

@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "checks_passed": 5,
+  "checks": [
+    "Existing image coverage vs all three predicted-area/IoU scenarios; no capacity error invented",
+    "Official hourly PVGIS chart loads while installed specifications remain unknown",
+    "Europe/Madrid DST and partial local UTC-year boundaries display exact retained source intervals",
+    "Capacity selector, zero-case skip and provenance export preserve hypothetical/actual separation",
+    "New comparison and PVGIS explorer remain usable at mobile width"
+  ],
+  "page_errors": [],
+  "browser": "157.0.8103.51"
+}

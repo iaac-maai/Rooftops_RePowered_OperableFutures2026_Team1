@@ -1,0 +1,55 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 29570
+  },
+  {
+    "path": "/api/status",
+    "status": 200,
+    "content_type": "application/json; charset=utf-8",
+    "bytes": 536,
+    "data": {
+      "schema_version": "1.0",
+      "commit": "716bc491fce7c9995d9609884f3911fa6d5b4878",
+      "version": "a160-readonly-ui-1",
+      "last_updated_utc": "2026-11-15T00:24:42.072552+00:00",
+      "generated_at_utc": "2026-11-15T11:04:25.273285+00:00",
+      "display_timezone": "Europe/Madrid",
+      "mode": "read_only_research_dashboard",
+      "stages": {
+        "roof": "provisional_screening",
+        "office_model": "validated_simulation_domain",
+        "pvgis": "pending",
+        "demand": "pending",
+        "sharing": "pending",
+        "impact": "pending"
+      },
+      "private_meter_data_served": false,
+      "live_control": false
+    }
+  },
+  {
+    "path": "/api/dashboard",
+    "status": 200,
+    "content_type": "application/json; charset=utf-8",
+    "bytes": 33325,
+    "stages": {
+      "buildings": "available",
+      "roof": "available",
+      "reference": "available",
+      "model": "available",
+      "pvgis": "pending",
+      "demand": "pending",
+      "sharing": "pending",
+      "impact": "pending"
+    }
+  },
+  {
+    "path": "/api/roof/A160/map?assessment=additional&scenario=base",
+    "status": 200,
+    "content_type": "application/json; charset=utf-8",
+    "bytes": 11790
+  }
+]

@@ -1,0 +1,59 @@
+{
+  "created_utc": "2026-11-15T00:24:47.833222+00:00",
+  "status": "completed_provisional_rooftop_screening",
+  "scope": "A160 dual rooftop assessment only",
+  "building_id": "A160",
+  "confidence": "low",
+  "installation_design_ready": false,
+  "energy_sharing_ready": false,
+  "retrospective_observed_mask_used": false,
+  "pre_installation_lidar": false,
+  "existing_capacity_verified": false,
+  "demand_model_retrained": false,
+  "quantitative_reference_capture_date": "2025-06-18",
+  "newest_public_provisional_capture_date": "2026-03-16",
+  "provisional_imagery_use": "Visual context only; differing roof alignment and unverified native GSD prevent transferring pixel labels without registration",
+  "additional_capacity_kwp": {
+    "conservative": 0.0,
+    "base": 1.26,
+    "optimistic": 1.26
+  },
+  "retrospective_capacity_kwp": {
+    "conservative": 95.34,
+    "base": 110.88,
+    "optimistic": 116.76
+  },
+  "municipal_comparison": {
+    "building_id": "A160",
+    "municipal_source_date": "2015-03-12",
+    "source_url": "https://coneixement-eu.bcn.cat/mapaEnergia/viewer.html",
+    "data_origin": "ESTIMATED_ROOF",
+    "municipal_potential_kw_source": 103.5,
+    "municipal_usable_area_m2": 1094.8,
+    "matched_polygons": 1,
+    "municipal_modeled_generation_kwh_year": 129323.2,
+    "post_completion_vintage": false,
+    "record_dates_are_survey_dates": false,
+    "current_roof_validation_eligible": false,
+    "matched_record_ids": "99036",
+    "source_created_dates": "2015-03-12T00:00:00Z",
+    "source_updated_dates": "2015-03-12T00:00:00Z",
+    "comparison_only": true,
+    "combined_capacity_kwp": null,
+    "notes": "Representative-point geometry association, not a cadastral parcel join. Record timestamps do not establish survey dates. Pre-2022 map records describe legacy geometry and cannot validate modern A160. Never sum city potential with V1/V2 panel estimates."
+  },
+  "figure": "reports\\roof_capacity\\A160\\A160_two_assessments.png",
+  "limitations": [
+    "Post-installation LiDAR; shallow relief approximation is not verified bare-roof geometry",
+    "Only dominant upper roof assessed; omitted terraces/service roofs are not certified unusable",
+    "Manual image interpretation and assumed access reserves; no survey/as-built design verification",
+    "Scenario spread is a parameter sensitivity range, not a statistical confidence interval",
+    "Municipal records predate modern host; no parcel-level current installation specification",
+    "No structural, safety, electrical or existing installation capacity verification"
+  ],
+  "required_for_next_stage": [
+    "Verify installed PV count/specifications and remaining roof access/plant clearances",
+    "Choose PVGIS weather period/system losses before yield simulation",
+    "Use a building demand simulation domain appropriate to A160 before cluster accounting"
+  ]
+}

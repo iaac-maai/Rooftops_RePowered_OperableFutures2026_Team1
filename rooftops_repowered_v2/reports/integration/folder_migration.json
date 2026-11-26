@@ -1,0 +1,26 @@
+{
+  "created_utc": "2026-11-14T23:26:45.740650+00:00",
+  "folders": {
+    "data_audit": "step_01_data_audit",
+    "pvgis": "step_03_pvgis",
+    "demand_preparation": "step_04_demand_preparation",
+    "demand_baseline_hour_of_week": "step_05_demand_baseline_hour_of_week",
+    "demand_baseline_seasonal": "step_05_demand_baseline_seasonal",
+    "demand_xgboost": "step_05_demand_xgboost",
+    "simulation_surrogate": "step_05_simulation_surrogate",
+    "scenarios": "step_06_scenarios",
+    "energy_balance": "step_07_energy_balance",
+    "impact_metrics": "step_08_impact_metrics"
+  },
+  "model_artifact_sha256_before": {
+    "pipeline\\models\\demand_baseline_hour_of_week.joblib": "813b8e7dbee320884a24a2b4960dfe332d0957d35f5af04d08156804f0cccb77",
+    "pipeline\\models\\demand_baseline_seasonal.joblib": "0e0398a353e7bc6385e1cb17963498de11668611956a2316415b32ef99fe5090",
+    "pipeline\\models\\demand_office_energyplus_surrogate.joblib": "ef553b26e917f4308c6dbc2e5e310fd5cf3a4edaee9af6d5127e497d67e3f080",
+    "pipeline\\models\\demand_xgboost.joblib": "67df5426c7813e2ab1aba32b9031bb28d822ac72470a1a852425d62feb53d491",
+    "pipeline\\models\\office_simulation_baselines.joblib": "4b235ebea4edcdd77eb94423f6c13b094e6f80f26a910757e354a6ee64dbfbfd",
+    "pipeline\\models\\experiments\\initial70\\demand_baseline_hour_of_week.joblib": "e5bd99ab5c6c23eebe941051a095654e89eff358755e9e0ba421af2d0a62cbfa",
+    "pipeline\\models\\experiments\\initial70\\demand_baseline_seasonal.joblib": "2b82461687ab3b22faff3fb48bf05c2ae9b7507cd7d19f06b0442adf598af2c8",
+    "pipeline\\models\\experiments\\initial70\\demand_xgboost.joblib": "016bab6adb45dab0fae8d062d432bfda22b8367843d3803ce2e831e55af0c00b"
+  },
+  "artifact_directory_preserved": "pipeline/models"
+}

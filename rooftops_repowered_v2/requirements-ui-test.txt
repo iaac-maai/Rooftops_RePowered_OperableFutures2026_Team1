@@ -1,0 +1,2 @@
+# Separate optional browser QA environment; no runtime/frontend dependencies.
+playwright==1.65.2

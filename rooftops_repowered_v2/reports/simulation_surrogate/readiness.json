@@ -1,0 +1,7 @@
+{
+  "validation_gate_passed": true,
+  "test_beats_baselines": true,
+  "real_building_accuracy_validated": false,
+  "archetype": "RefBldgSmallOfficeNew2004_Chicago",
+  "configuration_count": 36
+}

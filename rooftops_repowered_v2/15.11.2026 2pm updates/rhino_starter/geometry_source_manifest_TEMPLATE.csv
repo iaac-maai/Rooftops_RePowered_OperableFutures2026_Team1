@@ -1,0 +1,2 @@
+file_id,source_url,publisher,dataset_vintage,downloaded_utc,sha256,file_format,crs,units,original_origin_xyz,local_origin_offset_xyz,license,building_in_source_confirmed,building_verified_against_architect,notes
+municipal_poblenou_2026,https://portaldades.ajuntament.barcelona.cat/mapes/146,Ajuntament de Barcelona,2026,,,,DWG,,unknown,,,CC BY 4.0,NO,NO,Download neighbourhood el Parc i la Llacuna del Poblenou and verify A160

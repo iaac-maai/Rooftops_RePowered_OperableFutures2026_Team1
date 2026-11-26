@@ -1,0 +1,12 @@
+{
+  "roof_id": null,
+  "capacity_kwp": null,
+  "timestamp_basis": "UTC",
+  "power_unit": "W",
+  "tilt": null,
+  "azimuth": null,
+  "loss_percent": null,
+  "weather_year": null,
+  "source_url": null,
+  "notes": "Populate from the actual selected-roof PVGIS export. Hourly P-to-energy conversion is explicit. Minute offsets are preserved; do not round timestamps without documenting the alignment."
+}

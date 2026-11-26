@@ -1,0 +1,936 @@
+{
+  "id" : "2b4s-skfm",
+  "name" : "Instal·lacions d’autoconsum elèctric",
+  "assetType" : "dataset",
+  "attribution" : "Departament de Territori, Habitatge i Transició Ecològica",
+  "attributionLink" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+  "averageRating" : 0,
+  "category" : "Energia",
+  "createdAt" : 1576156500,
+  "description" : "Dades de les instal·lacions d'autoconsum elèctric inscrites al Registre d'Autoconsum de Catalunya (RAC) que s'han tramitat sota el Reial Decret 15/2018, de 5 d'octubre, de mesures urgents per a la transició energètica i la protecció dels consumidors i sota el Reial Decret 244/2019, de 5 d'abril, pel qual es regulen les condicions administratives, tècniques i econòmiques de l'autoconsum d'energia elèctrica. Les dades es tanquen l'últim dia del mes anterior a la data d'actualització.",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "downloadCount" : 4078,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "SEE_TERMS_OF_USE",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 2370957,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1658130468,
+  "publicationGroup" : 1053942,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1780301624,
+  "rowsUpdatedBy" : "u9f7-pzaq",
+  "tableId" : 1610927,
+  "totalTimesRated" : 0,
+  "viewCount" : 11798,
+  "viewLastModified" : 1780301591,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1576666566,
+    "reviewedAutomatically" : true,
+    "state" : "approved",
+    "submissionId" : 1176863,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1576666566,
+    "targetAudience" : "public",
+    "workflowId" : 182,
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1576666566,
+      "failureCount" : 0,
+      "startedAt" : 1576666566,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "a4b5-gx6v",
+      "displayName" : "Dades Obertes Catalunya"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 21746306,
+    "name" : "Número RAC",
+    "dataTypeName" : "text",
+    "description" : "Número d’inscripció de la instal·lació al registre d’Autoconsum de Catalunya",
+    "fieldName" : "n_mero_rac",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 8281294,
+    "cachedContents" : {
+      "non_null" : "138769",
+      "largest" : "70009952",
+      "null" : "0",
+      "top" : [ {
+        "item" : "02056",
+        "count" : "18"
+      }, {
+        "item" : "00286",
+        "count" : "5"
+      }, {
+        "item" : "10836",
+        "count" : "3"
+      }, {
+        "item" : "00372",
+        "count" : "3"
+      }, {
+        "item" : "16000088",
+        "count" : "3"
+      }, {
+        "item" : "12000772",
+        "count" : "2"
+      }, {
+        "item" : "14008785",
+        "count" : "2"
+      }, {
+        "item" : "02058",
+        "count" : "2"
+      }, {
+        "item" : "11043",
+        "count" : "2"
+      }, {
+        "item" : "02059",
+        "count" : "2"
+      }, {
+        "item" : "11588",
+        "count" : "2"
+      }, {
+        "item" : "16002463",
+        "count" : "2"
+      }, {
+        "item" : "10001772",
+        "count" : "2"
+      }, {
+        "item" : "02793",
+        "count" : "2"
+      }, {
+        "item" : "14054271",
+        "count" : "2"
+      }, {
+        "item" : "14063617",
+        "count" : "2"
+      }, {
+        "item" : "10865",
+        "count" : "2"
+      }, {
+        "item" : "11460",
+        "count" : "2"
+      }, {
+        "item" : "03242",
+        "count" : "2"
+      }, {
+        "item" : "10001123",
+        "count" : "2"
+      } ],
+      "smallest" : "00043",
+      "count" : "138769",
+      "cardinality" : "138769"
+    },
+    "format" : { }
+  }, {
+    "id" : 21746307,
+    "name" : "Número CAU",
+    "dataTypeName" : "text",
+    "description" : "Número de CAU",
+    "fieldName" : "n_mero_cau",
+    "position" : 2,
+    "renderTypeName" : "text",
+    "tableColumnId" : 8905990,
+    "cachedContents" : {
+      "non_null" : "138737",
+      "largest" : "ES7601490101100301320001A0",
+      "null" : "32",
+      "top" : [ {
+        "item" : "ES0031408481683001TB0FA000",
+        "count" : "18"
+      }, {
+        "item" : "ES0031405845256002RS0FA000",
+        "count" : "5"
+      }, {
+        "item" : "ES0031408461100001VX0FA000",
+        "count" : "5"
+      }, {
+        "item" : "ES0031405838921001ZL0FA000",
+        "count" : "5"
+      }, {
+        "item" : "ES0690000000001160AX0FA000",
+        "count" : "4"
+      }, {
+        "item" : "ES0031406115342001ZG0FA000",
+        "count" : "4"
+      }, {
+        "item" : "ES0031406137109001RB0FA000",
+        "count" : "4"
+      }, {
+        "item" : "ES0031405721222002YR0FA000",
+        "count" : "4"
+      }, {
+        "item" : "ES0031408343251001HC0FA000",
+        "count" : "4"
+      }, {
+        "item" : "ES0113000054728324NM0FA000",
+        "count" : "4"
+      }, {
+        "item" : "ES0031408484268001JH0FA000",
+        "count" : "3"
+      }, {
+        "item" : "ES0260000000011788GB0FA000",
+        "count" : "3"
+      }, {
+        "item" : "ES0031405219486001TF0FA000",
+        "count" : "3"
+      }, {
+        "item" : "ES0031408462568001HN0FA000",
+        "count" : "3"
+      }, {
+        "item" : "ES0031405712189001ZC0FA000",
+        "count" : "3"
+      }, {
+        "item" : "ES0113000015931074HY0FA000",
+        "count" : "3"
+      }, {
+        "item" : "ES0260000000013084ZL0FA000",
+        "count" : "3"
+      }, {
+        "item" : "ES0031405589185001CC0FA000",
+        "count" : "3"
+      }, {
+        "item" : "ES0260000000060584XR0FA000",
+        "count" : "3"
+      }, {
+        "item" : "ES0031408655622001GQ0FA000",
+        "count" : "3"
+      } ],
+      "smallest" : "1266009DF1816N0001BD",
+      "count" : "138769",
+      "cardinality" : "138769"
+    },
+    "format" : { }
+  }, {
+    "id" : 21746318,
+    "name" : "Secció registre",
+    "dataTypeName" : "text",
+    "description" : "tipus d'autoconsum de la instal·lació: •\t1 = sense excedents •\t2 = amb excedents",
+    "fieldName" : "secci_registre",
+    "position" : 3,
+    "renderTypeName" : "text",
+    "tableColumnId" : 14300600,
+    "cachedContents" : {
+      "non_null" : "138769",
+      "largest" : "Sense excedents",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Amb excedents",
+        "count" : "135223"
+      }, {
+        "item" : "Sense excedents",
+        "count" : "3546"
+      } ],
+      "smallest" : "Amb excedents",
+      "count" : "138769",
+      "cardinality" : "138769"
+    },
+    "format" : { }
+  }, {
+    "id" : 21746309,
+    "name" : "Subsecció registre",
+    "dataTypeName" : "text",
+    "description" : "especificació del tipus d'autoconsum amb excedents: •\ta0 = Amb excedents i mecanisme de compensació simplificat •\tb1 = Amb excedents sense mecanisme de compensació i un únic contracte de subministrament •\tb2 = Amb excedents sense mecanisme de compensació i diversos contractes de subministrament",
+    "fieldName" : "subsecci_registre",
+    "position" : 4,
+    "renderTypeName" : "text",
+    "tableColumnId" : 8281299,
+    "cachedContents" : {
+      "non_null" : "135223",
+      "largest" : "b2",
+      "null" : "3546",
+      "top" : [ {
+        "item" : "a0",
+        "count" : "134666"
+      }, {
+        "item" : "b1",
+        "count" : "457"
+      }, {
+        "item" : "b2",
+        "count" : "100"
+      } ],
+      "smallest" : "a0",
+      "count" : "138769",
+      "cardinality" : "138769"
+    },
+    "format" : { }
+  }, {
+    "id" : 21746310,
+    "name" : "Data d'inscripció",
+    "dataTypeName" : "calendar_date",
+    "description" : "Data d’inscripció al Registre d’Autoconsum de Catalunya",
+    "fieldName" : "data_d_inscripci",
+    "position" : 5,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 8307813,
+    "cachedContents" : {
+      "non_null" : "138769",
+      "largest" : "2025-12-31T00:00:00.000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2022-11-21T00:00:00.000",
+        "count" : "716"
+      }, {
+        "item" : "2023-01-03T00:00:00.000",
+        "count" : "551"
+      }, {
+        "item" : "2023-05-29T00:00:00.000",
+        "count" : "366"
+      }, {
+        "item" : "2022-11-26T00:00:00.000",
+        "count" : "362"
+      }, {
+        "item" : "2022-11-15T00:00:00.000",
+        "count" : "345"
+      }, {
+        "item" : "2023-01-15T00:00:00.000",
+        "count" : "336"
+      }, {
+        "item" : "2023-06-19T00:00:00.000",
+        "count" : "315"
+      }, {
+        "item" : "2023-03-21T00:00:00.000",
+        "count" : "315"
+      }, {
+        "item" : "2023-05-09T00:00:00.000",
+        "count" : "314"
+      }, {
+        "item" : "2023-05-30T00:00:00.000",
+        "count" : "309"
+      }, {
+        "item" : "2022-12-26T00:00:00.000",
+        "count" : "306"
+      }, {
+        "item" : "2023-02-19T00:00:00.000",
+        "count" : "298"
+      }, {
+        "item" : "2022-11-22T00:00:00.000",
+        "count" : "281"
+      }, {
+        "item" : "2023-02-07T00:00:00.000",
+        "count" : "280"
+      }, {
+        "item" : "2022-12-10T00:00:00.000",
+        "count" : "279"
+      }, {
+        "item" : "2023-02-21T00:00:00.000",
+        "count" : "278"
+      }, {
+        "item" : "2023-02-27T00:00:00.000",
+        "count" : "276"
+      }, {
+        "item" : "2022-11-28T00:00:00.000",
+        "count" : "275"
+      }, {
+        "item" : "2022-12-25T00:00:00.000",
+        "count" : "269"
+      }, {
+        "item" : "2023-06-03T00:00:00.000",
+        "count" : "266"
+      } ],
+      "smallest" : "2018-06-21T00:00:00.000",
+      "count" : "138769",
+      "cardinality" : "138769"
+    },
+    "format" : {
+      "view" : "date_dmy"
+    }
+  }, {
+    "id" : 21746311,
+    "name" : "Data de posada en servei",
+    "dataTypeName" : "calendar_date",
+    "description" : "Dia en que la instal·lació s'ha posat en servei",
+    "fieldName" : "data_de_posada_en_servei",
+    "position" : 6,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 10174596,
+    "cachedContents" : {
+      "non_null" : "138769",
+      "largest" : "2025-12-31T00:00:00.000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2022-11-21T00:00:00.000",
+        "count" : "716"
+      }, {
+        "item" : "2023-01-03T00:00:00.000",
+        "count" : "551"
+      }, {
+        "item" : "2023-05-29T00:00:00.000",
+        "count" : "366"
+      }, {
+        "item" : "2022-11-26T00:00:00.000",
+        "count" : "362"
+      }, {
+        "item" : "2022-11-15T00:00:00.000",
+        "count" : "345"
+      }, {
+        "item" : "2023-01-15T00:00:00.000",
+        "count" : "336"
+      }, {
+        "item" : "2023-06-19T00:00:00.000",
+        "count" : "315"
+      }, {
+        "item" : "2023-03-21T00:00:00.000",
+        "count" : "315"
+      }, {
+        "item" : "2023-05-09T00:00:00.000",
+        "count" : "314"
+      }, {
+        "item" : "2023-05-30T00:00:00.000",
+        "count" : "309"
+      }, {
+        "item" : "2022-12-26T00:00:00.000",
+        "count" : "306"
+      }, {
+        "item" : "2023-02-19T00:00:00.000",
+        "count" : "298"
+      }, {
+        "item" : "2022-11-22T00:00:00.000",
+        "count" : "281"
+      }, {
+        "item" : "2023-02-07T00:00:00.000",
+        "count" : "280"
+      }, {
+        "item" : "2022-12-10T00:00:00.000",
+        "count" : "279"
+      }, {
+        "item" : "2023-02-21T00:00:00.000",
+        "count" : "278"
+      }, {
+        "item" : "2023-02-27T00:00:00.000",
+        "count" : "276"
+      }, {
+        "item" : "2022-11-28T00:00:00.000",
+        "count" : "275"
+      }, {
+        "item" : "2022-12-25T00:00:00.000",
+        "count" : "269"
+      }, {
+        "item" : "2023-06-03T00:00:00.000",
+        "count" : "266"
+      } ],
+      "smallest" : "1987-07-14T00:00:00.000",
+      "count" : "138769",
+      "cardinality" : "138769"
+    },
+    "format" : {
+      "view" : "date_dmy"
+    }
+  }, {
+    "id" : 21746312,
+    "name" : "Potència",
+    "dataTypeName" : "number",
+    "description" : "Potència de la instal·lació en kilowatts",
+    "fieldName" : "pot_ncia",
+    "position" : 7,
+    "renderTypeName" : "number",
+    "tableColumnId" : 8281293,
+    "cachedContents" : {
+      "non_null" : "138767",
+      "largest" : "9756",
+      "null" : "2",
+      "top" : [ {
+        "item" : "5",
+        "count" : "22614"
+      }, {
+        "item" : "3",
+        "count" : "20037"
+      }, {
+        "item" : "6",
+        "count" : "16954"
+      }, {
+        "item" : "4",
+        "count" : "12562"
+      }, {
+        "item" : "10",
+        "count" : "5500"
+      }, {
+        "item" : "8",
+        "count" : "4899"
+      }, {
+        "item" : "2",
+        "count" : "4678"
+      }, {
+        "item" : "4.6",
+        "count" : "3846"
+      }, {
+        "item" : "3.6",
+        "count" : "3333"
+      }, {
+        "item" : "3.68",
+        "count" : "2399"
+      }, {
+        "item" : "15",
+        "count" : "1956"
+      }, {
+        "item" : "100",
+        "count" : "1346"
+      }, {
+        "item" : "2.5",
+        "count" : "1273"
+      }, {
+        "item" : "5.75",
+        "count" : "1257"
+      }, {
+        "item" : "4.2",
+        "count" : "1146"
+      }, {
+        "item" : "20",
+        "count" : "1114"
+      }, {
+        "item" : "30",
+        "count" : "892"
+      }, {
+        "item" : "8.2",
+        "count" : "785"
+      }, {
+        "item" : "50",
+        "count" : "764"
+      }, {
+        "item" : "7",
+        "count" : "733"
+      } ],
+      "smallest" : "0.236",
+      "count" : "138769",
+      "cardinality" : "138769"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 21746313,
+    "name" : "Tecnologia",
+    "dataTypeName" : "text",
+    "description" : "tipus de font de subministrament (fotovoltaica, hidroelèctrica, eòlica, etc)",
+    "fieldName" : "tecnologia",
+    "position" : 8,
+    "renderTypeName" : "text",
+    "tableColumnId" : 8281297,
+    "cachedContents" : {
+      "non_null" : "138769",
+      "largest" : "RESIDUS",
+      "null" : "0",
+      "top" : [ {
+        "item" : "FOTOVOLTAICA",
+        "count" : "138701"
+      }, {
+        "item" : "COGENERACIO",
+        "count" : "28"
+      }, {
+        "item" : "BIOGAS",
+        "count" : "21"
+      }, {
+        "item" : "HIDROELECTRICA",
+        "count" : "7"
+      }, {
+        "item" : "EOLICA TERRESTRE",
+        "count" : "5"
+      }, {
+        "item" : "EMMAGATZEMATGE",
+        "count" : "3"
+      }, {
+        "item" : "RESIDUS",
+        "count" : "3"
+      }, {
+        "item" : "ENERGIA RESIDUAL",
+        "count" : "1"
+      } ],
+      "smallest" : "BIOGAS",
+      "count" : "138769",
+      "cardinality" : "138769"
+    },
+    "format" : { }
+  }, {
+    "id" : 21746314,
+    "name" : "Codi IDESCAT municipi",
+    "dataTypeName" : "text",
+    "description" : "Codi IDESCAT del municipi",
+    "fieldName" : "codi_ine_municipi",
+    "position" : 9,
+    "renderTypeName" : "text",
+    "tableColumnId" : 9518304,
+    "cachedContents" : {
+      "non_null" : "138769",
+      "largest" : "439076",
+      "null" : "0",
+      "top" : [ {
+        "item" : "082055",
+        "count" : "3487"
+      }, {
+        "item" : "080193",
+        "count" : "3352"
+      }, {
+        "item" : "082798",
+        "count" : "2059"
+      }, {
+        "item" : "081878",
+        "count" : "1650"
+      }, {
+        "item" : "081846",
+        "count" : "1563"
+      }, {
+        "item" : "251207",
+        "count" : "1522"
+      }, {
+        "item" : "431482",
+        "count" : "1516"
+      }, {
+        "item" : "082665",
+        "count" : "1318"
+      }, {
+        "item" : "431233",
+        "count" : "1299"
+      }, {
+        "item" : "080728",
+        "count" : "1294"
+      }, {
+        "item" : "082384",
+        "count" : "1260"
+      }, {
+        "item" : "170792",
+        "count" : "1214"
+      }, {
+        "item" : "430385",
+        "count" : "1140"
+      }, {
+        "item" : "431634",
+        "count" : "1135"
+      }, {
+        "item" : "081075",
+        "count" : "1123"
+      }, {
+        "item" : "430379",
+        "count" : "1072"
+      }, {
+        "item" : "083073",
+        "count" : "1012"
+      }, {
+        "item" : "080569",
+        "count" : "981"
+      }, {
+        "item" : "080517",
+        "count" : "960"
+      }, {
+        "item" : "081213",
+        "count" : "946"
+      } ],
+      "smallest" : "080018",
+      "count" : "138769",
+      "cardinality" : "138769"
+    },
+    "format" : { }
+  }, {
+    "id" : 21746315,
+    "name" : "Municipi",
+    "dataTypeName" : "text",
+    "description" : "Població on es troba la instal·lació",
+    "fieldName" : "municipi",
+    "position" : 10,
+    "renderTypeName" : "text",
+    "tableColumnId" : 8281296,
+    "cachedContents" : {
+      "non_null" : "138769",
+      "largest" : "Xerta",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Sant Cugat del Vallès",
+        "count" : "3489"
+      }, {
+        "item" : "Barcelona",
+        "count" : "3354"
+      }, {
+        "item" : "Terrassa",
+        "count" : "2064"
+      }, {
+        "item" : "Sabadell",
+        "count" : "1651"
+      }, {
+        "item" : "Rubí",
+        "count" : "1564"
+      }, {
+        "item" : "Lleida",
+        "count" : "1522"
+      }, {
+        "item" : "Tarragona",
+        "count" : "1516"
+      }, {
+        "item" : "Cerdanyola del Vallès",
+        "count" : "1318"
+      }, {
+        "item" : "Reus",
+        "count" : "1299"
+      }, {
+        "item" : "Corbera de Llobregat",
+        "count" : "1294"
+      }, {
+        "item" : "Sant Quirze del Vallès",
+        "count" : "1259"
+      }, {
+        "item" : "Girona",
+        "count" : "1216"
+      }, {
+        "item" : "Cambrils",
+        "count" : "1140"
+      }, {
+        "item" : "Vendrell, el",
+        "count" : "1133"
+      }, {
+        "item" : "Lliçà d'Amunt",
+        "count" : "1123"
+      }, {
+        "item" : "Calafell",
+        "count" : "1073"
+      }, {
+        "item" : "Vilanova i la Geltrú",
+        "count" : "1012"
+      }, {
+        "item" : "Castelldefels",
+        "count" : "981"
+      }, {
+        "item" : "Castellar del Vallès",
+        "count" : "960"
+      }, {
+        "item" : "Mataró",
+        "count" : "949"
+      } ],
+      "smallest" : "Abella de la Conca",
+      "count" : "138769",
+      "cardinality" : "138769"
+    },
+    "format" : { }
+  }, {
+    "id" : 21746316,
+    "name" : "Codi INE comarca",
+    "dataTypeName" : "text",
+    "description" : "Codi INE de la comarca",
+    "fieldName" : "codi_ine_comarca",
+    "position" : 11,
+    "renderTypeName" : "text",
+    "tableColumnId" : 9518303,
+    "cachedContents" : {
+      "non_null" : "138619",
+      "largest" : "43",
+      "null" : "150",
+      "top" : [ {
+        "item" : "40",
+        "count" : "18052"
+      }, {
+        "item" : "41",
+        "count" : "12741"
+      }, {
+        "item" : "11",
+        "count" : "12439"
+      }, {
+        "item" : "21",
+        "count" : "10671"
+      }, {
+        "item" : "36",
+        "count" : "5627"
+      }, {
+        "item" : "34",
+        "count" : "5483"
+      }, {
+        "item" : "08",
+        "count" : "5181"
+      }, {
+        "item" : "24",
+        "count" : "5156"
+      }, {
+        "item" : "10",
+        "count" : "5025"
+      }, {
+        "item" : "02",
+        "count" : "4784"
+      }, {
+        "item" : "13",
+        "count" : "4616"
+      }, {
+        "item" : "20",
+        "count" : "4434"
+      }, {
+        "item" : "07",
+        "count" : "4411"
+      }, {
+        "item" : "33",
+        "count" : "4402"
+      }, {
+        "item" : "12",
+        "count" : "4304"
+      }, {
+        "item" : "17",
+        "count" : "3972"
+      }, {
+        "item" : "03",
+        "count" : "3754"
+      }, {
+        "item" : "06",
+        "count" : "3584"
+      }, {
+        "item" : "09",
+        "count" : "2207"
+      }, {
+        "item" : "19",
+        "count" : "1802"
+      } ],
+      "smallest" : "01",
+      "count" : "138769",
+      "cardinality" : "138769"
+    },
+    "format" : { }
+  }, {
+    "id" : 21746317,
+    "name" : "Comarca",
+    "dataTypeName" : "text",
+    "description" : "Comarca on es troba la instal·lació",
+    "fieldName" : "comarca",
+    "position" : 12,
+    "renderTypeName" : "text",
+    "tableColumnId" : 8281295,
+    "cachedContents" : {
+      "non_null" : "138619",
+      "largest" : "Vallès Oriental",
+      "null" : "150",
+      "top" : [ {
+        "item" : "Vallès Occidental",
+        "count" : "18052"
+      }, {
+        "item" : "Vallès Oriental",
+        "count" : "12741"
+      }, {
+        "item" : "Baix Llobregat",
+        "count" : "12439"
+      }, {
+        "item" : "Maresme",
+        "count" : "10671"
+      }, {
+        "item" : "Tarragonès",
+        "count" : "5627"
+      }, {
+        "item" : "Selva",
+        "count" : "5483"
+      }, {
+        "item" : "Baix Camp",
+        "count" : "5181"
+      }, {
+        "item" : "Osona",
+        "count" : "5156"
+      }, {
+        "item" : "Baix Empordà",
+        "count" : "5025"
+      }, {
+        "item" : "Alt Empordà",
+        "count" : "4784"
+      }, {
+        "item" : "Barcelonès",
+        "count" : "4616"
+      }, {
+        "item" : "Gironès",
+        "count" : "4434"
+      }, {
+        "item" : "Bages",
+        "count" : "4411"
+      }, {
+        "item" : "Segrià",
+        "count" : "4402"
+      }, {
+        "item" : "Baix Penedès",
+        "count" : "4304"
+      }, {
+        "item" : "Garraf",
+        "count" : "3972"
+      }, {
+        "item" : "Alt Penedès",
+        "count" : "3754"
+      }, {
+        "item" : "Anoia",
+        "count" : "3584"
+      }, {
+        "item" : "Baix Ebre",
+        "count" : "2207"
+      }, {
+        "item" : "Garrotxa",
+        "count" : "1802"
+      } ],
+      "smallest" : "Alta Ribagorça",
+      "count" : "138769",
+      "cardinality" : "138769"
+    },
+    "format" : { }
+  } ],
+  "grants" : [ {
+    "inherited" : false,
+    "type" : "viewer",
+    "flags" : [ "public" ]
+  } ],
+  "license" : {
+    "name" : "See Terms of Use"
+  },
+  "metadata" : {
+    "custom_fields" : {
+      "Freqüència d'actualització" : {
+        "Freqüència d'actualització" : "Mensual"
+      },
+      "Idioma" : {
+        "Idioma" : "Català",
+        "Dataset name (EN)" : "Electric self-consumption facilities",
+        "Nombre del conjunto de datos (ES)" : "Instalaciones de autoconsumo eléctrico"
+      },
+      "Informació de gènere o sexe" : {
+        "Informació de gènere o sexe" : "No aplicable"
+      },
+      "Enllaços relacionats" : {
+        "Nom" : "Registre d'autoconsum de Catalunya",
+        "URL" : "https://mediambient.gencat.cat/ca/05_ambits_dactuacio/energia/installacions-domestiques/autoconsum/registre-autoconsum-catalunya/"
+      },
+      "Actors" : {
+        "Departament" : "Territori, Habitatge i Transició Ecològica",
+        "Tipus actor" : "Generalitat de Catalunya"
+      },
+      "Àmbit geogràfic" : {
+        "Informació geogràfica" : "Codi d'element",
+        "Àmbit geogràfic" : "Catalunya"
+      }
+    },
+    "availableDisplayTypes" : [ "table", "fatrow", "page" ]
+  },
+  "owner" : {
+    "id" : "a4b5-gx6v",
+    "displayName" : "Dades Obertes Catalunya",
+    "profileImageUrlLarge" : "/api/users/a4b5-gx6v/profile_images/LARGE",
+    "profileImageUrlMedium" : "/api/users/a4b5-gx6v/profile_images/THUMB",
+    "profileImageUrlSmall" : "/api/users/a4b5-gx6v/profile_images/TINY",
+    "screenName" : "Dades Obertes Catalunya",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula" ]
+  },
+  "query" : { },
+  "rights" : [ "read" ],
+  "tableAuthor" : {
+    "id" : "a4b5-gx6v",
+    "displayName" : "Dades Obertes Catalunya",
+    "profileImageUrlLarge" : "/api/users/a4b5-gx6v/profile_images/LARGE",
+    "profileImageUrlMedium" : "/api/users/a4b5-gx6v/profile_images/THUMB",
+    "profileImageUrlSmall" : "/api/users/a4b5-gx6v/profile_images/TINY",
+    "screenName" : "Dades Obertes Catalunya",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula" ]
+  },
+  "tags" : [ "autoconsum", "energies renovables", "energia elèctrica", "consum elèctric", "electricitat", "smartcatalonia", "ods7_energia assequible i no contaminant" ],
+  "flags" : [ "default", "ownerMayBeContacted", "restorable", "restorePossibleForType" ]
+}

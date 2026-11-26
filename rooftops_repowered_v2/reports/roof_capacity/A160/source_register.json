@@ -1,0 +1,132 @@
+{
+  "created_utc": "2026-11-15T00:24:47.832261+00:00",
+  "building_id": "A160",
+  "cadastral_reference": "2635601DF3823F",
+  "files": [
+    {
+      "role": "footprint_path",
+      "path": "datasets\\inputs\\roof_capacity\\A160_footprint.geojson",
+      "bytes": 3546,
+      "sha256": "c1c2a1e0cf3821246e475139ad74572c1d6047f964978a08a6360f27af48e2eb"
+    },
+    {
+      "role": "points_path",
+      "path": "datasets\\raw\\roof_capacity\\A160\\lidar\\A160_points.npz",
+      "bytes": 663063,
+      "sha256": "0b5cba237dcd9f9936a4951a47af1059f5dfd8c55669bf93da1ebc0cb2cf1a63"
+    },
+    {
+      "role": "lidar_acquisition_report",
+      "path": "reports\\roof_capacity\\A160\\lidar_acquisition.json",
+      "bytes": 1349,
+      "sha256": "6a8c631356b2123357cca28014c0e08c5d556c27237195c7ecba48633090ede7"
+    },
+    {
+      "role": "orthophoto_path",
+      "path": "datasets\\raw\\roof_capacity\\A160\\source_probes\\A160_ortho_2025.png",
+      "bytes": 1896476,
+      "sha256": "19191cbecb1e91ba6650d20e0e68d4e69a100d5baa9fdd50a954de5884a59378"
+    },
+    {
+      "role": "orthophoto_bounds_report",
+      "path": "reports\\roof_capacity\\A160\\rooftop_sources.json",
+      "bytes": 3344,
+      "sha256": "ed05d2aef4edd21e56c6a856f09b4963d30e2afdd18fe45507058fb070a2db68"
+    },
+    {
+      "role": "observed_panel_mask",
+      "path": "datasets\\inputs\\roof_capacity\\A160_observed_panel_coverage.geojson",
+      "bytes": 923930,
+      "sha256": "5b2744f31643e2dca81b32ed1adf11e279744af06c40073c0fa9871703abf619"
+    },
+    {
+      "role": "observed_array_envelopes",
+      "path": "datasets\\inputs\\roof_capacity\\A160_observed_array_envelopes.geojson",
+      "bytes": 91680,
+      "sha256": "ee55ebac8db09b05ea3ce3cb4f28414fb7f5df5b68dc2e2ec89174f4e694e336"
+    },
+    {
+      "role": "observed_annotation_metadata",
+      "path": "datasets\\inputs\\roof_capacity\\A160_observed_annotation.json",
+      "bytes": 5490,
+      "sha256": "7ca1878a317ccb8cb12a9398a0fae4d395197e6f879a2aa3657344b657d64ba7"
+    },
+    {
+      "role": "current_access_exclusions",
+      "path": "datasets\\inputs\\roof_capacity\\A160_current_access_exclusions.geojson",
+      "bytes": 4466,
+      "sha256": "3bbda3e7af4a53cb1c5dd7bf77581e64e140bf75702390df2c8e12e41964e775"
+    },
+    {
+      "role": "current_high_roof_boundary",
+      "path": "datasets\\inputs\\roof_capacity\\A160_current_high_roof_boundary.geojson",
+      "bytes": 1691,
+      "sha256": "5ec0060c158eb276f7eab4579f284aa15e36abaf53288f22be3fd9f86e768680"
+    },
+    {
+      "role": "protocol",
+      "path": "config\\a160_assessments.json",
+      "bytes": 2947,
+      "sha256": "f352f118c8d254e832a2d4052bd21d4573fe8069e1e095456c6a40be3bad3dd3"
+    },
+    {
+      "role": "annotation_protocol",
+      "path": "config\\a160_pv_reference_annotation.json",
+      "bytes": 2311,
+      "sha256": "d58fcd8992bb2ed0fa9a0c94e5bc293194e22e0d50ecab7131598a88fe6e56a0"
+    },
+    {
+      "role": "source_laz",
+      "path": "datasets\\raw\\roof_capacity\\A160\\lidar\\lidar-territorial-full1km432583.laz",
+      "bytes": 303095100,
+      "sha256": "389e62922f9daa3987e43f5ae59ce4a8df968d5d5b72ba9525290690c57b4adb"
+    },
+    {
+      "role": "newest_provisional_image",
+      "path": "datasets\\raw\\roof_capacity\\A160\\source_probes\\A160_provisional_2026.png",
+      "bytes": 375924,
+      "sha256": "0608d290c1c27fb1664d0e4c5ca9eac74881e0e6fba0c6e8088801a679cf4fac"
+    },
+    {
+      "role": "municipal_polygons",
+      "path": "datasets\\raw\\roof_capacity\\A160\\source_probes\\municipal_roof_polygons.geojson",
+      "bytes": 10716,
+      "sha256": "49820b4c1825c9982be3708bf108e06205c735804d6b70921b02dc2c51d19afa"
+    },
+    {
+      "role": "cadastre_property_response",
+      "path": "datasets\\raw\\roof_capacity\\A160\\source_probes\\catastro_parcel_details.json",
+      "bytes": 2413,
+      "sha256": "19ee1a717dbe376d73142fd0f15f534de04355a2d9416b1f9b9b819bc5a2e608"
+    }
+  ],
+  "request_manifests": [
+    "rooftop_sources.json",
+    "tile_metadata_sources.json",
+    "latest_imagery_check.json",
+    "lidar_acquisition.json",
+    "cadastre_candidates.json"
+  ],
+  "source_roles": {
+    "retrospective_inputs": [
+      "footprint_path",
+      "points_path",
+      "structural/module/scenarios parameters"
+    ],
+    "reference_only": [
+      "observed_panel_mask"
+    ],
+    "additional_only": [
+      "observed_array_envelopes",
+      "current_access_exclusions",
+      "current_high_roof_boundary"
+    ],
+    "latest_provisional": "Visual context only; not registered reference/predictor labels"
+  },
+  "existing_installation": {
+    "confirmed_by": "User manual review of the 2025 orthophoto",
+    "module_wp": null,
+    "module_count": null,
+    "installed_capacity_kwp": null
+  }
+}

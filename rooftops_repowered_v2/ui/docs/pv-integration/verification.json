@@ -1,0 +1,22 @@
+{
+  "verified_utc": "2026-11-15T11:25:56.727705+00:00",
+  "python_tests_passed": 70,
+  "general_browser_checks_passed": 11,
+  "pv_browser_checks_passed": 5,
+  "protected_files_checked": 34,
+  "protected_hashes_unchanged": true,
+  "available_hypothetical_scenarios": 5,
+  "unique_official_responses": 4,
+  "hourly_rows_per_positive_scenario": 8760,
+  "original_minute_offsets": [
+    10
+  ],
+  "raw_and_output_hashes_verified": true,
+  "actual_installed_specs": "unknown",
+  "actual_existing_generation": null,
+  "hypothetical_energy_sharing_eligible": false,
+  "case_study_pv_path_exists": false,
+  "models_retrained": false,
+  "frozen_roof_prediction_regenerated": false,
+  "stitch_connection": "authenticated_private_project_and_approved_html_reference_verified"
+}

@@ -1,0 +1,72 @@
+{
+  "created_utc": "2026-11-14T23:56:18.234818+00:00",
+  "results": [
+    {
+      "name": "lidar_grid.json",
+      "status": "downloaded",
+      "url": "https://datacloud.icgc.cat/datacloud/lidar-territorial/json/lidar-territorial-tall.json",
+      "bytes": 6558269
+    },
+    {
+      "name": "lidar_4358_index.html",
+      "status": "downloaded",
+      "url": "https://datacloud.icgc.cat/datacloud/lidar-territorial/vigent/laz_unzip/full10km4358/",
+      "bytes": 10479
+    },
+    {
+      "name": "municipal_roof_polygons.geojson",
+      "status": "downloaded",
+      "url": "https://urbisadmin.carto.com/api/v2/sql/?q=SELECT+%2A+FROM+fotovoltaica+WHERE+ST_Intersects%28the_geom%2C+ST_MakeEnvelope%282.192838649223001%2C41.3986985334818%2C2.1936358556910487%2C41.39946067576402%2C4326%29%29&format=geojson",
+      "bytes": 10716
+    },
+    {
+      "name": "ortho_2025_feature_info.txt",
+      "status": "downloaded",
+      "url": "https://geoserveis.icgc.cat/servei/catalunya/orto-territorial/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&LAYERS=ortofoto_color_2025&QUERY_LAYERS=ortofoto_color_2025&STYLES=&SRS=EPSG%3A25831&BBOX=432526.9167558992%2C4583332.221107142%2C432594.3457721652%2C4583416.212509495&WIDTH=800&HEIGHT=800&X=400&Y=400&INFO_FORMAT=text%2Fhtml",
+      "bytes": 358
+    },
+    {
+      "name": "architect_site_plan.jpg",
+      "status": "downloaded",
+      "url": "https://batlleiroig.com/wp-content/uploads/2022/04/1007-almogavers160-emplacament-1536x1086.jpg",
+      "bytes": 96821
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://datacloud.icgc.cat/datacloud/lidar-territorial/json/lidar-territorial-tall.json",
+      "retrieved_utc": "2026-11-14T23:56:16.107720+00:00",
+      "status": 200,
+      "sha256": "04c84a764aed70fe2a3bb27262af73a98ba2489268b8ec386ac7336d34ab2014",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\tile_responses\\00_7c00bae0833b.response"
+    },
+    {
+      "url": "https://datacloud.icgc.cat/datacloud/lidar-territorial/vigent/laz_unzip/full10km4358/",
+      "retrieved_utc": "2026-11-14T23:56:16.158545+00:00",
+      "status": 200,
+      "sha256": "a17fbdcc379ce10301499f521a430ff6b910aae7eb35b2922c977443f7146479",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\tile_responses\\01_29bd047909d2.response"
+    },
+    {
+      "url": "https://urbisadmin.carto.com/api/v2/sql/?q=SELECT+%2A+FROM+fotovoltaica+WHERE+ST_Intersects%28the_geom%2C+ST_MakeEnvelope%282.192838649223001%2C41.3986985334818%2C2.1936358556910487%2C41.39946067576402%2C4326%29%29&format=geojson",
+      "retrieved_utc": "2026-11-14T23:56:16.623088+00:00",
+      "status": 200,
+      "sha256": "49820b4c1825c9982be3708bf108e06205c735804d6b70921b02dc2c51d19afa",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\tile_responses\\02_883625c8cc54.response"
+    },
+    {
+      "url": "https://geoserveis.icgc.cat/servei/catalunya/orto-territorial/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&LAYERS=ortofoto_color_2025&QUERY_LAYERS=ortofoto_color_2025&STYLES=&SRS=EPSG%3A25831&BBOX=432526.9167558992%2C4583332.221107142%2C432594.3457721652%2C4583416.212509495&WIDTH=800&HEIGHT=800&X=400&Y=400&INFO_FORMAT=text%2Fhtml",
+      "retrieved_utc": "2026-11-14T23:56:17.279597+00:00",
+      "status": 200,
+      "sha256": "b99f69ca46d31fc991dacec9ae5c7b273a1ab41285a16a0ba5d43430a9ebf4ae",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\tile_responses\\03_4b0839eda149.response"
+    },
+    {
+      "url": "https://batlleiroig.com/wp-content/uploads/2022/04/1007-almogavers160-emplacament-1536x1086.jpg",
+      "retrieved_utc": "2026-11-14T23:56:18.234136+00:00",
+      "status": 200,
+      "sha256": "6d2842e8e0f12e878b0875442adffe31dda101883a717a1ce0e17a37f3543412",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\tile_responses\\04_0746fb27d5f8.response"
+    }
+  ]
+}

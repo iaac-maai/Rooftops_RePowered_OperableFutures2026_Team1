@@ -1,0 +1,30 @@
+var MAP_URL = "//urbis.carto.com/u/urbisadmin/api/v2/viz/f67acec4-a4ff-11e6-a414-0e3ff518bd15/viz.json";
+var MAP_RESUM_URL = "//urbis.carto.com/u/urbisadmin/api/v2/viz/53574a48-a4fe-11e6-9785-0ecd1babdde5/viz.json";
+//var MAP_DISTRICTES_URL = "http://sitroomcdb.bcn.cat/api/v2/viz/f85689ae-bdb1-11e4-8b70-005056010106/viz.json";
+var SQL_URL = "https://urbisadmin.carto.com/api/v2/sql/";
+var API_KEY = "YTUFhOjmPJodz0y4yEikZg";
+
+//var URL_WMS_PLANOLBCN = "http://w133.bcn.cat/WMSPLANOLBCN/service.svc/get";
+//var URL_WMS_PLANOLBCN = "https://geo.bcn.cat/mapproxy/service?MAP=d:/apache24/maps/PLANOLBCN/PLANOLBCN.qgs";
+var URL_WMS_PLANOLBCN = "https://geo.bcn.cat/mapproxy/service?SERVICE=WMS";
+
+var URL_WMTS_PLANOLBCN = "//w133.bcn.cat/WMTSPLANOLBCN/service.svc/get";
+
+
+
+var TABLE_NAMES = [];
+TABLE_NAMES[0] = "termosolar";
+TABLE_NAMES[1] = "fotovoltaica";
+TABLE_NAMES[2] = "minieolica";
+COLOR_SELECTED = "#FFFFFF";
+COLOR_HIGHLIGHTED = "#333333";
+
+var RESUM_NAMES = [];
+RESUM_NAMES[0] = "termosolar_resum";
+RESUM_NAMES[1] = "fotovoltaica_resum";
+RESUM_NAMES[2] = "minieolica_resum";
+RESUM_NAMES[3] = "features_3";
+COLOR_DISTRICTE_SELECTED = "#04B404";
+
+//https://geo.bcn.cat/cgi-bin/qgis_mapserv.fcgi.exe?MAP=d:/apache24/maps/PLANOLBCN/PLANOLBCN.qgs&SERVICE=WMS&REQUEST=GetMap&VERSION=1.1.1&LAYERS=PLANOLBCN&STYLES=&FORMAT=image%2Fjpeg&TRANSPARENT=false&HEIGHT=256&WIDTH=256&SRS=EPSG%3A3857&BBOX=242458.25372057906,5070220.960212311,242764.00183371975,5070526.70832545
+//https://geo.bcn.cat/cgi-bin/qgis_mapserv.fcgi.exe?MAP=d:/apache24/maps/PLANOLBCN/PLANOLBCN.qgs&SERVICE=WMS&REQUEST=GetMap&VERSION=1.1.1&LAYERS=Planol_BCN&STYLES=&FORMAT=image%2Fjpeg&TRANSPARENT=false&HEIGHT=256&WIDTH=256&SRS=EPSG%3A3857&BBOX=225030.61127155885,5063188.753610074,229922.58108181017,5068080.7234203275

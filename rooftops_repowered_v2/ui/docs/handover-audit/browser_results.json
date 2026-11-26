@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "browser": "157.0.8103.51",
+  "checks_passed": 11,
+  "checks": [
+    "Live public candidate inventory and repository connection",
+    "Eleven sampled text styles meet 4.5:1 contrast; keyboard/dialog checks remain separate",
+    "All seven desktop views, no horizontal overflow, screenshots",
+    "Both roof assessments and all scenario values match source CSVs; map updates",
+    "Evidence drawer, keyboard focus containment, Escape and focus return",
+    "Typology/hour explorer and CSV-derived model metrics with illustrative labels",
+    "All sharing selectors and unexecuted export, separate assessment, null unknown results",
+    "All unready stages visibly pending",
+    "All seven mobile views and screenshots; labeled scrollable navigation; no overflow",
+    "Mobile JSON export",
+    "Offline/backend failure leaves values pending and export disabled"
+  ],
+  "page_errors": [],
+  "external_network_required": false,
+  "server_mode": "existing_user_dashboard",
+  "base_url": "http://127.0.0.1:8765"
+}

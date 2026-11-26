@@ -1,0 +1,3 @@
+# Keep large downloaded originals local; manifests and documentation stay trackable.
+raw/
+*.part

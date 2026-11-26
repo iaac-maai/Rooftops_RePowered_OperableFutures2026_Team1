@@ -1,0 +1,108 @@
+{
+  "document_type": "DEVELOPMENT_WORK_PACKAGES_NOT_SIMULATION_RESULTS",
+  "prepared_date": "2026-11-15",
+  "timezone": "Europe/Madrid",
+  "scope": "First-pass UI completed; later research packages prepared with explicit gates",
+  "work_packages": [
+    {
+      "id": "B",
+      "name": "Verify existing A160 installation",
+      "state": "pending_source_input",
+      "prepared_evidence": "ui/docs/handover-audit/installation_source_register.json",
+      "required_fields": [
+        "module_count",
+        "module_wp",
+        "installed_capacity_kwp",
+        "inverter_configuration",
+        "array_tilt_and_orientation",
+        "commissioning_and_version_dates",
+        "source_url_or_as_built_record"
+      ],
+      "verified_installed_capacity_kwp": null,
+      "gate": "No capacity promotion from image coverage, retrospective potential, additional candidates or the legacy municipal polygon",
+      "next_action": "Obtain an installation/as-built record from the owner, facilities team or MEP contractor. Any exploratory hypotheses require separately documented assumptions and remain outside default accounting."
+    },
+    {
+      "id": "C",
+      "name": "PVGIS hourly generation",
+      "state": "hypothetical_acquisition_and_ui_implemented_actual_generation_pending",
+      "depends_on": [
+        "B"
+      ],
+      "existing_adapter": "pipeline/step_03_pvgis/importer.py",
+      "required_metadata": [
+        "generation_role",
+        "capacity_kwp",
+        "tilt",
+        "azimuth",
+        "loss_percent",
+        "weather_period_and_database",
+        "source_url",
+        "timestamp_basis",
+        "power_unit"
+      ],
+      "expected_artifacts": [
+        "hourly CSV export",
+        "separate verified existing-system settings",
+        "import provenance and source timestamp report"
+      ],
+      "gate": "Keep existing, counterfactual and incremental roles separate; preserve minute offsets; require UTC hourly validation. No production curve until an actual eligible series exists.",
+      "implemented": "Official seriescalc acquisition/cache, existing importer/temporal checks, manual fallback, UI sensitivity and sharing-ineligibility enforcement"
+    },
+    {
+      "id": "D",
+      "name": "A160 and mixed-use physics/demand domain",
+      "state": "prepared_not_executed",
+      "required_inputs": [
+        "A160 conditioned geometry, envelope, HVAC and operation evidence",
+        "school/residential/hotel archetypes and sourced schedules",
+        "representative year, weather and civil/standard/UTC calendar mapping"
+      ],
+      "expected_artifacts": [
+        "archetype assumption register",
+        "simulation manifest and aligned reference demands",
+        "whole-configuration holdouts and baseline comparisons before any surrogate expansion"
+      ],
+      "gate": "Preserve the existing office model; reject unsupported geometry/area/typologies. No office-model scaling to the host or other uses. No meter labels without real meter evidence."
+    },
+    {
+      "id": "E",
+      "name": "Independent sharing comparison",
+      "state": "prepared_not_executed",
+      "depends_on": [
+        "C",
+        "D"
+      ],
+      "existing_adapter": "pipeline/step_07_energy_balance/evaluate.py",
+      "required_inputs": [
+        "same role-eligible PV and independent demand series across all strategies",
+        "frozen forecast-derived coefficients",
+        "inventory and exactly aligned hourly indices"
+      ],
+      "comparisons": [
+        "grid_only",
+        "host_only",
+        "fixed_equal_shares",
+        "demand_informed_preagreed"
+      ],
+      "gate": "Nonnegative normalized coefficients; demand and allocated-PV conservation; no extra import/emissions gain when host already consumes all PV; do not evaluate a plan on the forecast used to design it."
+    },
+    {
+      "id": "F",
+      "name": "Sourced impact screening",
+      "state": "prepared_not_executed",
+      "depends_on": [
+        "E"
+      ],
+      "existing_adapter": "pipeline/step_08_impact_metrics/screen.py",
+      "assumption_template": "config/impact_assumptions.json",
+      "required_inputs": [
+        "dated tariffs/export treatment",
+        "dated emissions factor and system boundary",
+        "capex and O&M",
+        "explicit cost/benefit-sharing and fairness proxy"
+      ],
+      "gate": "No savings, payback or emissions result without sourced assumptions and evaluated balances. Redistribution is not generation or extra avoided emissions. 3D parcel design remains a separate task."
+    }
+  ]
+}

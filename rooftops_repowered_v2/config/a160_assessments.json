@@ -1,0 +1,49 @@
+{
+  "building_id": "A160",
+  "cadastral_reference": "2635601DF3823F",
+  "cadastral_address": "CL ALMOGAVERS 154 N2-164",
+  "published_address": "Almogavers 160, Barcelona",
+  "footprint_path": "datasets/inputs/roof_capacity/A160_footprint.geojson",
+  "points_path": "datasets/raw/roof_capacity/A160/lidar/A160_points.npz",
+  "lidar_acquisition_report": "reports/roof_capacity/A160/lidar_acquisition.json",
+  "lidar_acquisition_date": "2022-06-01",
+  "roof_form_visible_by_date": "2022-05-18",
+  "pv_visible_by_date": "2022-05-18",
+  "orthophoto_path": "datasets/raw/roof_capacity/A160/source_probes/A160_ortho_2025.png",
+  "orthophoto_date": "2025-06-18",
+  "orthophoto_native_gsd_m": 0.25,
+  "orthophoto_bounds_report": "reports/roof_capacity/A160/rooftop_sources.json",
+  "observed_panel_mask": "datasets/inputs/roof_capacity/A160_observed_panel_coverage.geojson",
+  "observed_array_envelopes": "datasets/inputs/roof_capacity/A160_observed_array_envelopes.geojson",
+  "observed_annotation_metadata": "datasets/inputs/roof_capacity/A160_observed_annotation.json",
+  "current_access_exclusions": "datasets/inputs/roof_capacity/A160_current_access_exclusions.geojson",
+  "current_high_roof_boundary": "datasets/inputs/roof_capacity/A160_current_high_roof_boundary.geojson",
+  "output_dir": "datasets/processed/roof_capacity/A160",
+  "structural": {
+    "grid_resolution_m": 0.5,
+    "dominant_surface_selection": "largest_flat_component_by_area",
+    "v1_plane_growing_height_tolerance_m": 0.15,
+    "low_relief_structural_band_m": 0.45,
+    "minimum_source_coverage": 0.9,
+    "note": "Fixed before scoring: a dominant-plane height band absorbs shallow relief without using the observed PV mask. It is not a verified reconstruction of hidden bare-roof elevations; low equipment and panel-induced geometry remain uncertainty sources. Only the dominant high roof is assessed; lower terraces and secondary service roofs are excluded."
+  },
+  "module": {
+    "long_m": 1.76,
+    "short_m": 1.13,
+    "wp": 420,
+    "tilt_degrees": 10,
+    "azimuth_degrees_from_north": null,
+    "panel_gap_m": 0.05,
+    "winter_design_elevation_degrees": 25,
+    "grid_shift_step_m": 0.25,
+    "source": "V1 illustrative design assumptions; not the installed A160 module specifications"
+  },
+  "scenarios": {
+    "conservative": {"edge_setback_m": 2.0, "obstacle_clearance_m": 1.0},
+    "base": {"edge_setback_m": 1.0, "obstacle_clearance_m": 0.5},
+    "optimistic": {"edge_setback_m": 0.5, "obstacle_clearance_m": 0.3}
+  },
+  "existing_installation": {"confirmed_by": "User manual review of the 2025 orthophoto", "module_wp": null, "module_count": null, "installed_capacity_kwp": null},
+  "pvgis": {"weather_year": null, "loss_percent": null},
+  "scope": "Rooftop-only. Separate retrospective structural approximation, independent image reference and current additional-PV scenarios. Do not alter the demand surrogate or combine existing and proposed generation."
+}

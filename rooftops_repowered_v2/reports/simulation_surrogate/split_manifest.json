@@ -1,0 +1,49 @@
+{
+  "created_utc": "2026-11-14T21:50:36.333309+00:00",
+  "simulation_manifest_sha256": "ccddafe2a4b3d2a95ab59fd067726647e7455ad6ba91b805500e0a5c0d6ce69c",
+  "splits": {
+    "train": [
+      "office_000",
+      "office_001",
+      "office_003",
+      "office_005",
+      "office_006",
+      "office_007",
+      "office_009",
+      "office_013",
+      "office_014",
+      "office_017",
+      "office_018",
+      "office_019",
+      "office_020",
+      "office_022",
+      "office_023",
+      "office_024",
+      "office_025",
+      "office_027",
+      "office_029",
+      "office_030",
+      "office_032",
+      "office_035"
+    ],
+    "validation": [
+      "office_008",
+      "office_011",
+      "office_015",
+      "office_016",
+      "office_021",
+      "office_026",
+      "office_028"
+    ],
+    "test": [
+      "office_002",
+      "office_004",
+      "office_010",
+      "office_012",
+      "office_031",
+      "office_033",
+      "office_034"
+    ]
+  },
+  "definition": "Entire parameter combinations held out. Same reference geometry and same weather sequence; this tests interpolation across operation configurations, not unseen climates or real buildings."
+}

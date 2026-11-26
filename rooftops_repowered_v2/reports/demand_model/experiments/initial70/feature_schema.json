@@ -1,0 +1,37 @@
+{
+  "required_inputs": [
+    "timestamp_utc",
+    "building_id",
+    "building_use",
+    "floor_area_m2",
+    "timezone",
+    "air_temperature_c"
+  ],
+  "model_features": [
+    "building_use",
+    "log_floor_area",
+    "hour",
+    "day_of_week",
+    "month",
+    "is_weekend",
+    "annual_sin",
+    "annual_cos",
+    "air_temperature_c",
+    "heating_degrees",
+    "cooling_degrees"
+  ],
+  "supported_uses": [
+    "Education",
+    "Office",
+    "Retail"
+  ],
+  "target_unit": "Wh/m2 per hourly interval internally; kWh per hourly interval in exported predictions",
+  "time_basis": "Calendar features use source-compatible local standard time, not civil DST hours.",
+  "unavailable_features_excluded": [
+    "building_id",
+    "site_id",
+    "meter lags",
+    "observed occupancy",
+    "annual electricity labels"
+  ]
+}

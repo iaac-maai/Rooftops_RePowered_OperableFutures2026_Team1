@@ -1,0 +1,9 @@
+{
+  "created_utc": "2026-11-15T00:24:42.081934+00:00",
+  "retrospective_frozen_manifest_sha256": "8c76990093af899e92c83ea2d0896cf4c93688ddb0f74ea93a2a91999f0caa71",
+  "observed_annotation_sha256": "5b2744f31643e2dca81b32ed1adf11e279744af06c40073c0fa9871703abf619",
+  "observed_mask_used_in_retrospective_predictor": false,
+  "not_blinded_human_study": true,
+  "pre_installation_source_independence": false,
+  "ground_truth_limit": "User-confirmed PV identity, image-interpreted projected coverage at 0.25m native GSD; no verified module count/Wp or installed kWp."
+}

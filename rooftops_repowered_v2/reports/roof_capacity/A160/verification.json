@@ -1,0 +1,39 @@
+{
+  "created_utc": "2026-11-15T00:26:34.066107+00:00",
+  "tests": {
+    "command": ".venv\\Scripts\\python.exe -m pytest -q",
+    "passed": 49,
+    "failed": 0
+  },
+  "roof_only_workflow": {
+    "command": ".venv\\Scripts\\python.exe -m pipeline roof-feasibility",
+    "exit_code": 0
+  },
+  "pip_check": "No broken requirements found",
+  "git_diff_check": "passed",
+  "trained_artifacts_unchanged": {
+    "pipeline\\models\\demand_baseline_hour_of_week.joblib": true,
+    "pipeline\\models\\demand_baseline_seasonal.joblib": true,
+    "pipeline\\models\\demand_office_energyplus_surrogate.joblib": true,
+    "pipeline\\models\\demand_xgboost.joblib": true,
+    "pipeline\\models\\office_simulation_baselines.joblib": true,
+    "pipeline\\models\\experiments\\initial70\\demand_baseline_hour_of_week.joblib": true,
+    "pipeline\\models\\experiments\\initial70\\demand_baseline_seasonal.joblib": true,
+    "pipeline\\models\\experiments\\initial70\\demand_xgboost.joblib": true
+  },
+  "v1_source_files_unchanged": {
+    "pipeline/step1/catastro.py": true,
+    "pipeline/step1/geocode.py": true,
+    "pipeline/step1/lidar.py": true,
+    "pipeline/step2/grid.py": true,
+    "pipeline/step2/lidar_roof.py": true,
+    "pipeline/step2/ortho.py": true,
+    "pipeline/step2/model.py": true,
+    "pipeline/step3/layout.py": true,
+    "pipeline/step4/energy_map.py": true
+  },
+  "source_register_hashes_verified": true,
+  "demand_model_retrained": false,
+  "removed_dummy_files": "reports/integration/dummy_cleanup.json",
+  "scope": "First A160 rooftop milestone only; demand-domain expansion, yield simulation and full energy-community pipeline deferred"
+}

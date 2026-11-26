@@ -1,0 +1,36 @@
+{
+  "building_id": "A160",
+  "status": "blocked",
+  "sources": [
+    {
+      "url": "https://eines.icgc.cat/geocodificador/cerca?text=Carrer+dels+Almogavers+160%2C+Barcelona%2C+Spain&size=1",
+      "retrieved_utc": "2026-11-14T23:42:08.362591+00:00",
+      "status": 200,
+      "sha256": "279f5425d060c7b437fe2f1b37f8cacc72fdcafa42079fb5bed7cf0129a3c7d1",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\building_lookup\\00_ec0f02306b2c.response"
+    },
+    {
+      "url": "https://nominatim.openstreetmap.org/search?q=Carrer+dels+Almogavers+160%2C+Barcelona%2C+Spain&format=json&limit=1&countrycodes=es&viewbox=2.1%2C41.45%2C2.24%2C41.35&bounded=1",
+      "retrieved_utc": "2026-11-14T23:42:09.182548+00:00",
+      "status": 200,
+      "sha256": "67b4dbbdc9c2087b0f54565c0d55fd59f2a6890282c390625c9b004104f17402",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\building_lookup\\01_10d48654a835.response"
+    },
+    {
+      "url": "https://ovc.catastro.meh.es/OVCServWeb/OVCWcfCallejero/COVCCoordenadas.svc/json/Consulta_RCCOOR?SRS=EPSG%3A4326&CoorX=2.1914012&CoorY=41.3980997&Coordenada_X=2.1914012&Coordenada_Y=41.3980997",
+      "retrieved_utc": "2026-11-14T23:42:09.731924+00:00",
+      "status": 200,
+      "sha256": "c111bfcfa7cad1cdffab384b6f49e3fd6ce33ed46bffd44625fdbfaf2ee3a505",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\building_lookup\\02_6dc7e2d20314.response"
+    }
+  ],
+  "geometry_verified_current": false,
+  "data_origin": "OFFICIAL_GEO",
+  "geocoder_candidate": {
+    "lat": 41.3980997,
+    "lon": 2.1914012,
+    "label": "Carrer dels Almogàvers, el Parc i la Llacuna del Poblenou, Sant Martí, Barcelona, Barcelonès, Barcelona, Catalunya, 08018, España",
+    "source": "Nominatim"
+  },
+  "blocker": "Catastro: PARA ESAS COORDENADAS NO HAY REFERENCIA DISPONIBLE"
+}

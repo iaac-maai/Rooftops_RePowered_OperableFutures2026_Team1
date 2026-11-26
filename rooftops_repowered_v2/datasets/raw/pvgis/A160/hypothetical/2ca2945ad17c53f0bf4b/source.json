@@ -1,0 +1,26 @@
+{
+  "source_url": "https://re.jrc.ec.europa.eu/api/v5_3/seriescalc?lat=41.399077786613745&lon=2.1932134113514765&startyear=2017&endyear=2017&raddatabase=PVGIS-SARAH3&pvcalculation=1&peakpower=110.88&loss=14.0&angle=10.0&aspect=-44.10645155057341&pvtechchoice=crystSi&mountingplace=free&trackingtype=0&usehorizon=1&outputformat=csv&browser=0",
+  "retrieved_utc": "2026-11-15T10:58:05.893321+00:00",
+  "acquisition": "OFFICIAL_PVGIS_API",
+  "http_status": 200,
+  "content_type": "text/html; charset=utf-8",
+  "source_sha256": "7eec9ed44019e7404e0760c592492699860d2f214eefa2867c25b0316eb41741",
+  "parameters": {
+    "lat": 41.399077786613745,
+    "lon": 2.1932134113514765,
+    "startyear": 2017,
+    "endyear": 2017,
+    "raddatabase": "PVGIS-SARAH3",
+    "pvcalculation": 1,
+    "peakpower": 110.88,
+    "loss": 14.0,
+    "angle": 10.0,
+    "aspect": -44.10645155057341,
+    "pvtechchoice": "crystSi",
+    "mountingplace": "free",
+    "trackingtype": 0,
+    "usehorizon": 1,
+    "outputformat": "csv",
+    "browser": 0
+  }
+}

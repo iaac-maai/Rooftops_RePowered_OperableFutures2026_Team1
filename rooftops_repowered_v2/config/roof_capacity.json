@@ -1,0 +1,72 @@
+{
+  "building_id": "A160",
+  "address": "Carrer dels Almogavers 160, Barcelona, Spain",
+  "search_bounds_wgs84": [
+    2.1,
+    41.35,
+    2.24,
+    41.45
+  ],
+  "completion_year": 2022,
+  "completion_date": null,
+  "completion_source": "https://www.batlleiroig.com/en/projects/oficines-almogavers-160-a-barcelona/",
+  "method": "lidar",
+  "footprint_path": "datasets/inputs/roof_capacity/A160_footprint.geojson",
+  "footprint_crs": "EPSG:4326",
+  "geometry_verified_current": false,
+  "tile_metadata_csv": "datasets/inputs/roof_capacity/lidar_tiles.csv",
+  "eligible_mask_path": "datasets/inputs/roof_capacity/A160_reviewed_eligible.geojson",
+  "exclusions_path": "datasets/inputs/roof_capacity/A160_exclusions.geojson",
+  "mask_crs": "EPSG:4326",
+  "review": {
+    "verified": false,
+    "source_date": null,
+    "source_url": null,
+    "existing_pv_status": "unknown",
+    "exclusions_checked": [
+      "terraces",
+      "vegetation",
+      "pedestrian_access",
+      "equipment",
+      "fire_safety_paths",
+      "existing_pv"
+    ],
+    "orthophoto_path": null,
+    "orthophoto_bbox_25831": null
+  },
+  "minimum_lidar_coverage": 0.9,
+  "grid_resolution_m": 0.5,
+  "include_lower_roofs": false,
+  "module": {
+    "long_m": 1.76,
+    "short_m": 1.13,
+    "wp": 420,
+    "tilt_degrees": 10,
+    "azimuth_degrees_from_north": null,
+    "panel_gap_m": 0.05,
+    "winter_design_elevation_degrees": 25,
+    "grid_shift_step_m": 0.25,
+    "source": "V1 reference module/layout assumptions; replace with selected module datasheet and design assumptions"
+  },
+  "scenarios": {
+    "conservative": {
+      "edge_setback_m": 2.0,
+      "obstacle_clearance_m": 1.0
+    },
+    "base": {
+      "edge_setback_m": 1.0,
+      "obstacle_clearance_m": 0.5
+    },
+    "optimistic": {
+      "edge_setback_m": 0.5,
+      "obstacle_clearance_m": 0.3
+    }
+  },
+  "pvgis": {
+    "weather_year": null,
+    "loss_percent": null,
+    "source_url": "https://photovoltaic-geographic-information-system.ec.europa.eu/"
+  },
+  "output_dir": "datasets/processed/roof_capacity/A160",
+  "notes": "Generic strict reviewed/pre-installation template retained for future cases. A160 has confirmed existing PV and uses config/a160_assessments.json via roof-feasibility; this generic template remains intentionally gated and is not the active dual assessment."
+}

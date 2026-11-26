@@ -1,0 +1,143 @@
+ROOFSCAPES (RE)POWERED V2 — CASE-STUDY / V1-REUSE NOTE FOR NEXT CODEX HANDOVER
+Research status: November 15, 2026
+This file is a supplementary, researched handover note, not a claim of execution or completion.
+Do not overwrite existing V2 source files automatically. Audit them first.
+
+PROJECT DECISION
+- Primary rooftop PV host: A160, Carrer dels Almogavers 160, Barcelona, Spain. Purpose-built office completed 2022 (Batlleiroig). Gross constructed area 13,385 m2; developer reports 9,400 m2 office area; these are NOT conditioned floor areas. Stepped south terraces and greenery are not automatically PV-ready. Actual roof PV capacity, structural suitability, rooftop obstacles, and meter data remain unverified.
+- Research objective: compare A160 host-only rooftop PV against hypothetical collective sharing among a small nearby MIXED-USE cluster. Focus environmental impact, economic viability and social allocation. No real-time trading, new PV physical model, private meters, or claims of legal approval.
+- Case-study consumers, subject to cadastral geometry, network eligibility and time-series checks:
+  1) ITAEB, Institut de Tecniques Audiovisuals i de l'Espectacle de Barcelona, Almogavers 131; EDUCATION. Operating schedules published: 08:00–14:10 morning and 15:00–21:10 afternoon for selected curricula. It moved to this location in September 2025, reusing/adapting the former modular school site. Old 2018 plans are not necessarily 2026 as-built geometry. No public whole-building hourly electricity meter.
+  2) Municipal social-rental housing, Carrer de la Ciutat de Granada 95–97; RESIDENTIAL. Opened/delivered May 2024. 18 occupied homes: 10 approximately 45 m2 and 8 approximately 55 m2; municipal architectural/contract documents exist, and the scheme has heat-pump/aerothermal design. A 2021 municipal description says rooftop PV was planned for common services: VERIFY CURRENT INSTALLATION before counting net electricity demand or PV. No public dwelling-level/hourly meters; never infer resident vulnerabilities or individual lifestyles.
+  3) NH Barcelona Diagonal Poblenou (formerly NH Barcelona Diagonal Center), Carrer d'Alaba 94–96; HOSPITALITY. Hotel website confirms 129 rooms on 6 floors, cooling, gym and event facilities. Continuous operation and occupancy-dependent load are useful alternative operating scenarios. Actual occupancy, energy system specifications, total conditioned floor area and electricity meter are not public/verified.
+  4) Optional comparator: Almogavers 165, municipal Care Economy Hub with Hospital del Mar healthcare vocational-training rooms; MIXED PUBLIC/EDUCATION. Documented 20 kWp solar installation and publicly documented use programme; do not treat entire building as ordinary office. Verify whether existing generation serves the building and whether a hypothetical shared case can include it without double counting.
+- Secondary non-core office comparator: Badajoz 97; same development, supported by architecture, but don't allow it to crowd out the varied-use case.
+
+WHY THIS CLUSTER
+- Four clearly different electricity-use profiles: conventional office (weekday daytime), school (morning and afternoon term times), residential (mornings/evenings/weekends), hospitality (24h and seasonal).
+- Public building identity, uses and proxy operation schedules; social rental context offers transparent comparison of renewable access WITHOUT assigning personal socioeconomic attributes.
+- Distinct schedules can test whether sharing genuinely increases PV self-consumption compared to A160 host-only. If A160 already absorbs all its generation, no extra local energy benefit may exist; report this honestly.
+- Public building-level hourly measured consumption is NOT available. Physics simulations are scenario references, not observed truth.
+- Geographic proximity is plausible; DO NOT assert statutory eligibility until checking exact cadastral coordinates, electrical connection and current collective-self-consumption rules.
+
+PUBLIC REFERENCES FOR EACH CASE
+A160 / architecture: https://www.batlleiroig.com/en/projects/oficines-almogavers-160-a-barcelona/
+A160 / developer: https://www.conrentramway.com/portfolio/a160/
+ITAEB official school: https://agora.xtec.cat/ins-itaeb/
+ITAEB official timetable example: https://agora.xtec.cat/ins-itaeb/estudis/cfgs-produccio-daudiovisuals-i-espectacles/
+ITAEB official move in Sep 2025: https://agora.xtec.cat/ins-itaeb/general/ens-retrobem-al-nou-centre-el-15-de-setembre/
+Education 2018 former modular school project (may be stale): https://www.edubcn.cat/rcs_gene/extra/04_equipaments_educatius/2016_2019/1101_Escola_Auditori.pdf
+Ciutat de Granada official occupied housing: https://www.consorcihabitatge.barcelona/es/noticias/el-imhab-entrega-las-llaves-de-18-pisos-de-alquiler-social-en-el-barrio-del-parc-i-la-llacuna-del-poblenou-1405102
+Housing construction procurement: https://cido.diba.cat/contractacio/11504537/obres-de-construccio-dun-edifici-plurifamiliar-de-18-habitatges-i-un-local-sense-us-situat-al-carrer-ciutat-de-granada-95-97-de-barcelona-ajuntament-de-barcelona-institut-municipal-de-lhabitatge-i-rehabilitacio-de-barcelona
+Housing design and proposed PV/heat pumps, historical (not as-built): https://bcnroc.ajuntament.barcelona.cat/jspui/bitstream/11703/135771/3/Sant-Marti_2021-11-05__2.pdf
+Hotel official: https://www.nh-hotels.com/en/hotel/nh-barcelona-diagonal-poblenou
+Almogavers 165 healthcare-teaching institute: https://www.hmarfp.cat/en/about-us/resources/
+A160 city solar potential map: https://coneixement-eu.bcn.cat/mapaEnergia/viewer.html (parcel values NOT confirmed)
+PVGIS: https://photovoltaic-geographic-information-system.ec.europa.eu/
+
+DISCOVERY: V1 CODE DIRECTLY SUPPORTS V2 PV CAPACITY ESTIMATION
+Existing original repo (read-only source): https://github.com/iaac-maai/Rooftops_RePowered_OperableFutures2026_Team1
+V2 working repo: https://github.com/SindhujaDavuluri/rooftops_repowered_v2
+Relevant files from V1:
+- pipeline/step1/find_building.py (address to cadastral polygon, footprint, LiDAR), and step1/catastro.py
+- pipeline/step2/lidar_roof.py and step2/read_roof.py (raster LiDAR roof surfaces, obstacle masking, edge/obstacle clearance, usable polygon, confidence)
+- pipeline/step2/model.py, train.py and dataset.py (OPTIONAL 4-channel RGB+height U-Net using ResNet34, labelled classes free/obstacle/solar panel/outside). Source contains training framework, not independently verified trained checkpoint or successful local metrics.
+- pipeline/step3/layout.py (panel packing, reference panel 420 Wp, 1.76 x 1.13 m, 10-degree tilt, design spacing; parameterize instead of hard-coding a local roof design).
+- pipeline/step4/energy_map.py (municipal photovoltaic atlas map comparison, CARTO backend; current backend and A160/165 records NOT verified, likely legacy roof imagery/geometry).
+- pipeline/step4/shade_yield.py (optional shading calculations; avoid duplicating PVGIS physical yield modeling; selectively extract relevant obstacle/shadow metadata if robust).
+- V1 example output formats: *_usable.geojson, roof JSON, panels GeoJSON, roof previews, panel kWp and yearly yield.
+
+RECOMMENDED V1->V2 DEVELOPMENT PATH, IN ORDER
+0. Check V2 existing code and data contracts, then create an isolated module pipeline/roof_capacity/ or similar. Do not overwrite V2 EnergyPlus-XGBoost or PVGIS importer.
+1. Establish exact building footprint/cadastral reference of A160 (and nearby candidate buildings), coordinate reference system, and completion dates.
+2. Acquire public LiDAR LAZ and latest public aerial orthophoto for the A160 parcel. Record survey acquisition dates PER TILE; the available 2021–2023 ICGC LiDAR may predate completion of A160 in 2022. If roof does not exist in LiDAR or differs from recent imagery, STOP LiDAR-based confident estimation and fall back to architects' as-built plans / map's indicative estimate.
+3. Run V1 step2 LiDAR-only extraction to derive roof/free/obstacle polygons. Inspect output visually against recent orthophoto and architectural plans. Preserve uncertainties and masking of terraces, planted spaces, pedestrian access, service equipment, pre-existing PV and roof safety/fire pathways. Note structural, waterproofing and permitting are UNVERIFIED.
+4. Reuse V1 step3 panel layout on conservative / base / optimistic eligible-area masks and configurable module size, orientation, tilt, spacing, edge/obstacle buffers. Calculate capacity_estimate_kwp = panel_count * module_wp / 1000 and report installed/suitable capacity as SCENARIOS not certified real installations.
+5. Use V1 step4.energy_map.py only as independent MUNICIPAL COMPARISON. First test service access and polygon geometry/date. If blocked, use manual solar-map export/screenshots. Never sum city kWp with V1 kWp.
+6. Feed scenario capacity and geometry metadata to V2 PVGIS export -> normalized hourly pv_generation_kwh. Use PVGIS for actual irradiance/PV performance physics; do not reimplement step4 yield for the core pipeline.
+7. OPTIONAL CV ONLY if real labeled imagery and trained checkpoint/validation are present. Check U-Net obstacle-class IoU on roofs held out spatially and inspect false negatives; compare corrected capacity against LiDAR baseline. Otherwise do not retrain from scratch under final studio deadline. External roof data can help label/benchmark but needs license, sensor-date and domain check.
+8. Save repeatable, documented outputs: roof_capacity_scenarios.csv (building_id, survey_date, data_origin, model_version, method, usable_area_m2, panel_count, module_wp, estimated_kwp, scenario, source), eligible_roof.geojson, obstacles.geojson, QA preview, municipal_map_comparison.csv; all entries labelled estimated and supplied to V2 config/pvgis_settings... after site-specific validation.
+
+DEMAND MODEL: KEEP THE SCIENTIFIC CLAIMS SEPARATE
+- Active V2 AI is XGBoost trained on EnergyPlus-simulated SMALL US REFERENCE OFFICE (~511.16 m2), Barcelona IWEC reference climate, 36 operation configurations; test MAE around 0.648 kWh per hourly interval against same-simulator test configurations. NOT validated on A160 or measured local electricity.
+- Do NOT predict hotel, residential, school or whole A160 by applying this office model or by merely multiplying by floor area.
+- For minimal viable research: adapt geometry for A160; simulate representative independent reference demand for hotel, school and residential using established EnergyPlus archetypes and sourced use/schedule assumptions. These are independent physics-based scenarios, and only office demand is estimated by the ML surrogate, unless more training time is allocated.
+- Possible extension if feasible: expand a single XGBoost surrogate with building_use, floor_area, shape, envelope/HVAC and operation inputs and TRAINING SIMULATIONS spanning those features. Compare against per-type schedule-aware baselines; split by whole building geometry/configuration, and test unseen weather and operation combinations. Avoid claim of cross-typology generalization without validation.
+- Freeze a plan based on forecast inputs, then compare its value on independent EnergyPlus reference load series; do not score predicted-share allocations against the same predicted loads as proof of AI impact.
+- Always compare grid-only, A160-only, equal/fixed collective, AI-informed pre-agreed hourly coefficient schemes. Conserve PV and demand, no claimed environmental gain if no actual grid-import reduction.
+- Standardize Barcelona civil/UTC time and one coherent weather year; V2 office model's 2017 standard-time + IWEC typical-year conventions are not directly identical to PVGIS UTC / export minute offsets.
+- Pre-agreed allocation coefficients are hypothetical and require current legal/settlement review. Do not call them real-time dynamic market transactions.
+
+QUALITY GATES BEFORE FINAL HOST COMMITMENT
+- Building identification/geometry matches *current* A160 construction.
+- Conservative PV kWp estimate > 0 and QA confidence acceptable; terraces and vegetation excluded unless expressly designed otherwise.
+- Every participant has verified site use, source-backed parameters and documented schedule assumptions.
+- Network eligibility/distance and existing installations separately recorded.
+- Source electricity meters absent => no real-building accuracy claims. Cost and emissions factors require dated official citations.
+- Deliver one host + approximately 3–4 neighboring participants as a demonstrator rather than a citywide system.
+
+REMINDER FOR NEXT CODEX HANDOVER
+Include this entire discovery and action list in the next full Codex context file. It updates the initial 'don't duplicate existing PV tools' principle: reusing V1 roof-geometry / obstacle / panel CAPACITY extraction is now justified to supply otherwise absent kWp inputs to PVGIS; PVGIS remains responsible for PV energy-yield simulation. V1 CV is optional and evidence-gated, not a mandatory second AI training task.
+
+
+=======================================================================
+PRE-CODEX IMPLEMENTATION GATES AND ADDITIONS — NOVEMBER 15, 2026
+=======================================================================
+
+1) FREEZE THE MVP AND COMMUNITY ACCOUNTING BOUNDARY
+- One primary host: A160 (Almogàvers 160).
+- Three core consumers: ITAEB Almogàvers 131 (education); Ciutat de Granada 95–97 (18-unit housing); NH Diagonal Poblenou, Àlaba 94–96 (hotel). Almogàvers 165 is optional/sensitivity only.
+- Treat every participant/connection as hypothetical until electrical eligibility and agreements are independently verified.
+- Model only new PV installed on A160. Record pre-existing PV/BIPV at other sites separately to avoid double counting; do not silently incorporate their generation or call a site without PV if installed status is unknown.
+- One primary *trained* demand AI model, the office EnergyPlus-to-XGBoost surrogate. For non-office loads use clearly identified physics-generated demand references and cross-checks; do not apply office-trained models to residential/hotel/education.
+- No batteries, live trading/control, citywide rollout or second full CV model training as mandatory deliverables.
+
+2) CURRENT COLLECTIVE-SELF-CONSUMPTION REGULATIONS — CHECK DATE
+- The consolidated Spanish RD 244/2019 was updated by RDL 7/2026 (effective March 22, 2026); relevant PV/wind qualifying conditions include a 5,000 m proximity option for up-to-5-MW installations. The earlier 2025 5-km attempt under RDL 7/2025 was repealed in July 2025; never cite it as current legal basis.
+- Source current consolidated BOE: https://www.boe.es/buscar/act.php?id=BOE-A-2019-5089
+- Amendment: https://boe.es/buscar/act.php?id=BOE-A-2026-6544
+- Repeal of earlier 2025 law: https://boe.es/diario_boe/txt.php?id=BOE-A-2025-15313
+- Distance is measured with respect to the relevant metering points under applicable conditions, not the straight-line distance between architectural building centroids. Measure building-centroid proximity only as a preliminary screen; never claim verified eligibility from it.
+- Under RD 244/2019, hourly coefficients must be pre-agreed, sum to 1 for each hour, and be notified as required; no real-time AI dispatch. Official FAQ: https://www.miteco.gob.es/es/energia/energia-electrica/electricidad/autoconsumo-electrico/preguntas-frecuentes-autoconsumo.html
+- Actual grid connection, participant meter configurations, common legal modality and owner agreement remain unknown. Clearly label legal status as unverified.
+
+3) PV CAPACITY IS A PHYSICAL SCENARIO WITH SOURCE DATES
+- A160 was completed 2022, so the ICGC LiDAR tile date, building footprints, and municipality solar-map geometry must match the post-construction building. Reject stale surfaces or report only low-confidence illustrative capacity.
+- Provide conservative/base/optimistic eligible-roof polygons. Do not include roof gardens, terraces, evacuation access, equipment exclusion zones or existing panels without explicit modeling decisions.
+- Use V1 LiDAR-based roof masks and V1 packing; compare independent municipal capacity. Let PVGIS compute hourly PV output from the chosen capacity scenario. Do not sum or average the two PV capacity estimates as if independent installations.
+- Distinguish geometric potential from structurally feasible, permitted or electrically interconnectable installations; these cannot be confirmed remotely.
+- Offer a simple fallback when LiDAR is stale: current plans/roof imagery plus openly documented low-confidence area scenario. Do not pretend U-Net resolves outdated elevation data.
+
+4) SIMULATION VALIDITY AND WEATHER/TIME CONTRACT
+- Demand target is hourly ELECTRICITY kWh, not thermal kWh or power kW.
+- Freeze one coherent representative year/calendar and define whether data are typical/reference weather or actual historical observations.
+- Align EnergyPlus Barcelona IWEC calendar/local standard-time convention with PVGIS hourly UTC timestamps and potential minute offsets by an explicit validated adapter. Do not relabel years or round minutes silently.
+- Train/evaluate the office surrogate only on within-domain geometry/operating cases, or expand its physics scenario domain and revalidate. Keep split by entire simulation configurations/geometries, not random hours.
+- For ITAEB, housing, hotel, document archetypes, schedules, conditioning, occupied-area definitions, weekend/holiday patterns, and sources/assumptions. Real hourly meters are NOT available.
+
+5) PROVE *DOWNSTREAM* AI VALUE INDEPENDENTLY
+- Generate and freeze pre-agreed allocation plans from ML forecasts versus a schedule-aware baseline (or simpler fixed rule), then evaluate both on INDEPENDENT held-out physics-simulation demand references. Do not evaluate forecasts against themselves and call it AI gain.
+- Compare grid-only (context), A160 host-only, equal/fixed collective shares, and demand-informed pre-agreed hourly shares using EXACTLY the same PV/demand series across solar scenarios.
+- Report MAE/RMSE for surrogate approximation *and* scenario kWh self-consumed, import/export, incremental import reduction vs A160 host-only, financial sensitivities, and participant benefit/fairness proxy. Negative or zero AI/collective gains are acceptable findings.
+- Explicitly show PV-limited versus demand-limited scenarios. A160 may already consume all generated PV, leaving no additional total solar benefit from sharing.
+- Define how costs/revenue are shared across participants; keep gross savings and net participant benefits distinct. Never invent real tariffs or emissions factors.
+
+6) TESTS / CODEX EXECUTION FIRST
+- Before editing: inspect existing V2 modules, tests, current config, local model files (which may be gitignored), and source manifests; do not overwrite working trained artifacts or assume raw datasets/checkpoints are present in Git.
+- Run existing pytest and pipeline status; report missing local resources and exact installed versions.
+- Port V1 in an isolated `pipeline/roof_capacity/` adapter, preserving V1 attribution and V2 contracts.
+- Run a single-building A160 rooftop smoke test before processing the full mixed-use cluster; create QA overlays and report LiDAR acquisition metadata.
+- Add focused tests for stale LiDAR rejection, roof-mask buffers, panel count -> kWp, empty/obstructed roofs, timestamps, type-aware demand routing, existing-PV exclusions and independent allocation evaluation.
+- Preserve downloaded source URLs, retrieval/flight dates, coordinate systems, model version, and explicit provenance label for every generated result.
+
+7) ACCEPTANCE CRITERIA FOR FIRST WORKING V2 MILESTONE
+- A160 cadastral footprint/modern roof geometry checked, with stated data vintage and confidence.
+- A reproducible A160 solar-capacity scenario CSV and geometry/QA preview, or a clearly documented blocked result with fallback.
+- A PVGIS-ready setting record derived from capacity scenario, not an invented roof area.
+- Validated data contracts for all four typologies, with each demand source labeled simulated vs ML-predicted.
+- Initial comparison demonstrator that refuses missing assumptions instead of silently filling them.
+- One concise limitations panel for the final interface and a citation/source register.
+
+THE HANDOVER SHOULD REQUEST CODEX TO IMPLEMENT THE FIRST MILESTONE ONLY,
+REPORT DATA BLOCKERS AND TEST RESULTS, AND SEEK SPECIFIC USER INPUT ONLY
+WHEN A NECESSARY SOURCE CANNOT BE OBTAINED PUBLICLY.

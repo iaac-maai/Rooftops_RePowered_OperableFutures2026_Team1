@@ -1,0 +1,22 @@
+{
+  "building_id": "A160",
+  "assessment_version": "a160_existing_pv_evidence_v1",
+  "verification_status": "visual_identity_confirmed_installation_specs_unknown",
+  "user_clarification_date": "2026-11-15",
+  "installation": {
+    "installed_capacity_kwp": null,
+    "module_count": null,
+    "module_wp": null,
+    "tilt_degrees": null,
+    "azimuth_degrees_from_north": null,
+    "inverter_configuration": null,
+    "commissioning_date": null
+  },
+  "existing_capacity_verified": false,
+  "evidence": [
+    {"type": "user_confirmed_visual_identity", "source_date": "2025-06-18", "source_reference": "datasets/inputs/roof_capacity/A160_observed_annotation.json", "verifies": ["visible_arrays_are_existing_PV"]},
+    {"type": "user_clarification", "source_date": "2026-11-15", "verifies": ["no_owner_as_built_or_installation_specification_available"]}
+  ],
+  "accounting_rule": "Retrospective potential and PVGIS hypothetical sensitivity do not establish installed capacity or existing generation. Additional PV is separate. No double counting.",
+  "generation_inputs": "Unknown until installation evidence is supplied; hypothetical PVGIS is separately tagged and sharing-ineligible"
+}

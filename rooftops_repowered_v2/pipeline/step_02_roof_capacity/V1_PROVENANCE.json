@@ -1,0 +1,57 @@
+{
+  "copied_utc": "2026-11-14T23:27:54.982919+00:00",
+  "local_source": "D:\\MaAI IAAC\\Term 1\\Research Studio\\research_studio_team_1",
+  "repository": "https://github.com/iaac-maai/Rooftops_RePowered_OperableFutures2026_Team1",
+  "revision": "f5387c8f0758868afb93712d895014298c16e254",
+  "attribution": "IAAC MaAI Research Studio Team 1, Rooftops RePowered V1",
+  "license_note": "No standalone license file found at local V1 repository root. Preserve attribution; this copy does not add or imply a new license.",
+  "files": [
+    {
+      "source": "pipeline/step1/catastro.py",
+      "destination": "pipeline\\step_02_roof_capacity\\catastro.py",
+      "original_sha256": "003ee5f6f45c468e49fc22c7d19a40e4e6e420e41e8b750e62bd71142923a07c"
+    },
+    {
+      "source": "pipeline/step1/geocode.py",
+      "destination": "pipeline\\step_02_roof_capacity\\geocode.py",
+      "original_sha256": "838f82d4e30aa4fb256c9661ab4f705624e15f11a6243505c82f9d2ab8843376"
+    },
+    {
+      "source": "pipeline/step1/lidar.py",
+      "destination": "pipeline\\step_02_roof_capacity\\lidar_tiles.py",
+      "original_sha256": "a92db5712eab085e4e76fa44548307858dc39e063b413b1b3cf3a1bdfc6856aa"
+    },
+    {
+      "source": "pipeline/step2/grid.py",
+      "destination": "pipeline\\step_02_roof_capacity\\grid.py",
+      "original_sha256": "03bc10fc2a51adf265d198b066aed7c9b60f4075e23713d8cc76b65c7339f843"
+    },
+    {
+      "source": "pipeline/step2/lidar_roof.py",
+      "destination": "pipeline\\step_02_roof_capacity\\lidar_roof.py",
+      "original_sha256": "6af1236aed88a01d6df4c2ff177dc351350cb0cc374ed7495f2b3972c8355a7b"
+    },
+    {
+      "source": "pipeline/step2/ortho.py",
+      "destination": "pipeline\\step_02_roof_capacity\\ortho.py",
+      "original_sha256": "e623aedf1e29d3357001ba66777275b07eceaf9741e5d9edd63237d1c568de30"
+    },
+    {
+      "source": "pipeline/step2/model.py",
+      "destination": "pipeline\\step_02_roof_capacity\\vision_model.py",
+      "original_sha256": "ea0c767ec08264ee8af57a697316a2d18445063bb0e83ff97aebdc2c0c75cf25"
+    },
+    {
+      "source": "pipeline/step3/layout.py",
+      "destination": "pipeline\\step_02_roof_capacity\\layout.py",
+      "original_sha256": "a529f4a32c3293b115d000daed7ea3fd735b14f66c4524fd8981237942a9c792"
+    },
+    {
+      "source": "pipeline/step4/energy_map.py",
+      "destination": "pipeline\\step_02_roof_capacity\\municipal_map.py",
+      "original_sha256": "c2ef3c0419e7d8bcb6b44bd99b6f868681313344639ed79ce3616159c0a4f6f5"
+    }
+  ],
+  "trained_roof_checkpoint_found": false,
+  "adaptations": "Numbered V2 imports; parameterized buffers/module packing; dated-source/CRS gates and V2 accounting contracts. V1 PV-yield physics, website exports and CV training are not core V2 dependencies."
+}

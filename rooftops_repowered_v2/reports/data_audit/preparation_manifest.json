@@ -1,0 +1,157 @@
+{
+  "created_utc": "2026-11-14T21:29:54.302302+00:00",
+  "config": {
+    "route": "measured_bdg2",
+    "building_uses": [
+      "Office",
+      "Education",
+      "Retail"
+    ],
+    "max_buildings_per_use": 150,
+    "minimum_meter_coverage": 0.8,
+    "maximum_zero_fraction": 0.8,
+    "seed": 42,
+    "validation_fraction": 0.2,
+    "test_fraction": 0.2,
+    "max_training_rows": 600000,
+    "n_estimators": 400,
+    "max_depth": 5,
+    "learning_rate": 0.04,
+    "n_jobs": 4,
+    "evaluation_years": [
+      2016,
+      2017
+    ],
+    "objective": "reg:absoluteerror",
+    "area_weighted_loss": true,
+    "exclude_from_test_ids_file": "config/experiments/initial_building_ids.json",
+    "experiment_label": "expanded_measured_bdg2"
+  },
+  "input_sha256": {
+    "metadata.csv": "992d0b29f24f96ad4332bc4dbb534b7bdd7dd2689aad093f94e93068ecddca02",
+    "electricity_cleaned.csv": "b6ffc9b4dfcefe5c753594730a08ae822b0d50fec6815abb8f185591e6c630a3",
+    "weather.csv": "a8189f1c6acdf3b9933a9e6354b8e7c1278cd56a7075929623a17565d44f04bd",
+    "column_quality.csv": "5d4bf4bbc3deab9e03aa4d49f2f3b13a966d732e917d52b7347f071d04e85238"
+  },
+  "buildings": 310,
+  "rows": 5258034,
+  "buildings_by_use_split": [
+    {
+      "building_use": "Education",
+      "split": "test",
+      "count": 30
+    },
+    {
+      "building_use": "Education",
+      "split": "train",
+      "count": 90
+    },
+    {
+      "building_use": "Education",
+      "split": "validation",
+      "count": 30
+    },
+    {
+      "building_use": "Office",
+      "split": "test",
+      "count": 30
+    },
+    {
+      "building_use": "Office",
+      "split": "train",
+      "count": 90
+    },
+    {
+      "building_use": "Office",
+      "split": "validation",
+      "count": 30
+    },
+    {
+      "building_use": "Retail",
+      "split": "train",
+      "count": 8
+    },
+    {
+      "building_use": "Retail",
+      "split": "validation",
+      "count": 2
+    }
+  ],
+  "weather_unmatched_rows": 18866,
+  "temperature_missing_fraction": 0.003902218966252405,
+  "excluded_test_ids": [
+    "Bear_education_Arnold",
+    "Bear_education_Benita",
+    "Bear_education_Chad",
+    "Bear_education_Tara",
+    "Bull_education_Antonia",
+    "Bull_education_Barry",
+    "Bull_education_Brady",
+    "Bull_education_Dan",
+    "Bull_education_Krista",
+    "Bull_education_Nolan",
+    "Bull_office_Debbie",
+    "Bull_office_Hilton",
+    "Bull_office_Rob",
+    "Cockatoo_education_Rita",
+    "Cockatoo_office_Christy",
+    "Cockatoo_office_Giovanni",
+    "Cockatoo_office_Margaret",
+    "Eagle_education_Brooke",
+    "Eagle_education_Luther",
+    "Eagle_education_Shanna",
+    "Eagle_office_Elia",
+    "Eagle_office_Elias",
+    "Eagle_office_Mandi",
+    "Fox_education_Kris",
+    "Fox_office_Alice",
+    "Fox_office_Carson",
+    "Fox_office_Zachary",
+    "Fox_retail_Manie",
+    "Hog_education_Jewel",
+    "Hog_office_Alexis",
+    "Hog_office_Buford",
+    "Hog_office_Cornell",
+    "Hog_office_Lavon",
+    "Hog_office_Lizzie",
+    "Hog_office_Marilyn",
+    "Hog_office_Roger",
+    "Hog_office_Rolando",
+    "Hog_office_Thomas",
+    "Lamb_education_Ellen",
+    "Lamb_education_Emery",
+    "Lamb_education_Hellen",
+    "Lamb_education_Phil",
+    "Lamb_education_Traci",
+    "Lamb_office_Peggy",
+    "Panther_education_Annetta",
+    "Panther_education_Janis",
+    "Panther_office_Antonette",
+    "Panther_office_Danica",
+    "Panther_office_Valarie",
+    "Panther_retail_Felix",
+    "Panther_retail_Kristina",
+    "Panther_retail_Lester",
+    "Panther_retail_Rachel",
+    "Panther_retail_Romeo",
+    "Peacock_education_Yolanda",
+    "Peacock_office_Dara",
+    "Rat_education_Brett",
+    "Rat_education_Nona",
+    "Rat_education_Salvatore",
+    "Rat_education_Winnie",
+    "Rat_office_Jill",
+    "Rat_retail_Jeffrey",
+    "Robin_office_Dina",
+    "Wolf_education_Arnulfo",
+    "Wolf_education_Dolores",
+    "Wolf_office_Bobbie",
+    "Wolf_office_Nadia",
+    "Wolf_retail_Harriett",
+    "Wolf_retail_Marcella",
+    "Wolf_retail_Toshia"
+  ],
+  "time_basis": "Publisher source-local regular wall time; weather explicitly ignores DST. Retained for training; not falsely converted into actual UTC meter instants.",
+  "quality_selection": "Declared coverage/area/nonnegative checks use all source periods to define the eligible cohort, not to tune model parameters.",
+  "evaluation": "Disjoint buildings per use; sites may be shared across splits. This is unseen-building evaluation, not unseen-site or Barcelona validation."
+}

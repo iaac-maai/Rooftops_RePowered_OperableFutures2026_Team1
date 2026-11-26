@@ -1,0 +1,71 @@
+{
+  "created_utc": "2026-11-14T23:46:06.856218+00:00",
+  "results": [
+    {
+      "name": "cadastre_addresses.zip",
+      "url": "https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/08/08900-BARCELONA/A.ES.SDGC.AD.08900.zip",
+      "bytes": 3694466,
+      "status": "downloaded"
+    },
+    {
+      "name": "lidar_directory.html",
+      "url": "https://datacloud.icgc.cat/datacloud/lidar-territorial/",
+      "bytes": 677,
+      "status": "downloaded"
+    },
+    {
+      "name": "lidar_metadata.xml",
+      "status": "failed",
+      "error": "404 Client Error:  for url: https://catalegs.ide.cat/geonetwork/srv/api/records/lidar-territorial-v3r0-2021-2023/formatters/xml"
+    },
+    {
+      "name": "developer_map.html",
+      "url": "https://consent.google.com/ml?continue=https://www.google.com/maps/place/Parallel/@41.398924,2.1933185,20.75z/data%3D!4m5!3m4!1s0x12a4a3bc3bc7bcc1:0x9fac974a7cc0d648!8m2!3d41.3989792!4d2.1936404?shorturl%3D1&gl=ES&m=0&pc=m&uxe=eomtm&cm=2&hl=es&src=1",
+      "bytes": 34919,
+      "status": "downloaded"
+    },
+    {
+      "name": "solar_table_sample.json",
+      "url": "https://urbisadmin.carto.com/api/v2/sql/?q=SELECT+%2A+FROM+fotovoltaica+LIMIT+1&format=geojson",
+      "bytes": 11511,
+      "status": "downloaded"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/08/08900-BARCELONA/A.ES.SDGC.AD.08900.zip",
+      "retrieved_utc": "2026-11-14T23:46:03.129396+00:00",
+      "status": 200,
+      "sha256": "f1c15ac83a8600924b59f7bf3a85d96cebdc3cc09962691fdecfc71697ba3abc",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\additional_responses\\00_2c2c6f35c0e4.response"
+    },
+    {
+      "url": "https://datacloud.icgc.cat/datacloud/lidar-territorial/",
+      "retrieved_utc": "2026-11-14T23:46:03.444054+00:00",
+      "status": 200,
+      "sha256": "a0cc41c281a545dc5dcfac51641ed42b57dab5d634a97197deeee1bf02a18a0c",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\additional_responses\\01_c9f78c470f1d.response"
+    },
+    {
+      "url": "https://catalegs.ide.cat/geonetwork/srv/api/records/lidar-territorial-v3r0-2021-2023/formatters/xml",
+      "retrieved_utc": "2026-11-14T23:46:04.286320+00:00",
+      "status": 404,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\additional_responses\\02_b3c87361be4c.response"
+    },
+    {
+      "url": "https://consent.google.com/ml?continue=https://www.google.com/maps/place/Parallel/@41.398924,2.1933185,20.75z/data%3D!4m5!3m4!1s0x12a4a3bc3bc7bcc1:0x9fac974a7cc0d648!8m2!3d41.3989792!4d2.1936404?shorturl%3D1&gl=ES&m=0&pc=m&uxe=eomtm&cm=2&hl=es&src=1",
+      "retrieved_utc": "2026-11-14T23:46:06.469822+00:00",
+      "status": 200,
+      "sha256": "81674073564347c5af761c42efd1d3bcb5e7f86e4866a119a37a4532d948dd24",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\additional_responses\\03_44f9c513d8e0.response"
+    },
+    {
+      "url": "https://urbisadmin.carto.com/api/v2/sql/?q=SELECT+%2A+FROM+fotovoltaica+LIMIT+1&format=geojson",
+      "retrieved_utc": "2026-11-14T23:46:06.855686+00:00",
+      "status": 200,
+      "sha256": "a739a4d01fd292f5b5d843581ed496e55eb264ff3b0ff7b6a3b63c827c24b0f2",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\additional_responses\\04_8d95c1d94b04.response"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "bdg2_weather",
+  "local_file": "raw/building_data_genome_2/weather.csv",
+  "url": "https://raw.githubusercontent.com/buds-lab/building-data-genome-project-2/master/data/weather/weather.csv",
+  "catalog": "https://github.com/buds-lab/building-data-genome-project-2",
+  "purpose": "Weather series that match the training-meter site/time context.",
+  "size_note": "GitHub LFS (~19MB), may require Git LFS fallback",
+  "provenance": "REFERENCE_WEATHER",
+  "format": "CSV (publisher original; encoding and separator inspected after download)",
+  "license_status": "Consult publisher metadata/license; public access does not imply unrestricted reuse",
+  "started_utc": "2026-11-14T20:56:31.829553+00:00",
+  "status": "downloaded",
+  "attempts": [
+    {
+      "url": "https://raw.githubusercontent.com/buds-lab/building-data-genome-project-2/master/data/weather/weather.csv",
+      "error": "Git LFS pointer, not data"
+    }
+  ],
+  "http_status": "200",
+  "resolved_url": "https://media.githubusercontent.com/media/buds-lab/building-data-genome-project-2/master/data/weather/weather.csv",
+  "bytes": 19457782,
+  "sha256": "a8189f1c6acdf3b9933a9e6354b8e7c1278cd56a7075929623a17565d44f04bd",
+  "encoding": "utf-8-sig",
+  "delimiter": ",",
+  "columns": [
+    "timestamp",
+    "site_id",
+    "airTemperature",
+    "cloudCoverage",
+    "dewTemperature",
+    "precipDepth1HR",
+    "precipDepth6HR",
+    "seaLvlPressure",
+    "windDirection",
+    "windSpeed"
+  ],
+  "row_count": 331166,
+  "column_count": 10,
+  "validation": "CSV structure only; units/missingness/timezones need data audit",
+  "downloaded_from": "https://media.githubusercontent.com/media/buds-lab/building-data-genome-project-2/master/data/weather/weather.csv",
+  "finished_utc": "2026-11-14T20:56:42.171820+00:00"
+}

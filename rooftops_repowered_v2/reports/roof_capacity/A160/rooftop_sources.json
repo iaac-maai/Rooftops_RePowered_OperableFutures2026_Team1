@@ -1,0 +1,70 @@
+{
+  "created_utc": "2026-11-14T23:49:06.656050+00:00",
+  "footprint_cadastral_id": "2635601DF3823F",
+  "footprint_area_m2": 1718.0309514986996,
+  "ortho_bbox_25831": [
+    432521.91713384876,
+    4583327.221910713,
+    432599.3456582478,
+    4583421.209514242
+  ],
+  "image_width": 774,
+  "image_height": 940,
+  "ortho_layer": "ortofoto_color_2025",
+  "results": [
+    {
+      "name": "A160_ortho_2025.png",
+      "status": "downloaded",
+      "url": "https://geoserveis.icgc.cat/servei/catalunya/orto-territorial/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=ortofoto_color_2025&STYLES=&SRS=EPSG%3A25831&BBOX=432521.91713384876%2C4583327.221910713%2C432599.3456582478%2C4583421.209514242&WIDTH=774&HEIGHT=940&FORMAT=image%2Fpng",
+      "bytes": 1896476
+    },
+    {
+      "name": "lidar_latest.html",
+      "status": "downloaded",
+      "url": "https://datacloud.icgc.cat/datacloud/lidar-territorial/vigent/",
+      "bytes": 574
+    },
+    {
+      "name": "lidar_json_index.html",
+      "status": "downloaded",
+      "url": "https://datacloud.icgc.cat/datacloud/lidar-territorial/json/",
+      "bytes": 389
+    },
+    {
+      "name": "lidar_laz_index.html",
+      "status": "downloaded",
+      "url": "https://datacloud.icgc.cat/datacloud/lidar-territorial/vigent/laz_unzip/",
+      "bytes": 42592
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://geoserveis.icgc.cat/servei/catalunya/orto-territorial/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=ortofoto_color_2025&STYLES=&SRS=EPSG%3A25831&BBOX=432521.91713384876%2C4583327.221910713%2C432599.3456582478%2C4583421.209514242&WIDTH=774&HEIGHT=940&FORMAT=image%2Fpng",
+      "retrieved_utc": "2026-11-14T23:49:06.005817+00:00",
+      "status": 200,
+      "sha256": "19191cbecb1e91ba6650d20e0e68d4e69a100d5baa9fdd50a954de5884a59378",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\roof_responses\\00_b9e6ba0c4d1b.response"
+    },
+    {
+      "url": "https://datacloud.icgc.cat/datacloud/lidar-territorial/vigent/",
+      "retrieved_utc": "2026-11-14T23:49:06.535838+00:00",
+      "status": 200,
+      "sha256": "102181ad240f64b5e35108244db13fdecda76c8146dbcf1c644d1f7e8c6ccec2",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\roof_responses\\01_4ab56ecff792.response"
+    },
+    {
+      "url": "https://datacloud.icgc.cat/datacloud/lidar-territorial/json/",
+      "retrieved_utc": "2026-11-14T23:49:06.572226+00:00",
+      "status": 200,
+      "sha256": "b892601314416ed56cd3031a14b7cdaa497900478fcacb51c91ad78893cbed43",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\roof_responses\\02_e6f03e347706.response"
+    },
+    {
+      "url": "https://datacloud.icgc.cat/datacloud/lidar-territorial/vigent/laz_unzip/",
+      "retrieved_utc": "2026-11-14T23:49:06.655514+00:00",
+      "status": 200,
+      "sha256": "ea33396738b411f5db60716b81a73a46dab9d2ffe7abda455ce24fe76e4d1741",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\roof_responses\\03_c1808d625d0e.response"
+    }
+  ]
+}

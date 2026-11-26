@@ -1,0 +1,47 @@
+{
+  "created_utc": "2026-11-15T00:03:46.244863+00:00",
+  "assessment": "retrospective",
+  "parameters": {
+    "structural": {
+      "grid_resolution_m": 0.5,
+      "dominant_surface_selection": "largest_flat_component_by_area",
+      "v1_plane_growing_height_tolerance_m": 0.15,
+      "low_relief_structural_band_m": 0.45,
+      "minimum_source_coverage": 0.9,
+      "note": "Fixed before scoring: a dominant-plane height band absorbs shallow relief without using the observed PV mask. It is not a verified reconstruction of hidden bare-roof elevations; low equipment and panel-induced geometry remain uncertainty sources. Only the dominant high roof is assessed; lower terraces and secondary service roofs are excluded."
+    },
+    "module": {
+      "long_m": 1.76,
+      "short_m": 1.13,
+      "wp": 420,
+      "tilt_degrees": 10,
+      "azimuth_degrees_from_north": null,
+      "panel_gap_m": 0.05,
+      "winter_design_elevation_degrees": 25,
+      "grid_shift_step_m": 0.25,
+      "source": "V1 illustrative design assumptions; not the installed A160 module specifications"
+    },
+    "scenarios": {
+      "conservative": {
+        "edge_setback_m": 2.0,
+        "obstacle_clearance_m": 1.0
+      },
+      "base": {
+        "edge_setback_m": 1.0,
+        "obstacle_clearance_m": 0.5
+      },
+      "optimistic": {
+        "edge_setback_m": 0.5,
+        "obstacle_clearance_m": 0.3
+      }
+    }
+  },
+  "source_hashes": {
+    "footprint_path": "c1c2a1e0cf3821246e475139ad74572c1d6047f964978a08a6360f27af48e2eb",
+    "points_path": "0b5cba237dcd9f9936a4951a47af1059f5dfd8c55669bf93da1ebc0cb2cf1a63",
+    "structural_protocol": "6af81efef44c083681b35fa7be5892b733ed15a64e1a513582a87ca39f7cf539"
+  },
+  "scenario_csv_sha256": "0088e02e0426d53727b1adc1188af8c63297c9daab01030519162539a5dda0f0",
+  "lidar_contains_existing_installation": true,
+  "limitations": "Post-installation 2022 LiDAR and 2025 image annotation. Structural low-relief approximation can suppress small equipment and does not recover verified hidden bare-roof geometry. Not an independent pre-installation study or a maximum-capacity certification."
+}

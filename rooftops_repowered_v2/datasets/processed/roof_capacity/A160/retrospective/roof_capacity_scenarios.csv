@@ -1,0 +1,4 @@
+building_id,assessment,scenario,usable_area_m2,panel_projected_area_m2,panel_count,assumed_module_wp,estimated_kwp,tilt_degrees,azimuth_degrees_from_north,confidence,data_origin,lidar_survey_date,model_version,installed_capacity_verified,certified_maximum_capacity
+A160,retrospective,conservative,817.0,444.5989444676594,227,420,95.34,10,135.8935484494266,low_provisional_geometry_screening,ESTIMATED_ROOF,2022-06-01,v1_a160_dominant_plane_v2_dual_1,False,False
+A160,retrospective,base,946.75,517.0666137850965,264,420,110.88,10,135.8935484494266,low_provisional_geometry_screening,ESTIMATED_ROOF,2022-06-01,v1_a160_dominant_plane_v2_dual_1,False,False
+A160,retrospective,optimistic,991.25,544.4868130232377,278,420,116.76,10,135.8935484494266,low_provisional_geometry_screening,ESTIMATED_ROOF,2022-06-01,v1_a160_dominant_plane_v2_dual_1,False,False

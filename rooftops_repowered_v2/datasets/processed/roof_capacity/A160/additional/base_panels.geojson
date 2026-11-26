@@ -1,0 +1,116 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2.1933104603081737,
+              41.39906089773838
+            ],
+            [
+              2.1933011067205976,
+              41.39906802975662
+            ],
+            [
+              2.193286126455651,
+              41.39905689100074
+            ],
+            [
+              2.193295480043229,
+              41.3990497589837
+            ],
+            [
+              2.1933104603081737,
+              41.39906089773838
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "building_id": "A160",
+        "assessment": "additional",
+        "scenario": "base",
+        "data_origin": "ESTIMATED_ROOF",
+        "not_existing_installed_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2.193297569806547,
+              41.39907072661807
+            ],
+            [
+              2.1932882162161516,
+              41.39907785863524
+            ],
+            [
+              2.1932732359512026,
+              41.3990667198777
+            ],
+            [
+              2.1932825895416,
+              41.399059587861736
+            ],
+            [
+              2.193297569806547,
+              41.39907072661807
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "building_id": "A160",
+        "assessment": "additional",
+        "scenario": "base",
+        "data_origin": "ESTIMATED_ROOF",
+        "not_existing_installed_capacity": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2.1932846793010357,
+              41.399080555496276
+            ],
+            [
+              2.193275325707821,
+              41.399087687512356
+            ],
+            [
+              2.19326034544287,
+              41.39907654875316
+            ],
+            [
+              2.1932696990360863,
+              41.399069416738286
+            ],
+            [
+              2.1932846793010357,
+              41.399080555496276
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "building_id": "A160",
+        "assessment": "additional",
+        "scenario": "base",
+        "data_origin": "ESTIMATED_ROOF",
+        "not_existing_installed_capacity": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "status": "awaiting_sourced_assumptions",
+  "grid_price_eur_per_kwh": null,
+  "export_price_eur_per_kwh": null,
+  "grid_emissions_kgco2e_per_kwh": null,
+  "capex_eur": null,
+  "annual_om_eur": null,
+  "sources": [],
+  "notes": "No prices or emissions factors are assumed. Fill values and dated source references before computing impacts. Cost-sharing is not defined yet."
+}

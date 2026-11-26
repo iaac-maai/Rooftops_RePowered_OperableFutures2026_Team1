@@ -1,0 +1,12 @@
+<html>
+    <header>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    </header>
+    <body>
+        <b>Ortofoto històrica</b><br />
+        <b>Data inicial:</b>2022/05/18 00:00:00<br />
+        <b>Data final:</b>2022/05/18 00:00:00<br />
+        <b>Orígen:</b>Píxel Font<br />
+        <b>GSD:</b>0.25<br />
+    </body>
+</html>

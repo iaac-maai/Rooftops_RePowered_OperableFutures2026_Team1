@@ -1,0 +1,56 @@
+{
+  "created_utc": "2026-11-14T23:44:01.376160+00:00",
+  "results": [
+    {
+      "name": "catastro_address",
+      "status": 200,
+      "file": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\catastro_address.json",
+      "url": "https://ovc.catastro.meh.es/OVCServWeb/OVCWcfCallejero/COVCCallejero.svc/json/Consulta_DNPLOC?Provincia=BARCELONA&Municipio=BARCELONA&Sigla=CL&Calle=ALMOGAVERS&Numero=160"
+    },
+    {
+      "name": "municipal_solar_config",
+      "status": 200,
+      "file": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\municipal_solar_config.txt",
+      "url": "https://coneixement-eu.bcn.cat/mapaEnergia/js/config.js"
+    },
+    {
+      "name": "icgc_ortho_capabilities",
+      "status": 200,
+      "file": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\icgc_ortho_capabilities.txt",
+      "url": "https://geoserveis.icgc.cat/servei/catalunya/orto-territorial/wms?SERVICE=WMS&REQUEST=GetCapabilities"
+    },
+    {
+      "name": "architect_project",
+      "status": "failed",
+      "error": "HTTPSConnectionPool(host='www.batlleiroig.com', port=443): Max retries exceeded with url: /en/projects/oficines-almogavers-160-a-barcelona/ (Caused by NameResolutionError(\"HTTPSConnection(host='www.batlleiroig.com', port=443): Failed to resolve 'www.batlleiroig.com' ([Errno 11002] getaddrinfo failed)\"))"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://ovc.catastro.meh.es/OVCServWeb/OVCWcfCallejero/COVCCallejero.svc/json/Consulta_DNPLOC?Provincia=BARCELONA&Municipio=BARCELONA&Sigla=CL&Calle=ALMOGAVERS&Numero=160",
+      "retrieved_utc": "2026-11-14T23:44:00.362359+00:00",
+      "status": 200,
+      "sha256": "20f9313c8e106312d12cdef670c9a03383c47ec476f9e7ca35032136619872b9",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\00_ff44ee1e042d.response"
+    },
+    {
+      "url": "https://coneixement-eu.bcn.cat/mapaEnergia/js/config.js",
+      "retrieved_utc": "2026-11-14T23:44:00.842800+00:00",
+      "status": 200,
+      "sha256": "5db2306bacb00d88e3e0fcabc32bf9adeacadc8682b1760ee1b399fa6575358d",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\01_eee8df64bc6f.response"
+    },
+    {
+      "url": "https://geoserveis.icgc.cat/servei/catalunya/orto-territorial/wms?SERVICE=WMS&REQUEST=GetCapabilities",
+      "retrieved_utc": "2026-11-14T23:44:01.279271+00:00",
+      "status": 200,
+      "sha256": "82782185927096e8a4162c4e8e1527edb007e1cd04ce6bb43d8d1624218151bc",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\02_dbd6be475187.response"
+    },
+    {
+      "url": "https://www.batlleiroig.com/en/projects/oficines-almogavers-160-a-barcelona/",
+      "retrieved_utc": "2026-11-14T23:44:01.376101+00:00",
+      "error": "HTTPSConnectionPool(host='www.batlleiroig.com', port=443): Max retries exceeded with url: /en/projects/oficines-almogavers-160-a-barcelona/ (Caused by NameResolutionError(\"HTTPSConnection(host='www.batlleiroig.com', port=443): Failed to resolve 'www.batlleiroig.com' ([Errno 11002] getaddrinfo failed)\"))"
+    }
+  ]
+}

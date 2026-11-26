@@ -1,0 +1,8 @@
+field,unit,scope,value,origin,source_url,scenario_id,verified,notes
+conditioned_floor_area,m2,A160,,SYNTHETIC_SCENARIO,,base,false,NOT automatically 9400 m2 commercial area
+occupancy_density,people_per_m2,A160,,SYNTHETIC_SCENARIO,,base,false,Needs separate evidence or sensitivity
+lighting_power_density,W_per_m2,A160,,SYNTHETIC_SCENARIO,https://www.energycodes.gov/prototype-building-models,base,false,U.S. reference does not calibrate A160
+plug_load_density,W_per_m2,A160,,SYNTHETIC_SCENARIO,https://www.energycodes.gov/prototype-building-models,base,false,Do not infer from literature hourly proxy
+hvac_fuel,electric_or_other,A160,,UNKNOWN,,base,false,EnergyPlus Electricity Facility must represent electric uses only
+window_to_wall_ratio,fraction,A160,,SYNTHETIC_SCENARIO,,base,false,Derive from checked geometry
+weather_file,path,A160,,REVIEWED_SELECTION,,base,false,Confirm EPW year/source and local/DST convention

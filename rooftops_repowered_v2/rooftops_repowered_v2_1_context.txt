@@ -1,0 +1,914 @@
+ROOFSCAPES (RE)POWERED — V2.1
+COMPLETE CODEX DEVELOPMENT CONTEXT / PROJECT HANDOFF
+Prepared: 14 November 2026
+Project: IAAC MaAI01 Research Studio (AEC / smart construction), Barcelona
+Purpose: Give Codex enough context to begin implementation without reinterpreting the research goals, overbuilding the scope, or treating scenario assumptions as real measurements.
+
+IMPORTANT ABOUT THIS DOCUMENT
+- This is a comprehensive structured record of the user's requests, conclusions, corrections, implementation choices, sources, and previous starter-package contents from this conversation. It is not a literal word-for-word export of all assistant messages.
+- Entries marked DECIDED are the user's current requirements. Earlier ideas described as SUPERSEDED are historical only.
+- All citations and source claims quoted from earlier research discussion are leads, not a fresh independent audit in this TXT-generation step. Recheck regulatory, dataset and method details when necessary, but do not let research block the MVP.
+- This context includes details from a user-supplied brainstorm image, earlier messages, and the starter package actually present in this chat's file workspace.
+- The user has NOT yet confirmed the final Barcelona host roof or connected case-study buildings. Do not select them silently or invent real electricity meters.
+- This assistant could not access the user's local Windows D: drive. The downloader package was prepared, NOT executed on the user's system. Assume local datasets may still be absent until verified.
+
+================================================================================
+A. CURRENT NORTH STAR: WHAT TO BUILD
+================================================================================
+
+PROJECT TITLE
+Roofscapes (Re)Powered — AI-Assisted Rooftop Solar and Building-Demand Matching in Barcelona.
+
+PROJECT TYPE
+A short 3-month architecture / AEC / smart-construction studio project. We are already PAST the midterm as of 14 November 2026, with final review around 10–17 December 2026. This is not a multi-year platform. Prefer one credible, end-to-end demonstrator over a broad collection of half-implemented systems.
+
+RESEARCH QUESTION
+How can AI-assisted building electricity-demand estimation improve the planning and use of limited rooftop solar resources among a small cluster of Barcelona buildings, considering environmental value, economic feasibility, and socially responsible benefit distribution?
+
+PROPOSED DELIVERABLE
+A reproducible pre-installation decision-support prototype using:
+  1) REAL Barcelona urban/building context (public rooftop estimates, building functions, candidate participants);
+  2) a conventional established PV simulator/output (PVGIS 6, and Barcelona's municipal solar resource map as a reference);
+  3) one properly trained and benchmarked AI model for hourly ELECTRICITY demand, trained on accessible measured reference data or, if necessary, on explicit physics-based synthetic simulation outputs;
+  4) understandable hourly matching of PV generation against demand for one host roof and 3–5 participating buildings;
+  5) comparison of individual solar use, conventional collective shares, and AI-informed pre-agreed hourly shares;
+  6) transparent estimated environmental / cost / social-allocation indicators;
+  7) a lightweight visual interface connected to the results, preferably reusing an existing website if practical.
+
+PRIORITY ORDER
+  Primary: environmental contribution — locally used PV energy, grid-import changes, indicative avoided operational emissions.
+  Feasibility criterion: economics — PV capex/O&M, electricity price assumptions, participant savings, simple payback ranges.
+  Responsibility criterion: social benefit — who benefits, solar-coverage shares, fairness proxies; NO unsupported demographic/vulnerability claims.
+  Essential technical character: AEC and smart construction — site geometry, roof physical constraints, building uses, performance-led pre-construction planning.
+  Essential intellectual character: AI plays a REAL and evaluated role, not an ornamental chatbot or a relabeling of deterministic solar calculations.
+
+DECIDED SCOPE
+- One host rooftop, approximately three to five neighboring potential consuming buildings.
+- Small Barcelona cluster, not a citywide deployment. Prior 3x3 Eixample blocks are useful as research context, not mandatory detailed computation scope.
+- ONE primary trained AI demand model (XGBoost recommended), with a baseline and meaningful validation.
+- Existing engineering tools do PV modeling. Do NOT retrain an AI model just to perform available PV calculations.
+- No required authenticated APIs/API keys and no real-time cloud dependency. Public downloadable files, locally cached data and manually exported PVGIS files are preferred.
+- Synthetic building schedules are accepted due to limited public access to actual occupancy and electricity data, but provenance and limitations MUST be explicit.
+- The prototype must be able to conclude that collective sharing does not improve environmental performance in some settings.
+
+WHAT THIS IS NOT
+Not a working electricity market, real energy community with legally signed contracts, real-time dispatch controller, city-scale digital twin, peer-to-peer power transfer mechanism or structural rooftop certification.
+
+================================================================================
+B. HISTORICAL CONTEXT AND EVOLUTION OF THE PROBLEM
+================================================================================
+
+1) Existing studio/research context
+- Earlier project names: Roofscapes (Re)Imagined and Roofscapes RePowered. Team: IAAC MaAI01 Research Studio / Team 1.
+- Earlier GitHub organization/folder: iaac-maai/research_studio_team_1. A previous assistant identified a newer public repo name: iaac-maai/Rooftops_RePowered_OperableFutures2026_Team1. Verify actual repo, branch and local files before coding.
+- User works across AI, architectural research, geometry / Rhino-3D, visualization and presentations.
+- The faculty emphasized weather-aware modeling, current/reliable datasets, and an explicit explanation of which AI models are used and what they contribute.
+- Earlier faculty suggested WEATHER-5K as a weather reference. This is historical context, NOT a mandatory dataset for current narrow MVP. PVGIS already supplies site-relevant solar/weather reference data.
+- Previous midterm was November 6. An earlier assistant reported that the midterm pipeline contained building lookup, roof reading, panel layout, shade/yield, usage prediction and validation, and mentioned ~197 plots read, ~195 roofs ranked, a ~15-minute batch, ~10 draft sharing groups. Treat these counts as earlier assistant-reported claims; inspect the actual repo/presentation before displaying them as verified facts.
+- Earlier sites considered included Bruc 59, Roger de Llúria 56, Aragó 284/308, Diputació 311, and a potential UPC Campus Diagonal Nord/Nexus II candidate. None is confirmed final. The user once asked for a Barcelona office host with roof capacity and accessible meter/schedule data, but later made scope realism and accessible/synthetic demand data more important than insisting on an office.
+
+2) User's uploaded brainstorm image
+File named "Sindhu's BrainDump __.jpg" was supplied in this chat. At a high level it sketches:
+- Barcelona renewable-energy shortfall / city sustainability ambitions;
+- community energy sharing and the question "what is our solution?";
+- external input data, building location, roof data, usage patterns, potential production and demand;
+- an AI step to decide who shares what fraction, when, and in what amount;
+- visual outputs communicating energy sources and participation;
+- notes about fairness, logistics, economics and the possibility of manually defined schedule data.
+Some handwriting is too small to transcribe reliably, so do not rely on illegible details as hard requirements.
+
+3) Crucial user correction: SURPLUS
+An earlier assistant initially characterized the project as identifying buildings with excess solar generation to distribute to others. The user explicitly corrected this: in many dense urban settings, roof PV may cover only a PORTION of a building's own electricity consumption, with the grid supplying the rest. It is not safe to assume routine excess generation.
+
+Key clarification from subsequent analysis:
+- A collective self-consumption scheme may distribute shares of PV production across participants; participants do not need to individually produce more than they consume.
+- A building can simultaneously draw solar-allocated power and remaining grid electricity.
+- Hourly PV production and load must be compared. Annual energy totals alone cannot determine actual hourly self-consumption.
+- Do NOT assert "surplus is always rare" as an established universal finding. Surplus likelihood varies by roof size, demand, hours and installed PV.
+- In regulatory terminology some collective self-consumption arrangements may be categorized as having surplus even if actual exported electricity is small. Keep legal terminology distinct from physical excess.
+
+Illustrative example from the earlier chat (NOT real data):
+  Office load = 100 kWh during one hour; PV production = 30 kWh during that hour.
+  Office uses 30 kWh PV + 70 kWh grid; no necessary surplus.
+  Hypothetical shared case: office demand 100 kWh, residence 25 kWh, commercial 20 kWh; allocate 15/10/5 kWh PV; remaining loads from grid. The example demonstrates allocation, not measurable environmental improvement over host-only use.
+
+4) Critical logical flaws previously identified
+(a) Changing PV allocation does not create solar energy. If all PV is already consumed by the host, sharing may redistribute financial benefit but not reduce aggregate grid import or emissions. Show genuine incremental advantage relative to host-only and fixed-share baselines.
+(b) AI cannot necessarily change legally effective allocation coefficients dynamically in real time. Spanish collective self-consumption rules were discussed as allowing pre-agreed hourly coefficient profiles with restrictions on updating them; verify current official rules rather than implementing a live controller. Earlier discussion mentioned a four-month minimum between certain revisions; treat this as regulatory research pending confirmation.
+(c) Nearby in a map is not automatically legally eligible. Examine the actual applicable distance/electrical and administrative constraints if making legal claims; the earlier research discussion mentioned a revised 5 km provision for specified installations, but do NOT hardcode legal limits without verification. The user's test cluster may use a conservative 500 m radius as a design convenience, not as a blanket law.
+(d) Building opening hours and occupancy schedules are NOT measured electricity consumption. HVAC, equipment, standby loads, climate, floor area, server loads and efficiency create large differences.
+(e) Barcelona city "energy" figures can refer to total final energy (including fuels/heat), while the model targets ELECTRICITY only. Do not mix denominators or imply the grid is 100% fossil.
+(f) Solar forecasting and roof suitability maps already exist: do not sell a trivial clone of PVGIS or Barcelona's municipal solar resource map as novel AI.
+(g) Building owners need an incentive to participate; quantify preliminary participant benefit and fairness. No need to set up actual contracts.
+(h) A solar sharing arrangement is NOT by itself a legally constituted "renewable energy community". Use accurate terminology.
+(i) A synthetic-data model can learn the simulation or assumptions generating those labels, not automatically learn true Barcelona meter behavior. Report this limitation.
+
+5) New central framing
+"AI-assisted solar-demand matching" or "data-constrained rooftop solar planning" rather than "surplus redistribution" or "real-time AI electricity sharing".
+The best outcome may be to recommend individual self-consumption for some roofs, collective allocation for others, or no viable investment under a scenario. Avoid pre-selecting a favorable result.
+
+6) Confirmed user constraints from later turns
+- Project is a 3-month studio already past midterms. Only a short period remains.
+- Environment first, economy feasible, social responsibility; must fit AEC/smart construction.
+- AI must be core.
+- Building electricity schedules may need manual/synthetic generation.
+- Cannot address every aspect. Explicit out-of-scope boundaries are mandatory.
+- Use existing third-party PV analysis/simulation tools instead of rebuilding previous PV pipeline when good existing tools suffice.
+- User requested verifying public accessibility and Barcelona relevance of each dataset.
+- User approved dropping data/services requiring authenticated API credentials and avoiding live integrations. ESIOS excluded.
+- User requested a Windows dataset setup script targeting EXACT local path shown below.
+
+================================================================================
+C. GROUND TRUTH VS MODEL VS SYNTHETIC — STRICT LABELS
+================================================================================
+
+Define a provenance field for every data source and result:
+  OBSERVED_METER: real measured electricity series, with building and temporal provenance.
+  OBSERVED_AGGREGATE: real area/sector or grid-level totals, NOT individual building labels.
+  OFFICIAL_GEO: building footprints or cadastral metadata.
+  OFFICIAL_CERTIFICATE: modeled energy certificates, NOT actual hourly consumption.
+  ESTIMATED_ROOF: modeled map/geometry-based PV potential, NOT as-built/structural approval.
+  SIMULATED_PHYSICS: PVGIS/CEA/EnergyPlus outcomes from models and assumptions.
+  SYNTHETIC_SCHEDULE: manually defined occupancy or operation patterns.
+  ML_PREDICTION: inference from a trained surrogate/model.
+  HYPOTHETICAL_ALLOCATION: agreement/benefit scenario with no real-world contract.
+  FINANCIAL_ASSUMPTION: tariff/capex/O&M scenario with source and date.
+  EMISSIONS_ASSUMPTION: grid factor and associated year/system boundary.
+
+Never label simulated, scenario or predictive values as "actual building consumption" or "actual CO2 saved". Avoid falsely precise results. A historic public meter reference from a foreign building is a legitimate training target but is NOT a Barcelona meter.
+
+================================================================================
+D. AVAILABLE DATASETS — VERIFIED PUBLIC SOURCES FROM DISCUSSION
+================================================================================
+
+A) HIGH PRIORITY
+
+D1. Building Data Genome Project 2 (BDG2)
+URL: https://github.com/buds-lab/building-data-genome-project-2
+Data: ~1,636 non-residential buildings; hourly electricity and other metering over 2016–2017; metadata and site/weather references; real readings.
+Access: public GitHub files (some tracked via Git LFS; downloader uses Git LFS fallback).
+Barcelona relevance: INDIRECT (multi-country including European sites, but not a guaranteed representative Barcelona building sample).
+Use: train, benchmark and test supervised electricity-demand estimation, especially non-residential archetypes. Do not claim accurate local deployment without measurement-based calibration/validation.
+Target package files: raw/building_data_genome_2/metadata.csv; electricity_cleaned.csv; weather.csv.
+
+D2. Barcelona electricity-consumption open data
+Catalog: https://opendata-ajuntament.barcelona.cat/data/dataset/consum-electricitat-bcn
+Data: Barcelona consumption aggregated by postal code/economic sector/time band (annual CSV, 2025 distribution listed in previous discussion).
+Access: public CSV distribution; downloader includes 2025 CSV link.
+Barcelona relevance: DIRECT.
+Use: local aggregate reference and plausibility / upper-lower envelope, NOT hourly individual-building labels. Verify exact date granularity and units after inspecting columns.
+
+D3. Generalitat/Catalonia building energy certificates
+Catalog: https://analisi.transparenciacatalunya.cat/d/j6ii-t3w2
+Official catalog background: https://datos.gob.es/es/catalogo/a09002970-certificados-de-eficiencia-energetica-de-edificios
+Data: building/certificate energy ratings and performance indicators; may include useful local building characteristics.
+Access: public anonymous CSV export; potentially VERY LARGE, full Catalonia.
+Barcelona relevance: DIRECT after filtering. Use to characterize case-study buildings or plausible local energy intensity, NOT as actual hourly consumption.
+Inspect fields first; do not assume certificate schema or that every building appears.
+
+D4. PVGIS 6 (European Commission JRC)
+Home: https://photovoltaic-geographic-information-system.ec.europa.eu/
+Docs: https://photovoltaic-geographic-information-system.ec.europa.eu/api/v6/docs
+Data: solar irradiation, temperature, PV production estimates, hourly output for selected locations/configurations.
+Access: public web UI for selected exports, no authenticated key for core workflows. Some types (e.g. TMY per earlier discussion) may be API-only; avoid dependence on those features.
+Barcelona relevance: DIRECT.
+Use: physical PV output calculation, not an AI model to train. Requires finalized roof coordinates, kWp, tilt, azimuth, loss assumptions; manual export to folder.
+IMPORTANT: Do not pretend a generic PVGIS result knows actual rooftop obstacles; obtain approximate usable capacity from mapped roof data and document uncertainties.
+
+D5. Barcelona Municipal Solar Resources Map / solar atlas
+Page: https://www.energia.barcelona/es/generar-energia/generar-energia/mapa-cuanta-energia-puedes-generar
+Access: public interactive map; roof-level BULK API/download NOT verified in previous conversation.
+Barcelona relevance: DIRECT.
+Use: manually select host roof and record feasible capacity/estimated yield, validate order of magnitude against PVGIS. A few building records can be collected manually.
+
+D6. Catalonia registered self-consumption PV installations
+Catalog: https://analisi.transparenciacatalunya.cat/d/2b4s-skfm
+Official: https://datos.gob.es/es/catalogo/a09002970-instalaciones-de-autoconsumo-electrico
+Access: public anonymous CSV/JSON export.
+Barcelona relevance: DIRECT after filtering. Use: real installed PV adoption/size precedents, NOT actual hourly generation.
+
+D7. Barcelona municipal PV installations
+Catalog: https://opendata-ajuntament.barcelona.cat/data/dataset/plaques-fotovoltaiques
+Official mirror: https://datos.gob.es/en/catalogo/l01080193-placas-fotovoltaicas-municipales-en-la-ciudad-de-barcelona
+Access: public CSV, with a 2025 distribution mentioned.
+Barcelona relevance: DIRECT. Use: existing installations, capacity plausibility and design precedents.
+
+D8. Catalonia hourly electricity demand
+Catalog: https://analisi.transparenciacatalunya.cat/d/hx6q-ykhb
+Official: https://datos.gob.es/es/catalogo/a09002970-demanda-de-energia-electrica-horaria-en-catalunya-por-mwh
+Access: public anonymous CSV/JSON.
+Barcelona relevance: REGION-wide, not individual Barcelona buildings.
+Use: broad seasonal / system demand shape reference only, not training labels for a specific building.
+
+B) OPTIONAL / CONTINGENCY
+
+D9. Spanish Cadastre INSPIRE
+URL: https://www.catastro.hacienda.gob.es/webinspire/
+Public building footprints/use and spatial context; Barcelona coverage. WFS / ATOM and other distribution mechanisms exist. Use when needed to build selected cluster; keep method manageable. The user wants no mandatory authenticated API. Manually export/download selected records where possible.
+
+D10. ICGC Territorial LiDAR + imagery
+URL: https://www.icgc.cat/en/Geoinformation-and-Maps/Data-and-products/Elevations/Territorial-elevations/Territorial-LiDAR
+Barcelona rooftop geometry and shading context. Optional; DO NOT recreate a new citywide rooftop segmentation project unless the selected roof lacks acceptable existing PV potential estimates.
+
+D11. DOE/NREL End-Use Load Profiles
+URL: https://registry.opendata.aws/nrel-pds-building-stock/
+Public U.S. 15-minute modeled building load profiles; geographic domain mismatch. Useful for schedule-shape cross-checks or synthetic archetype inspiration; should not be used as direct Barcelona observation.
+
+D12. REE REData
+URL: https://www.ree.es/es/datos/apidatos
+Public system indicators and export tools; use manually exported values for electricity/emission scenarios. Prefer no ongoing API integration.
+
+D13. REE ESIOS
+URL: https://www.esios.ree.es/es/pagina/api
+DECISION: REMOVE, because API access requires a token. Not part of MVP.
+
+D14. Barcelona Energy Agency portal
+URL: https://www.energia.barcelona/
+Public guidance, local precedent info; reference documents, not a machine-learning training dataset.
+
+ACCESS SUMMARY
+- Most data is accessible through public CSV files or a public viewer, but data may be huge, portals may block automation or change schemas, and some GitHub content may be Git LFS pointers.
+- No dataset currently provides unrestricted real HOURLY ELECTRICITY METER READINGS for each selected Barcelona building.
+- Do not use aggregate Barcelona electricity as if it were meter-level ground truth.
+- No direct data was downloaded by the assistant onto the user's Windows drive.
+
+================================================================================
+E. EXISTING TOOLS, PRECEDENTS AND PREVIOUS RESEARCH
+================================================================================
+
+E1. Existing tools to USE rather than rebuild
+- PVGIS 6: standard modeled PV output based on weather and PV configuration; does not optimize collective demand matching. PRIMARY PV ENGINE.
+- Barcelona Energy Resources Map: local roof potential estimates; not a demand-matching and participation scenario decision tool. PRIMARY SELECTED-ROOF REFERENCE.
+- City Energy Analyst (CEA): https://www.cityenergyanalyst.com/ and https://github.com/architecture-building-systems/CityEnergyAnalyst ; archetype energy simulations and potentially stochastic occupancy schedules. OPTIONAL PHYSICS SIMULATION SOURCE if training with manual schedule features is necessary. Do not install the entire package just to generate a few manual CSV profiles without first deciding cost/benefit.
+- EnergyPlus: https://energyplus.net/ ; detailed building-energy simulation/schedules; similar conditional alternative.
+- pvlib: https://pvlib-python.readthedocs.io/ ; PV physics toolbox, OPTIONAL if PVGIS outputs are insufficient.
+- oemof.solph: https://oemof.org/ ; power-system optimization toolbox, OPTIONAL; simple pre-agreed allocation equations may be sufficient.
+- pandas, NumPy: data ETL, time-series alignment, energy accounting.
+- scikit-learn + XGBoost: training, baselines and metrics.
+- Existing team's website / 3D UI, if available and easier to reuse than a new front end.
+
+E2. Precedential implemented projects
+- Barcelona Municipal Shared Self-Consumption Service: https://www.energia.barcelona/ ; real shared solar program, includes examples of allocating participation to vulnerable groups. Offers useful social responsibility precedent but NOT proof that our prototype forms a legally operating community.
+- Barcelona Energy Resources Map as municipal rooftop-PV planning precedent; limitations are emphasis on generation potential vs detailed small-cluster hourly demand/share decisions.
+- PVGIS as credible solar physics reference, not competing AI novelty.
+
+E3. Literature leads identified earlier in chat (VERIFY bibliography/claims before citing a paper in final presentation)
+- "Data-driven energy sharing in collective self-consumption communities", Applied Energy, 2026, reported XGBoost / demand/allocation-related methods; earlier answer mentioned a Catalan case and an approximately 8.4% self-consumption gain. Verify full citation, methods and actual case before repeating numbers.
+- 2026 Applied Energy work on seasonal-persistence / kNN / ensemble prediction for community allocation (Serrano-Gonzalez et al. as named in prior discussion). Verify title and details.
+- "Analysis and optimisation of collective self-consumption in Spain" (2023), reported potentially limited benefit from some dynamic sharing strategies. Verify actual outcomes and boundary conditions.
+- Villalonga Palou et al., Energy Strategy Reviews (2023): collective allocation / regulatory / financial implications; verify details.
+- 2026 review on AI surrogate models for building energy and design optimization (Zhang et al. as named earlier); check publication details before formal citation.
+- Building Data Genome 2: https://doi.org/10.1038/s41597-020-00712-x
+- Roof Information Dataset (RID): https://github.com/TUMFTM/RID ; earlier proposed roof-segmentation data, optional only if rooftop vision remains in scope.
+- Published AEC surrogate and ML methods are precedent, not evidence that our chosen model improves real Barcelona buildings.
+
+NOVELTY POSITIONING
+Not "first AI for energy sharing", not a new solar model. Contribution is integrating built-form/roof capacity, limited-data AI demand estimates, scenario-based solar allocation, and readable environmental/economic/social screening at a selected Barcelona building-cluster scale.
+
+================================================================================
+F. DATA TO COLLECT LOCALLY AND MANUALLY
+================================================================================
+
+NEW CASE-STUDY INPUTS TO COLLECT
+1. Small building cluster inventory: ID, latitude/longitude, building use, host vs consumer, approximate conditioned floor area, floors, known operating hours, source URL, confidence flag.
+2. Host roof PV inventory: map roof ID, estimated usable area, kWp, orientation/tilt, shade assumptions, roof-specific capacity source and date. All PV capacity can be estimated: no structural approval claims.
+3. Published operating hours for office/retail/institutional buildings; note these are only schedule priors.
+4. Local energy certificate fields where case-study buildings can be linked; note uncertainty and missing addresses.
+5. PVGIS exported hourly production for selected host with full simulation settings and time basis.
+6. Preliminary installed-cost range, maintenance, grid tariff, any export compensation, and source/date.
+7. Grid carbon-factor year, unit and accounting scope (annual mean vs marginal).
+8. Hypothetical sharing constraints and any social fairness proxy (equal benefit, minimum shares, etc.).
+9. Optional authorized building bills/hourly data if available — NEVER require them to complete MVP.
+
+SYNTHETIC SCENARIOS TO CREATE
+- Manually defined occupancy and working schedules for office, residential, retail and institutional buildings (only types actually in selected cluster).
+- Weekday / weekend / holiday and low / typical / high usage variations.
+- HVAC/weather-sensitive load assumptions anchored to external measured or simulation references.
+- Building floor area and energy-intensity variation; careful not to generate incoherent combinations.
+- Representative electricity demand profiles to test scenarios (either derived from measured data with explicitly documented adjustments, or physically simulated in CEA/EnergyPlus).
+- Host-only vs fixed allocation vs demand-informed hourly pre-agreed allocation coefficients.
+- Low/base/high costs and electricity prices, with sensitivity output.
+- Simple social allocation constraints, explicitly hypothetical.
+
+CAUTION ON AI AND SCHEDULES
+If BDG2 measured data have no observed occupancy schedules, do not claim the model learned schedule response from BDG2. Two exclusive strategies:
+  ROUTE A — Measured-data XGBoost: train on real hourly meter data with calendar, weather and building features; apply manual schedules as transparent external scenario adjustment (not as learned occupancy feature); test on held-out meter sites.
+  ROUTE B — Physics simulation surrogate: run selected CEA/EnergyPlus configurations with explicit schedules and local weather; train XGBoost on the simulator's inputs/outputs. The model learns simulation response, not independently validated real behavior.
+Start with Route A unless model features and the planned interface strongly require direct editable schedule-driven inference. Decide based on actual available columns and achievable validation.
+
+SYNTHETIC SIZE GUIDELINE
+The earlier discussion suggested ~30–60 varied building-operation simulations/scenarios as a practical starter target, not a statistically established sample size. Reassess if model performance or diversity is poor; a larger structured data generator may be cheaper than a heavy simulator.
+
+================================================================================
+G. PRIMARY AI MODEL AND VALIDATION
+================================================================================
+
+MAIN MODEL: XGBoost Regressor (or LightGBM if objectively easier)
+Target: hourly building ELECTRICITY consumption [kWh/hour] for an unseen or data-scarce building under known operating and weather assumptions.
+Potential features IF supported by dataset:
+- building type, conditioned/gross floor area, day of week, hour, month, weekend/holiday, temperature, possibly temperature-based cooling/heating features;
+- use historical building meter lag only if inference case study will provide equivalent data (probably NOT); avoid inference-time unavailable features;
+- floor area normalization [kWh/m2 per hour] if reliable and beneficial;
+- keep site-level, building-level and weather joins auditable.
+
+Baselines: building-type × hour-of-week averages, seasonal average, possibly persistence where allowed. Validate on entire held-out buildings, and preserve temporal split where forecasting evaluation is applicable. Never randomly divide hourly observations from the same building across train/test and call that unseen-building generalization.
+Metrics: MAE [kWh], RMSE [kWh], normalized MAE if useful; report performance by building type and building size; scenario uncertainty and transfer caveat.
+Model artifact: models/demand_xgboost.joblib plus feature_schema.json, train_manifest.json and results/model_metrics.csv.
+
+SECONDARY/OPTIONAL MODELS
+- XGBoost trained as a CEA/EnergyPlus simulation surrogate (alternative to measured-data route, NOT a second required model).
+- LightGBM quantile prediction or error intervals (stretch only; no false calibrated probabilities).
+- K-means clustering for similar load profiles (optional; not core). Be careful it may not improve assignment fairness or energy utilization.
+- U-Net/ResNet-34 rooftop obstacle segmentation was a prior research idea; CURRENTLY DEPRIORITIZED because PVGIS + solar map exist and studio time is short.
+- LLM/VLM explanations are optional UI polish, not primary project AI.
+
+VALIDATION/RESEARCH QUESTIONS
+- Does AI beat a simple hourly/seasonal demand baseline on held-out buildings or held-out simulation configurations?
+- Are local building scenarios plausible against aggregate Barcelona electricity and certificate benchmarks?
+- Is the host PV yield reasonable compared with municipal solar estimates?
+- Does collective sharing increase useful PV utilization or reduce grid imports compared to host-only? If not, say so.
+- Does AI-informed allocation provide measurable incremental gains over ordinary fixed allocation? If not, avoid exaggerated novelty.
+- What changes under lower demand, different business hours, lower PV yield, different tariffs and alternative sharing rules?
+- Which assumptions drive the conclusion most strongly?
+
+================================================================================
+H. HOURLY ENERGY, ECONOMIC AND SOCIAL CALCULATIONS
+================================================================================
+
+Unit and time discipline:
+- Use an explicit base time index and clear time zone convention (Europe/Madrid, plus UTC normalization for DST). Prevent duplicate/missing hours when switching from local time.
+- Normalize both PV and demand to kWh PER HOUR before matching.
+- If historical BDG2 meter year differs from PVGIS weather/output year, develop a reproducible representative-year alignment method (calendar/day-type/week/season or same-calendar simulation), not an unqualified chronological join.
+- Distinguish power kW, installation peak kWp, and energy kWh. Do not confuse total final energy with electricity.
+- PVGIS may report hourly POWER conventions; inspect actual exported schema and units before calling values hourly kWh.
+
+Simplified allocation per hour h:
+    P[h] = host PV electricity generated [kWh]
+    L[i,h] = demand of participant i [kWh]
+    beta[i,h] = agreed allocation coefficient for participant i (non-negative, with coefficient sum meeting the modeled settlement rule)
+    allocated_pv[i,h] = beta[i,h] * P[h]
+    used_pv[i,h] = min(allocated_pv[i,h], L[i,h])
+    grid_import[i,h] = max(0, L[i,h] - allocated_pv[i,h])
+    unconsumed_allocated_pv[i,h] = max(0, allocated_pv[i,h] - L[i,h])
+These are simplified planning calculations; verify actual statutory billing/compensation and grid access rules before describing them as an official legal settlement.
+
+SCENARIOS TO COMPARE
+  A) grid-only (for impact baseline)
+  B) host-only PV self-consumption (individual reference)
+  C) fixed-share collective allocation
+  D) AI-informed demand-matched PRE-AGREED hourly allocation schedule
+Important: distinguish C vs D effect (AI value) and B vs C effect (collective value). Same PV generation and same demand must be used in all alternatives.
+
+Primary environmental KPIs:
+  - annual PV generated [kWh]
+  - PV locally matched/used [kWh]
+  - PV self-consumption fraction [%]
+  - demand coverage by local PV [%]
+  - annual grid imports [kWh]
+  - additional grid-import change vs host-only and fixed allocation [kWh]
+  - illustrative avoided operational grid emissions [kgCO2e] with transparent chosen factors and boundary
+  - be explicit: reassigning fully used PV between people does not necessarily change aggregate CO2 emissions.
+
+Economic KPIs:
+  - PV capital expenditure estimate [EUR], annual O&M [EUR/year]
+  - imported electricity cost under sourced tariff scenarios [EUR]
+  - participant electricity savings / export remuneration assumptions [EUR/year]
+  - simple payback and sensitivity ranges [years], not guaranteed ROI
+  - host participation incentive and division of costs acknowledged as scenario assumptions.
+
+Social proxy KPIs:
+  - number of participating buildings
+  - share of PV allocated per participant [% or kWh]
+  - coverage gained per participant [% of electricity demand]
+  - distribution of modeled energy bill savings
+  - inequality/fairness metric only if assumptions and denominator are explicit
+  - no claims of actual energy-poverty impact without vulnerable household data.
+
+================================================================================
+I. DEVELOPMENT PIPELINE — CODEX EXECUTION ORDER
+================================================================================
+
+STAGE 0 — REPOSITORY AND ENVIRONMENT AUDIT
+Inputs: existing repo and starter files; target local data folder; project constraints.
+Tools: Python, Git, file inspection.
+Do: list files, inspect README, current scripts, data presence, lock environment, confirm the existing repository and actual working root; DO NOT rewrite a working pipeline without an evidence-based reason. Freeze data schema and selected case study as placeholders if unknown.
+Outputs: repo_inventory.md, requirements/pyproject if appropriate, configuration file with root paths, sources manifest.
+Gate: selected data directories visible; missing data clearly reported; no destructive changes.
+
+STAGE 1 — DATA INGESTION AND QUALITY AUDIT
+Inputs: public downloadable BDG2, Barcelona electricity, Catalonia certificates, PV and hourly demand registries.
+Tools: downloader, pandas, pyarrow optional.
+Do: use existing Windows downloader; inspect csv separators, character encodings, timezone columns, numeric fields, IDs, duplicates, meter units, missingness; log downloaded/failed provenance and hashes. Filter huge Catalonia data to Barcelona after field inspection. DO NOT invent schemas.
+Outputs: raw/ files, processed/data_quality_report.csv, processed/train_buildings.csv, processed/train_meter_hourly.csv, data_dictionary.md.
+Gate: real hourly targets + joinable building/weather metadata, or explicit blocker with fallback training route.
+
+STAGE 2 — SELECT/DEFINE ONE BARCELONA CLUSTER
+Inputs: Solar Map selected roof data, local cadastral/energy certificates, manually gathered building uses/hours.
+Tools: public map, manual geospatial selection, pandas.
+Do: one host + 3–5 buildings, provenance and uncertainty per field; flag candidate/confirmed. Do not silently lock Bruc 59 or Nexus II.
+Outputs: inputs/building_cluster.csv, inputs/host_roof.csv, inputs/source_register.csv.
+Gate: plausible site and PV capacity input.
+
+STAGE 3 — PV FROM EXISTING TOOLS
+Inputs: host lat/lon, kWp, tilt/azimuth/loss parameters, selected PVGIS weather year and municipal solar estimate.
+Tools: PVGIS 6 manual export; no custom solar physics required.
+Do: ingest and normalize PVGIS file, check kW/kWh/time zone, compare annual values against municipal map where available. Record simulation settings.
+Outputs: processed/pv_hourly.csv, inputs/pvgis_assumptions.csv, validation notes.
+Gate: one full representative hourly PV series with clear provenance.
+
+STAGE 4 — MANUAL/SYNTHETIC BUILDING SCENARIOS
+Inputs: selected building archetypes, opening hours, reference meter shapes, weather.
+Tools: CSV templates and pandas; optional CEA/EnergyPlus.
+Do: define weekday/weekend/seasonal occupancy and electrical loads, lower/base/upper cases; clearly distinguish occupancy from electricity demand. Implement reproducible generator with seeded variation, units and provenance; choose whether to create direct synthetic reference load profiles or simulation input/output labels.
+Outputs: synthetic/operation_schedules.csv, synthetic/scenarios.csv, processed/demand_scenario_reference.csv.
+Gate: multiple coherent profiles without pretending they are actual meters.
+
+STAGE 5 — TRAIN AND EVALUATE ONE AI MODEL
+Inputs: BDG2 measured electricity + weather + building metadata (preferred), OR CEA/EnergyPlus input/output simulation pairs (alternative).
+Tools: XGBoost, pandas, scikit-learn, joblib.
+Do: feature engineering, held-out-building split, baseline comparison, training/evaluation, feature importance/uncertainty discussion, inference API from available features.
+Outputs: models/demand_xgboost.joblib, models/feature_schema.json, results/model_metrics.csv, processed/demand_hourly.csv.
+Gate: reproducible reported accuracy on appropriate held-out data and honest limitations.
+
+STAGE 6 — PV-DEMAND SCENARIO EVALUATOR
+Inputs: hourly PV, hourly inferred/assumed demand, participant coefficients.
+Tools: pandas/numpy, optional minimal optimization with scipy or oemof if needed.
+Do: grid-only, host-only, fixed shares, demand-informed pre-agreed hour-of-year profiles; strict energy balance; no instant AI grid dispatch.
+Outputs: results/hourly_balance.csv, results/sharing_coefficients.csv, results/scenario_comparison.csv.
+Gate: PV cannot be counted twice; identical demand/PV across scenario comparisons; tests for conservation of energy.
+
+STAGE 7 — IMPACT / VIABILITY SCREENING
+Inputs: stage 6 results, priced tariffs, PV capex/O&M, emissions and social allocation assumptions.
+Tools: transparent Python, no extra neural network.
+Do: aggregate environmental, economic, distributional outcomes; sensitivity to uncertain prices and schedules; report per participant and cluster total.
+Outputs: results/environmental_metrics.csv, results/economic_metrics.csv, results/participant_benefits.csv, results/assumption_sensitivity.csv.
+Gate: source and units for every impact claim; no unearned emissions/savings improvement.
+
+STAGE 8 — INTERFACE, VALIDATION, HANDOFF
+Inputs: all outputs + source/quality logs + validation metrics.
+Tools: existing visualization if possible; optional Plotly/Streamlit for fast implementation, if that fits team's architecture.
+Do: one cluster visualization; roof capacity, hourly PV vs demand, scenario selection, environmental/economic/social cards, uncertainty and clear provenance; simple rerun script and tests; document what is measured/simulated/estimated.
+Outputs: demonstrator, instructions for reproduction, research-method validation and final studio materials.
+Gate: working demonstration with offline cached data, benchmark results and honest limitations.
+
+PROPOSED PROJECT TIMELINE FROM EARLIER DISCUSSION
+14–19 Nov: study area, data collection and schema.
+20–26 Nov: AI model and synthetic schedules.
+27 Nov–3 Dec: scenarios, economics and environmental metrics.
+4–10 Dec: integration, validation, 3D interface.
+11–17 Dec: final review and presentation.
+These dates are planning targets and are not a promise of background completion.
+
+================================================================================
+J. EXISTING STARTER PACKAGE CREATED IN THIS CHAT
+================================================================================
+
+A starter ZIP was generated earlier in the same chat:
+  rooftops_repowered_v2_starter.zip
+It contains an inner folder named:
+  rooftops_repowered_v2_setup/
+with four files:
+  SETUP_DATASETS_WINDOWS.bat
+  README_START_HERE.md
+  PIPELINE.md
+  download_datasets.py
+
+LOCAL TARGET — EXACT WINDOWS PATH REQUESTED BY USER
+  D:\MaAI IAAC\Term 1\Research Studio\rooftops_repowered_v2\datasets
+
+Important: user must download/extract starter ZIP and execute the Windows BAT on THEIR machine. The chat environment did NOT mount or populate this D: folder. Verify setup rather than assuming success.
+
+Windows quick start:
+  1) Extract ZIP.
+  2) Run SETUP_DATASETS_WINDOWS.bat, or from a Python-ready shell:
+       py -3 download_datasets.py
+     Optional flags:
+       --skip-large      Skip full Catalonia energy-certificate export
+       --templates-only Create only directory templates, no downloads
+       --no-git-fallback Skip Git-LFS fallback if unavailable
+       --root "D:\MaAI IAAC\Term 1\Research Studio\rooftops_repowered_v2\datasets"
+  3) Inspect datasets\logs\dataset_download_report.json, not only console text.
+  4) If Git LFS pointers are downloaded rather than data, install Git for Windows + Git LFS or use official repository download manually.
+  5) If portal responds HTTP 403, download manually using source catalog links; NEVER falsify file presence.
+
+The downloader is Python stdlib-only (no third-party package for fetching). It targets EIGHT files:
+  1) Barcelona electricity 2025 CSV
+  2) Barcelona municipal PV 2025 CSV
+  3) Catalonia energy certificates CSV (large)
+  4) Catalonia self-consumption registry CSV
+  5) Catalonia hourly electricity demand CSV
+  6) BDG2 metadata CSV
+  7) BDG2 cleaned electricity CSV
+  8) BDG2 weather CSV
+
+It also generates a source manifest and templates. It does NOT download PVGIS data before host selection, nor does it fetch actual private electricity readings. It does not require API keys. NOTE: anonymous static URLs for Catalonia CSV exports contain "/api/v3/" in the public provider URL; user rejected authenticated API KEY dependencies, not anonymous file-download links.
+
+EXPECTED FOLDER TREE
+  datasets/
+    raw/
+      building_data_genome_2/
+      barcelona_electricity/
+      catalonia_energy_certificates/
+      catalonia_self_consumption/
+      catalonia_hourly_demand/
+      barcelona_municipal_pv/
+    inputs/
+    synthetic/
+    processed/
+    manual_exports/
+      pvgis/
+      barcelona_solar_map/
+      emissions_tariffs/
+    models/
+    results/
+    logs/
+    dataset_sources.json
+
+EXISTING CSV TEMPLATES CREATED BY DOWNLOADER
+  inputs/building_cluster_TEMPLATE.csv:
+    building_id,is_host,building_name,building_use,latitude,longitude,floor_area_m2,annual_electricity_kwh_if_known,schedule_id,consumption_data_kind,data_source,notes
+  inputs/host_roof_TEMPLATE.csv:
+    roof_id,building_id,latitude,longitude,estimated_usable_area_m2,selected_pv_capacity_kwp,tilt_degrees,azimuth_degrees,pv_capacity_source,shade_assumption,confidence_notes
+  synthetic/operation_schedules_TEMPLATE.csv:
+    schedule_id,building_use,day_type,start_hour_local,end_hour_local,relative_activity_level_0_to_1,season,reference_or_assumption
+  inputs/impact_assumptions_TEMPLATE.csv:
+    assumption_name,value,unit,source_url,scenario_label,notes
+  processed/pv_hourly_EXPECTED_SCHEMA.csv:
+    timestamp_local,roof_id,pv_generation_kwh,source,weather_year
+  processed/demand_hourly_EXPECTED_SCHEMA.csv:
+    timestamp_local,building_id,predicted_electricity_kwh,scenario_id,model_version,data_origin
+
+These templates are intentionally initially empty except for header rows. Do not treat them as downloaded observations.
+
+CURRENT SESSION STATUS
+- Starter ZIP exists in assistant artifact space and was linked in prior answer.
+- TXT handoff is being produced now in assistant artifact space.
+- Dataset downloader is PREPARED and was examined, but has not been executed on the user's machine.
+- Final case study location, PVGIS site export, real selected-building meters, cleaned training tables, trained model and interactive demonstrator have NOT been established in the conversation as completed.
+
+================================================================================
+K. LIMITATIONS AND ABSOLUTE OUT-OF-SCOPE LIST
+================================================================================
+
+LIMITATIONS TO DISCLOSE
+- No unrestricted local hourly meter data for all selected Barcelona buildings.
+- International reference-building meter distributions may not transfer to Barcelona.
+- Occupancy/opening times are imperfect predictors of electricity demand.
+- Synthetic schedules are hypotheses and cannot establish real-world forecast accuracy.
+- Building energy certificates are modeled performance values, not observed electricity.
+- Municipal solar maps and PVGIS cannot certify true roof obstacles, structural capacity, electricity interconnection or construction permits.
+- Registered PV installation counts/capacity do not give actual hourly energy production.
+- Exact tariffs/capex/economic returns are uncertain and change over time.
+- Grid emissions-factor choice and PV export treatment affect CO2 conclusions.
+- Socioeconomic participation/energy poverty cannot be inferred without appropriate private data.
+- A scenario of participants is not an executed energy-sharing contract.
+- A single case-study cluster does not validate a citywide policy or building forecast.
+- Statutory collective self-consumption rules should be independently confirmed before claiming legal compliance.
+
+OUT OF SCOPE / DO NOT ADD WITHOUT EXPLICIT USER REQUEST
+- Comprehensive Barcelona citywide PV/demand/market deployment.
+- Rebuilding a photovoltaic physical simulator or training a new PV prediction NN.
+- Training end-to-end satellite-image rooftop segmentation from scratch.
+- Full structural engineering, electrical design, structural load tests, fire safety, construction permit issuance.
+- Real time grid electricity dispatch and market settlement.
+- Energy trading infrastructure and commercial P2P transactions.
+- New battery/storage optimization framework.
+- Actual community formation, participation contracts and governance implementation.
+- Full energy retrofit design or thermal-district heating project.
+- Full life-cycle PV embodied-carbon LCA without reliable product data.
+- Accessing household income/vulnerability datasets or individual private meter records without authorization.
+- Training complex LSTM/Transformer sequence models before establishing XGBoost/baselines.
+- Live authenticated API integration/ESIOS token maintenance.
+- Promising verified 2026 Barcelona-specific household demand predictions without site-level measurements.
+
+================================================================================
+L. WHAT CODEX SHOULD DO FIRST (IMPLEMENTATION PROMPT)
+================================================================================
+
+You are implementing a time-constrained architecture research prototype. Do not start with UI polish or a citywide map. Follow the project decisions above and inspect reality before writing code.
+
+FIRST CODING SESSION — REQUESTED ORDER
+1. Inspect the working directory and repo. If the project directory is available, list existing files and determine if the starter ZIP was unpacked. Do not overwrite work.
+2. Confirm whether `D:\MaAI IAAC\Term 1\Research Studio\rooftops_repowered_v2\datasets` exists and which files actually exist. If not, explain how to run the included setup BAT locally and create a `--templates-only` path as necessary. Do not claim downloads completed.
+3. Read `README_START_HERE.md`, `PIPELINE.md` and `download_datasets.py` from starter package; use documented source IDs and CSV schemas.
+4. Build a reproducible DATA AUDIT entry point first. Inspect actual CSV headers/units/row counts, missingness, timestamp coverage, source provenance, meter type and licenses. Save a machine-readable quality report. Warn about source blockers.
+5. Build a minimal configuration file for data roots, host roof location/size (currently not chosen), training strategy, timezones and unit conventions. Use explicit TODO fields when information is missing; no fictional buildings.
+6. Implement a baseline demand-estimation experiment on available BDG2 real electricity with a held-out-building split. Benchmark simple hour-of-week/season patterns. Train XGBoost only after validating data format and feature availability.
+7. Prepare documented schedule scenario generator, but do not treat generated schedules as observed occupancy.
+8. When host roof is identified, ingest PVGIS exported hourly results and build a unit-tested energy-balance evaluator for grid-only, host-only, fixed-share collective, and AI-informed fixed-in-advance hourly allocations.
+9. Only then add financial/environmental/social evaluation and a lean visualization.
+10. Save assumptions, results, logs and concise method documentation to make final research presentation reproducible.
+
+SUGGESTED CODE MODULES (ADAPT TO EXISTING REPO; NOT A REQUIREMENT TO REWRITE WORK)
+  src/roofscapes/config.py
+  src/roofscapes/data_audit.py
+  src/roofscapes/prepare_bdg2.py
+  src/roofscapes/building_archetypes.py
+  src/roofscapes/schedule_scenarios.py
+  src/roofscapes/demand_baseline.py
+  src/roofscapes/train_demand.py
+  src/roofscapes/pvgis_io.py
+  src/roofscapes/energy_balance.py
+  src/roofscapes/impact_metrics.py
+  src/roofscapes/reporting.py
+  tests/test_energy_balance.py
+  tests/test_temporal_alignment.py
+  tests/test_no_data_leakage.py
+
+CRITICAL AUTOMATED TESTS
+- PV demand accounting: no PV creation, double counting or negative energy.
+- All scenario inputs aligned to the same set of hourly timestamps.
+- Timestamp DST and duplicate-hour handling.
+- No target leakage across training and validation buildings.
+- Strong distinction of observed vs modeled vs synthetic source labels.
+- Fixed sharing beta coefficients satisfy configured sum/eligibility constraints per period.
+- If every kWh PV was consumed in baseline, a sharing rearrangement alone cannot falsely show aggregate energy/emissions gain.
+- If local datasets missing, pipeline fails gracefully and tells user exactly what to download.
+
+SUCCESS CRITERIA FOR FINAL STUDIO
+- Can explain every data input and whether it is real, simulated or inferred.
+- One reproducible trained model compared with an honest baseline.
+- One plausible Barcelona host and small cluster.
+- Hourly PV/demand comparison with correct units and weather/calendar assumptions.
+- Transparent individual vs collective vs demand-informed scenario results.
+- Realistic and sourced preliminary cost and emissions numbers.
+- Social benefit shown as explicit allocation measures, not invented household vulnerability.
+- Clean visualization and explainable uncertainty/limitations.
+
+================================================================================
+M. CHRONOLOGICAL SUMMARY OF EVERY USER REQUEST IN THIS CHAT
+================================================================================
+
+Turn 1: "Roofscapes (Re)Powered V2" — establish a new conversation/workspace continuing prior Barcelona rooftop solar research.
+Turn 2: Uploaded a handwritten brainstorm image about clean renewable energy, community participation, external data, building operations and AI energy-sharing decisions.
+Turn 3: Corrected assumption that surplus generation is common; said the system mainly integrates SOME renewable electricity into consumption while other electricity is imported from the grid. Requested verification and identification of logical errors.
+Turn 4: Explicitly constrained project to three months past midterm, with limited scope; environment first, financially viable, socially responsible, AEC/smart construction, central AI contribution, realistically unavailable local meter/occupancy data and acceptable manually generated schedules/surrogates. Requested revised project, data inventory, existing research/projects/models and out-of-scope limitations.
+Turn 5: Requested a table of reusable existing projects, public datasets, new datasets, synthetic datasets and AI models. Explicitly said do not continue prior PV pipeline if existing tools already do PV analysis.
+Turn 6: Requested verification of whether datasets are publicly accessible and relevant to Barcelona.
+Turn 7: Asked to drop sources needing API access. Assistant and user agreed to remove authenticated ESIOS integration, prefer downloadable/offline files and manual PVGIS export.
+Turn 8: Asked for actionable development pipeline with inputs/outputs and precedents, and to download data into exact D: path. Assistant explained it cannot access local D: drive and prepared Windows starter ZIP/downloader + PIPELINE.md + README.
+Turn 9 (current): Asked for a TXT file containing all context from the conversation to give Codex so coding can begin. This document is that handoff.
+
+================================================================================
+N. REFERENCE CATALOG / SOURCE URLS FOR CODEX
+================================================================================
+
+Team repos (VERIFY which is current):
+  https://github.com/iaac-maai/research_studio_team_1
+  https://github.com/iaac-maai/Rooftops_RePowered_OperableFutures2026_Team1
+
+Data:
+  https://github.com/buds-lab/building-data-genome-project-2
+  https://opendata-ajuntament.barcelona.cat/data/dataset/consum-electricitat-bcn
+  https://opendata-ajuntament.barcelona.cat/data/dataset/plaques-fotovoltaiques
+  https://analisi.transparenciacatalunya.cat/d/j6ii-t3w2
+  https://analisi.transparenciacatalunya.cat/d/2b4s-skfm
+  https://analisi.transparenciacatalunya.cat/d/hx6q-ykhb
+  https://www.catastro.hacienda.gob.es/webinspire/
+  https://www.icgc.cat/en/Geoinformation-and-Maps/Data-and-products/Elevations/Territorial-elevations/Territorial-LiDAR
+  https://registry.opendata.aws/nrel-pds-building-stock/
+  https://www.ree.es/es/datos/apidatos
+  https://www.energia.barcelona/
+  https://www.energia.barcelona/es/generar-energia/generar-energia/mapa-cuanta-energia-puedes-generar
+
+Tools / precedent:
+  https://photovoltaic-geographic-information-system.ec.europa.eu/
+  https://photovoltaic-geographic-information-system.ec.europa.eu/api/v6/docs
+  https://www.cityenergyanalyst.com/
+  https://github.com/architecture-building-systems/CityEnergyAnalyst
+  https://energyplus.net/
+  https://pvlib-python.readthedocs.io/
+  https://oemof.org/
+  https://github.com/TUMFTM/RID
+
+Academic dataset reference:
+  https://doi.org/10.1038/s41597-020-00712-x
+
+END OF CODING CONTEXT DOCUMENT.
+
+
+================================================================================
+O. ACTUAL SOURCE MANIFEST EMBEDDED IN EXISTING DOWNLOAD SCRIPT
+================================================================================
+Below are the exact IDs, output paths, and static download URLs currently used by the starter package. Access can fail; inspect logs.
+
+ID: bcn_electricity_2025
+LOCAL FILE: raw/barcelona_electricity/2025_consum_electricitat_BCN.csv
+DOWNLOAD URL: https://opendata-ajuntament.barcelona.cat/data/dataset/d9479057-781f-42b4-85e6-721bd0284130/resource/635923fe-9e3b-40d3-857d-aaa9a6913531/download
+CATALOG: https://opendata-ajuntament.barcelona.cat/data/dataset/consum-electricitat-bcn
+PURPOSE: Barcelona daily electricity by postal code, sector, time band; local contextual comparison, not building training.
+SIZE NOTE: ~12 MB on catalog (2025 distribution)
+
+ID: bcn_municipal_pv_2025
+LOCAL FILE: raw/barcelona_municipal_pv/2025_municipal_photovoltaics.csv
+DOWNLOAD URL: https://opendata-ajuntament.barcelona.cat/data/dataset/8b6fd878-f242-4e7f-b621-fa3ee605e8ca/resource/add38a29-8412-4bf2-b7f5-2a7514a9d380/download
+CATALOG: https://opendata-ajuntament.barcelona.cat/data/dataset/plaques-fotovoltaiques
+PURPOSE: Observed municipal PV installation register to benchmark host capacity and precedents.
+SIZE NOTE: ~31 KB on catalog
+
+ID: catalonia_energy_certificates
+LOCAL FILE: raw/catalonia_energy_certificates/energy_certificates_catalonia.csv
+DOWNLOAD URL: https://analisi.transparenciacatalunya.cat/api/v3/views/j6ii-t3w2/export.csv?accessType=DOWNLOAD
+CATALOG: https://analisi.transparenciacatalunya.cat/d/j6ii-t3w2
+PURPOSE: Building-level modeled energy certificate indicators; local archetype characterization, not metered hourly loads.
+SIZE NOTE: Potentially very large full-Catalonia CSV; download may take time/disk space
+
+ID: catalonia_self_consumption_registry
+LOCAL FILE: raw/catalonia_self_consumption/self_consumption_installations.csv
+DOWNLOAD URL: https://analisi.transparenciacatalunya.cat/api/v3/views/2b4s-skfm/export.csv?accessType=DOWNLOAD
+CATALOG: https://analisi.transparenciacatalunya.cat/d/2b4s-skfm
+PURPOSE: Existing registered collective/individual self-consumption installations for Catalonia and Barcelona precedent analysis.
+SIZE NOTE: Full-Catalonia CSV; review size on download
+
+ID: catalonia_hourly_electricity_demand
+LOCAL FILE: raw/catalonia_hourly_demand/hourly_demand_catalonia.csv
+DOWNLOAD URL: https://analisi.transparenciacatalunya.cat/api/v3/views/hx6q-ykhb/export.csv?accessType=DOWNLOAD
+CATALOG: https://analisi.transparenciacatalunya.cat/d/hx6q-ykhb
+PURPOSE: Regional hourly electricity demand; a sanity-check pattern, not an individual building training target.
+SIZE NOTE: CSV export
+
+ID: bdg2_metadata
+LOCAL FILE: raw/building_data_genome_2/metadata.csv
+DOWNLOAD URL: https://raw.githubusercontent.com/buds-lab/building-data-genome-project-2/master/data/metadata/metadata.csv
+CATALOG: https://github.com/buds-lab/building-data-genome-project-2
+PURPOSE: Real non-residential building types, floor area and other metadata; training feature lookup.
+SIZE NOTE: GitHub file; may be tracked with Git LFS
+
+ID: bdg2_cleaned_electricity
+LOCAL FILE: raw/building_data_genome_2/electricity_cleaned.csv
+DOWNLOAD URL: https://raw.githubusercontent.com/buds-lab/building-data-genome-project-2/master/data/meters/cleaned/electricity_cleaned.csv
+CATALOG: https://github.com/buds-lab/building-data-genome-project-2
+PURPOSE: Measured hourly non-residential building electricity consumption; primary supervised training target.
+SIZE NOTE: GitHub LFS may require Git LFS fallback
+
+ID: bdg2_weather
+LOCAL FILE: raw/building_data_genome_2/weather.csv
+DOWNLOAD URL: https://raw.githubusercontent.com/buds-lab/building-data-genome-project-2/master/data/weather/weather.csv
+CATALOG: https://github.com/buds-lab/building-data-genome-project-2
+PURPOSE: Weather series that match the training-meter site/time context.
+SIZE NOTE: GitHub LFS (~19MB), may require Git LFS fallback
+
+
+================================================================================
+P. APPENDIX — EXISTING PIPELINE.md
+================================================================================
+
+# Roofscapes (Re)Powered V2 — Implementation Pipeline
+
+**Studio constraint:** Post-midterm; approximately four-to-five weeks remain as of November 14, 2026. **One** final Barcelona building cluster, **one** primary trained AI model, transparent impact evaluation. The tool is a **pre-installation design support prototype**, not a live energy-community controller.
+
+## Central research question
+
+How can AI-assisted electricity-demand estimation guide the use and distribution of limited rooftop solar production among a small group of Barcelona buildings, subject to preliminary environmental, economic and social constraints?
+
+## Stage 0 — Define test and data definitions (day 1)
+- **Inputs:** Study objective, required metrics, permitted time frame, geographic scale.
+- **Work:** Freeze one host + three to five consumer buildings; choose all timestamps in one convention (Europe/Madrid local with UTC normalization and DST handling); distinguish electricity from thermal demand; specify data provenance.
+- **Tools/precedents:** Barcelona Energy Resources Map; Spanish collective self-consumption framework.
+- **Outputs:** `inputs/building_cluster.csv`, `inputs/host_roof.csv`; model target defined as hourly **electricity kWh**.
+- **Gate:** Selected host can plausibly accommodate PV; participant eligibility and participation are described as hypothetical if unverified.
+
+## Stage 1 — Download and audit datasets (days 1–3)
+- **Inputs:** Public catalogs, Building Data Genome 2 (BDG2), Barcelona electricity, Catalonia certificates/PV registry, Catalonia hourly demand.
+- **Work:** Run `download_datasets.py`; audit schema, completeness, site types, units, timezones, licensing and access failures. Select relevant office/retail/institutional BDG2 electricity meters. Do **not** use Catalonia hourly system demand as building-level labels.
+- **Tools/precedents:** BDG2 (Miller et al., Scientific Data 2020); pandas; Barcelona Open Data; ICAEN certificates.
+- **Outputs:** `raw/*`, `processed/data_quality_report.csv`, `processed/train_buildings.csv`, `processed/train_meter_hourly.csv`.
+- **Gate:** Have real electricity targets and building metadata with consistent IDs; document unavailable variables.
+
+## Stage 2 — Select and describe the Barcelona cluster (days 3–5)
+- **Inputs:** Barcelona Solar Map, actual host characteristics, Cadastre or existing building inventory, energy certificates, published opening hours.
+- **Work:** Choose one PV host roof and 3–5 consumers; record area/type, source, operating hours and assumptions. Use available PV area/capacity instead of repeating rooftop vision/segmentation training.
+- **Tools/precedents:** Barcelona municipal solar atlas; Cadastre INSPIRE; Barcelona municipal shared-self-consumption service.
+- **Outputs:** `inputs/building_cluster.csv`, `inputs/host_roof.csv`, `inputs/source_register.csv`.
+- **Gate:** A plausible cluster with known coordinates, use types and estimated PV capacity.
+
+## Stage 3 — Generate PV output from established tool (days 5–7)
+- **Inputs:** Host location, installed kWp, panel tilt/azimuth/losses, selected PVGIS weather or time series.
+- **Work:** Export hourly PV output with the **PVGIS web UI**, record configuration and time basis. Validate annual yield order of magnitude against the Barcelona Solar Map. No new PV AI training.
+- **Tools/precedents:** European Commission JRC PVGIS 6; pvlib **only if** user-configurable PV modeling proves essential.
+- **Outputs:** `processed/pv_hourly.csv`, `inputs/pvgis_assumptions.csv`, provenance and uncertainty note.
+- **Gate:** Hourly kWh generation properly normalized to selected roof's kWp and timezone. Distinguish actual weather year from typical year.
+
+## Stage 4 — Define controllable building-use scenarios (days 6–9)
+- **Inputs:** Selected building uses and area, public opening hours, BDG2 benchmark shapes, optional CEA/DOE archetypes.
+- **Work:** Build **manual, editable** office / residential / retail / institutional schedules; weekdays vs weekends; low/base/high activity and weather-sensitive loads. Document synthetic assumptions. Do not invent 'true' meter readings for the case study.
+- **Tools/precedents:** City Energy Analyst (CEA); EnergyPlus schedule semantics; DOE End-Use Load Profiles (only for cross-check, not Barcelona ground truth).
+- **Outputs:** `synthetic/operation_schedules.csv`, scenario definitions, `processed/demand_scenario_reference.csv`.
+- **Gate:** At least 3 coherent scenarios per selected use, with annual consumption plausibility ranges.
+
+## Stage 5 — Train one AI model (days 7–14)
+- **Inputs:** BDG2 measured hourly electricity, joined building metadata/weather and calendar features; **or** CEA simulated hourly loads with known operating schedules (alternative, not an additional requirement).
+- **Work:** Fit an **XGBoost regressor** for hourly electricity demand in kWh (optionally normalize by floor area). Compare against hour-of-week and seasonal baseline. Hold out entire buildings and evaluate multiple periods. For use without a building's historical meter, only use features available at inference time.
+- **Tools/precedents:** BDG2; XGBoost; scikit-learn. **Alternative:** CEA + XGBoost simulation surrogate if scenario controllability is central.
+- **Outputs:** `models/demand_xgboost.joblib`, `results/model_metrics.csv`, `processed/demand_hourly.csv`, feature/spec documentation.
+- **Gate:** Model improves meaningful baseline **on held-out buildings or simulation configurations**. Report MAE/RMSE and known transfer limitations; if it does not improve baseline, revise target or use baseline honestly.
+- **CRITICAL:** BDG2 has no observed building occupancy schedule features; do not imply XGBoost learned schedule response if schedules were not part of training. CEA surrogate is the alternative route when schedule effects must be learned explicitly.
+
+## Stage 6 — Compute rooftop solar-demand matching (days 13–18)
+- **Inputs:** `pv_hourly.csv`, `demand_hourly.csv`, proposed sharing coefficients and participant definitions.
+- **Work:** Evaluate host-only solar; fixed-share collective allocation; demand-informed **pre-agreed** hourly allocation profiles. Use `min(allocated_pv_kwh, demand_kwh)` for simplified hourly self-consumption; account for imports, exports, settlement assumptions and coefficient constraints. Avoid implying real-time distribution-grid control.
+- **Tools/precedents:** Spanish collective self-consumption; pandas/numpy; optional oemof.solph if optimization complexity warrants it.
+- **Outputs:** `results/hourly_balance.csv`, `results/scenario_comparison.csv`, `results/sharing_coefficients.csv`.
+- **Gate:** Same PV electricity quantity and demand inputs across scenarios; no artificial creation of PV or 'surplus'.
+
+## Stage 7 — Environmental, economic, social screening (days 17–22)
+- **Inputs:** Hourly balance, sourced PV capex/O&M and electricity/export tariffs, documented emissions factors, chosen simple participation fairness proxy.
+- **Work:** Compute onsite/collective self-consumed PV, grid-import changes, scenario electricity savings, simple payback range, and allocated benefits. Record all assumptions and avoid treating all grid electricity as nonrenewable.
+- **Tools/precedents:** REE/REData public statistics, Barcelona municipal shared-PV project; transparent Python accounting.
+- **Outputs:** `results/environmental_metrics.csv`, `results/economic_metrics.csv`, `results/participant_benefits.csv`.
+- **Gate:** Only claim *additional* avoided emissions or grid imports when the total differs from host-only baseline. Label fair-share proxies as proxies.
+
+## Stage 8 — Explain, verify, present (days 22–30)
+- **Inputs:** Dataset quality, held-out prediction results, PVGIS and solar map references, all energy scenario outputs.
+- **Work:** Create small visual interface (existing website if it saves time). One host roof, neighbors, hourly production/use curves, three scenario comparison cards, model evaluation, uncertainty, limitations and references.
+- **Tools/precedents:** Existing team interface, Plotly/Matplotlib, scikit-learn diagnostics, project-specific AEC 3D visualization.
+- **Outputs:** Reproducible proof of concept + research validation section + final studio presentation.
+- **Gate:** Clearly distinguish **measured**, **modeled**, and **hypothetical** numbers in charts.
+
+## Keep strictly out of scope
+
+Citywide deployment; a new solar physics model; complete roof obstacle segmentation; real-time dispatch; true commercial energy trading; battery optimization; live grid-data integration; legally binding participant recruitment; full structural/permit validation; social-vulnerability identification; certified carbon life-cycle analysis; local demand-accuracy claims without metered ground truth.
+
+## Source references
+
+- BDG2: https://github.com/buds-lab/building-data-genome-project-2
+- BDG2 Scientific Data article: https://doi.org/10.1038/s41597-020-00712-x
+- PVGIS: https://photovoltaic-geographic-information-system.ec.europa.eu/
+- Barcelona electricity: https://opendata-ajuntament.barcelona.cat/data/dataset/consum-electricitat-bcn
+- Barcelona municipal PV: https://opendata-ajuntament.barcelona.cat/data/dataset/plaques-fotovoltaiques
+- Catalonia certificates: https://analisi.transparenciacatalunya.cat/d/j6ii-t3w2
+- Catalonia self-consumption: https://analisi.transparenciacatalunya.cat/d/2b4s-skfm
+- Catalonia hourly demand: https://analisi.transparenciacatalunya.cat/d/hx6q-ykhb
+- City Energy Analyst: https://www.cityenergyanalyst.com/
+- EnergyPlus: https://energyplus.net/
+- oemof: https://oemof.org/
+- Barcelona Solar Map: https://www.energia.barcelona/es/generar-energia/generar-energia/mapa-cuanta-energia-puedes-generar
+
+
+
+================================================================================
+Q. APPENDIX — EXISTING README_START_HERE.md
+================================================================================
+
+# Roofscapes (Re)Powered V2 — Download and Development Starter
+
+**Prepared:** 14 November 2026  
+**Target:** `D:\MaAI IAAC\Term 1\Research Studio\rooftops_repowered_v2\datasets`
+
+## Quick start on Windows
+
+1. Unzip this package anywhere on the computer.
+2. Double-click `SETUP_DATASETS_WINDOWS.bat` (or run `py -3 download_datasets.py`).
+3. The script creates the exact `D:\...\datasets` directory and attempts to download **eight** verified public CSV files (including three files from Building Data Genome 2).
+4. Look at `datasets/logs/dataset_download_report.json` to see **what downloaded, what failed, and why**.
+5. Fill the template files created under `datasets/inputs/` and `datasets/synthetic/`.
+6. Export site-specific PVGIS data and local solar map estimates manually after selecting a host roof.
+
+If the energy certificates download is too large, run `SETUP_DATASETS_WINDOWS.bat --skip-large` to acquire the smaller sources first. To test the folder structure without downloads, run `SETUP_DATASETS_WINDOWS.bat --templates-only`.
+
+> **Important:** Nothing has been transferred to your actual D: drive by ChatGPT. The Windows script must be run **on your computer**. Even after it runs, some services might reject automatic requests; the report records failures and source catalog links.
+
+## Folder structure created
+
+```text
+D:\MaAI IAAC\Term 1\Research Studio\rooftops_repowered_v2\datasets\
+├── raw/
+│   ├── building_data_genome_2/      # metadata, cleaned electricity, weather
+│   ├── barcelona_electricity/       # local postal-code consumption
+│   ├── catalonia_energy_certificates/ # large local certificate export
+│   ├── catalonia_self_consumption/  # installation registry
+│   ├── catalonia_hourly_demand/     # regional hourly demand
+│   └── barcelona_municipal_pv/     # real municipal PV precedents
+├── inputs/                         # case study + assumptions templates
+├── synthetic/                      # manually created schedules
+├── processed/                      # processed dataset schemas
+├── manual_exports/
+│   ├── pvgis/                       # PVGIS hourly output for selected host
+│   ├── barcelona_solar_map/        # manual selected-host metadata
+│   └── emissions_tariffs/          # sourced cost/carbon assumptions
+├── models/                          # future trained XGBoost models
+├── results/                         # scenario comparisons, reports
+├── logs/                            # checksums, download successes/failures
+└── dataset_sources.json             # complete provenance manifest
+```
+
+## Why no authenticated API?
+
+- ESIOS is **excluded**.
+- The Catalonia datasets have **public, anonymous CSV download links** that happen to use `/api/v3/` in the publisher's URL. The script only retrieves files; it does not use authenticated APIs, live connections, API tokens or credentials.
+- PVGIS site-specific solar output requires a known roof location/capacity, so it is **not** automatically downloaded. Use PVGIS in its web UI and export the hourly output as a file.
+- Red Eléctrica emissions and electricity-price assumptions should be saved as documented offline references, rather than relying on a continuously updating service.
+
+## Limitations and practical notes
+
+- Building Data Genome 2 is measured data, but **not a Barcelona building-meter dataset**. It covers 2016–2017 non-residential sites and must be evaluated for transfer bias.
+- Some GitHub BDG2 files use Git Large File Storage (LFS). If normal direct download provides only a pointer, the script attempts a Git LFS fallback if **Git for Windows + Git LFS** are installed. If not, use the repo website and download the files manually.
+- The Catalonia certificates export is for all Catalonia and can be large. Filter for Barcelona **after download** once the actual schema has been inspected. Never infer field names without inspection.
+- Barcelona municipal PV and Barcelona electricity portals may disallow script requests even though public CSV downloads are listed; use their public dataset pages if the script logs `HTTP 403`.
+- Public certificates are energy-performance indicators, **not hourly measured electricity**.
+- User-defined occupancy patterns are synthetic assumptions. Train/validate using held-out buildings or held-out simulation configurations; do not present synthetic test scores as empirical real-building accuracy.
+
+## Next operations
+
+Read `PIPELINE.md`. Start by checking that the three Building Data Genome files and two Barcelona files were acquired, then inspect columns and units before selecting the final model design.
+

@@ -1,0 +1,14 @@
+{
+  "views_reached": [
+    "overview",
+    "roof",
+    "solar",
+    "demand",
+    "sharing",
+    "impact",
+    "evidence"
+  ],
+  "source": "UI Interface\\Roofscapes_UI_Template_Editable_Package\\index.html",
+  "browser": "157.0.8103.51",
+  "overflow_mobile": false
+}

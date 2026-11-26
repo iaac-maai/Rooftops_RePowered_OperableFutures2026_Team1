@@ -1,0 +1,48 @@
+{
+  "checked_utc": "2026-11-15T00:20:15.953651+00:00",
+  "location": "A160 image centre",
+  "layers": [
+    {
+      "layer": "ortofoto_color_provisional",
+      "feature_info": "<html>\n    <header>\n        <meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\">\n    </header>\n    <body>\n        <b>Fotograma:</b>&nbsp;2026705_267_024_20260316_122552_RGB_MFC150-92513<br />\n        <b>Data:</b>&nbsp;2026-03-16 12:25:52<br />\n        <b>Color:</b>&nbsp;RGB<br />\n        <br />\n    </body>\n</html>\n"
+    },
+    {
+      "layer": "ortofoto_color_vigent",
+      "feature_info": "<html>\n    <header>\n        <meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\">\n    </header>\n    <body>\n        <b>Ortofoto histÃ²rica</b><br />\n        <b>Data inicial:</b>2025/06/18 00:00:00<br />\n        <b>Data final:</b>2025/06/18 00:00:00<br />\n        <b>OrÃ­gen:</b>PÃ­xel Font<br />\n        <b>GSD:</b>0.25<br />\n    </body>\n</html>\n"
+    },
+    {
+      "layer": "ortofoto_color_2025",
+      "feature_info": "<html>\n    <header>\n        <meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\">\n    </header>\n    <body>\n        <b>Ortofoto histÃ²rica</b><br />\n        <b>Data inicial:</b>2025/06/18 00:00:00<br />\n        <b>Data final:</b>2025/06/18 00:00:00<br />\n        <b>OrÃ­gen:</b>PÃ­xel Font<br />\n        <b>GSD:</b>0.25<br />\n    </body>\n</html>\n"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://geoserveis.icgc.cat/servei/catalunya/orto-territorial/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&LAYERS=ortofoto_color_provisional&QUERY_LAYERS=ortofoto_color_provisional&STYLES=&SRS=EPSG%3A25831&BBOX=432521.91713384876%2C4583327.221910713%2C432599.3456582478%2C4583421.209514242&WIDTH=774&HEIGHT=940&X=387&Y=470&INFO_FORMAT=text%2Fhtml",
+      "retrieved_utc": "2026-11-15T00:20:15.345124+00:00",
+      "status": 200,
+      "sha256": "a991c7702a81ca8bae684467f1b83bbb1d6aca2c4d68016637bba160b83a3569",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\latest_layer_responses\\00_9e1888e88c42.response"
+    },
+    {
+      "url": "https://geoserveis.icgc.cat/servei/catalunya/orto-territorial/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&LAYERS=ortofoto_color_vigent&QUERY_LAYERS=ortofoto_color_vigent&STYLES=&SRS=EPSG%3A25831&BBOX=432521.91713384876%2C4583327.221910713%2C432599.3456582478%2C4583421.209514242&WIDTH=774&HEIGHT=940&X=387&Y=470&INFO_FORMAT=text%2Fhtml",
+      "retrieved_utc": "2026-11-15T00:20:15.398072+00:00",
+      "status": 200,
+      "sha256": "b99f69ca46d31fc991dacec9ae5c7b273a1ab41285a16a0ba5d43430a9ebf4ae",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\latest_layer_responses\\01_f6f276eb4879.response"
+    },
+    {
+      "url": "https://geoserveis.icgc.cat/servei/catalunya/orto-territorial/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&LAYERS=ortofoto_color_2025&QUERY_LAYERS=ortofoto_color_2025&STYLES=&SRS=EPSG%3A25831&BBOX=432521.91713384876%2C4583327.221910713%2C432599.3456582478%2C4583421.209514242&WIDTH=774&HEIGHT=940&X=387&Y=470&INFO_FORMAT=text%2Fhtml",
+      "retrieved_utc": "2026-11-15T00:20:15.445451+00:00",
+      "status": 200,
+      "sha256": "b99f69ca46d31fc991dacec9ae5c7b273a1ab41285a16a0ba5d43430a9ebf4ae",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\latest_layer_responses\\02_bbde674f0f10.response"
+    },
+    {
+      "url": "https://geoserveis.icgc.cat/servei/catalunya/orto-territorial/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=ortofoto_color_provisional&STYLES=&SRS=EPSG%3A25831&BBOX=432521.91713384876%2C4583327.221910713%2C432599.3456582478%2C4583421.209514242&WIDTH=774&HEIGHT=940&FORMAT=image%2Fpng",
+      "retrieved_utc": "2026-11-15T00:20:15.952665+00:00",
+      "status": 200,
+      "sha256": "0608d290c1c27fb1664d0e4c5ca9eac74881e0e6fba0c6e8088801a679cf4fac",
+      "cache": "D:\\MaAI IAAC\\Term 1\\Research Studio\\rooftops_repowered_v2\\datasets\\raw\\roof_capacity\\A160\\source_probes\\latest_layer_responses\\03_85a2735bd982.response"
+    }
+  ]
+}

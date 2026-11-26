@@ -1,0 +1,51 @@
+{
+  "reviewed_date": "2026-11-15",
+  "timezone": "Europe/Madrid",
+  "building_id": "A160",
+  "cadastral_reference": "2635601DF3823F",
+  "search_scope": "Bounded public architectural, engineering, developer/asset and procurement searches; not proof that no installation document exists",
+  "queries": [
+    "Almogavers 160 fotovoltaica potencia",
+    "Almogavers 160 photovoltaic panels inverter",
+    "site:contractaciopublica.cat Almogavers 160 fotovoltaica",
+    "A160 PGI fotovoltaica",
+    "Almogavers 160 solar Conren",
+    "Almogavers 160 kWp",
+    "Almogavers 160 photovoltaic modules power"
+  ],
+  "sources_reviewed": [
+    {
+      "source_url": "https://www.batlleiroig.com/en/projects/oficines-almogavers-160-a-barcelona/",
+      "publisher_role": "Architect",
+      "outcome": "Public project context and MEP collaborator identity; no installed module count/Wp, inverter schedule or verified kWp established from the reviewed page"
+    },
+    {
+      "source_url": "https://bis211.com/en/proyecto/almogavers-160/",
+      "publisher_role": "Project engineering collaborator",
+      "outcome": "Structural project context; no A160 PV installation specifications established"
+    },
+    {
+      "source_url": "https://www.conrentramway.com/conren-tramway-alquila-sa65-a-wojo-y-vende-el-edificio-de-oficinas-a-un-inversor-institucional-frances/",
+      "publisher_role": "Developer",
+      "outcome": "Related development context referencing Almogavers 160; not a PV as-built or technical commissioning record"
+    },
+    {
+      "source_url": "https://contractaciopublica.cat/",
+      "publisher_role": "Public procurement portal; indexed search only",
+      "outcome": "Targeted searches did not identify an A160-specific PV technical record; unrelated street/number hits excluded"
+    }
+  ],
+  "verified_fields": {
+    "pv_identity": "User-confirmed visible existing arrays in finalized 2025 imagery",
+    "module_count": null,
+    "module_wp": null,
+    "installed_capacity_kwp": null,
+    "inverter_configuration": null,
+    "actual_array_tilt_and_orientation": null,
+    "commissioning_date": null
+  },
+  "identity_exclusions": ["Almogavers 165 municipal/incubator PV belongs to a different building", "2015 municipal modeled polygon is not a modern installation record", "420 Wp layout assumption is not an installed module specification"],
+  "result": "missing_verified_installation_evidence",
+  "next_source_needed": "Owner/facilities/MEP as-built PV schedule, installation registration or commissioning document with module/inverter details",
+  "hypotheses": "No numeric existing-system hypothesis created during this first-pass UI task; any later exploratory scenario must remain separately tagged and outside default accounting"
+}

@@ -1,0 +1,53 @@
+{
+  "url": "https://datacloud.icgc.cat/datacloud/lidar-territorial/vigent/laz_unzip/full10km4358/lidar-territorial-full1km432583.laz",
+  "retrieved_utc": "2026-11-14T23:58:36.914544+00:00",
+  "sha256": "389e62922f9daa3987e43f5ae59ce4a8df968d5d5b72ba9525290690c57b4adb",
+  "bytes": 303095100,
+  "point_count": 21446585,
+  "point_format": 8,
+  "creation_date_not_survey_date": "2025-08-08",
+  "gps_time_type": "1",
+  "crs": "EPSG:25831",
+  "bounds": [
+    [
+      432000.0,
+      4583000.0,
+      -18.71
+    ],
+    [
+      432999.999,
+      4583999.999,
+      154.879
+    ]
+  ],
+  "clipped_points": 45550,
+  "class_counts": {
+    "1": 1148,
+    "2": 213,
+    "5": 868,
+    "6": 15456,
+    "7": 1,
+    "8": 872,
+    "12": 21154,
+    "75": 21,
+    "76": 4174,
+    "77": 1643
+  },
+  "gps_time_minmax": [
+    338123000.5843313,
+    338124538.05237603
+  ],
+  "roof_gps_time_minmax": [
+    338123014.2898694,
+    338123375.2599284
+  ],
+  "tile_acquisition_utc": [
+    "2022-06-01T12:49:42.584331+00:00",
+    "2022-06-01T13:15:20.052376+00:00"
+  ],
+  "roof_acquisition_utc": [
+    "2022-06-01T12:49:56.289869+00:00",
+    "2022-06-01T12:55:57.259928+00:00"
+  ],
+  "date_conversion": "LAS adjusted-standard GPS seconds +1e9, epoch 1980-01-06; subtract GPS-UTC leap offset 18 seconds for post-2017 surveys."
+}

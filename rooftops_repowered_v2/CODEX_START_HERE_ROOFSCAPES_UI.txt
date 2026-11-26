@@ -1,0 +1,9 @@
+CODEX — START THIS BOUNDED ROOFSCAPES V2 INTEGRATION TASK
+
+Use the attached ROOFSCAPES_V2_CODEX_UI_INTEGRATION_HANDOVER_2026-11-15.md as the controlling task brief. The source is the GitHub repository https://github.com/SindhujaDavuluri/rooftops_repowered_v2; base main HEAD observed at 3cb20b9 (re-check before editing). The approved standalone UI is attached as ui-template/index.html with a companion README. Do not use the separate conceptual roadmap illustration as technical evidence.
+
+FIRST PASS ONLY: inspect status and tests; create a new feature branch; integrate the seven-view UI with a small safe read-only JSON API or static snapshot generator drawing from actual committed A160 roof CSVs, report metadata, model metrics and candidate inventory; preserve all visual interactions; show explicit PENDING states for unverified existing PV kWp, PVGIS case-study production, mixed-use demand, energy-sharing results and impact values. Add backend and browser smoke tests, screenshots, local run instructions and a concise implementation report. Maintain existing data guards. Do not retrain models, change V1, invent capacity/generation/savings, merge main, or perform expensive unrelated multi-typology experiments.
+
+THEN: prepare (but do not falsely mark done) the successive existing-PV verification, PVGIS import, EnergyPlus mixed-use scenarios, held-out allocation comparisons and sourced impact work packages described in the handover. If a necessary source is missing, retain a blocking/pending state and report the missing evidence.
+
+Please return changed files, exact test results, screenshots, branch/PR or patch and the smallest next decision for user review.

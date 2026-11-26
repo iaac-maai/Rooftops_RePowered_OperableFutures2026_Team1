@@ -1,0 +1,93 @@
+{
+  "created_utc": "2026-11-14T20:56:24.087574+00:00",
+  "sources": [
+    {
+      "id": "bcn_electricity_2025",
+      "local_file": "raw/barcelona_electricity/2025_consum_electricitat_BCN.csv",
+      "url": "https://opendata-ajuntament.barcelona.cat/data/dataset/d9479057-781f-42b4-85e6-721bd0284130/resource/635923fe-9e3b-40d3-857d-aaa9a6913531/download",
+      "catalog": "https://opendata-ajuntament.barcelona.cat/data/dataset/consum-electricitat-bcn",
+      "purpose": "Barcelona daily electricity by postal code, sector, time band; local contextual comparison, not building training.",
+      "size_note": "~12 MB on catalog (2025 distribution)",
+      "provenance": "OBSERVED_AGGREGATE",
+      "format": "CSV (publisher original; encoding and separator inspected after download)",
+      "license_status": "Consult publisher metadata/license; public access does not imply unrestricted reuse"
+    },
+    {
+      "id": "bcn_municipal_pv_2025",
+      "local_file": "raw/barcelona_municipal_pv/2025_municipal_photovoltaics.csv",
+      "url": "https://opendata-ajuntament.barcelona.cat/data/dataset/8b6fd878-f242-4e7f-b621-fa3ee605e8ca/resource/add38a29-8412-4bf2-b7f5-2a7514a9d380/download",
+      "catalog": "https://opendata-ajuntament.barcelona.cat/data/dataset/plaques-fotovoltaiques",
+      "purpose": "Observed municipal PV installation register to benchmark host capacity and precedents.",
+      "size_note": "~31 KB on catalog",
+      "provenance": "OFFICIAL_INSTALLATION_REGISTER",
+      "format": "CSV (publisher original; encoding and separator inspected after download)",
+      "license_status": "Consult publisher metadata/license; public access does not imply unrestricted reuse"
+    },
+    {
+      "id": "catalonia_energy_certificates",
+      "local_file": "raw/catalonia_energy_certificates/energy_certificates_catalonia.csv",
+      "url": "https://analisi.transparenciacatalunya.cat/api/v3/views/j6ii-t3w2/export.csv?accessType=DOWNLOAD",
+      "catalog": "https://analisi.transparenciacatalunya.cat/d/j6ii-t3w2",
+      "purpose": "Building-level modeled energy certificate indicators; local archetype characterization, not metered hourly loads.",
+      "size_note": "Potentially very large full-Catalonia CSV; download may take time/disk space",
+      "provenance": "OFFICIAL_CERTIFICATE",
+      "format": "CSV (publisher original; encoding and separator inspected after download)",
+      "license_status": "Consult publisher metadata/license; public access does not imply unrestricted reuse"
+    },
+    {
+      "id": "catalonia_self_consumption_registry",
+      "local_file": "raw/catalonia_self_consumption/self_consumption_installations.csv",
+      "url": "https://analisi.transparenciacatalunya.cat/api/v3/views/2b4s-skfm/export.csv?accessType=DOWNLOAD",
+      "catalog": "https://analisi.transparenciacatalunya.cat/d/2b4s-skfm",
+      "purpose": "Existing registered collective/individual self-consumption installations for Catalonia and Barcelona precedent analysis.",
+      "size_note": "Full-Catalonia CSV; review size on download",
+      "provenance": "OFFICIAL_INSTALLATION_REGISTER",
+      "format": "CSV (publisher original; encoding and separator inspected after download)",
+      "license_status": "Consult publisher metadata/license; public access does not imply unrestricted reuse"
+    },
+    {
+      "id": "catalonia_hourly_electricity_demand",
+      "local_file": "raw/catalonia_hourly_demand/hourly_demand_catalonia.csv",
+      "url": "https://analisi.transparenciacatalunya.cat/api/v3/views/hx6q-ykhb/export.csv?accessType=DOWNLOAD",
+      "catalog": "https://analisi.transparenciacatalunya.cat/d/hx6q-ykhb",
+      "purpose": "Regional hourly electricity demand; a sanity-check pattern, not an individual building training target.",
+      "size_note": "CSV export",
+      "provenance": "OBSERVED_AGGREGATE",
+      "format": "CSV (publisher original; encoding and separator inspected after download)",
+      "license_status": "Consult publisher metadata/license; public access does not imply unrestricted reuse"
+    },
+    {
+      "id": "bdg2_metadata",
+      "local_file": "raw/building_data_genome_2/metadata.csv",
+      "url": "https://raw.githubusercontent.com/buds-lab/building-data-genome-project-2/master/data/metadata/metadata.csv",
+      "catalog": "https://github.com/buds-lab/building-data-genome-project-2",
+      "purpose": "Real non-residential building types, floor area and other metadata; training feature lookup.",
+      "size_note": "GitHub file; may be tracked with Git LFS",
+      "provenance": "REFERENCE_BUILDING_METADATA",
+      "format": "CSV (publisher original; encoding and separator inspected after download)",
+      "license_status": "Consult publisher metadata/license; public access does not imply unrestricted reuse"
+    },
+    {
+      "id": "bdg2_cleaned_electricity",
+      "local_file": "raw/building_data_genome_2/electricity_cleaned.csv",
+      "url": "https://raw.githubusercontent.com/buds-lab/building-data-genome-project-2/master/data/meters/cleaned/electricity_cleaned.csv",
+      "catalog": "https://github.com/buds-lab/building-data-genome-project-2",
+      "purpose": "Measured hourly non-residential building electricity consumption; primary supervised training target.",
+      "size_note": "GitHub LFS may require Git LFS fallback",
+      "provenance": "OBSERVED_METER",
+      "format": "CSV (publisher original; encoding and separator inspected after download)",
+      "license_status": "Consult publisher metadata/license; public access does not imply unrestricted reuse"
+    },
+    {
+      "id": "bdg2_weather",
+      "local_file": "raw/building_data_genome_2/weather.csv",
+      "url": "https://raw.githubusercontent.com/buds-lab/building-data-genome-project-2/master/data/weather/weather.csv",
+      "catalog": "https://github.com/buds-lab/building-data-genome-project-2",
+      "purpose": "Weather series that match the training-meter site/time context.",
+      "size_note": "GitHub LFS (~19MB), may require Git LFS fallback",
+      "provenance": "REFERENCE_WEATHER",
+      "format": "CSV (publisher original; encoding and separator inspected after download)",
+      "license_status": "Consult publisher metadata/license; public access does not imply unrestricted reuse"
+    }
+  ]
+}

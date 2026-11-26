@@ -1,0 +1,11 @@
+{
+  "weekday_start_hour": 9,
+  "weekday_duration_hours": 6,
+  "equipment_w_per_m2": 10,
+  "weekend_activity_fraction": 0,
+  "simulation_id": "office_014",
+  "floor_area_m2": 511.1574000000001,
+  "data_origin": "SIMULATED_PHYSICS",
+  "scenario_origin": "SYNTHETIC_SCHEDULE",
+  "input_sha256": "266f7a6f43501483189b0e2d87eb0a25eae566ce31005e198d67216fb4d12c7a"
+}

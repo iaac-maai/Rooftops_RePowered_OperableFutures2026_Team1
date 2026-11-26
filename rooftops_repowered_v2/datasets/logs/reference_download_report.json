@@ -1,0 +1,55 @@
+{
+  "updated_utc": "2026-11-14T20:59:06.211910+00:00",
+  "references": [
+    {
+      "id": "bdg2_license",
+      "url": "https://raw.githubusercontent.com/buds-lab/building-data-genome-project-2/master/LICENSE",
+      "file": "metadata/bdg2_LICENSE.txt",
+      "status": "downloaded",
+      "http_status": "200",
+      "resolved_url": "https://raw.githubusercontent.com/buds-lab/building-data-genome-project-2/master/LICENSE"
+    },
+    {
+      "id": "bdg2_readme",
+      "url": "https://raw.githubusercontent.com/buds-lab/building-data-genome-project-2/master/README.md",
+      "file": "metadata/bdg2_README.md",
+      "status": "downloaded",
+      "http_status": "200",
+      "resolved_url": "https://raw.githubusercontent.com/buds-lab/building-data-genome-project-2/master/README.md"
+    },
+    {
+      "id": "bcn_electricity_catalog",
+      "url": "https://opendata-ajuntament.barcelona.cat/data/api/3/action/package_show?id=consum-electricitat-bcn",
+      "file": "metadata/barcelona_electricity_catalog.json",
+      "status": "downloaded",
+      "http_status": "200",
+      "resolved_url": "https://opendata-ajuntament.barcelona.cat/data/api/3/action/package_show?id=consum-electricitat-bcn"
+    },
+    {
+      "id": "bcn_municipal_pv_catalog",
+      "url": "https://opendata-ajuntament.barcelona.cat/data/api/3/action/package_show?id=plaques-fotovoltaiques",
+      "file": "metadata/barcelona_municipal_pv_catalog.json",
+      "status": "downloaded",
+      "http_status": "200",
+      "resolved_url": "https://opendata-ajuntament.barcelona.cat/data/api/3/action/package_show?id=plaques-fotovoltaiques"
+    },
+    {
+      "id": "cadastre_barcelona_buildings",
+      "status": "downloaded",
+      "provenance": "OFFICIAL_GEO",
+      "url": "https://www.catastro.hacienda.gob.es/INSPIRE/Buildings/08/08900-BARCELONA/A.ES.SDGC.BU.08900.zip",
+      "file": "raw/cadastre_barcelona/barcelona_buildings.gml.zip",
+      "format": "Publisher ZIP containing INSPIRE GML",
+      "members": [
+        "A.ES.SDGC.BU.08900.building.gml",
+        "A.ES.SDGC.BU.08900.buildingpart.gml",
+        "A.ES.SDGC.BU.08900.otherconstruction.gml",
+        "A.ES.SDGC.BU.MD.08900.xml"
+      ],
+      "publisher_updated": "2026-08-21T00:00:00Z",
+      "publisher_rights": "This service can be used free of charge in every instance,  as long as that the D. G. of the Cadastre (Ministry of Finance)  is mentioned as author and owner of the information",
+      "http_status": "200",
+      "resolved_url": "https://www.catastro.hacienda.gob.es/INSPIRE/Buildings/08/08900-BARCELONA/A.ES.SDGC.BU.08900.zip"
+    }
+  ]
+}
