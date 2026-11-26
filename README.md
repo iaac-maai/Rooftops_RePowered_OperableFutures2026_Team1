@@ -57,3 +57,37 @@ python -m web.communities
 | 3D map | Communities on the 9 blocks, coloured like step 5c's map (the rest of the city stays the city's red model), arrows from host roofs to guests, the table; click a building to see its community. Read from step 5c's map until `website/data/communities.json` is in |
 | Next | send step 5c's communities (`python -m web.communities`) and every roof (`python -m web.export --all`) to the map; label roofs and train the AI model |
 | Later | step 6: checks against PVGIS / Google Solar / an installer quote |
+
+## breno_pipeline: the roof-surplus pipeline (V2)
+
+`breno_pipeline/` is Breno's V2 tool, brought in with its full git history (`git subtree`). It sits in its own folder, so nothing above it changed. It follows one host roof through 9 steps, from the building to the money for the owner and the neighbours who use the spare solar:
+
+| Step | What it does |
+|---|---|
+| 01 | pick the host: address, Catastro footprint (LiDAR if Catastro has none), cadastral refs, known gaps |
+| 02 | read the roof from LiDAR + photo: usable area, existing panels, panel layouts |
+| 03 | shade + PVGIS: hourly solar for each layout |
+| 04 | the host's own hourly use, and the spare solar |
+| 05 | the neighbours' hourly use (baseline profiles + Open Data BCN) |
+| 06 | real hourly prices, price forecast, battery size |
+| 07 | which nearby buildings share the energy, and the battery agent |
+| 08 | owner and guest money, with and without a battery |
+| 09 | one data file for its website |
+
+Test cases: **CEP9** (Quatre Cantons schools, Poblenou; checked against the real 108-panel install) and **A160** (Almogàvers 160 offices).
+
+**Run it** (Windows PowerShell, from the top of this repo):
+
+```
+cd breno_pipeline\pipeline
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python -m pytest tests
+```
+
+The step-by-step commands are in [breno_pipeline/pipeline/README.md](breno_pipeline/pipeline/README.md) and in each step's own README. To see its website, follow [breno_pipeline/website/README.md](breno_pipeline/website/README.md).
+
+**Sources:** every number has a source in [breno_pipeline/docs/SOURCES.md](breno_pipeline/docs/SOURCES.md) or is marked **ASSUMPTION** in the code.
+
+Not included: LiDAR tiles and other downloads (`pipeline\data\`), the `.venv` and caches. Each person downloads their own, as the step READMEs explain.

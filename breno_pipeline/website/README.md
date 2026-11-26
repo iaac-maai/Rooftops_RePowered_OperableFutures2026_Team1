@@ -43,7 +43,7 @@ Open http://localhost:8000. (Opening `index.html` by double-click doesn't work, 
 
 ## Online
 
-`.github/workflows/pages.yml` publishes this folder on GitHub Pages each time `main` changes. It needs one switch, once: on GitHub, **Settings → Pages → Build and deployment → Source: GitHub Actions**. The address is then https://brenosouzasader-arch.github.io/research_studio_team_1_V2/.
+This folder now lives in the group repo at `breno_pipeline/website/`. GitHub only runs workflows from the repo's top-level `.github/` folder, so `breno_pipeline/.github/workflows/pages.yml` does **not** run here; it is kept for reference. To put this page online, the team first has to choose what the group repo's single GitHub Pages site shows (this page, the team's `website/`, or both under one address), then copy the workflow to `.github/workflows/` at the top of the group repo with `path: breno_pipeline/website`. Until then, view it locally as above.
 
 ## What the page does itself
 

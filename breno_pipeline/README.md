@@ -15,7 +15,7 @@ V1 (the Eixample co-investment version) stays in [research_studio_team_1](https:
 ## Folders
 
 ```
-research_studio_team_1_V2/
+breno_pipeline/                       (inside the group repo Rooftops_RePowered_OperableFutures2026_Team1)
 ├── pipeline/                         all the Python, one folder per roadmap step
 │   ├── step01_select_host/           address → building, footprint, Catastro data        (from V1)
 │   ├── step02_pv_capacity/           LiDAR roof reading + panel layout → usable m², kWp   (from V1)
