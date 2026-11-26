@@ -1,0 +1,343 @@
+{
+  "building": {
+    "refcat": "3241428DF3834A",
+    "address": "CL BATISTA 1 BARCELONA (BARCELONA)",
+    "query": "41.404361,2.2",
+    "year_built": 2011,
+    "dwellings": 0
+  },
+  "roof": {
+    "method": "lidar + photo (existing panels)",
+    "usable_area_m2": 652.2,
+    "free_area_m2": 938.2,
+    "obstacle_area_m2": 113.8,
+    "existing_panels_m2": 212.3,
+    "confidence": "medium",
+    "lower_roof_m2": 0.0,
+    "excluded": null,
+    "existing_panels_estimate": 82,
+    "existing_panels_estimate_note": "per rectangle: panels per row x rows, pitch 2.33 m along the row and 1.12 m across (540 W CEP9 real, 2.28 x 1.13 m)",
+    "existing_panels_pixels_m2": 300.8,
+    "existing_panel_rectangles": [
+      {
+        "corners": [
+          [
+            433154.87,
+            4583933.56
+          ],
+          [
+            433143.98,
+            4583942.23
+          ],
+          [
+            433136.33,
+            4583932.62
+          ],
+          [
+            433147.22,
+            4583923.95
+          ],
+          [
+            433154.87,
+            4583933.56
+          ]
+        ],
+        "angle_deg": 141.5,
+        "length_m": 13.92,
+        "width_m": 12.28,
+        "area_m2": 171.0,
+        "panels_per_row": 6,
+        "rows": 11,
+        "panels_estimate": 66,
+        "fill_share": 0.94,
+        "snapped": "True"
+      },
+      {
+        "corners": [
+          [
+            433129.95,
+            4583942.64
+          ],
+          [
+            433124.52,
+            4583946.96
+          ],
+          [
+            433121.74,
+            4583943.46
+          ],
+          [
+            433127.17,
+            4583939.14
+          ],
+          [
+            433129.95,
+            4583942.64
+          ]
+        ],
+        "angle_deg": 141.5,
+        "length_m": 6.94,
+        "width_m": 4.47,
+        "area_m2": 31.0,
+        "panels_per_row": 3,
+        "rows": 4,
+        "panels_estimate": 12,
+        "fill_share": 1.0,
+        "snapped": "True"
+      },
+      {
+        "corners": [
+          [
+            433129.12,
+            4583945.2
+          ],
+          [
+            433131.99,
+            4583948.81
+          ],
+          [
+            433130.24,
+            4583950.2
+          ],
+          [
+            433127.37,
+            4583946.59
+          ],
+          [
+            433129.12,
+            4583945.2
+          ]
+        ],
+        "angle_deg": 51.5,
+        "length_m": 4.61,
+        "width_m": 2.23,
+        "area_m2": 10.3,
+        "panels_per_row": 2,
+        "rows": 2,
+        "panels_estimate": 4,
+        "fill_share": 0.89,
+        "snapped": "True"
+      }
+    ],
+    "existing_panel_blocks": [
+      {
+        "area_m2": 164.0,
+        "x": 433145.56,
+        "y": 4583933.11,
+        "lidar_ripple_m": 0.08,
+        "angle_deg": 141.5,
+        "rectangles": 1
+      },
+      {
+        "area_m2": 80.0,
+        "x": 433126.92,
+        "y": 4583944.11,
+        "lidar_ripple_m": 0.13,
+        "angle_deg": 141.5,
+        "rectangles": 1
+      },
+      {
+        "area_m2": 32.1,
+        "x": 433115.02,
+        "y": 4583958.25,
+        "lidar_ripple_m": 0.07,
+        "angle_deg": 141.5,
+        "rectangles": 0
+      },
+      {
+        "area_m2": 15.0,
+        "x": 433134.26,
+        "y": 4583958.09,
+        "lidar_ripple_m": 0.09,
+        "angle_deg": 51.5,
+        "rectangles": 0
+      },
+      {
+        "area_m2": 9.7,
+        "x": 433129.71,
+        "y": 4583947.69,
+        "lidar_ripple_m": 0.24,
+        "angle_deg": 51.5,
+        "rectangles": 1
+      }
+    ],
+    "roof_angle_deg": 141.5,
+    "not_panels": [],
+    "usable_empty_roof_m2": 652.2,
+    "usable_new_only_m2": 407.0,
+    "roof_state": "empty"
+  },
+  "lidar": {
+    "roof_area_m2": 1082.0,
+    "lidar_coverage": 0.972,
+    "surfaces": [
+      {
+        "height_m": 15.25,
+        "area_m2": 828.8,
+        "level": "main"
+      },
+      {
+        "height_m": 17.86,
+        "area_m2": 47.5,
+        "level": "main"
+      },
+      {
+        "height_m": 17.91,
+        "area_m2": 37.0,
+        "level": "main"
+      },
+      {
+        "height_m": 17.89,
+        "area_m2": 25.0,
+        "level": "main"
+      }
+    ],
+    "obstacles": [
+      {
+        "area_m2": 42.0,
+        "height_m": 2.04,
+        "x": 433112.26,
+        "y": 4583963.38
+      },
+      {
+        "area_m2": 11.75,
+        "height_m": 1.45,
+        "x": 433129.35,
+        "y": 4583949.61
+      },
+      {
+        "area_m2": 11.25,
+        "height_m": 1.46,
+        "x": 433132.56,
+        "y": 4583946.81
+      },
+      {
+        "area_m2": 10.5,
+        "height_m": 1.45,
+        "x": 433125.71,
+        "y": 4583952.06
+      },
+      {
+        "area_m2": 6.25,
+        "height_m": 2.95,
+        "x": 433125.97,
+        "y": 4583965.93
+      },
+      {
+        "area_m2": 5.25,
+        "height_m": 0.45,
+        "x": 433130.96,
+        "y": 4583958.04
+      },
+      {
+        "area_m2": 3.5,
+        "height_m": 0.43,
+        "x": 433124.32,
+        "y": 4583958.96
+      },
+      {
+        "area_m2": 3.25,
+        "height_m": 1.61,
+        "x": 433138.25,
+        "y": 4583952.75
+      },
+      {
+        "area_m2": 3.25,
+        "height_m": -0.08,
+        "x": 433147.52,
+        "y": 4583946.4
+      },
+      {
+        "area_m2": 2.5,
+        "height_m": 0.07,
+        "x": 433153.3,
+        "y": 4583941.85
+      },
+      {
+        "area_m2": 1.75,
+        "height_m": 0.42,
+        "x": 433142.18,
+        "y": 4583942.75
+      },
+      {
+        "area_m2": 1.75,
+        "height_m": 0.27,
+        "x": 433137.18,
+        "y": 4583936.46
+      },
+      {
+        "area_m2": 1.0,
+        "height_m": -1.56,
+        "x": 433152.0,
+        "y": 4583942.25
+      },
+      {
+        "area_m2": 1.0,
+        "height_m": 0.33,
+        "x": 433139.5,
+        "y": 4583939.5
+      },
+      {
+        "area_m2": 0.75,
+        "height_m": 0.08,
+        "x": 433123.75,
+        "y": 4583962.92
+      },
+      {
+        "area_m2": 0.75,
+        "height_m": 2.81,
+        "x": 433146.42,
+        "y": 4583944.92
+      },
+      {
+        "area_m2": 0.75,
+        "height_m": 0.32,
+        "x": 433157.08,
+        "y": 4583936.75
+      },
+      {
+        "area_m2": 0.5,
+        "height_m": 0.32,
+        "x": 433119.25,
+        "y": 4583951.0
+      },
+      {
+        "area_m2": 0.5,
+        "height_m": 0.27,
+        "x": 433146.5,
+        "y": 4583950.25
+      },
+      {
+        "area_m2": 0.5,
+        "height_m": -2.8,
+        "x": 433153.0,
+        "y": 4583943.75
+      },
+      {
+        "area_m2": 0.5,
+        "height_m": 0.23,
+        "x": 433124.5,
+        "y": 4583940.75
+      },
+      {
+        "area_m2": 0.5,
+        "height_m": 2.74,
+        "x": 433151.0,
+        "y": 4583940.5
+      },
+      {
+        "area_m2": 0.5,
+        "height_m": 0.26,
+        "x": 433154.5,
+        "y": 4583933.0
+      }
+    ],
+    "obstacle_area_m2": 113.8,
+    "noise_area_m2": 3.5,
+    "free_area_m2": 938.2,
+    "usable_area_m2": 646.8,
+    "lower_roof_m2": 0.0,
+    "lower_roofs_included": false
+  },
+  "photo_error": null
+}

@@ -7,6 +7,16 @@ __pycache__/
 # Downloads and results (each person keeps their own copy)
 pipeline/data/*
 !pipeline/data/roof_exclusions.csv
+# ...except the small results teammates need for the main model (about 21 MB).
+# Big downloads (imp_csv, lidar, goiener) stay out.
+!pipeline/data/host/
+!pipeline/data/roof/
+!pipeline/data/pv/
+!pipeline/data/prices/
+!pipeline/data/weather/
+!pipeline/data/models/
+pipeline/data/models/*
+!pipeline/data/models/demand_profile/
 *.laz
 *.las
 
