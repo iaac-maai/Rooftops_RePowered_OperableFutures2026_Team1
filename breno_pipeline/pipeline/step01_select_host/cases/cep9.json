@@ -29,7 +29,12 @@
         ],
         "step01_output": "data/host/cep9_yellow.json",
         "panels_counted": 108,
-        "panels_source": "CEP9, email from César Ochoa, 27 Nov 2026"
+        "panels_source": "CEP9, email from César Ochoa, 27 Nov 2026",
+        "layout": {
+          "orient": "eastwest",
+          "one_deep_rows": 4,
+          "why": "The real CEP9 plant is East-West 'Delta Wing', 10 deg, back-to-back pairs with a gap after every pair [CEP9, email from César Ochoa, 27 Nov 2026; photo, Breno 27 Nov 2026], and it has one-row-deep strips (real blocks 3 and 5). Read by step 03 with --case cep9; other cases keep south rows."
+        }
       }
     ],
     "real_system": {
@@ -215,7 +220,7 @@
     },
     {
       "item": "Where the real panel blocks are",
-      "why": "All 108 panels are on the Institut [CEP9, email from César Ochoa, 27 Nov 2026]. Step 02 now finds 3 rectangles there (253.6 m², about 86 panels); 4 others were not panels (checked by eye, Breno 27 Nov 2026, step02_pv_capacity/not_panels.csv). Our step 03 layout fits only 85 panels of 540 W on that roof (south-facing rows spaced for no shade at a 25° sun); the real plant is East-West 'Delta Wing', back to back.",
+      "why": "All 108 panels are on the Institut [CEP9, email from César Ochoa, 27 Nov 2026]. Step 02 now finds 4 rectangles there (1, 2, 3 and the thin strip 5: 268.5 m², about 91 panels); rectangles 4, 6 and 7 are not panels (checked by eye, Breno 27 Nov 2026, step02_pv_capacity/not_panels.csv). Our East-West neat layout (the case's default) fits 91 panels with a 1 m edge setback; the real blocks run to about 0.2 m from the outline.",
       "next": "Ask CEP9 or the installer for the panel plan and row spacing, to explain the 11 missing panels."
     },
     {

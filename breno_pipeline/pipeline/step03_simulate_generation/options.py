@@ -42,6 +42,9 @@ OPTIONS = [
      "rule": "rectangles of at least 16 m² of panels, at least 2 panels wide both ways, "
              "each panel at least 93% of the roof's best"},
 ]
+ONE_DEEP_MIN_PANELS = 4     # with --one-deep-rows: a single row of at least this many panels also counts as a block.
+                            # ASSUMPTION (Breno, 27 Nov 2026): real CEP9 strips (blocks 3 and 5) are one row deep.
+                            # In East-West layouts a grid row is one half, so a back-to-back pair is already 2 deep.
 REFERENCE_PERCENTILE = 90   # "the roof's best panel" = this percentile of yearly kWh per panel
 DEFAULT_PANEL_M2 = DEFAULT_MODULE.area_m2   # from the panel catalogue (step02_pv_capacity/panels.csv)
 
@@ -52,9 +55,10 @@ def min_cells(option, panel_m2=DEFAULT_PANEL_M2):
                int(round(option["min_area_m2"] / panel_m2)))
 
 
-def largest_block(grid, min_short, min_long, min_panels):
+def largest_block(grid, min_short, min_long, min_panels, one_deep_min=None):
     """Biggest all-True rectangle in a 2-D bool array whose shorter side is at least min_short,
     longer side at least min_long and area at least min_panels cells, whichever way it runs.
+    With one_deep_min, a single row (or column) of at least one_deep_min cells also counts.
     Returns (r0, r1, c0, c1) inclusive-exclusive, or None."""
     n_rows, n_cols = grid.shape
     best, best_area = None, 0
@@ -72,14 +76,15 @@ def largest_block(grid, min_short, min_long, min_panels):
                 if run:
                     h = r1 - r0 + 1
                     area = h * run
-                    if (min(h, run) >= min_short and max(h, run) >= min_long
-                            and area >= min_panels and area > best_area):
+                    block = min(h, run) >= min_short and max(h, run) >= min_long and area >= min_panels
+                    strip = bool(one_deep_min) and min(h, run) == 1 and max(h, run) >= one_deep_min
+                    if (block or strip) and area > best_area:
                         best, best_area = (r0, r1 + 1, c - run, c), area
                 run = 0
     return best
 
 
-def blocks(cells, good, min_short, min_long, min_panels):
+def blocks(cells, good, min_short, min_long, min_panels, one_deep_min=None):
     """Split the good panels into neat rectangular blocks.
 
     cells: (row, col) of every panel; good: bool per panel. Returns a list of
@@ -94,7 +99,7 @@ def blocks(cells, good, min_short, min_long, min_panels):
     grid[rows[good], cols[good]] = True
     found = []
     while True:
-        b = largest_block(grid, min_short, min_long, min_panels)
+        b = largest_block(grid, min_short, min_long, min_panels, one_deep_min)
         if b is None:
             return found
         r0, r1, c0, c1 = b
@@ -102,7 +107,22 @@ def blocks(cells, good, min_short, min_long, min_panels):
         grid[r0:r1, c0:c1] = False
 
 
-def classify(cells, yearly_kwh, option, panel_m2=DEFAULT_PANEL_M2):
+def reference_kwh(yearly_kwh, azimuths=None):
+    """'The roof's best panel' for each panel: the REFERENCE_PERCENTILE of the panels facing the same way.
+    With azimuths (East-West layouts), each half is judged against its own direction, so the half that faces
+    away from the sun by design is not called 'weak' (27 Nov 2026); without, one value for the whole roof."""
+    yearly_kwh = np.asarray(yearly_kwh, float)
+    if azimuths is None:
+        return np.full(len(yearly_kwh), np.percentile(yearly_kwh, REFERENCE_PERCENTILE))
+    az = np.round(np.asarray(azimuths, float), 1)
+    ref = np.zeros(len(yearly_kwh))
+    for a in np.unique(az):
+        m = az == a
+        ref[m] = np.percentile(yearly_kwh[m], REFERENCE_PERCENTILE)
+    return ref
+
+
+def classify(cells, yearly_kwh, option, panel_m2=DEFAULT_PANEL_M2, one_deep_min=None, azimuths=None):
     """Which panels an option keeps and why the others go.
     Returns (keep mask, number of blocks or None, weak mask): weak = below the option's
     cut-off; a panel that is neither kept nor weak is 'loose' (good, but in no big block)."""
@@ -110,10 +130,9 @@ def classify(cells, yearly_kwh, option, panel_m2=DEFAULT_PANEL_M2):
     n = len(yearly_kwh)
     if option["min_share"] is None or n == 0:
         return np.ones(n, bool), None, np.zeros(n, bool)
-    ref = np.percentile(yearly_kwh, REFERENCE_PERCENTILE)
-    good = yearly_kwh >= option["min_share"] * ref
+    good = yearly_kwh >= option["min_share"] * reference_kwh(yearly_kwh, azimuths)
     keep = np.zeros(n, bool)
-    found = blocks(cells, good, option["min_short"], option["min_long"], min_cells(option, panel_m2))
+    found = blocks(cells, good, option["min_short"], option["min_long"], min_cells(option, panel_m2), one_deep_min)
     for b in found:
         keep[b] = True
     return keep, len(found), ~good
@@ -125,6 +144,7 @@ def choose(cells, yearly_kwh, option, panel_m2=DEFAULT_PANEL_M2):
     return keep, n
 
 
-def all_options(cells, yearly_kwh, panel_m2=DEFAULT_PANEL_M2):
-    """{option id: (keep mask, number of blocks, weak mask)} for every option in OPTIONS."""
-    return {o["id"]: classify(cells, yearly_kwh, o, panel_m2) for o in OPTIONS}
+def all_options(cells, yearly_kwh, panel_m2=DEFAULT_PANEL_M2, one_deep_min=None, azimuths=None):
+    """{option id: (keep mask, number of blocks, weak mask)} for every option in OPTIONS.
+    one_deep_min: also accept single rows of at least this many panels as blocks (None = off)."""
+    return {o["id"]: classify(cells, yearly_kwh, o, panel_m2, one_deep_min, azimuths) for o in OPTIONS}

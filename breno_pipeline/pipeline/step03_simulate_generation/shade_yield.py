@@ -41,7 +41,7 @@ from step02_pv_capacity.layout import CATALOGUE, DEFAULT_MODULE, MODULES, Layout
 
 from .energy import yield_for_layout
 from .horizon import horizons, surface_model
-from .options import OPTIONS, all_options
+from .options import ONE_DEEP_MIN_PANELS, OPTIONS, all_options
 from .weather import DEFAULT_PATH, load_tmy
 
 MOUNT_HEIGHT_M = 0.4   # panel centre above the roof surface
@@ -104,12 +104,13 @@ def analyse(lroof, footprint, laz_dir, weather, lat, lon, usable=None, max_shade
     return layout.subset(keep), kwh[keep], loss[keep], hourly, dropped, per_panel[keep]
 
 
-def variants_for(layout, kwh, per_panel, weather):
+def variants_for(layout, kwh, per_panel, weather, one_deep_min=None):
     """The three layout options (options.py) for one analysed layout.
     Returns a list of (option dict, keep mask, number of blocks, hourly kWh, weak mask).
     The block areas are judged with this panel model's size, so a 540 W panel needs fewer panels."""
     cells = layout.cells if layout.cells is not None else [(0, i) for i in range(layout.count)]
-    chosen = all_options(cells, kwh, layout.module.long_m * layout.module.short_m)
+    chosen = all_options(cells, kwh, layout.module.long_m * layout.module.short_m, one_deep_min,
+                         layout.azimuths if layout.kind == "ew" else None)
     out = []
     for o in OPTIONS:
         keep, n_blocks, weak = chosen[o["id"]]
@@ -137,6 +138,8 @@ def summarise(layout, kwh, loss, hourly, weather):
         "kwp": round(layout.kwp, 2),
         "tilt_deg": layout.tilt_deg,
         "azimuth_deg": round(layout.azimuth_deg, 1),
+        "layout_kind": layout.kind,
+        "azimuths_deg": sorted({round(float(a), 1) for a in layout.panel_azimuths()}) if layout.count else [],
         "yearly_kwh": round(total),
         "kwh_per_kwp": round(total / layout.kwp) if layout.count else None,
         "mean_shade_loss": round(float(loss.mean()), 3) if layout.count else None,
@@ -208,7 +211,8 @@ def options_png(fp, usable, items, path):
 
 def shade_yield(laz_dir, address=None, lat=None, lon=None, usable_path=None,
                 weather_path=DEFAULT_PATH, out="roof", max_shade_loss=MAX_SHADE_LOSS, max_panels=None,
-                panel_wp=420, layout_option="max", compare_wp=None, orient="building", panel_size=None, portrait=False):
+                panel_wp=420, layout_option="max", compare_wp=None, orient="building", panel_size=None, portrait=False,
+                one_deep_min=None):
     """Steps 3 + 4. panel_wp and layout_option pick the layout the main outputs use;
     compare_wp lists the panel wattages to work the three options out for (default: panel_wp only).
     panel_size = (length_m, width_m) replaces the catalogue size of the panel_wp module for this run
@@ -258,7 +262,7 @@ def shade_yield(laz_dir, address=None, lat=None, lon=None, usable_path=None,
             orient_table = full.orientation_table
         pics = []
         fits = full.count + len(dropped)
-        for o, keep, n_blocks, hourly, weak in variants_for(full, kwh, per_panel, weather):
+        for o, keep, n_blocks, hourly, weak in variants_for(full, kwh, per_panel, weather, one_deep_min):
             lay = full.subset(keep)
             summary = summarise(lay, kwh[keep], loss[keep], hourly, weather)
             hourly_file = f"{out}_hourly_{wp}_{o['id']}.csv"
@@ -293,7 +297,8 @@ def shade_yield(laz_dir, address=None, lat=None, lon=None, usable_path=None,
                     "kwh_year": round(float(k), 1), "shade_loss": round(float(s), 3)}
                    for p, k, s in zip(layout.panels, kwh, loss)],
         "variants": variants,
-        "orientation": {"mode": orient, "azimuth_deg": round(layout.azimuth_deg, 1), "tried": orient_table},
+        "orientation": {"mode": orient, "azimuth_deg": round(layout.azimuth_deg, 1), "tried": orient_table,
+                        "layout_kind": layout.kind, "one_deep_rows": one_deep_min},
     }
     Path(f"{out}_yield.json").write_text(json.dumps(result, indent=2, default=str), encoding="utf-8")
     write_hourly(f"{out}_hourly.csv", weather.times, hourly)
@@ -305,6 +310,14 @@ def shade_yield(laz_dir, address=None, lat=None, lon=None, usable_path=None,
     Path(f"{out}_panels.geojson").write_text(json.dumps(fc), encoding="utf-8")
     panels_png(fp, usable, layout, kwh, f"{out}_panels.png", dropped)
     return result
+
+
+def case_layout_defaults(case):
+    """The 'layout' block of a step 01 case's first host roof ({} if none), e.g. {"orient": "eastwest"}.
+    This is how one case gets a different default without special-casing it in the code."""
+    from step01_select_host.cases import load_case
+    roofs = load_case(case)["host"]["roofs"]
+    return {k: v for k, v in (roofs[0].get("layout") or {}).items() if k in ("orient", "one_deep_rows")}
 
 
 def main():
@@ -333,16 +346,29 @@ def main():
                     help="layout for the main outputs: max (fill the roof, default), neat or best")
     ap.add_argument("--compare-wp", default="420,540",
                     help="panel wattages to work out all three layouts for (default 420,540)")
-    ap.add_argument("--orient", default="building", choices=["building", "south", "search"],
+    ap.add_argument("--orient", choices=["building", "south", "search", "eastwest"],
                     help="panel row direction: building = along the building edge nearest south (default), "
                          "south = due south, search = try every 5 degrees around the building axis and keep "
-                         "the best panels x sun")
+                         "the best panels x sun, eastwest = East-West back-to-back pairs along the building, "
+                         "10 deg, no gap for shade (the case file's 'layout' can set it, see --case)")
+    ap.add_argument("--one-deep-rows", type=int,
+                    help="neat and best blocks: also accept a single row of at least this many panels "
+                         f"(e.g. {ONE_DEEP_MIN_PANELS}; ASSUMPTION; default off unless the case file sets it)")
+    ap.add_argument("--case", help="step 01 case name (step01_select_host/cases/<case>.json): its host roof's "
+                                   "'layout' block sets the defaults of --orient and --one-deep-rows")
     ap.add_argument("--out", default="roof", help="output name, without extension")
     args = ap.parse_args()
     if not args.address and (args.lat is None or args.lon is None):
         ap.error("give an address, or both --lat and --lon")
     if args.panel:
         args.panel_wp = CATALOGUE[args.panel].wp
+    case_layout = case_layout_defaults(args.case) if args.case else {}
+    if args.orient is None:
+        args.orient = case_layout.get("orient", "building")
+    if args.one_deep_rows is None:
+        args.one_deep_rows = case_layout.get("one_deep_rows")
+    if case_layout:
+        print(f"case {args.case}: layout defaults {case_layout} -> orient {args.orient}, one-deep rows {args.one_deep_rows}")
     compare = [int(w) for w in args.compare_wp.split(",") if w.strip()]
     size = None
     if args.panel_size:
@@ -353,7 +379,8 @@ def main():
             ap.error("--panel-size must look like 2.28x1.13 (metres)")
         compare = [w for w in compare if w == args.panel_wp] or [args.panel_wp]
     result = shade_yield(args.laz_dir, args.address, args.lat, args.lon, args.usable, args.weather, args.out,
-                         args.max_shade, args.max_panels, args.panel_wp, args.layout, compare, args.orient, size, args.portrait)
+                         args.max_shade, args.max_panels, args.panel_wp, args.layout, compare, args.orient, size, args.portrait,
+                         args.one_deep_rows)
     print(json.dumps({k: result.get(k) for k in ("building", "yield", "usable_area_m2")}, indent=2))
     print("\nLayout options (choose with --panel-wp and --layout):")
     for v in result["variants"]:

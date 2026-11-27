@@ -35,26 +35,53 @@ Each reading reports:
 
 | Roof | Rectangles | Area | Panels estimate | Old pixel area | Real |
 |---|---|---|---|---|---|
-| Institut Quatre Cantons (yellow) | 3 (was 7) | 254 m² (was 310) | 86 (was 105) | 276 m² | **all 108 CEP9 panels**, 279 m² of panel [CEP9 tender; CEP9, 27 Nov 2026] |
+| Institut Quatre Cantons (yellow) | 4 (was 7) | 268.5 m² (was 310) | 91 (was 105) | 291 m² | **all 108 CEP9 panels**, 279 m² of panel [CEP9 tender; CEP9, 27 Nov 2026] |
 | Escola Pere IV (red) | 5 | 333 m² | 111 | 321 m² | **not part of CEP9** [CEP9, 27 Nov 2026]: another installation |
 
-**Existing-panel check on the Institut (Breno, by eye on the photo, 27 Nov 2026):** of the 7 rectangles, only 3 are real panels: the long thin strip on the north-west side, the block in the middle-left and the big block in the south-east (rectangles 3, 2 and 1 on `data\roof\cep9_yellow_existing_numbered.png`). Rectangles 4, 5, 6 and 7 are not panels; they are listed in `not_panels.csv` ("checked by eye, Breno 27 Nov 2026") and stay on the roof as obstacles, like the water heaters on the red roof. Now **3 rectangles, 253.6 m², about 86 panels**, against the real **108 panels and 279 m² of panel** [CEP9 tender]: 9% less area and 20% fewer panels. Our rectangles count panels on a south-row pitch with gaps; the real plant is East-West, back to back [CEP9, 27 Nov 2026], so more panels fit on the same area. **Correction from CEP9 (email from César Ochoa, 27 Nov 2026):** all 108 panels are on the Institut, and Escola Pere IV is not part of CEP9. The old 43 red / 65 yellow split was dropped from `examples/cep9_actual.json`, whose blocks are now these 3 rectangles (`update_roof.refresh_actual_blocks`). The panel rows on the red roof belong to another installation, kept under `red_roof_what_if`.
+**Existing-panel check on the Institut (Breno, by eye on the photo, 27 Nov 2026):** of the 7 rectangles on `data\roof\cep9_yellow_existing_numbered.png`, 4 are real panels: the big block in the south-east (1), the block in the middle-left (2), the long strip on the north-west side (3) and the thin strip in the upper middle (5). Rectangles 4, 6 and 7 are not panels. They are listed in `not_panels.csv` ("checked by eye, Breno 27 Nov 2026") and stay on the roof as obstacles, like the water heaters on the red roof. Now **4 rectangles, 268.5 m², about 91 panels**, against the real **108 panels and 279 m² of panel** [CEP9 tender]: 4% less area and 16% fewer panels. Our rectangles count panels on a south-row pitch; the real plant is East-West, back to back [CEP9, 27 Nov 2026], so more panels fit on the same area. **Correction from CEP9 (email from César Ochoa, 27 Nov 2026):** all 108 panels are on the Institut, and Escola Pere IV is not part of CEP9. `examples/cep9_actual.json` lists these 4 blocks (`update_roof.refresh_actual_blocks`). The panel rows on the red roof belong to another installation, kept under `red_roof_what_if`.
 
-**The rectangle check (general rule, `existing_panels.py` step 7, ASSUMPTIONS):** a rectangle is dropped when it has fewer than 6 panels (`MIN_KEEP_PANELS`), or when it is rough: LiDAR ripple above 0.10 m (`ROUGH_RIPPLE_M`, height spread after removing a tilted plane) AND more than 10% of its cells more than 0.10 m above the roof around it (`ROUGH_RAISED_SHARE`, `RAISED_M`). On the Institut, LiDAR measures of the 7 old rectangles:
+**The rectangle check (general rule, `existing_panels.py` step 7, ASSUMPTIONS):** a rectangle is dropped when it is **rough**: LiDAR ripple above 0.10 m (`ROUGH_RIPPLE_M`, height spread after removing a tilted plane) AND more than 10% of its cells more than 0.10 m above the roof around it (`ROUGH_RAISED_SHARE`, `RAISED_M`). The size minimum is only the detector's own (2 panels). LiDAR measures of the 7 rectangles:
 
-| Rectangle | Real? | Panels | Ripple | Cells raised > 0.1 m | Dropped by |
+| Rectangle | Real? | Panels | Ripple | Cells raised > 0.1 m | Result |
 |---|---|---|---|---|---|
 | 1 | yes | 60 | 0.068 m | 0% | kept |
 | 2 | yes | 16 | 0.067 m | 0% | kept |
 | 3 | yes | 10 | 0.065 m | 0% | kept |
-| 4 | no | 8 | 0.142 m | 12% | rough |
-| 5 | no | 5 | 0.042 m | 0% | fewer than 6 panels |
-| 6 | no | 4 | 0.167 m | 27% | fewer than 6 panels (and rough) |
-| 7 | no | 2 | 0.117 m | 31% | fewer than 6 panels (and rough) |
+| 5 | yes | 5 | 0.042 m | 0% | kept |
+| 4 | no | 8 | 0.142 m | 12% | dropped: rough |
+| 6 | no | 4 | 0.167 m | 27% | dropped: rough |
+| 7 | no | 2 | 0.117 m | 31% | dropped: rough |
 
-Size alone (under 6 panels) would miss rectangle 4. A ripple window alone (0.05-0.10 m) would remove all four here, but not carry over: on the Escola Pere IV the real 75-panel block ripples 0.26 m (steeper rows) and an 18-panel block 0.01 m. With the rule above the red roof keeps its 75-, 18- and 12-panel blocks and drops a 4-panel rectangle (2.4 m above the roof) and a 2-panel one. Not tested on A160 yet (no existing-panel reading there).
+The rough test alone separates them. A size minimum cannot: the real strip 5 (5 panels, one row) is smaller than the false rectangle 4 (8 panels). A ripple window alone does not carry over either: on the Escola Pere IV the real 75-panel block ripples 0.26 m (steeper rows) and an 18-panel block 0.01 m; the rough test keeps both. Not tested on A160 yet (no existing-panel reading there). The hand list (`not_panels.csv`) is kept as Breno's check.
 
-**CEP9 validation, Institut only (27 Nov 2026), roof treated as empty, `cep9_540` panel, `--max-panels 108`:** with the 4 look-alikes kept as obstacles, the usable roof is 577 m² (was 659 m²) and our layout fits **85 panels (45.90 kWp) and 60,920 kWh a year** (was 97 panels before the look-alike fix), against the real 108 panels (58.32 kWp) and about 73,750 kWh [CEP9 presentation]. Per kWp we give 1,327 kWh against the real 1,265 (+5%). Our rows are spaced for no shade at a 25° sun (`layout.py`); the real plant is East-West "Delta Wing", back to back [CEP9, 27 Nov 2026]. Scaled to 108 panels (see Open items) it gives 77,404 kWh (+5.0%).
+**CEP9 validation, Institut only (27 Nov 2026), 540 W, roof treated as empty, rectangles 4, 6 and 7 as obstacles (usable roof 610.5 m²).** Real: 108 panels, 58.32 kWp, 73,750 kWh a year [CEP9 presentation]; real rectangles 1, 2, 3 and 5 = 268.4 m².
+
+| Layout | Edge setback | Panels | vs 108 | kWh a year | vs 73,750 | kWh per kWp | IoU with the real rectangles | Panels inside them |
+|---|---|---|---|---|---|---|---|---|
+| South rows, fill the roof | 1 m | 90 | −17% | 64,509 | −13% | 1,327 | 0.34 | 48 |
+| South rows, neat | 1 m | 54 | −50% | 38,621 | −48% | 1,324 | 0.38 | 46 |
+| South rows, neat + one-deep rows | 1 m | 81 | −25% | 58,009 | −21% | 1,326 | 0.35 | 46 |
+| **East-West, fill the roof** | 1 m | **103** | −5% | 70,129 | −5% | **1,261** | 0.43 | 62 |
+| East-West, neat | 1 m | 62 | −43% | 41,981 | −43% | 1,254 | 0.47 | 56 |
+| East-West, best | 1 m | 62 | −43% | 41,981 | −43% | 1,254 | 0.47 | 56 |
+| **East-West, neat + one-deep rows (CEP9 default)** | 1 m | **91** | **−16%** | 62,150 | −16% | 1,265 | 0.44 | 59 |
+| East-West, best + one-deep rows | 1 m | 76 | −30% | 51,899 | −30% | 1,265 | 0.46 | 56 |
+| South rows, fill the roof | 0.5 m (test) | 101 | −6% | 72,248 | −2% | 1,325 | 0.39 | 59 |
+| East-West, fill the roof | 0.5 m (test) | 116 | +7% | 78,683 | +7% | 1,256 | 0.45 | 67 |
+| East-West, neat | 0.5 m (test) | 75 | −31% | 50,853 | −31% | 1,256 | 0.50 | 62 |
+| East-West, neat + one-deep rows | 0.5 m (test) | 104 | −4% | 70,056 | −5% | 1,247 | 0.48 | 66 |
+
+What it shows:
+- **East-West matches the real yield per kWp:** 1,261-1,265 kWh per kWp against the real 1,265, and against 1,327 for south rows (−5%: the half facing 39° gets less sun).
+- **The East-West pattern reproduces the real blocks.** Laid inside each real rectangle (with 0.2 m tolerance for the rectangles' exact snapped sizes), it fits **60, 16 and 10** panels in blocks 1, 2 and 3, the same as the photo. Block 5 is 1.8 m deep, so only one half-row of 3 panels fits; its real panels may run the other way. South rows fit 48, 12, 8 and 3.
+- **With the default 1 m setback, East-West neat + one-deep rows gives 91 panels (−16%)**, outside the 10% goal. The rest of the gap is the setback. The real blocks 1 and 3 run to about 0.2 m from the building outline (block 2: 1.0 m, block 5: 2.4 m), and the 1 m setback leaves part of them empty. We found no rule to cite for the setback (searched the CTE fire guidance and installer guides: they mention firefighter access and safety distances, without a figure), so 1 m stays the default and 0.5 m is only shown as a test (104 panels, −4%).
+
+```
+python -m step03_simulate_generation.shade_yield --lat 41.404361 --lon 2.2 --laz-dir data\lidar --usable data\roof\cep9_yellow_usable.geojson --panel cep9_540 --layout neat --case cep9 --out data\pv\cep9_institut_ew
+```
+
+The picture `data\pv\cep9_institut_layout_check.png` shows East-West neat + one-deep rows on the photo, with the two halves of each pair in two colours and the real rectangles in blue.
+
 
 ```
 python -m step03_simulate_generation.shade_yield --lat 41.404361 --lon 2.2 --laz-dir data\lidar --usable data\roof\cep9_yellow_usable.geojson --panel cep9_540 --max-panels 108 --out data\pv\cep9_institut
@@ -91,8 +118,23 @@ Panel count and kWp come out of step 03 (`shade_yield` lays the panels and drops
 
 ## Open items
 
-- **East-West layout option in step 02/03.** CEP9's real plant is laid out East-West, "Delta Wing", at 10°, back to back with no gaps between rows [CEP9, 27 Nov 2026]. Our layout only makes south-facing rows spaced for no shade at a 25° sun, so only 85 of its 108 panels fit on the Institut. Until there is an East-West option, the CEP9 case scales the 85-panel hourly output to 108 panels (`step03_simulate_generation/scale_panels.py`, ×108/85, **ASSUMPTION**: same yield per panel): 58.32 kWp and 77,404 kWh a year, against 73,750 reported (+5.0%).
-- **Existing-panel detection, done 27 Nov 2026:** the 4 false rectangles on the Institut are listed in `not_panels.csv` and the rectangle check above catches them too. Still to do: test the rule on A160 and on more roofs.
+- **East-West layout option: done (27 Nov 2026),** see `layout.lay_out_ew` and step 03 `--orient eastwest`; the CEP9 case uses it by default through its case file. Still open: whether CEP9 should use a smaller edge setback (the real blocks run to about 0.2 m from the outline), which needs a source or CEP9's plan.
+- **Existing-panel detection, done 27 Nov 2026:** rectangles 4, 6 and 7 on the Institut are listed in `not_panels.csv` and the rough test catches them too; strip 5 is real. Still to do: test the rule on A160.
+
+## East-West layout (`layout.lay_out_ew`, step 03 `--orient eastwest`)
+
+Panels go in **back-to-back pairs along the building**: one half faces the building's south-side direction (219° on the Institut), the other the opposite way (39°), both at 10°, so the high edges meet at a ridge. Pattern: **pair, gap, pair, gap ...** (Breno, from the photo, 27 Nov 2026). No gap is left for shade, because at 10° the two halves lean against each other.
+
+| Number | Value | Source |
+|---|---|---|
+| Tilt | 10° | CEP9's real plant, "Delta Wing" [CEP9, email from César Ochoa, 27 Nov 2026] |
+| Gap at the ridge | 0 m | back to back [CEP9, 27 Nov 2026; photo] |
+| Gap after every pair | **0.40 m** | **measured on ICGC orthophoto / LiDAR, ~0.25 m per pixel, approximate**: real block 1 repeats every 2.63 m on the photo and 2.66 m in the LiDAR, minus the pair's depth 2 × 1.134 m × cos 10° = 2.234 m. Check: 5 pairs in block 1's 12.79 m. Racking makers put the walkway in this gap: 150 mm [Schletter FixGrid East-West manual](https://portal.segensolar.co.za/reseller/docs/03_20201220_installation_guide_FixGrid_EW_FixGrid_EW.PDF), 8 in = 0.20 m [Unirac RMDT manual](https://ladpw.org/bsd/lib/fp/Small%20Residential%20Rooftop%20Solar%20Energy%20Systems/LA%20County%20Recognized%20UL%202703%20Racking%20Systems/Unirac%20RMDT%20Ballast%20System%20Installation%20Guide.PDF) |
+| Extra walkways every few pairs | none | none on the photo; none in the manuals above |
+
+The yield model uses each half's own azimuth. In step 03's neat and best blocks, each half is judged against the best panels facing the same way, so the half that faces away from the sun is not called "weak" by design. With `--one-deep-rows 4`, a single row of at least 4 panels also counts as a block (ASSUMPTION: the real strips 3 and 5 are one row deep); in East-West a pair is already 2 rows deep.
+
+**Default only for the CEP9 case:** `step01_select_host/cases/cep9.json` has `"layout": {"orient": "eastwest", "one_deep_rows": 4}` on the Institut roof, and step 03 reads it with `--case cep9`. Every other case keeps south rows. The code has no CEP9 special case.
 
 ## Which way the panel rows point (`--orient` in step 03)
 

@@ -38,15 +38,17 @@ How (on the 0.1 m photo grid, inside the footprint):
    rectangles under MIN_RECT_PANELS panels or under MIN_RECT_FILL blob pixels are
    dropped. The count comes from the panel pitch: panels per row x rows.
 
-7. Rectangle check (27 Nov 2026, after Breno found 4 false rectangles on the Institut
-   by eye): a rectangle is dropped when it has fewer than MIN_KEEP_PANELS panels, or
-   when it is ROUGH: LiDAR ripple (height spread after removing a tilted plane) above
+7. Rectangle check (27 Nov 2026, after Breno checked the Institut photo by eye: rectangles
+   4, 6 and 7 are not panels, 1, 2, 3 and the thin strip 5 are): a rectangle is dropped when
+   it is ROUGH: LiDAR ripple (height spread after removing a tilted plane) above
    ROUGH_RIPPLE_M AND more than ROUGH_RAISED_SHARE of its cells more than RAISED_M above
-   the roof around it (units, skylight frames, walls). Tested on the two CEP9 roofs:
-   it removes exactly the 4 false rectangles on the Institut (8, 5, 4 and 2 panels;
-   ripple 0.04-0.17 m) and keeps the 3 real ones (60, 16, 10 panels; ripple about
-   0.07 m). A ripple window alone does not carry over: the steeper real rows on the
-   Escola Pere IV ripple 0.26 m and a flat real block there only 0.01 m.
+   the roof around it (units, skylight frames, walls). Tested on the two CEP9 roofs: it
+   drops exactly 4, 6 and 7 on the Institut (ripple 0.12-0.17 m, 12-31% raised) and keeps
+   1, 2, 3 and 5 (ripple 0.04-0.07 m, nothing raised). A size minimum can't do it: the real
+   strip 5 (5 panels, one row) is smaller than the false rectangle 4 (8 panels), so the
+   size minimum is just the detector's own (MIN_KEEP_PANELS = MIN_RECT_PANELS). A ripple
+   window alone does not carry over either: the steeper real rows on the Escola Pere IV
+   ripple 0.26 m and a flat real block there only 0.01 m.
 
 All thresholds are ASSUMPTIONS, tuned by eye on the two CEP9 roofs
 (21 Nov 2026), where the photo shows dark grey modules on the Institut Quatre
@@ -80,7 +82,8 @@ MIN_RECT_PANELS = 2       # smaller rectangles are dropped
 MIN_RECT_FILL = 0.6       # rectangles with less than this share of their area on blob pixels are dropped
 SNAP_MAX_CHANGE = 0.15    # snap a rectangle to whole panels only if that changes its area by less than this
 # rectangle check (step 7 above); ASSUMPTIONS tuned on the two CEP9 roofs, 27 Nov 2026
-MIN_KEEP_PANELS = 6       # rectangles with fewer panels are dropped (Breno's suggestion: "under 6 panels")
+MIN_KEEP_PANELS = 2       # rectangles with fewer panels are dropped. Was 6 until the real 5-panel strip on the
+                          # Institut (rectangle 5) was found (Breno, 27 Nov 2026); now the detector's own minimum
 ROUGH_RIPPLE_M = 0.10     # LiDAR ripple above this ...
 ROUGH_RAISED_SHARE = 0.10 # ... with more than this share of cells ...
 RAISED_M = 0.10           # ... more than this above the roof around them = not a panel block

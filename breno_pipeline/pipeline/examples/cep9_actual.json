@@ -8,7 +8,7 @@
   "source": "CEP9 presentation",
   "source_url": "https://elpoblenou.cat/wp-content/uploads/2024/10/presentacio-CEP9_v2.pptx.pdf",
   "panel_wp_note": "58.32 kWp / 108 panels = 540 W (our calculation)",
-  "traced_by": "step 02 (existing_panels.py): panel areas on the ICGC orthophoto, checked against LiDAR and fitted as rectangles snapped to the roof edges and to whole 540 W panels; rectangles 4-7 removed after Breno checked the photo by eye on 27 Nov 2026 (not_panels.csv) and by the rectangle check (size and LiDAR roughness)",
+  "traced_by": "step 02 (existing_panels.py): panel areas on the ICGC orthophoto, checked against LiDAR and fitted as rectangles snapped to the roof edges and to whole 540 W panels; rectangles 4, 6 and 7 removed after Breno checked the photo by eye on 27 Nov 2026 (not_panels.csv and the rough test); the thin strip 5 is real panels",
   "blocks": [
     {
       "name": "Institut Quatre Cantons (yellow) rectangle 1",
@@ -93,6 +93,34 @@
       ],
       "panels_estimate": 10,
       "angle_deg": 141.5
+    },
+    {
+      "name": "Institut Quatre Cantons (yellow) rectangle 4",
+      "roof": "yellow",
+      "corners": [
+        [
+          433136.92,
+          4583954.79
+        ],
+        [
+          433138.04,
+          4583956.19
+        ],
+        [
+          433131.54,
+          4583961.36
+        ],
+        [
+          433130.42,
+          4583959.95
+        ],
+        [
+          433136.92,
+          4583954.79
+        ]
+      ],
+      "panels_estimate": 5,
+      "angle_deg": 51.5
     }
   ],
   "photo": {
@@ -115,9 +143,9 @@
   "by_roof_source": "CEP9, email from César Ochoa, 27 Nov 2026: all 108 panels on the Institut; Escola Pere IV is not part of CEP9",
   "detected": {
     "yellow": {
-      "existing_panels_m2": 253.6,
-      "existing_panels_estimate": 86,
-      "existing_panels_pixels_m2": 276.1
+      "existing_panels_m2": 268.5,
+      "existing_panels_estimate": 91,
+      "existing_panels_pixels_m2": 291.1
     }
   },
   "red_roof_what_if": {

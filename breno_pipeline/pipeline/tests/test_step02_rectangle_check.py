@@ -12,11 +12,11 @@ INSTITUT = {1: (60, 0.068, 0.0), 2: (16, 0.067, 0.0), 3: (10, 0.065, 0.0),
             4: (8, 0.142, 0.12), 5: (5, 0.042, 0.0), 6: (4, 0.167, 0.27), 7: (2, 0.117, 0.31)}
 
 
-def test_rule_keeps_the_3_real_rectangles_and_drops_the_4_false_ones():
+def test_rule_keeps_the_4_real_rectangles_and_drops_the_3_false_ones():
     kept = {i for i, (n, rip, up) in INSTITUT.items() if ep.rectangle_rejected(_rect(0, 0, n, rip, up)) is None}
-    assert kept == {1, 2, 3}                               # Breno checked by eye, 27 Nov 2026
-    assert "rough" in ep.rectangle_rejected(_rect(0, 0, *INSTITUT[4]))
-    assert "fewer than" in ep.rectangle_rejected(_rect(0, 0, *INSTITUT[5]))
+    assert kept == {1, 2, 3, 5}                            # Breno checked by eye, 27 Nov 2026 (5 is a real thin strip)
+    for i in (4, 6, 7):
+        assert "rough" in ep.rectangle_rejected(_rect(0, 0, *INSTITUT[i]))
 
 
 def test_rule_keeps_steep_and_flat_real_blocks_on_the_red_roof():
@@ -35,4 +35,4 @@ def test_not_panels_csv_matches_one_rectangle_not_its_neighbour():
 
 def test_institut_is_listed_in_not_panels_csv():
     rows = ep.load_not_panels("3241428DF3834A")
-    assert len(rows) == 4 and all("checked by eye, Breno 27 Nov 2026" in w for *_, w in rows)
+    assert len(rows) == 3 and all("checked by eye, Breno 27 Nov 2026" in w for *_, w in rows)

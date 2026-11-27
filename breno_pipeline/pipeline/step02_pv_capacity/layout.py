@@ -24,6 +24,17 @@ TILT_DEG = 10.0
 GAP_M = 0.05               # between panels in a row
 WINTER_NOON_ELEVATION_DEG = 25.0  # Barcelona, 21 December at noon
 SHIFT_STEP_M = 0.25
+# East-West ("ew") rows: pairs of panels leaning against each other, one half facing the building's
+# south-side direction and the other the opposite way, no gap for shade (27 Nov 2026).
+EW_TILT_DEG = 10.0         # CEP9's real plant: East-West "Delta Wing" at 10 deg [CEP9, email from César Ochoa, 27 Nov 2026]
+# Pattern (Breno, from the photo, 27 Nov 2026): pair, gap, pair, gap ... The two halves of a pair touch at the ridge;
+# a maintenance gap follows EVERY pair, on one side only (the valley). Racking makers put the walkway there too:
+# 150 mm [Schletter FixGrid East-West manual], 8 in = 0.20 m [Unirac RMDT manual].
+EW_RIDGE_GAP_M = 0.0       # the halves lean against each other (back to back) [CEP9, 27 Nov 2026; photo]
+EW_VALLEY_GAP_M = 0.40     # gap after every pair: measured on ICGC orthophoto / LiDAR, ~0.25 m per pixel, approximate.
+                           # Real block 1 repeats every 2.63 m on the photo and 2.66 m in the LiDAR (27 Nov 2026);
+                           # minus the pair's depth 2 x 1.134 m x cos 10 deg = 2.234 m -> 0.40 m (LiDAR 0.43 m).
+                           # Check: 5 pairs in block 1's 12.79 m = 5 x 2.234 + 4 x 0.40 = 12.77 m.
 PANELS_CSV = Path(__file__).resolve().parent / "panels.csv"   # the panel catalogue: the only place panel sizes live
 DEFAULT_KEY = "residential_420"
 
@@ -87,6 +98,8 @@ class Layout:
     module: Module = DEFAULT_MODULE
     cells: list = None     # (row, column) of each panel in the layout grid; rows run along the building
     orientation_table: list = None   # what --orient search tried: azimuth, panels, yield factor, score
+    azimuths: list = None  # per-panel azimuth when the halves differ (East-West); None = all face azimuth_deg
+    kind: str = "south"    # "south": rows facing one way with shade gaps; "ew": East-West back-to-back pairs
 
     @property
     def count(self):
@@ -99,8 +112,13 @@ class Layout:
     def subset(self, keep):
         """A new Layout with only the panels where keep is True."""
         cells = None if self.cells is None else [c for c, k in zip(self.cells, keep) if k]
+        az = None if self.azimuths is None else [a for a, k in zip(self.azimuths, keep) if k]
         return Layout([p for p, k in zip(self.panels, keep) if k], self.azimuth_deg, self.tilt_deg,
-                      self.module, cells, self.orientation_table)
+                      self.module, cells, self.orientation_table, az, self.kind)
+
+    def panel_azimuths(self):
+        """Azimuth of every panel (an array), for the yield model."""
+        return np.full(self.count, self.azimuth_deg) if self.azimuths is None else np.asarray(self.azimuths, float)
 
     def centres(self):
         return np.array([[p.centroid.x, p.centroid.y] for p in self.panels]).reshape(-1, 2)
@@ -158,6 +176,58 @@ def lay_out(usable, footprint, tilt_deg=TILT_DEG, azimuth_deg=None, module=DEFAU
     return Layout(panels, az, tilt_deg, module, best_cells)
 
 
+def ew_row_offsets(depth, length, ridge_gap=EW_RIDGE_GAP_M, valley_gap=EW_VALLEY_GAP_M):
+    """Start of every E-W half-row across the roof (metres from 0), up to length: pair, gap, pair, gap ...
+    The two halves of a pair are ridge_gap apart; valley_gap (the maintenance gap) follows every pair."""
+    out, v, k = [], 0.0, 0
+    while v + depth <= length + 1e-9:
+        out.append(v)
+        k += 1
+        v += depth + (valley_gap if k % 2 == 0 else ridge_gap)
+    return out
+
+
+def lay_out_ew(usable, footprint, tilt_deg=EW_TILT_DEG, azimuth_deg=None, module=DEFAULT_MODULE,
+               ridge_gap=EW_RIDGE_GAP_M, valley_gap=EW_VALLEY_GAP_M):
+    """East-West layout: rows along the building, in back-to-back pairs (pair, gap, pair, gap ...). In each
+    pair the first half faces azimuth_deg (default: the building's south-side direction, facing_azimuth) and
+    the second half the opposite way (azimuth + 180), so the high edges meet at the ridge. No gap is left for
+    shade (at 10 deg the halves lean against each other); a maintenance gap follows every pair.
+    Returns a Layout with kind 'ew' and per-panel azimuths."""
+    az = facing_azimuth(footprint) if azimuth_deg is None else azimuth_deg
+    if usable is None or usable.is_empty:
+        return Layout([], az, tilt_deg, module, [], azimuths=[], kind="ew")
+    centre = footprint.centroid
+    rot = az - 180.0
+    local = affinity.rotate(usable, rot, origin=centre)
+    minx, miny, maxx, maxy = local.bounds
+    long_m = module.long_m
+    depth = module.short_m * math.cos(math.radians(tilt_deg))
+    pitch_u = long_m + GAP_M
+    period_v = 2 * depth + ridge_gap + valley_gap    # one pair and its gaps
+    offsets = ew_row_offsets(depth, maxy - miny + period_v, ridge_gap, valley_gap)
+    shapely.prepare(local)
+    best, best_cells = [], []
+    for du in np.arange(0, pitch_u, SHIFT_STEP_M):
+        for dv in np.arange(0, period_v, SHIFT_STEP_M):
+            us = np.arange(minx + du, maxx - long_m + 1e-6, pitch_u)
+            vs = [miny - period_v + dv + o for o in offsets]
+            vs = [v for v in vs if v + depth <= maxy + 1e-6]
+            rects = [box(u, v, u + long_m, v + depth) for v in vs for u in us]
+            cells = [(j, i) for j in range(len(vs)) for i in range(len(us))]
+            if not rects:
+                continue
+            ok = shapely.contains(local, rects)
+            if ok.sum() > len(best):
+                best = [r for r, k in zip(rects, ok) if k]
+                best_cells = [c for c, k in zip(cells, ok) if k]
+    # half-rows alternate: even rows face az (towards -v in the local frame), odd rows face az + 180;
+    # the row index counts from the first possible row, so the pairs stay pairs whatever is cut out
+    panels = [affinity.rotate(p, -rot, origin=centre) for p in best]
+    azimuths = [az if j % 2 == 0 else (az + 180.0) % 360 for j, _ in best_cells]
+    return Layout(panels, az, tilt_deg, module, best_cells, azimuths=azimuths, kind="ew")
+
+
 ORIENT_SPAN_DEG = 45       # --orient search tries the building's axis +/- this much, in steps of ORIENT_STEP_DEG
 ORIENT_STEP_DEG = 5
 
@@ -191,13 +261,16 @@ def orientation_table(usable, footprint, tilt_deg=TILT_DEG, module=DEFAULT_MODUL
 
 def lay_out_oriented(usable, footprint, mode="building", tilt_deg=TILT_DEG, module=DEFAULT_MODULE):
     """mode: 'building' = rows along the building edge nearest south (the default since V1),
-    'south' = rows facing due south, 'search' = the best of orientation_table()."""
+    'south' = rows facing due south, 'search' = the best of orientation_table(),
+    'eastwest' = East-West back-to-back pairs along the building (lay_out_ew, at EW_TILT_DEG)."""
+    if mode == "eastwest":
+        return lay_out_ew(usable, footprint, EW_TILT_DEG, None, module)
     if mode == "building":
         return lay_out(usable, footprint, tilt_deg, None, module)
     if mode == "south":
         return lay_out(usable, footprint, tilt_deg, 180.0, module)
     if mode != "search":
-        raise SystemExit(f"unknown orientation {mode}; choose building, south or search")
+        raise SystemExit(f"unknown orientation {mode}; choose building, south, search or eastwest")
     if usable is None or usable.is_empty:
         return lay_out(usable, footprint, tilt_deg, None, module)
     table = orientation_table(usable, footprint, tilt_deg, module)

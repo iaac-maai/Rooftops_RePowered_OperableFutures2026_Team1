@@ -8,16 +8,16 @@
   },
   "roof": {
     "method": "lidar + photo (existing panels)",
-    "usable_area_m2": 577.2,
+    "usable_area_m2": 610.5,
     "free_area_m2": 938.2,
     "obstacle_area_m2": 113.8,
-    "existing_panels_m2": 253.6,
+    "existing_panels_m2": 268.5,
     "confidence": "medium",
     "lower_roof_m2": 0.0,
     "excluded": null,
-    "existing_panels_estimate": 86,
+    "existing_panels_estimate": 91,
     "existing_panels_estimate_note": "per rectangle: panels per row x rows, pitch 2.33 m along the row and 1.30 m across (540 W CEP9 real, 2.28 x 1.13 m)",
-    "existing_panels_pixels_m2": 276.1,
+    "existing_panels_pixels_m2": 291.1,
     "existing_panel_rectangles": [
       {
         "corners": [
@@ -123,6 +123,41 @@
         "snapped": true,
         "lidar_ripple_m": 0.065,
         "raised_share": 0.0
+      },
+      {
+        "corners": [
+          [
+            433136.92,
+            4583954.79
+          ],
+          [
+            433138.04,
+            4583956.19
+          ],
+          [
+            433131.54,
+            4583961.36
+          ],
+          [
+            433130.42,
+            4583959.95
+          ],
+          [
+            433136.92,
+            4583954.79
+          ]
+        ],
+        "angle_deg": 51.5,
+        "length_m": 1.8,
+        "width_m": 8.3,
+        "area_m2": 14.9,
+        "panels_per_row": 5,
+        "rows": 1,
+        "panels_estimate": 5,
+        "fill_share": 0.93,
+        "snapped": false,
+        "lidar_ripple_m": 0.042,
+        "raised_share": 0.0
       }
     ],
     "existing_panel_rectangles_dropped": [
@@ -223,17 +258,24 @@
         "lidar_ripple_m": 0.07,
         "angle_deg": 141.5,
         "rectangles": 1
+      },
+      {
+        "area_m2": 15.0,
+        "x": 433134.26,
+        "y": 4583958.09,
+        "lidar_ripple_m": 0.09,
+        "angle_deg": 51.5,
+        "rectangles": 1
       }
     ],
     "roof_angle_deg": 141.5,
     "not_panels": [
       "not panels: checked by eye, Breno 27 Nov 2026 (Institut Quatre Cantons, step 02 rectangle 4 on data/roof/cep9_yellow_existing_numbered.png: narrow rectangle next to the middle-left panel block)",
-      "not panels: checked by eye, Breno 27 Nov 2026 (Institut Quatre Cantons, step 02 rectangle 5 on data/roof/cep9_yellow_existing_numbered.png: small rectangle in the upper middle)",
       "not panels: checked by eye, Breno 27 Nov 2026 (Institut Quatre Cantons, step 02 rectangle 6 on data/roof/cep9_yellow_existing_numbered.png: small square in the middle)",
       "not panels: checked by eye, Breno 27 Nov 2026 (Institut Quatre Cantons, step 02 rectangle 7 on data/roof/cep9_yellow_existing_numbered.png: small square in the middle)"
     ],
-    "usable_empty_roof_m2": 577.2,
-    "usable_new_only_m2": 305.0,
+    "usable_empty_roof_m2": 610.5,
+    "usable_new_only_m2": 306.2,
     "roof_state": "empty"
   },
   "lidar": {

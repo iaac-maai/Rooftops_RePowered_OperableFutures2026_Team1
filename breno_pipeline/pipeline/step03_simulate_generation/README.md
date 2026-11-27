@@ -91,3 +91,15 @@ By default every panel that fits is placed (team decision, 15 Nov 2026: fill the
 - **Panel and size:** `--panel cep9_540` (or `residential_420`) picks a panel from the catalogue, `step02_pv_capacity/panels.csv`, the only place panel sizes live. `--panel-wp 540` does the same by watts. `--panel-size 2.38x1.13` replaces the catalogue size for one run (length x width in metres), and `--portrait` puts the long side up the slope. The 540 W size (2279 × 1134 mm) is the real CEP9 panel from the tender; the 420 W size (1722 × 1134 mm) is a typical residential panel and stays an ASSUMPTION until a datasheet is checked. The layout block rules count an area, so a bigger panel needs fewer cells per block.
 - **A host with panels on more than one building** (for example the CEP9 "what if the school next door joined" case: Escola Pere IV plus the Institut Quatre Cantons; the real CEP9 is the Institut only): run this step once per roof, then `python -m step03_simulate_generation.combine_roofs --roof red=data\pv\cep9_red_yield.json --roof yellow=data\pv\cep9_yellow_yield.json --out data\pv\cep9`. It adds panels, kWp and hourly solar for every layout and keeps a `roof` label on each panel.
 
+## East-West layouts, one-deep rows and `--case` (27 Nov 2026)
+
+- `--orient eastwest`: back-to-back pairs along the building, 10°, pair + 0.40 m gap + pair ... (step 02 README, "East-West layout"). Each half's yield uses its own azimuth (`energy.plane_of_array` takes one azimuth per panel). On the Institut: 1,261 kWh per kWp, against 1,327 for south rows and the real 1,265.
+- In the neat and best blocks, an East-West panel is compared with the 90th-percentile panel **facing the same way** (`options.reference_kwh`), not with the whole roof's. Before this, every north-east half looked "weak" and East-West best blocks gave 0 panels.
+- `--one-deep-rows 4`: neat and best blocks also accept a single row of at least 4 panels (ASSUMPTION; real CEP9 strips 3 and 5 are one row deep). Off by default.
+- `--case cep9`: takes `orient` and `one_deep_rows` from the case file's host roof `layout` block (only CEP9 has one: East-West, one-deep rows 4). An explicit `--orient` or `--one-deep-rows` wins.
+
+```
+python -m step03_simulate_generation.shade_yield --lat 41.404361 --lon 2.2 --laz-dir data\lidar --usable data\roof\cep9_yellow_usable.geojson --panel cep9_540 --layout neat --case cep9 --out data\pv\cep9_institut_ew
+```
+
+This needs internet for Catastro (the building lookup); the LiDAR and the PVGIS typical year are local. Result: 540 W neat blocks, 91 panels, 49.14 kWp, 62,150 kWh a year, against the real 108 panels and 73,750 kWh.

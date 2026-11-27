@@ -19,15 +19,19 @@ NOCT_RISE = 25.0          # cell is this many degrees above air at 800 W/m2. ASS
 
 
 def plane_of_array(weather, sun_elev, sun_az, lit, svf, tilt_deg, azimuth_deg):
-    """Sun on the tilted panel, W/m2: array (n_panels, n_hours)."""
-    t, a = np.deg2rad(tilt_deg), np.deg2rad(azimuth_deg)
+    """Sun on the tilted panel, W/m2: array (n_panels, n_hours).
+    azimuth_deg: one azimuth for every panel, or one per panel (East-West layouts: each half its own)."""
+    t = np.deg2rad(tilt_deg)
+    a = np.deg2rad(np.asarray(azimuth_deg, float))
+    if a.ndim:
+        a = a[:, None]                              # (n_panels, 1): each panel its own direction
     e, z = np.deg2rad(sun_elev), np.deg2rad(sun_az)
     cos_inc = np.sin(e) * np.cos(t) + np.cos(e) * np.sin(t) * np.cos(z - a)
     up = sun_elev > 0
-    beam = np.where(up, weather.dni * np.clip(cos_inc, 0, None), 0.0)
+    beam = np.atleast_2d(np.where(up, weather.dni * np.clip(cos_inc, 0, None), 0.0))
     diffuse = weather.dhi * (1 + np.cos(t)) / 2
     ground = weather.ghi * ALBEDO * (1 - np.cos(t)) / 2
-    return beam[None, :] * lit + svf[:, None] * diffuse[None, :] + ground[None, :]
+    return beam * lit + svf[:, None] * diffuse[None, :] + ground[None, :]
 
 
 def panel_output(poa, temp, wp=PANEL_WP):
@@ -48,8 +52,9 @@ def yield_for_layout(layout, horizon, weather, lat, lon, max_shade_loss=None, ma
     n = horizon.shape[0]
     svf = sky_view(horizon)
     lit = is_lit(horizon, elev, az)
-    poa = plane_of_array(weather, elev, az, lit, svf, layout.tilt_deg, layout.azimuth_deg)
-    open_poa = plane_of_array(weather, elev, az, np.ones_like(lit), np.ones(n), layout.tilt_deg, layout.azimuth_deg)
+    panel_az = layout.panel_azimuths() if hasattr(layout, "panel_azimuths") else layout.azimuth_deg
+    poa = plane_of_array(weather, elev, az, lit, svf, layout.tilt_deg, panel_az)
+    open_poa = plane_of_array(weather, elev, az, np.ones_like(lit), np.ones(n), layout.tilt_deg, panel_az)
     kwh = panel_output(poa, weather.temp, layout.module.wp)
     shade_loss = 1 - poa.sum(axis=1) / np.maximum(open_poa.sum(axis=1), 1e-9)
     keep = np.ones(n, bool) if max_shade_loss is None else shade_loss <= max_shade_loss
