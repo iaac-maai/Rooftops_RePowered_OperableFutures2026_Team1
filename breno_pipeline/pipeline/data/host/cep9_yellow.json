@@ -1,0 +1,32 @@
+{
+  "query": "41.404361,2.2",
+  "lat": 41.404361,
+  "lon": 2.2,
+  "geocoder": null,
+  "refcat": "3241428DF3834A",
+  "catastro_address": "CL BATISTA 1 BARCELONA (BARCELONA)",
+  "building_id": "3241428DF3834A",
+  "year_built": 2011,
+  "current_use": "4_3_publicServices",
+  "dwellings": 0,
+  "building_height_m": 14.5,
+  "height_source": "lidar",
+  "footprint_area_m2": 1081.5,
+  "footprint_wkt": "POLYGON ((433159.1 4583942.49, 433160.45 4583941.42, 433156.55 4583935.69, 433154.38 4583932.5, 433147.16 4583921.89, 433144.45 4583924.05, 433133.74 4583932.57, 433143.03 4583944.08, 433138.36 4583947.85, 433129.22 4583936.17, 433115.75 4583946.89, 433124.62 4583958.25, 433119.91 4583962.09, 433110.76 4583950.86, 433104.6 4583955.76, 433119.31 4583974.12, 433159.1 4583942.49))",
+  "lidar_tiles": [
+    "lidar-territorial-v3r1-full1km433583-2021-2023.laz"
+  ],
+  "roof": {
+    "is_flat": true,
+    "flat_share": 0.409,
+    "median_slope_deg": 6.5,
+    "roof_height_min": 13.92,
+    "roof_height_max": 18.12,
+    "points": 9675,
+    "note": null
+  },
+  "flat_roof": true,
+  "heritage_protected": null,
+  "heritage_details": null,
+  "warnings": []
+}

@@ -1,0 +1,454 @@
+{
+  "building": {
+    "refcat": "3241428DF3834A",
+    "address": "CL BATISTA 1 BARCELONA (BARCELONA)",
+    "query": "41.404361,2.2",
+    "year_built": 2011,
+    "dwellings": 0
+  },
+  "roof": {
+    "method": "lidar + photo (existing panels)",
+    "usable_area_m2": 610.5,
+    "free_area_m2": 938.2,
+    "obstacle_area_m2": 113.8,
+    "existing_panels_m2": 268.5,
+    "confidence": "medium",
+    "lower_roof_m2": 0.0,
+    "excluded": null,
+    "existing_panels_estimate": 91,
+    "existing_panels_estimate_note": "per rectangle: panels per row x rows, pitch 2.33 m along the row and 1.30 m across (540 W CEP9 real, 2.28 x 1.13 m)",
+    "existing_panels_pixels_m2": 291.1,
+    "existing_panel_rectangles": [
+      {
+        "corners": [
+          [
+            433155.03,
+            4583933.76
+          ],
+          [
+            433144.14,
+            4583942.43
+          ],
+          [
+            433136.17,
+            4583932.43
+          ],
+          [
+            433147.07,
+            4583923.76
+          ],
+          [
+            433155.03,
+            4583933.76
+          ]
+        ],
+        "angle_deg": 141.5,
+        "length_m": 13.92,
+        "width_m": 12.79,
+        "area_m2": 178.1,
+        "panels_per_row": 6,
+        "rows": 10,
+        "panels_estimate": 60,
+        "fill_share": 0.92,
+        "snapped": true,
+        "lidar_ripple_m": 0.068,
+        "raised_share": 0.0
+      },
+      {
+        "corners": [
+          [
+            433130.36,
+            4583942.98
+          ],
+          [
+            433123.11,
+            4583948.75
+          ],
+          [
+            433120.0,
+            4583944.83
+          ],
+          [
+            433127.25,
+            4583939.06
+          ],
+          [
+            433130.36,
+            4583942.98
+          ]
+        ],
+        "angle_deg": 141.5,
+        "length_m": 9.27,
+        "width_m": 5.01,
+        "area_m2": 46.4,
+        "panels_per_row": 4,
+        "rows": 4,
+        "panels_estimate": 16,
+        "fill_share": 0.95,
+        "snapped": true,
+        "lidar_ripple_m": 0.067,
+        "raised_share": 0.0
+      },
+      {
+        "corners": [
+          [
+            433119.76,
+            4583962.41
+          ],
+          [
+            433117.98,
+            4583963.83
+          ],
+          [
+            433110.02,
+            4583953.83
+          ],
+          [
+            433111.8,
+            4583952.41
+          ],
+          [
+            433119.76,
+            4583962.41
+          ]
+        ],
+        "angle_deg": 141.5,
+        "length_m": 2.28,
+        "width_m": 12.79,
+        "area_m2": 29.1,
+        "panels_per_row": 1,
+        "rows": 10,
+        "panels_estimate": 10,
+        "fill_share": 0.96,
+        "snapped": true,
+        "lidar_ripple_m": 0.065,
+        "raised_share": 0.0
+      },
+      {
+        "corners": [
+          [
+            433136.92,
+            4583954.79
+          ],
+          [
+            433138.04,
+            4583956.19
+          ],
+          [
+            433131.54,
+            4583961.36
+          ],
+          [
+            433130.42,
+            4583959.95
+          ],
+          [
+            433136.92,
+            4583954.79
+          ]
+        ],
+        "angle_deg": 51.5,
+        "length_m": 1.8,
+        "width_m": 8.3,
+        "area_m2": 14.9,
+        "panels_per_row": 5,
+        "rows": 1,
+        "panels_estimate": 5,
+        "fill_share": 0.93,
+        "snapped": false,
+        "lidar_ripple_m": 0.042,
+        "raised_share": 0.0
+      }
+    ],
+    "existing_panel_rectangles_dropped": [
+      {
+        "corners": [
+          [
+            433134.9,
+            4583945.62
+          ],
+          [
+            433133.12,
+            4583947.04
+          ],
+          [
+            433126.77,
+            4583939.06
+          ],
+          [
+            433128.56,
+            4583937.64
+          ],
+          [
+            433134.9,
+            4583945.62
+          ]
+        ],
+        "angle_deg": 141.5,
+        "length_m": 2.28,
+        "width_m": 10.19,
+        "area_m2": 23.2,
+        "panels_per_row": 1,
+        "rows": 8,
+        "panels_estimate": 8,
+        "fill_share": 0.85,
+        "snapped": true,
+        "lidar_ripple_m": 0.142,
+        "raised_share": 0.12,
+        "dropped_because": "not_panels.csv: not panels: checked by eye, Breno 27 Nov 2026 (Institut Quatre Cantons, step 02 rectangle 4 on data/roof/cep9_yellow_existing_numbered.png: narrow rectangle next to the middle-left panel block)"
+      },
+      {
+        "corners": [
+          [
+            433128.62,
+            4583951.84
+          ],
+          [
+            433127.21,
+            4583952.96
+          ],
+          [
+            433124.78,
+            4583949.91
+          ],
+          [
+            433126.19,
+            4583948.78
+          ],
+          [
+            433128.62,
+            4583951.84
+          ]
+        ],
+        "angle_deg": 141.5,
+        "length_m": 1.8,
+        "width_m": 3.9,
+        "area_m2": 7.0,
+        "panels_per_row": 2,
+        "rows": 1,
+        "panels_estimate": 2,
+        "fill_share": 0.94,
+        "snapped": false,
+        "lidar_ripple_m": 0.117,
+        "raised_share": 0.31,
+        "dropped_because": "not_panels.csv: not panels: checked by eye, Breno 27 Nov 2026 (Institut Quatre Cantons, step 02 rectangle 7 on data/roof/cep9_yellow_existing_numbered.png: small square in the middle)"
+      }
+    ],
+    "existing_panel_blocks": [
+      {
+        "area_m2": 164.0,
+        "x": 433145.56,
+        "y": 4583933.11,
+        "lidar_ripple_m": 0.08,
+        "angle_deg": 141.5,
+        "rectangles": 1
+      },
+      {
+        "area_m2": 80.0,
+        "x": 433126.92,
+        "y": 4583944.11,
+        "lidar_ripple_m": 0.13,
+        "angle_deg": 141.5,
+        "rectangles": 3
+      },
+      {
+        "area_m2": 32.1,
+        "x": 433115.02,
+        "y": 4583958.25,
+        "lidar_ripple_m": 0.07,
+        "angle_deg": 141.5,
+        "rectangles": 1
+      },
+      {
+        "area_m2": 15.0,
+        "x": 433134.26,
+        "y": 4583958.09,
+        "lidar_ripple_m": 0.09,
+        "angle_deg": 51.5,
+        "rectangles": 1
+      }
+    ],
+    "roof_angle_deg": 141.5,
+    "not_panels": [
+      "not panels: checked by eye, Breno 27 Nov 2026 (Institut Quatre Cantons, step 02 rectangle 4 on data/roof/cep9_yellow_existing_numbered.png: narrow rectangle next to the middle-left panel block)",
+      "not panels: checked by eye, Breno 27 Nov 2026 (Institut Quatre Cantons, step 02 rectangle 6 on data/roof/cep9_yellow_existing_numbered.png: small square in the middle)",
+      "not panels: checked by eye, Breno 27 Nov 2026 (Institut Quatre Cantons, step 02 rectangle 7 on data/roof/cep9_yellow_existing_numbered.png: small square in the middle)"
+    ],
+    "usable_empty_roof_m2": 610.5,
+    "usable_new_only_m2": 306.2,
+    "roof_state": "empty"
+  },
+  "lidar": {
+    "roof_area_m2": 1082.0,
+    "lidar_coverage": 0.972,
+    "surfaces": [
+      {
+        "height_m": 15.25,
+        "area_m2": 828.8,
+        "level": "main"
+      },
+      {
+        "height_m": 17.86,
+        "area_m2": 47.5,
+        "level": "main"
+      },
+      {
+        "height_m": 17.91,
+        "area_m2": 37.0,
+        "level": "main"
+      },
+      {
+        "height_m": 17.89,
+        "area_m2": 25.0,
+        "level": "main"
+      }
+    ],
+    "obstacles": [
+      {
+        "area_m2": 42.0,
+        "height_m": 2.04,
+        "x": 433112.26,
+        "y": 4583963.38
+      },
+      {
+        "area_m2": 11.75,
+        "height_m": 1.45,
+        "x": 433129.35,
+        "y": 4583949.61
+      },
+      {
+        "area_m2": 11.25,
+        "height_m": 1.46,
+        "x": 433132.56,
+        "y": 4583946.81
+      },
+      {
+        "area_m2": 10.5,
+        "height_m": 1.45,
+        "x": 433125.71,
+        "y": 4583952.06
+      },
+      {
+        "area_m2": 6.25,
+        "height_m": 2.95,
+        "x": 433125.97,
+        "y": 4583965.93
+      },
+      {
+        "area_m2": 5.25,
+        "height_m": 0.45,
+        "x": 433130.96,
+        "y": 4583958.04
+      },
+      {
+        "area_m2": 3.5,
+        "height_m": 0.43,
+        "x": 433124.32,
+        "y": 4583958.96
+      },
+      {
+        "area_m2": 3.25,
+        "height_m": 1.61,
+        "x": 433138.25,
+        "y": 4583952.75
+      },
+      {
+        "area_m2": 3.25,
+        "height_m": -0.08,
+        "x": 433147.52,
+        "y": 4583946.4
+      },
+      {
+        "area_m2": 2.5,
+        "height_m": 0.07,
+        "x": 433153.3,
+        "y": 4583941.85
+      },
+      {
+        "area_m2": 1.75,
+        "height_m": 0.42,
+        "x": 433142.18,
+        "y": 4583942.75
+      },
+      {
+        "area_m2": 1.75,
+        "height_m": 0.27,
+        "x": 433137.18,
+        "y": 4583936.46
+      },
+      {
+        "area_m2": 1.0,
+        "height_m": -1.56,
+        "x": 433152.0,
+        "y": 4583942.25
+      },
+      {
+        "area_m2": 1.0,
+        "height_m": 0.33,
+        "x": 433139.5,
+        "y": 4583939.5
+      },
+      {
+        "area_m2": 0.75,
+        "height_m": 0.08,
+        "x": 433123.75,
+        "y": 4583962.92
+      },
+      {
+        "area_m2": 0.75,
+        "height_m": 2.81,
+        "x": 433146.42,
+        "y": 4583944.92
+      },
+      {
+        "area_m2": 0.75,
+        "height_m": 0.32,
+        "x": 433157.08,
+        "y": 4583936.75
+      },
+      {
+        "area_m2": 0.5,
+        "height_m": 0.32,
+        "x": 433119.25,
+        "y": 4583951.0
+      },
+      {
+        "area_m2": 0.5,
+        "height_m": 0.27,
+        "x": 433146.5,
+        "y": 4583950.25
+      },
+      {
+        "area_m2": 0.5,
+        "height_m": -2.8,
+        "x": 433153.0,
+        "y": 4583943.75
+      },
+      {
+        "area_m2": 0.5,
+        "height_m": 0.23,
+        "x": 433124.5,
+        "y": 4583940.75
+      },
+      {
+        "area_m2": 0.5,
+        "height_m": 2.74,
+        "x": 433151.0,
+        "y": 4583940.5
+      },
+      {
+        "area_m2": 0.5,
+        "height_m": 0.26,
+        "x": 433154.5,
+        "y": 4583933.0
+      }
+    ],
+    "obstacle_area_m2": 113.8,
+    "noise_area_m2": 3.5,
+    "free_area_m2": 938.2,
+    "usable_area_m2": 646.8,
+    "lower_roof_m2": 0.0,
+    "lower_roofs_included": false
+  },
+  "photo_error": null
+}

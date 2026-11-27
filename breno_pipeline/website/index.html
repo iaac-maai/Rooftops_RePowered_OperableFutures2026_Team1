@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Roofscapes (Re)Powered</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Who can use a big roof's spare solar? Results of the Roofscapes (Re)Powered pipeline, with every number linked to its source.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+  <nav class="rail" aria-label="Steps">
+    <div class="brand">Roofscapes (Re)Powered<small>IAAC MaAI01 · Research Studio</small></div>
+    <ul class="steps" id="steps">
+      <li><a href="#overview"><span>—</span>The service</a></li>
+      <li><a href="#property"><span>01</span>Find the property</a></li>
+      <li><a href="#roof"><span>02-03</span>Roof and solar</a></li>
+      <li><a href="#surplus"><span>04</span>Spare power</a></li>
+      <li><a href="#neighbours"><span>05-08</span>Neighbours</a></li>
+      <li><a href="#prices"><span>06</span>Prices</a></li>
+      <li><a href="#battery"><span>06-08</span>Battery</a></li>
+      <li><a href="#money"><span>09</span>Money</a></li>
+      <li><a href="#roi"><span>08</span>25-year return</a></li>
+      <li><a href="#sources"><span>—</span>Sources</a></li>
+    </ul>
+    <p class="rail-note">Step numbers match the folders in the pipeline. Each number on this page shows where it comes from.</p>
+  </nav>
+
+  <main>
+    <div class="wrap">
+      <header class="cover">
+        <div class="stripe" aria-hidden="true"><i style="--c:var(--st-1)"></i><i style="--c:var(--st-2)"></i><i style="--c:var(--st-3)"></i><i style="--c:var(--st-4)"></i><i style="--c:var(--st-5)"></i><i style="--c:var(--st-6)"></i></div>
+        <h1>Roofscapes (Re)Powered</h1>
+        <p class="sub">A planning service for owners of big roofs: how much solar the roof makes, who nearby can use what the building does not, and what it earns. Tested on a real Barcelona roof, every number linked to its source.</p>
+        <p class="team">Breno Sader | Daria Basha | Sindhuja Davuluri</p>
+        <p class="studio">IAAC MaAI01 Research Studio 2026-27</p>
+      </header>
+      <section id="overview">
+        <span class="eyebrow">The service</span>
+        <h2>Share your roof's solar with the neighbours who can use it</h2>
+        <p class="lede">Roofscapes (Re)Powered is for owners and managers of large flat roofs, such as offices and schools that are closed at weekends. You give a building. The service reads its roof, works out how many solar panels fit and how much power they make every hour of the year, and compares that with what the building itself uses. What is left over is spare power. The service then finds the group of nearby buildings that can use the most of it, tests whether a battery pays, and shows what the owner and the neighbours save. The owner pays for the panels and sells only the spare power, at a price below the grid's.</p>
+        <ol class="how" id="how-steps">
+          <li><b>Find the property</b><span>address to building, from Catastro and LiDAR</span></li>
+          <li><b>Measure the roof</b><span>usable area and panel layouts</span></li>
+          <li><b>Simulate the sun</b><span>shade and weather, hour by hour</span></li>
+          <li><b>Compare with use</b><span>how much the building uses, what is spare</span></li>
+          <li><b>Match neighbours</b><span>the best group within reach</span></li>
+          <li><b>Check the money</b><span>battery, owner and neighbours</span></li>
+        </ol>
+        <div id="warnings"></div>
+        <div class="stats" id="hero-stats"></div>
+        <div class="card">
+          <div class="card-head"><h3>What every number is</h3></div>
+          <div class="controls">
+            <span class="chip" data-kind="measured">measured</span><span class="small">real data: prices, meters, Catastro</span>
+            <span class="chip" data-kind="modelled">modelled</span><span class="small">computed by the pipeline</span>
+            <span class="chip" data-kind="assumption">assumption</span><span class="small">a value we chose; listed in Sources</span>
+            <span class="chip" data-kind="reported">reported</span><span class="small">published by the real project</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="property">
+        <span class="eyebrow">Step 01 · find the property</span>
+        <h2>From an address to a building</h2>
+        <p class="lede">Type an address, a street number or a cadastral reference. The service finds the building in the Spanish Cadastre (Catastro), takes its height and roof shape from LiDAR and checks whether the roof is flat. Below, the properties we have already run.</p>
+        <form class="card" id="search" autocomplete="off">
+          <label class="field" for="addr">Address or cadastral reference
+            <span class="searchrow"><input type="search" id="addr" list="known-props" placeholder="e.g. Camí Antic de València 35, Barcelona"><button type="submit">Look up</button></span>
+          </label>
+          <datalist id="known-props"></datalist>
+          <div class="controls" id="known-buttons"></div>
+          <p class="note" id="search-msg" aria-live="polite"></p>
+        </form>
+        <div class="card" id="prop-card" hidden>
+          <div class="card-head"><h3 id="prop-title"></h3><span class="chip" data-kind="measured" id="prop-chip">measured · Catastro, ICGC</span></div>
+          <dl class="facts" id="prop-facts"></dl>
+          <div id="prop-warn"></div>
+        </div>
+        <div class="card" id="s1-map-card" hidden>
+          <div class="card-head">
+            <h3>Where the buildings are</h3>
+            <div class="seg" role="group" aria-label="Test case" id="s1-casepick"></div>
+          </div>
+          <p class="note" id="s1-map-note"></p>
+          <div id="s1-map" role="img" aria-label="Map of the host and participant buildings"></div>
+          <div class="legend" id="s1-map-legend"></div>
+          <div class="table-wrap"><table id="s1-case-table"></table></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Where each footprint comes from</h3><span class="chip" data-kind="measured">measured · Catastro, ICGC LiDAR</span></div>
+          <p class="note"><b>Catastro first, LiDAR when Catastro has nothing.</b> Step 01 takes each building's footprint from the Spanish Cadastre (Catastro). Some plots, mostly public buildings such as schools and the fire station, have a cadastral reference but no building in Catastro's building service. For those, step 01 traces the outline from ICGC LiDAR: the points more than 6 m above the ground inside the plot. Year built, use and number of homes stay unknown for these buildings.</p>
+          <p class="note"><b>Checked again in step 02.</b> Step 02 reads every building, host and participants alike, from both LiDAR and the aerial photo (ICGC orthophoto). Comparing the two with the step 01 footprint confirms that the Catastro outline is right, or shows where it is not.</p>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Known gaps in this step, and what to do about them</h3></div>
+          <div class="table-wrap"><table id="gaps-table"></table></div>
+        </div>
+      </section>
+
+      <section id="roof">
+        <span class="eyebrow">Steps 02-03 · roof and solar</span>
+        <h2>How much the roof makes</h2>
+        <p class="lede" id="roof-lede"></p>
+        <div class="card">
+          <div class="card-head">
+            <h3>Choose a panel layout</h3>
+            <div class="controls">
+              <div class="seg tabs" role="group" aria-label="Layout" id="layoutpick"></div>
+            </div>
+          </div>
+          <p class="note" id="layout-rule"></p>
+          <div class="stats" id="layout-stats"></div>
+        </div>
+        <div class="card" id="validation-card" hidden>
+          <div class="card-head"><h3>Validation: our layouts against the real panels</h3><span class="chip" data-kind="reported">reported · CEP9</span></div>
+          <p class="note" id="validation-note"></p>
+          <div class="table-wrap"><table id="validation-table"></table></div>
+          <p class="small" id="validation-detected"></p>
+        </div>
+        <div class="grid3">
+          <div class="card">
+            <div class="card-head"><h3>Solar output by month</h3><span class="chip" data-kind="modelled" id="monthly-chip">modelled · step 03</span></div>
+            <div id="monthly"></div>
+            <p class="small" id="monthly-note"></p>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Panel layout</h3><span class="small" id="panels-key">darker = produces more</span></div>
+            <div id="panels"></div>
+            <p class="small" id="panel-note"></p>
+          </div>
+        </div>
+        <div class="card" id="how-card">
+          <div class="card-head"><h3>How this layout was made</h3><span class="chip" data-kind="assumption">assumption · block rules</span></div>
+          <ol class="note steps-list">
+            <li><b>Fit.</b> Panel rows are laid on the usable roof, as many as fit.</li>
+            <li><b>Shade.</b> Panels that lose more than 40% of their sun to shade are dropped.</li>
+            <li><b>Cut-off.</b> The neat layout drops panels below 85% of the roof's best panel (<i>weak</i>).</li>
+            <li><b>Blocks.</b> Of the rest, only big enough rectangles are kept: at least 12 m² of panels, at least 2 panels wide both ways, whichever way they run. Good panels outside such a block are dropped (<i>loose</i>).</li>
+          </ol>
+          <div id="funnel"></div>
+          <div class="legend" id="funnel-legend"></div>
+        </div>
+        <div class="card" id="compare-card" hidden>
+          <div class="card-head"><h3>Another tool's panel plan, for comparison</h3></div>
+          <img id="compare-img" alt="Panel plan from another tool for the same roof" loading="lazy">
+          <p class="small" id="compare-caption"></p>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>All layouts side by side</h3><span class="chip" data-kind="assumption">assumption · block rules</span></div>
+          <div class="table-wrap"><table id="layout-table"></table></div>
+          <p class="small" id="layout-used"></p>
+        </div>
+      </section>
+
+      <section id="surplus">
+        <span class="eyebrow">Step 04 · host use vs. solar</span>
+        <h2>When the roof has power to spare</h2>
+        <p class="lede" id="surplus-lede"></p>
+        <div class="card">
+          <div class="card-head"><h3>Spare solar, every hour of the year</h3><span class="chip" data-kind="modelled">modelled · steps 04 and 07</span></div>
+          <div class="seg" role="group" aria-label="Which spare solar" id="spare-view"></div>
+          <div id="heatmap"></div>
+          <div class="legend" id="heat-legend"></div>
+          <p class="note" id="heat-sentence"></p>
+          <p class="small" id="heat-total"></p>
+        </div>
+      </section>
+
+      <section id="neighbours">
+        <span class="eyebrow" id="nb-eyebrow">Steps 05-07 · neighbours</span>
+        <h2>Which buildings use the solar</h2>
+        <p class="lede" id="nb-lede"></p>
+        <div class="card">
+          <div class="card-head">
+            <h3>Average day: solar and each building's use</h3>
+            <div class="seg" role="group" aria-label="Season" id="season">
+              <button type="button" aria-pressed="false" data-v="winter">Winter</button>
+              <button type="button" aria-pressed="true" data-v="spring_autumn">Spring and autumn</button>
+              <button type="button" aria-pressed="false" data-v="summer">Summer</button>
+            </div>
+            <div class="seg" role="group" aria-label="Day type" id="daytype">
+              <button type="button" aria-pressed="true" data-v="weekday">Weekday</button>
+              <button type="button" aria-pressed="false" data-v="weekend">Weekend</button>
+            </div>
+          </div>
+          <div id="profiles"></div>
+          <div class="legend" id="profiles-legend"></div>
+          <p class="small" id="profiles-note">Building use is <span class="chip" data-kind="assumption">assumption</span> (step 05 profiles from floor area and use type) until we have meter data. Solar and use come from the same months: winter is December-February, spring and autumn March-May and September-November, summer June-August. The Institut is closed in July and August in our use estimate, so its summer weekdays are low.</p>
+        </div>
+        <div class="card" id="match-card" hidden>
+          <div class="card-head">
+            <h3>Best group of buildings (step 07, one optimiser)</h3>
+            <div class="seg" role="group" aria-label="Sharing mode" id="matchmode"></div>
+          </div>
+          <p class="note" id="match-what"></p>
+          <div class="stats" id="match-stats"></div>
+          <div class="table-wrap"><table id="match-table"></table></div>
+          <p class="small" id="match-note"></p>
+        </div>
+        <div class="grid2">
+          <div class="card">
+            <div class="card-head"><h3>Buildings that join</h3></div>
+            <div class="blist" id="blist"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Within reach</h3><span class="small">plan view, north up</span></div>
+            <div id="map"></div>
+            <p class="small" id="map-note"></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="prices">
+        <span class="eyebrow">Step 06 · real Spanish prices</span>
+        <h2>Power costs more in the evening</h2>
+        <p class="lede" id="prices-lede"></p>
+        <div class="grid3">
+          <div class="card">
+            <div class="card-head"><h3>Regulated price (PVPC) by hour of day</h3><span class="chip" data-kind="measured">measured · REE 2023-2025</span></div>
+            <div id="pricechart"></div>
+            <div class="legend" id="price-legend"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Forecasting prices</h3><span class="chip" data-kind="modelled">modelled · step 06</span></div>
+            <p class="note">Tomorrow's prices are published the day before (the market closes at 12:00 CET). For 2 to 7 days ahead, a machine-learning model (gradient-boosted trees) was trained on 2023-2024 and tested on 2025.</p>
+            <div class="table-wrap"><table id="forecast-table"></table></div>
+            <p class="small">Mean error in €/kWh. Lower is better.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="battery">
+        <span class="eyebrow">Steps 06-08 · battery at the host</span>
+        <h2>Battery sizing</h2>
+        <p class="big-answer" id="battery-answer"></p>
+        <div class="card">
+          <div class="card-head">
+            <h3>Yearly gain vs. yearly cost, host alone</h3>
+            <label class="field" for="btype">Battery type
+              <select id="btype"></select>
+            </label>
+          </div>
+          <div id="sizing"></div>
+          <div class="legend" id="sizing-legend"></div>
+          <p class="note" id="type-note"></p>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h3 id="day-title">A day run by the battery agent</h3>
+            <div class="seg" role="group" aria-label="Example day" id="daypick"></div>
+          </div>
+          <p class="note" id="day-note"></p>
+          <div id="daychart"></div>
+          <div class="legend" id="day-legend"></div>
+          <div id="levelchart"></div>
+        </div>
+      </section>
+
+      <section id="money">
+        <span class="eyebrow">Step 08 · the owner's investment</span>
+        <h2>What the owner and the neighbours gain</h2>
+        <p class="lede">The owner pays for the panels, uses what it can and sells the rest to the guests below the grid price. Move the slider to change the guests' discount.</p>
+        <div class="card">
+          <div class="controls">
+            <label class="field" for="discount"><span>Guest discount: <b id="discount-out" class="num"></b> below the grid price</span>
+              <input type="range" id="discount" min="0" max="40" step="1" value="10">
+            </label>
+            <label class="field" for="pyear">Price year
+              <select id="pyear"></select>
+            </label>
+          </div>
+          <div class="stats" id="money-stats"></div>
+          <p class="small" id="money-note"></p>
+        </div>
+        <div class="card" id="agreed-card" hidden>
+          <div class="card-head"><h3>Two ways to share: our tool vs. CEP9's real terms</h3><span class="chip" data-kind="modelled">modelled · step 07</span></div>
+          <p class="note" id="agreed-intro"></p>
+          <div class="table-wrap"><table id="agreed-table"></table></div>
+          <p class="small" id="agreed-note"></p>
+        </div>
+      </section>
+
+      <section id="roi">
+        <span class="eyebrow">Step 08 · the owner's 25-year return</span>
+        <h2>Grid, neighbours or a battery: what pays the owner most?</h2>
+        <p class="lede">The owner pays for the panels. The host uses what it can; the options differ only in what happens to the rest: <b>A</b> sell it to the grid, <b>B</b> sell it to the neighbours at the grid price minus 10%, <b>C</b> store it in a battery for the host, <b>B+C</b> both. <b>CEP9 real terms</b> is shown for comparison: fixed shares, power given for free. Change how the guests are linked, or the discount rate, and the lines and the NPV update.</p>
+        <div class="card" id="roi-card">
+          <div class="card-head"><h3>Money the owner has made so far, discounted</h3><span class="chip" data-kind="modelled">modelled · step 08 roi.py</span></div>
+          <div class="controls">
+            <label class="field" for="roi-run">How the guests are linked
+              <select id="roi-run"></select>
+            </label>
+            <label class="field" for="roi-rate"><span>Discount rate: <b id="roi-rate-out" class="num"></b> a year</span>
+              <input type="range" id="roi-rate" min="0" max="10" step="0.5" value="5">
+            </label>
+          </div>
+          <p class="note" id="roi-sentence"></p>
+          <div id="roi-chart"></div>
+          <div class="legend" id="roi-legend"></div>
+          <p class="small" id="roi-chart-note"></p>
+          <div class="table-wrap"><table id="roi-table"></table></div>
+          <p class="small" id="roi-breakeven"></p>
+        </div>
+        <div class="card" id="roi-sens-card">
+          <div class="card-head"><h3>What moves the answer most</h3><span class="chip" data-kind="modelled">modelled · low and high values from costs.csv</span></div>
+          <p class="note">Each cost with a low and a high value is set to each in turn and every option is worked out again. "Lead" is how far the recommended option is ahead of the next best; below zero, the recommendation changes.</p>
+          <div class="table-wrap"><table id="roi-sens"></table></div>
+          <p class="small" id="roi-warnings"></p>
+        </div>
+      </section>
+
+      <section id="sources" class="sources">
+        <span class="eyebrow">Evidence</span>
+        <h2>Sources</h2>
+        <p class="lede">Every source the tool uses and what it backs up, copied from <code>docs/SOURCES.md</code> in the repository.</p>
+        <div id="sources-body"></div>
+      </section>
+      <footer class="foot"><span>Roofscapes (Re)Powered · IAAC MaAI01 Research Studio 2026-27</span><span>Breno Sader | Daria Basha | Sindhuja Davuluri</span></footer>
+    </div>
+  </main>
+</div>
+<div class="tip" id="tip" hidden></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="app.js"></script>
+</body>
+</html>

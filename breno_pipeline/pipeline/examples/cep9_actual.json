@@ -1,0 +1,303 @@
+{
+  "_about": "The real CEP9 system: all 108 panels are on the Institut Quatre Cantons roof (Camí Antic de València 37-39, yellow, 3241428DF3834A) [CEP9, email from César Ochoa, 27 Nov 2026; the tender, Projecte Executiu 2021 p5 and p8, says the same]. The Escola Pere IV (Carrer de Bilbao 103-117, red) is NOT part of CEP9: the panel rows on its roof belong to another installation. Totals from the CEP9 presentation. The blocks are the panel rectangles step 02 fits on the ICGC orthophoto (existing_panels.py, 26 Nov 2026). The old 43 red / 65 yellow split (Breno's Google Earth count, 15 Nov 2026) was dropped on 27 Nov 2026. The red roof is kept only as an extra case, 'what if the school next door joined' (red_roof_what_if).",
+  "name": "Actual (CEP9)",
+  "panels": 108,
+  "panel_wp": 540,
+  "kwp": 58.32,
+  "yearly_kwh": 73750,
+  "source": "CEP9 presentation",
+  "source_url": "https://elpoblenou.cat/wp-content/uploads/2024/10/presentacio-CEP9_v2.pptx.pdf",
+  "panel_wp_note": "58.32 kWp / 108 panels = 540 W (our calculation)",
+  "traced_by": "step 02 (existing_panels.py): panel areas on the ICGC orthophoto, checked against LiDAR and fitted as rectangles snapped to the roof edges and to whole 540 W panels; rectangles 4, 6 and 7 removed after Breno checked the photo by eye on 27 Nov 2026 (not_panels.csv and the rough test); the thin strip 5 is real panels",
+  "blocks": [
+    {
+      "name": "Institut Quatre Cantons (yellow) rectangle 1",
+      "roof": "yellow",
+      "corners": [
+        [
+          433155.03,
+          4583933.76
+        ],
+        [
+          433144.14,
+          4583942.43
+        ],
+        [
+          433136.17,
+          4583932.43
+        ],
+        [
+          433147.07,
+          4583923.76
+        ],
+        [
+          433155.03,
+          4583933.76
+        ]
+      ],
+      "panels_estimate": 60,
+      "angle_deg": 141.5
+    },
+    {
+      "name": "Institut Quatre Cantons (yellow) rectangle 2",
+      "roof": "yellow",
+      "corners": [
+        [
+          433130.36,
+          4583942.98
+        ],
+        [
+          433123.11,
+          4583948.75
+        ],
+        [
+          433120.0,
+          4583944.83
+        ],
+        [
+          433127.25,
+          4583939.06
+        ],
+        [
+          433130.36,
+          4583942.98
+        ]
+      ],
+      "panels_estimate": 16,
+      "angle_deg": 141.5
+    },
+    {
+      "name": "Institut Quatre Cantons (yellow) rectangle 3",
+      "roof": "yellow",
+      "corners": [
+        [
+          433119.76,
+          4583962.41
+        ],
+        [
+          433117.98,
+          4583963.83
+        ],
+        [
+          433110.02,
+          4583953.83
+        ],
+        [
+          433111.8,
+          4583952.41
+        ],
+        [
+          433119.76,
+          4583962.41
+        ]
+      ],
+      "panels_estimate": 10,
+      "angle_deg": 141.5
+    },
+    {
+      "name": "Institut Quatre Cantons (yellow) rectangle 4",
+      "roof": "yellow",
+      "corners": [
+        [
+          433136.92,
+          4583954.79
+        ],
+        [
+          433138.04,
+          4583956.19
+        ],
+        [
+          433131.54,
+          4583961.36
+        ],
+        [
+          433130.42,
+          4583959.95
+        ],
+        [
+          433136.92,
+          4583954.79
+        ]
+      ],
+      "panels_estimate": 5,
+      "angle_deg": 51.5
+    }
+  ],
+  "photo": {
+    "file": "cep9_roofs_photo.jpg",
+    "bounds_25831": [
+      433100.6,
+      4583917.9,
+      433198.3,
+      4584041.8
+    ],
+    "source": "ICGC orthophoto (ortofoto_color_vigent), CC BY 4.0"
+  },
+  "by_roof": [
+    {
+      "roof": "Institut Quatre Cantons (yellow)",
+      "panels": 108,
+      "note": "all 108 panels [CEP9, 27 Nov 2026]"
+    }
+  ],
+  "by_roof_source": "CEP9, email from César Ochoa, 27 Nov 2026: all 108 panels on the Institut; Escola Pere IV is not part of CEP9",
+  "detected": {
+    "yellow": {
+      "existing_panels_m2": 268.5,
+      "existing_panels_estimate": 91,
+      "existing_panels_pixels_m2": 291.1
+    }
+  },
+  "red_roof_what_if": {
+    "note": "Escola Pere IV (red) is NOT part of CEP9 [CEP9, 27 Nov 2026]. Kept only for the extra case 'what if the school next door joined' (data/pv/cep9_v2, data/host/cep9_both, data/roi/cep9_both_legal and cep9_both_wired). The rectangles below are panels of another installation seen on the orthophoto.",
+    "other_installation_blocks": [
+      {
+        "name": "Escola Pere IV (red) rectangle 1",
+        "roof": "red",
+        "corners": [
+          [
+            433160.37,
+            4583994.42
+          ],
+          [
+            433168.63,
+            4584002.56
+          ],
+          [
+            433155.11,
+            4584016.29
+          ],
+          [
+            433146.85,
+            4584008.15
+          ],
+          [
+            433160.37,
+            4583994.42
+          ]
+        ],
+        "panels_estimate": 75,
+        "angle_deg": 44.6
+      },
+      {
+        "name": "Escola Pere IV (red) rectangle 2",
+        "roof": "red",
+        "corners": [
+          [
+            433158.93,
+            4583990.04
+          ],
+          [
+            433162.92,
+            4583993.97
+          ],
+          [
+            433155.97,
+            4584001.02
+          ],
+          [
+            433151.99,
+            4583997.09
+          ],
+          [
+            433158.93,
+            4583990.04
+          ]
+        ],
+        "panels_estimate": 18,
+        "angle_deg": 44.6
+      },
+      {
+        "name": "Escola Pere IV (red) rectangle 3",
+        "roof": "red",
+        "corners": [
+          [
+            433148.99,
+            4583998.56
+          ],
+          [
+            433152.27,
+            4584001.79
+          ],
+          [
+            433146.94,
+            4584007.21
+          ],
+          [
+            433143.65,
+            4584003.97
+          ],
+          [
+            433148.99,
+            4583998.56
+          ]
+        ],
+        "panels_estimate": 12,
+        "angle_deg": 44.6
+      },
+      {
+        "name": "Escola Pere IV (red) rectangle 4",
+        "roof": "red",
+        "corners": [
+          [
+            433165.03,
+            4584010.92
+          ],
+          [
+            433166.1,
+            4584011.97
+          ],
+          [
+            433160.41,
+            4584017.74
+          ],
+          [
+            433159.34,
+            4584016.69
+          ],
+          [
+            433165.03,
+            4584010.92
+          ]
+        ],
+        "panels_estimate": 4,
+        "angle_deg": 44.6
+      },
+      {
+        "name": "Escola Pere IV (red) rectangle 5",
+        "roof": "red",
+        "corners": [
+          [
+            433171.12,
+            4584002.6
+          ],
+          [
+            433172.04,
+            4584003.51
+          ],
+          [
+            433168.11,
+            4584007.5
+          ],
+          [
+            433167.19,
+            4584006.59
+          ],
+          [
+            433171.12,
+            4584002.6
+          ]
+        ],
+        "panels_estimate": 2,
+        "angle_deg": 44.6
+      }
+    ],
+    "detected": {
+      "existing_panels_m2": 333.4,
+      "existing_panels_estimate": 111,
+      "existing_panels_pixels_m2": 321.0
+    },
+    "not_panels": "two northernmost rows on Escola Pere IV are solar water heaters (Breno, 21 Nov 2026): not counted, kept as obstacles",
+    "reserved": "Escola Pere IV south-east part (464 m2) left out of the layout: ASSUMPTION, kept free for a future extension (Breno, not confirmed); examples/cep9_reserved.geojson"
+  }
+}

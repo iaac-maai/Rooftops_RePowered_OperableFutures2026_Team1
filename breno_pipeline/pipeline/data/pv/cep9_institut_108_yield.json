@@ -1,0 +1,964 @@
+{
+  "building": {
+    "refcat": "3241428DF3834A",
+    "address": "CL BATISTA 1 BARCELONA (BARCELONA)",
+    "query": "41.404361,2.2"
+  },
+  "yield": {
+    "panels": 108,
+    "kwp": 58.32,
+    "tilt_deg": 10.0,
+    "azimuth_deg": 218.5,
+    "yearly_kwh": 77404,
+    "kwh_per_kwp": 1327,
+    "mean_shade_loss": 0.092,
+    "monthly_kwh": [
+      3135,
+      4193,
+      6607,
+      8391,
+      9571,
+      9881,
+      10130,
+      9433,
+      6263,
+      3451,
+      3370,
+      2981
+    ],
+    "peak_hour_kw": 46.73,
+    "panels_left_out": 1,
+    "max_shade_loss": 0.4,
+    "panel_wp": 540,
+    "layout": "max"
+  },
+  "usable_area_m2": 577.2,
+  "usable_file": "data\\roof\\cep9_yellow_usable.geojson",
+  "roof": {
+    "method": "lidar + photo (existing panels)",
+    "usable_area_m2": 577.2,
+    "free_area_m2": 938.2,
+    "obstacle_area_m2": 113.8,
+    "existing_panels_m2": 253.6,
+    "confidence": "medium",
+    "lower_roof_m2": 0.0,
+    "excluded": null,
+    "existing_panels_estimate": 86,
+    "existing_panels_estimate_note": "per rectangle: panels per row x rows, pitch 2.33 m along the row and 1.30 m across (540 W CEP9 real, 2.28 x 1.13 m)",
+    "existing_panels_pixels_m2": 276.1,
+    "existing_panel_rectangles": [
+      {
+        "corners": [
+          [
+            433155.03,
+            4583933.76
+          ],
+          [
+            433144.14,
+            4583942.43
+          ],
+          [
+            433136.17,
+            4583932.43
+          ],
+          [
+            433147.07,
+            4583923.76
+          ],
+          [
+            433155.03,
+            4583933.76
+          ]
+        ],
+        "angle_deg": 141.5,
+        "length_m": 13.92,
+        "width_m": 12.79,
+        "area_m2": 178.1,
+        "panels_per_row": 6,
+        "rows": 10,
+        "panels_estimate": 60,
+        "fill_share": 0.92,
+        "snapped": true,
+        "lidar_ripple_m": 0.068,
+        "raised_share": 0.0
+      },
+      {
+        "corners": [
+          [
+            433130.36,
+            4583942.98
+          ],
+          [
+            433123.11,
+            4583948.75
+          ],
+          [
+            433120.0,
+            4583944.83
+          ],
+          [
+            433127.25,
+            4583939.06
+          ],
+          [
+            433130.36,
+            4583942.98
+          ]
+        ],
+        "angle_deg": 141.5,
+        "length_m": 9.27,
+        "width_m": 5.01,
+        "area_m2": 46.4,
+        "panels_per_row": 4,
+        "rows": 4,
+        "panels_estimate": 16,
+        "fill_share": 0.95,
+        "snapped": true,
+        "lidar_ripple_m": 0.067,
+        "raised_share": 0.0
+      },
+      {
+        "corners": [
+          [
+            433119.76,
+            4583962.41
+          ],
+          [
+            433117.98,
+            4583963.83
+          ],
+          [
+            433110.02,
+            4583953.83
+          ],
+          [
+            433111.8,
+            4583952.41
+          ],
+          [
+            433119.76,
+            4583962.41
+          ]
+        ],
+        "angle_deg": 141.5,
+        "length_m": 2.28,
+        "width_m": 12.79,
+        "area_m2": 29.1,
+        "panels_per_row": 1,
+        "rows": 10,
+        "panels_estimate": 10,
+        "fill_share": 0.96,
+        "snapped": true,
+        "lidar_ripple_m": 0.065,
+        "raised_share": 0.0
+      }
+    ],
+    "existing_panel_rectangles_dropped": [
+      {
+        "corners": [
+          [
+            433134.9,
+            4583945.62
+          ],
+          [
+            433133.12,
+            4583947.04
+          ],
+          [
+            433126.77,
+            4583939.06
+          ],
+          [
+            433128.56,
+            4583937.64
+          ],
+          [
+            433134.9,
+            4583945.62
+          ]
+        ],
+        "angle_deg": 141.5,
+        "length_m": 2.28,
+        "width_m": 10.19,
+        "area_m2": 23.2,
+        "panels_per_row": 1,
+        "rows": 8,
+        "panels_estimate": 8,
+        "fill_share": 0.85,
+        "snapped": true,
+        "lidar_ripple_m": 0.142,
+        "raised_share": 0.12,
+        "dropped_because": "not_panels.csv: not panels: checked by eye, Breno 27 Nov 2026 (Institut Quatre Cantons, step 02 rectangle 4 on data/roof/cep9_yellow_existing_numbered.png: narrow rectangle next to the middle-left panel block)"
+      },
+      {
+        "corners": [
+          [
+            433128.62,
+            4583951.84
+          ],
+          [
+            433127.21,
+            4583952.96
+          ],
+          [
+            433124.78,
+            4583949.91
+          ],
+          [
+            433126.19,
+            4583948.78
+          ],
+          [
+            433128.62,
+            4583951.84
+          ]
+        ],
+        "angle_deg": 141.5,
+        "length_m": 1.8,
+        "width_m": 3.9,
+        "area_m2": 7.0,
+        "panels_per_row": 2,
+        "rows": 1,
+        "panels_estimate": 2,
+        "fill_share": 0.94,
+        "snapped": false,
+        "lidar_ripple_m": 0.117,
+        "raised_share": 0.31,
+        "dropped_because": "not_panels.csv: not panels: checked by eye, Breno 27 Nov 2026 (Institut Quatre Cantons, step 02 rectangle 7 on data/roof/cep9_yellow_existing_numbered.png: small square in the middle)"
+      }
+    ],
+    "existing_panel_blocks": [
+      {
+        "area_m2": 164.0,
+        "x": 433145.56,
+        "y": 4583933.11,
+        "lidar_ripple_m": 0.08,
+        "angle_deg": 141.5,
+        "rectangles": 1
+      },
+      {
+        "area_m2": 80.0,
+        "x": 433126.92,
+        "y": 4583944.11,
+        "lidar_ripple_m": 0.13,
+        "angle_deg": 141.5,
+        "rectangles": 3
+      },
+      {
+        "area_m2": 32.1,
+        "x": 433115.02,
+        "y": 4583958.25,
+        "lidar_ripple_m": 0.07,
+        "angle_deg": 141.5,
+        "rectangles": 1
+      }
+    ],
+    "roof_angle_deg": 141.5,
+    "not_panels": [
+      "not panels: checked by eye, Breno 27 Nov 2026 (Institut Quatre Cantons, step 02 rectangle 4 on data/roof/cep9_yellow_existing_numbered.png: narrow rectangle next to the middle-left panel block)",
+      "not panels: checked by eye, Breno 27 Nov 2026 (Institut Quatre Cantons, step 02 rectangle 5 on data/roof/cep9_yellow_existing_numbered.png: small rectangle in the upper middle)",
+      "not panels: checked by eye, Breno 27 Nov 2026 (Institut Quatre Cantons, step 02 rectangle 6 on data/roof/cep9_yellow_existing_numbered.png: small square in the middle)",
+      "not panels: checked by eye, Breno 27 Nov 2026 (Institut Quatre Cantons, step 02 rectangle 7 on data/roof/cep9_yellow_existing_numbered.png: small square in the middle)"
+    ],
+    "usable_empty_roof_m2": 577.2,
+    "usable_new_only_m2": 305.0,
+    "roof_state": "empty"
+  },
+  "lidar": {
+    "roof_area_m2": 1082.0,
+    "lidar_coverage": 0.972,
+    "surfaces": [
+      {
+        "height_m": 15.25,
+        "area_m2": 828.8,
+        "level": "main"
+      },
+      {
+        "height_m": 17.86,
+        "area_m2": 47.5,
+        "level": "main"
+      },
+      {
+        "height_m": 17.91,
+        "area_m2": 37.0,
+        "level": "main"
+      },
+      {
+        "height_m": 17.89,
+        "area_m2": 25.0,
+        "level": "main"
+      }
+    ],
+    "obstacles": [
+      {
+        "area_m2": 42.0,
+        "height_m": 2.04,
+        "x": 433112.26,
+        "y": 4583963.38
+      },
+      {
+        "area_m2": 11.75,
+        "height_m": 1.45,
+        "x": 433129.35,
+        "y": 4583949.61
+      },
+      {
+        "area_m2": 11.25,
+        "height_m": 1.46,
+        "x": 433132.56,
+        "y": 4583946.81
+      },
+      {
+        "area_m2": 10.5,
+        "height_m": 1.45,
+        "x": 433125.71,
+        "y": 4583952.06
+      },
+      {
+        "area_m2": 6.25,
+        "height_m": 2.95,
+        "x": 433125.97,
+        "y": 4583965.93
+      },
+      {
+        "area_m2": 5.25,
+        "height_m": 0.45,
+        "x": 433130.96,
+        "y": 4583958.04
+      },
+      {
+        "area_m2": 3.5,
+        "height_m": 0.43,
+        "x": 433124.32,
+        "y": 4583958.96
+      },
+      {
+        "area_m2": 3.25,
+        "height_m": 1.61,
+        "x": 433138.25,
+        "y": 4583952.75
+      },
+      {
+        "area_m2": 3.25,
+        "height_m": -0.08,
+        "x": 433147.52,
+        "y": 4583946.4
+      },
+      {
+        "area_m2": 2.5,
+        "height_m": 0.07,
+        "x": 433153.3,
+        "y": 4583941.85
+      },
+      {
+        "area_m2": 1.75,
+        "height_m": 0.42,
+        "x": 433142.18,
+        "y": 4583942.75
+      },
+      {
+        "area_m2": 1.75,
+        "height_m": 0.27,
+        "x": 433137.18,
+        "y": 4583936.46
+      },
+      {
+        "area_m2": 1.0,
+        "height_m": -1.56,
+        "x": 433152.0,
+        "y": 4583942.25
+      },
+      {
+        "area_m2": 1.0,
+        "height_m": 0.33,
+        "x": 433139.5,
+        "y": 4583939.5
+      },
+      {
+        "area_m2": 0.75,
+        "height_m": 0.08,
+        "x": 433123.75,
+        "y": 4583962.92
+      },
+      {
+        "area_m2": 0.75,
+        "height_m": 2.81,
+        "x": 433146.42,
+        "y": 4583944.92
+      },
+      {
+        "area_m2": 0.75,
+        "height_m": 0.32,
+        "x": 433157.08,
+        "y": 4583936.75
+      },
+      {
+        "area_m2": 0.5,
+        "height_m": 0.32,
+        "x": 433119.25,
+        "y": 4583951.0
+      },
+      {
+        "area_m2": 0.5,
+        "height_m": 0.27,
+        "x": 433146.5,
+        "y": 4583950.25
+      },
+      {
+        "area_m2": 0.5,
+        "height_m": -2.8,
+        "x": 433153.0,
+        "y": 4583943.75
+      },
+      {
+        "area_m2": 0.5,
+        "height_m": 0.23,
+        "x": 433124.5,
+        "y": 4583940.75
+      },
+      {
+        "area_m2": 0.5,
+        "height_m": 2.74,
+        "x": 433151.0,
+        "y": 4583940.5
+      },
+      {
+        "area_m2": 0.5,
+        "height_m": 0.26,
+        "x": 433154.5,
+        "y": 4583933.0
+      }
+    ],
+    "obstacle_area_m2": 113.8,
+    "noise_area_m2": 3.5,
+    "free_area_m2": 938.2,
+    "usable_area_m2": 646.8,
+    "lower_roof_m2": 0.0,
+    "lower_roofs_included": false
+  },
+  "panels": [
+    {
+      "x": 433110.52,
+      "y": 4583954.71,
+      "kwh_year": 701.8,
+      "shade_loss": 0.111
+    },
+    {
+      "x": 433119.63,
+      "y": 4583947.46,
+      "kwh_year": 711.9,
+      "shade_loss": 0.098
+    },
+    {
+      "x": 433121.46,
+      "y": 4583946.01,
+      "kwh_year": 713.0,
+      "shade_loss": 0.097
+    },
+    {
+      "x": 433123.28,
+      "y": 4583944.56,
+      "kwh_year": 709.8,
+      "shade_loss": 0.1
+    },
+    {
+      "x": 433125.1,
+      "y": 4583943.11,
+      "kwh_year": 709.6,
+      "shade_loss": 0.101
+    },
+    {
+      "x": 433137.86,
+      "y": 4583932.96,
+      "kwh_year": 710.6,
+      "shade_loss": 0.099
+    },
+    {
+      "x": 433139.68,
+      "y": 4583931.51,
+      "kwh_year": 713.6,
+      "shade_loss": 0.095
+    },
+    {
+      "x": 433141.5,
+      "y": 4583930.06,
+      "kwh_year": 709.1,
+      "shade_loss": 0.101
+    },
+    {
+      "x": 433143.32,
+      "y": 4583928.61,
+      "kwh_year": 709.4,
+      "shade_loss": 0.101
+    },
+    {
+      "x": 433145.15,
+      "y": 4583927.16,
+      "kwh_year": 698.7,
+      "shade_loss": 0.114
+    },
+    {
+      "x": 433111.48,
+      "y": 4583955.92,
+      "kwh_year": 712.8,
+      "shade_loss": 0.097
+    },
+    {
+      "x": 433120.59,
+      "y": 4583948.67,
+      "kwh_year": 718.7,
+      "shade_loss": 0.089
+    },
+    {
+      "x": 433122.41,
+      "y": 4583947.22,
+      "kwh_year": 719.1,
+      "shade_loss": 0.089
+    },
+    {
+      "x": 433124.24,
+      "y": 4583945.77,
+      "kwh_year": 715.7,
+      "shade_loss": 0.093
+    },
+    {
+      "x": 433126.06,
+      "y": 4583944.32,
+      "kwh_year": 720.3,
+      "shade_loss": 0.087
+    },
+    {
+      "x": 433138.82,
+      "y": 4583934.16,
+      "kwh_year": 724.9,
+      "shade_loss": 0.081
+    },
+    {
+      "x": 433140.64,
+      "y": 4583932.71,
+      "kwh_year": 717.5,
+      "shade_loss": 0.09
+    },
+    {
+      "x": 433142.46,
+      "y": 4583931.26,
+      "kwh_year": 713.6,
+      "shade_loss": 0.095
+    },
+    {
+      "x": 433144.28,
+      "y": 4583929.81,
+      "kwh_year": 712.6,
+      "shade_loss": 0.096
+    },
+    {
+      "x": 433146.1,
+      "y": 4583928.36,
+      "kwh_year": 702.6,
+      "shade_loss": 0.109
+    },
+    {
+      "x": 433112.44,
+      "y": 4583957.12,
+      "kwh_year": 723.8,
+      "shade_loss": 0.084
+    },
+    {
+      "x": 433121.55,
+      "y": 4583949.87,
+      "kwh_year": 729.0,
+      "shade_loss": 0.077
+    },
+    {
+      "x": 433123.37,
+      "y": 4583948.42,
+      "kwh_year": 731.3,
+      "shade_loss": 0.074
+    },
+    {
+      "x": 433125.19,
+      "y": 4583946.97,
+      "kwh_year": 726.1,
+      "shade_loss": 0.08
+    },
+    {
+      "x": 433139.77,
+      "y": 4583935.37,
+      "kwh_year": 728.4,
+      "shade_loss": 0.077
+    },
+    {
+      "x": 433141.6,
+      "y": 4583933.92,
+      "kwh_year": 724.9,
+      "shade_loss": 0.081
+    },
+    {
+      "x": 433143.42,
+      "y": 4583932.47,
+      "kwh_year": 720.0,
+      "shade_loss": 0.087
+    },
+    {
+      "x": 433145.24,
+      "y": 4583931.02,
+      "kwh_year": 714.3,
+      "shade_loss": 0.094
+    },
+    {
+      "x": 433147.06,
+      "y": 4583929.57,
+      "kwh_year": 701.6,
+      "shade_loss": 0.11
+    },
+    {
+      "x": 433113.4,
+      "y": 4583958.33,
+      "kwh_year": 731.3,
+      "shade_loss": 0.074
+    },
+    {
+      "x": 433140.73,
+      "y": 4583936.57,
+      "kwh_year": 732.8,
+      "shade_loss": 0.071
+    },
+    {
+      "x": 433142.55,
+      "y": 4583935.12,
+      "kwh_year": 722.5,
+      "shade_loss": 0.084
+    },
+    {
+      "x": 433144.38,
+      "y": 4583933.67,
+      "kwh_year": 721.5,
+      "shade_loss": 0.085
+    },
+    {
+      "x": 433146.2,
+      "y": 4583932.22,
+      "kwh_year": 714.2,
+      "shade_loss": 0.094
+    },
+    {
+      "x": 433148.02,
+      "y": 4583930.77,
+      "kwh_year": 701.8,
+      "shade_loss": 0.11
+    },
+    {
+      "x": 433141.69,
+      "y": 4583937.78,
+      "kwh_year": 736.6,
+      "shade_loss": 0.067
+    },
+    {
+      "x": 433143.51,
+      "y": 4583936.33,
+      "kwh_year": 727.1,
+      "shade_loss": 0.078
+    },
+    {
+      "x": 433145.33,
+      "y": 4583934.88,
+      "kwh_year": 727.5,
+      "shade_loss": 0.078
+    },
+    {
+      "x": 433147.16,
+      "y": 4583933.43,
+      "kwh_year": 718.7,
+      "shade_loss": 0.089
+    },
+    {
+      "x": 433148.98,
+      "y": 4583931.98,
+      "kwh_year": 705.6,
+      "shade_loss": 0.105
+    },
+    {
+      "x": 433115.31,
+      "y": 4583960.73,
+      "kwh_year": 742.6,
+      "shade_loss": 0.06
+    },
+    {
+      "x": 433142.65,
+      "y": 4583938.98,
+      "kwh_year": 731.7,
+      "shade_loss": 0.073
+    },
+    {
+      "x": 433144.47,
+      "y": 4583937.53,
+      "kwh_year": 729.0,
+      "shade_loss": 0.076
+    },
+    {
+      "x": 433146.29,
+      "y": 4583936.08,
+      "kwh_year": 725.7,
+      "shade_loss": 0.08
+    },
+    {
+      "x": 433148.12,
+      "y": 4583934.63,
+      "kwh_year": 719.8,
+      "shade_loss": 0.088
+    },
+    {
+      "x": 433149.94,
+      "y": 4583933.18,
+      "kwh_year": 705.2,
+      "shade_loss": 0.106
+    },
+    {
+      "x": 433116.27,
+      "y": 4583961.94,
+      "kwh_year": 742.8,
+      "shade_loss": 0.06
+    },
+    {
+      "x": 433143.61,
+      "y": 4583940.18,
+      "kwh_year": 730.5,
+      "shade_loss": 0.075
+    },
+    {
+      "x": 433145.43,
+      "y": 4583938.73,
+      "kwh_year": 724.6,
+      "shade_loss": 0.082
+    },
+    {
+      "x": 433147.25,
+      "y": 4583937.28,
+      "kwh_year": 723.6,
+      "shade_loss": 0.083
+    },
+    {
+      "x": 433149.07,
+      "y": 4583935.83,
+      "kwh_year": 722.2,
+      "shade_loss": 0.085
+    },
+    {
+      "x": 433150.9,
+      "y": 4583934.38,
+      "kwh_year": 711.9,
+      "shade_loss": 0.098
+    },
+    {
+      "x": 433117.23,
+      "y": 4583963.14,
+      "kwh_year": 739.7,
+      "shade_loss": 0.064
+    },
+    {
+      "x": 433144.57,
+      "y": 4583941.39,
+      "kwh_year": 722.9,
+      "shade_loss": 0.085
+    },
+    {
+      "x": 433146.39,
+      "y": 4583939.94,
+      "kwh_year": 716.6,
+      "shade_loss": 0.093
+    },
+    {
+      "x": 433148.21,
+      "y": 4583938.49,
+      "kwh_year": 716.6,
+      "shade_loss": 0.092
+    },
+    {
+      "x": 433150.03,
+      "y": 4583937.04,
+      "kwh_year": 719.8,
+      "shade_loss": 0.089
+    },
+    {
+      "x": 433151.85,
+      "y": 4583935.59,
+      "kwh_year": 709.1,
+      "shade_loss": 0.102
+    },
+    {
+      "x": 433118.19,
+      "y": 4583964.35,
+      "kwh_year": 731.3,
+      "shade_loss": 0.074
+    },
+    {
+      "x": 433127.3,
+      "y": 4583957.1,
+      "kwh_year": 741.1,
+      "shade_loss": 0.063
+    },
+    {
+      "x": 433129.12,
+      "y": 4583955.65,
+      "kwh_year": 746.1,
+      "shade_loss": 0.056
+    },
+    {
+      "x": 433130.94,
+      "y": 4583954.2,
+      "kwh_year": 719.1,
+      "shade_loss": 0.089
+    },
+    {
+      "x": 433132.77,
+      "y": 4583952.75,
+      "kwh_year": 726.5,
+      "shade_loss": 0.08
+    },
+    {
+      "x": 433134.59,
+      "y": 4583951.3,
+      "kwh_year": 667.6,
+      "shade_loss": 0.154
+    },
+    {
+      "x": 433136.41,
+      "y": 4583949.84,
+      "kwh_year": 706.6,
+      "shade_loss": 0.105
+    },
+    {
+      "x": 433145.52,
+      "y": 4583942.59,
+      "kwh_year": 682.1,
+      "shade_loss": 0.137
+    },
+    {
+      "x": 433147.35,
+      "y": 4583941.14,
+      "kwh_year": 680.7,
+      "shade_loss": 0.139
+    },
+    {
+      "x": 433149.17,
+      "y": 4583939.69,
+      "kwh_year": 675.5,
+      "shade_loss": 0.145
+    },
+    {
+      "x": 433150.99,
+      "y": 4583938.24,
+      "kwh_year": 693.3,
+      "shade_loss": 0.123
+    },
+    {
+      "x": 433152.81,
+      "y": 4583936.79,
+      "kwh_year": 695.1,
+      "shade_loss": 0.12
+    },
+    {
+      "x": 433119.15,
+      "y": 4583965.55,
+      "kwh_year": 716.4,
+      "shade_loss": 0.093
+    },
+    {
+      "x": 433120.97,
+      "y": 4583964.1,
+      "kwh_year": 615.3,
+      "shade_loss": 0.223
+    },
+    {
+      "x": 433139.19,
+      "y": 4583949.6,
+      "kwh_year": 587.1,
+      "shade_loss": 0.259
+    },
+    {
+      "x": 433153.77,
+      "y": 4583938.0,
+      "kwh_year": 665.2,
+      "shade_loss": 0.16
+    },
+    {
+      "x": 433120.11,
+      "y": 4583966.76,
+      "kwh_year": 670.2,
+      "shade_loss": 0.15
+    },
+    {
+      "x": 433141.97,
+      "y": 4583949.35,
+      "kwh_year": 770.9,
+      "shade_loss": 0.025
+    },
+    {
+      "x": 433143.8,
+      "y": 4583947.9,
+      "kwh_year": 772.7,
+      "shade_loss": 0.022
+    },
+    {
+      "x": 433154.73,
+      "y": 4583939.2,
+      "kwh_year": 757.0,
+      "shade_loss": 0.041
+    },
+    {
+      "x": 433121.06,
+      "y": 4583967.96,
+      "kwh_year": 653.8,
+      "shade_loss": 0.17
+    },
+    {
+      "x": 433141.11,
+      "y": 4583952.01,
+      "kwh_year": 776.9,
+      "shade_loss": 0.017
+    },
+    {
+      "x": 433142.93,
+      "y": 4583950.56,
+      "kwh_year": 771.8,
+      "shade_loss": 0.023
+    },
+    {
+      "x": 433144.75,
+      "y": 4583949.11,
+      "kwh_year": 775.4,
+      "shade_loss": 0.019
+    },
+    {
+      "x": 433155.69,
+      "y": 4583940.41,
+      "kwh_year": 765.6,
+      "shade_loss": 0.031
+    },
+    {
+      "x": 433122.02,
+      "y": 4583969.16,
+      "kwh_year": 669.0,
+      "shade_loss": 0.151
+    },
+    {
+      "x": 433156.65,
+      "y": 4583941.61,
+      "kwh_year": 769.4,
+      "shade_loss": 0.027
+    }
+  ],
+  "orientation": {
+    "mode": "building",
+    "azimuth_deg": 218.5,
+    "tried": null
+  },
+  "scaled": {
+    "from_panels": 85,
+    "to_panels": 108,
+    "factor": 1.270588,
+    "from_yearly_kwh": 60920,
+    "assumption": "ASSUMPTION: the extra panels make as much as the average modelled panel, every hour",
+    "why": "the real plant is East-West ('Delta Wing', 10 deg, back to back); our layout only fits 85 south-facing panels [CEP9, email from César Ochoa, 27 Nov 2026]"
+  }
+}

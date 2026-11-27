@@ -1,0 +1,178 @@
+{
+  "building": {
+    "refcat": "3241427DF3834A",
+    "address": "CL BILBAO 103 BARCELONA (BARCELONA)",
+    "query": "Cam\u00ed Antic de Val\u00e8ncia 35, Barcelona",
+    "year_built": 2008,
+    "dwellings": 0
+  },
+  "roof": {
+    "method": "lidar + photo (existing panels)",
+    "usable_area_m2": 627.5,
+    "free_area_m2": 1203.8,
+    "obstacle_area_m2": 183.5,
+    "existing_panels_m2": 321.0,
+    "confidence": "medium",
+    "lower_roof_m2": 0.0,
+    "excluded": null,
+    "existing_panels_estimate": 93,
+    "existing_panels_estimate_note": "block area x 0.75 (ASSUMPTION: share covered by panels) / 2.58 m2 per panel",
+    "existing_panel_blocks": [
+      {
+        "area_m2": 321.0,
+        "x": 433157.7,
+        "y": 4584003.93,
+        "lidar_ripple_m": 1.7
+      }
+    ],
+    "not_panels": [],
+    "reserved_m2": 464.0,
+    "reserved_reason": "ASSUMPTION: kept free for a future extension (Breno, 21 Nov 2026, not confirmed); no panels there in reality",
+    "usable_empty_roof_m2": 627.5,
+    "usable_new_only_m2": 263.2,
+    "roof_state": "empty"
+  },
+  "lidar": {
+    "roof_area_m2": 1425.5,
+    "lidar_coverage": 0.973,
+    "surfaces": [
+      {
+        "height_m": 14.15,
+        "area_m2": 768.8,
+        "level": "main"
+      },
+      {
+        "height_m": 8.64,
+        "area_m2": 316.8,
+        "level": "main"
+      },
+      {
+        "height_m": 14.94,
+        "area_m2": 90.2,
+        "level": "main"
+      },
+      {
+        "height_m": 11.65,
+        "area_m2": 28.0,
+        "level": "main"
+      }
+    ],
+    "obstacles": [
+      {
+        "area_m2": 79.5,
+        "height_m": 4.02,
+        "x": 433172.69,
+        "y": 4583996.0
+      },
+      {
+        "area_m2": 27.25,
+        "height_m": 5.33,
+        "x": 433160.27,
+        "y": 4584015.67
+      },
+      {
+        "area_m2": 13.0,
+        "height_m": 0.27,
+        "x": 433150.03,
+        "y": 4584000.66
+      },
+      {
+        "area_m2": 12.25,
+        "height_m": 0.21,
+        "x": 433163.25,
+        "y": 4583990.17
+      },
+      {
+        "area_m2": 12.0,
+        "height_m": -6.78,
+        "x": 433176.72,
+        "y": 4583979.66
+      },
+      {
+        "area_m2": 10.25,
+        "height_m": 1.74,
+        "x": 433157.52,
+        "y": 4584028.41
+      },
+      {
+        "area_m2": 9.25,
+        "height_m": 1.79,
+        "x": 433154.75,
+        "y": 4584032.24
+      },
+      {
+        "area_m2": 5.5,
+        "height_m": 1.6,
+        "x": 433171.2,
+        "y": 4584014.3
+      },
+      {
+        "area_m2": 1.5,
+        "height_m": 1.47,
+        "x": 433160.92,
+        "y": 4584020.75
+      },
+      {
+        "area_m2": 1.0,
+        "height_m": 1.12,
+        "x": 433163.25,
+        "y": 4584019.62
+      },
+      {
+        "area_m2": 1.0,
+        "height_m": 1.55,
+        "x": 433165.5,
+        "y": 4584019.38
+      },
+      {
+        "area_m2": 1.0,
+        "height_m": 0.39,
+        "x": 433167.5,
+        "y": 4584018.0
+      },
+      {
+        "area_m2": 1.0,
+        "height_m": 1.27,
+        "x": 433170.88,
+        "y": 4584009.88
+      },
+      {
+        "area_m2": 0.75,
+        "height_m": 1.38,
+        "x": 433151.75,
+        "y": 4584024.58
+      },
+      {
+        "area_m2": 0.75,
+        "height_m": 1.29,
+        "x": 433153.42,
+        "y": 4584022.75
+      },
+      {
+        "area_m2": 0.75,
+        "height_m": 0.07,
+        "x": 433167.08,
+        "y": 4584003.42
+      },
+      {
+        "area_m2": 0.5,
+        "height_m": -0.11,
+        "x": 433148.0,
+        "y": 4584030.5
+      },
+      {
+        "area_m2": 0.5,
+        "height_m": 1.54,
+        "x": 433157.5,
+        "y": 4584021.75
+      }
+    ],
+    "obstacle_area_m2": 183.5,
+    "noise_area_m2": 5.8,
+    "free_area_m2": 1203.8,
+    "usable_area_m2": 885.0,
+    "lower_roof_m2": 0.0,
+    "lower_roofs_included": false
+  },
+  "photo_error": null
+}
