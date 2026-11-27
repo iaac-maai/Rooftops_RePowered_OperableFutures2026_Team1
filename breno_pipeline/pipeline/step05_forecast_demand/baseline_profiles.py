@@ -44,7 +44,8 @@ MONTH = np.array([1.15, 1.1, 1.0, 0.9, 0.85, 0.95, 1.1, 1.05, 0.95, 0.9, 1.0, 1.
 WEEKEND_HOME = 1.1   # people at home more
 # ASSUMPTION: offices use 120 kWh per m2 a year, open 8:00-18:00 Monday-Friday,
 # August at 60%. Schools (Catastro "public services") 60 kWh per m2, open 8:00-17:00
-# Monday-Friday, closed in July and August and over Christmas.
+# Monday-Friday, closed in July and August, over Christmas (23 Dec-7 Jan) and at Easter
+# (Monday of Holy Week to Easter Monday, as the Catalan school calendar; added 27 Nov 2026).
 OFFICE_KWH_PER_M2 = 120.0
 SCHOOL_KWH_PER_M2 = 60.0
 OFFICE_OPEN = (8, 18)
@@ -160,6 +161,33 @@ def hourly_shapes(times_utc, profile_path=PROFILE_PATH):
     return home / home.sum(), shop / shop.sum()
 
 
+def easter_sunday(year):
+    """Date of Easter Sunday (Gregorian calendar, the 'anonymous' computus)."""
+    a, b, c = year % 19, year // 100, year % 100
+    d, e = b // 4, b % 4
+    g = (8 * b + 13) // 25
+    h = (19 * a + b - d - g + 15) % 30
+    i, k = c // 4, c % 4
+    l = (32 + 2 * e + 2 * i - h - k) % 7
+    m = (a + 11 * h + 19 * l) // 433
+    month = (h + l - 7 * m + 90) // 25
+    day = (h + l - 7 * m + 33 * month + 19) % 32
+    return np.datetime64(f"{year:04d}-{month:02d}-{day:02d}")
+
+
+def easter_holidays(days):
+    """True on the Catalan school Easter holidays: Monday of Holy Week to Easter Monday (Easter Sunday - 6
+    to + 1 day). 2023: 3-10 April, as set by Ordre EDU/113/2022 [school calendar 2022-23, docs/SOURCES.md].
+    days: datetime64 dates (or times; the date part is used)."""
+    days = np.asarray(days, dtype="datetime64[D]")
+    years = days.astype("datetime64[Y]").astype(int) + 1970
+    out = np.zeros(days.shape, bool)
+    for y in np.unique(years):
+        sunday = easter_sunday(int(y))
+        out |= (days >= sunday - np.timedelta64(6, "D")) & (days <= sunday + np.timedelta64(1, "D"))
+    return out
+
+
 def profile_shapes(times_utc, profile_path=PROFILE_PATH, model_dir=None):
     """8760-hour shapes that each sum to 1, for home, shop, office and school.
 
@@ -176,6 +204,7 @@ def profile_shapes(times_utc, profile_path=PROFILE_PATH, model_dir=None):
     office = np.where(workday & (hour >= OFFICE_OPEN[0]) & (hour < OFFICE_OPEN[1]), 1.0, OFFICE_CLOSED_SHARE)
     office = office * np.where(month == 8, 0.6, 1.0)
     holidays = (month == 7) | (month == 8) | ((month == 12) & (day_of_month >= 23)) | ((month == 1) & (day_of_month <= 7))
+    holidays |= easter_holidays(t)
     school = np.where(workday & ~holidays & (hour >= SCHOOL_OPEN[0]) & (hour < SCHOOL_OPEN[1]), 1.0, SCHOOL_CLOSED_SHARE)
     return {"home": home, "shop": shop, "office": office / office.sum(), "school": school / school.sum()}
 

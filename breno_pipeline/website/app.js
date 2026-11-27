@@ -591,7 +591,7 @@
       }
       const area = v.traced.reduce((a, t) => a + t.area_m2, 0);
       const diff = v.model_kwh_per_kwp ? (v.model_kwh_per_kwp / v.kwh_per_kwp - 1) : null;
-      $("panel-note").textContent = `Outlined: ${v.traced.length} panel rectangles (${fmt(area)} m²) found by ${v.traced_by}. Not checked against an installer plan. ` +
+      $("panel-note").textContent = `Outlined: ${v.traced.length} panel rectangles (${fmt(area)} m²) found by ${v.traced_by}. Not yet checked against an installer plan. ` +
         (v.model_kwh_per_kwp ? `On these spots our model gives ${fmt(v.model_kwh_per_kwp)} kWh per kWp, against ${fmt(v.kwh_per_kwp)} reported (${diff >= 0 ? "+" : ""}${pct(diff)}), from the ${v.model_panels_on_blocks} model panels inside the blocks.` : "") +
         (ph ? ` Photo: ${ph.source}.` : "");
     }

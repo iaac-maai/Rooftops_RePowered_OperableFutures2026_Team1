@@ -5,15 +5,16 @@
 
 Why: CEP9's real plant is 108 x 540 W = 58.32 kWp on the Institut, laid out East-West ("Delta Wing",
 10 degrees, back to back, no gaps between rows) [CEP9, email from César Ochoa, 27 Nov 2026]. Our step 02
-layout only makes south-facing rows with shade gaps, so only 97 panels fit. Until step 02/03 has an
-East-West option, the 97-panel hourly output is multiplied by 108 / 97.
+layout only makes south-facing rows with shade gaps, so fewer panels fit (85 on 27 Nov 2026, once the
+look-alike rectangles became obstacles; 97 before). Until step 02/03 has an East-West option, the
+modelled hourly output is multiplied by 108 / (modelled panels).
 
 ASSUMPTION: every extra panel makes as much as the average modelled panel, every hour. (A real East-West
 plant makes a flatter day curve, more in the morning and evening and less at noon; that is not modelled.)
 
 Writes <out>_hourly.csv (same columns as step 03) and <out>_yield.json (a copy of the yield file with the
 panels, kWp, yearly and monthly kWh and peak scaled, and a "scaled" block saying how).
-The panel drawing (panel_list) stays the 97 panels our layout fits.
+The panel drawing (panel_list) stays the panels our layout fits.
 """
 import argparse
 import csv

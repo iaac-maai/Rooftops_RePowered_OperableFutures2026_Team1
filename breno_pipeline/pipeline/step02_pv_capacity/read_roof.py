@@ -216,6 +216,12 @@ def read_roof(laz_dir, address=None, lat=None, lon=None, out="roof", roof_state=
              "properties": {k: v for k, v in r.items() if k != "corners"}}
             for r in summary["existing_panel_rectangles"]]}
         Path(f"{out}_existing_panels.geojson").write_text(json.dumps(rfc), encoding="utf-8")
+        # rectangles the check dropped (not_panels.csv, too small, or rough), with the reason, for checking by eye
+        dfc = {"type": "FeatureCollection", "crs": crs, "features": [
+            {"type": "Feature", "geometry": {"type": "Polygon", "coordinates": [r["corners"]]},
+             "properties": {k: v for k, v in r.items() if k != "corners"}}
+            for r in summary.get("existing_panel_rectangles_dropped", [])]}
+        Path(f"{out}_existing_panels_dropped.geojson").write_text(json.dumps(dfc), encoding="utf-8")
         # the raw pixels, for debugging the detector
         ppoly = grid.finer(FACTOR).cells_to_polygon(found["pixels"])
         pfc = {"type": "FeatureCollection", "crs": crs,

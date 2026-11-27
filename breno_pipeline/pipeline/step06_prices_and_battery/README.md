@@ -99,7 +99,7 @@ Before that there is a quick **screen** with no battery model: day by day, how m
 
 ## Result so far
 
-Run of 27 Nov 2026 on the CEP9 Institut, the real plant on the Institut (108 panels of 540 W, 58.32 kWp: our 97-panel output × 108/97, ASSUMPTION; all CEP9 panels are on the Institut [CEP9, 27 Nov 2026]), at €590/kWh installed: **no size pays for itself for the host alone.** The smallest (5 kWh) gains €157 a year but costs €414 a year; the break-even installed price is €96-224/kWh depending on size (`data\battery\cep9\battery_sizing.json`). The Institut's use is still an estimate (the 2018 average of Barcelona's municipal institutes, not its meter). Step 08's `roi.py` looks at the same sizes over 25 years with replacements and the monthly cap on grid compensation. **Do not use this to decide a battery size** until there is real meter data and a Barcelona installer's quote.
+Run of 27 Nov 2026 on the CEP9 Institut, the real plant on the Institut (108 panels of 540 W, 58.32 kWp: our 85-panel output × 108/85, ASSUMPTION; all CEP9 panels are on the Institut [CEP9, 27 Nov 2026]), at €590/kWh installed: **no size pays for itself for the host alone.** The smallest (5 kWh) gains €156 a year but costs €406 a year; the break-even installed price is €97-227/kWh depending on size (`data\battery\cep9\battery_sizing.json`). The Institut's use is still an estimate (the 2018 average of Barcelona's municipal institutes, not its meter). Step 08's `roi.py` looks at the same sizes over 25 years with replacements and the monthly cap on grid compensation. **Do not use this to decide a battery size** until there is real meter data and a Barcelona installer's quote.
 
 ## Battery numbers and where they come from
 

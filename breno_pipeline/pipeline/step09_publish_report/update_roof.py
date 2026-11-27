@@ -35,6 +35,27 @@ def _rings(geojson_path, to_utm=False, only_role=None, tol=0.2):
     return out
 
 
+def refresh_actual_blocks(actual_json, existing_geojson, roof="yellow", roof_name="Institut Quatre Cantons",
+                          roof_json=None, checked_by=None):
+    """Rewrite the "blocks" of a real-system JSON (examples/cep9_actual.json) from a step 02 roof reading
+    (<out>_existing_panels.geojson): one block per rectangle, all on this roof. Also updates "detected" from
+    the roof reading's JSON when given. -> the number of blocks written."""
+    a = json.loads(Path(actual_json).read_text(encoding="utf-8"))
+    fc = json.loads(Path(existing_geojson).read_text(encoding="utf-8"))
+    a["blocks"] = [{"name": f"{roof_name} ({roof}) rectangle {i}", "roof": roof,
+                    "corners": f["geometry"]["coordinates"][0],
+                    "panels_estimate": f["properties"].get("panels_estimate"),
+                    "angle_deg": f["properties"].get("angle_deg")} for i, f in enumerate(fc["features"], 1)]
+    if roof_json:
+        r = json.loads(Path(roof_json).read_text(encoding="utf-8"))["roof"]
+        a.setdefault("detected", {})[roof] = {k: r.get(k) for k in ("existing_panels_m2", "existing_panels_estimate",
+                                                                    "existing_panels_pixels_m2")}
+    if checked_by:
+        a["traced_by"] = checked_by
+    Path(actual_json).write_text(json.dumps(a, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return len(a["blocks"])
+
+
 def update_roof(yield_json, actual_json=None, below_note="", out="../website/data/site_data.json", chosen="actual", label=None,
                 footprints=None, usable=(), reserved=None):
     ry = json.loads(Path(yield_json).read_text(encoding="utf-8"))
@@ -70,8 +91,17 @@ def main():
     ap.add_argument("--footprints", help="step 01 case map (cases/<case>_map.geojson, WGS84): host roof outlines to draw")
     ap.add_argument("--usable", action="append", default=[], help="step 02 <out>_usable.geojson to draw as the usable roof; repeat per roof")
     ap.add_argument("--reserved", help="reserved-areas GeoJSON (EPSG:25831) given to step 02, drawn dashed")
+    ap.add_argument("--refresh-blocks", help="step 02 <out>_existing_panels.geojson: first rewrite the --actual file's "
+                                             "blocks from it (one per rectangle, all on --roof)")
+    ap.add_argument("--roof", default="yellow", help="roof name for --refresh-blocks (default yellow)")
+    ap.add_argument("--roof-json", help="step 02 <out>.json, to update the --actual file's 'detected' figures")
     ap.add_argument("--out", default="../website/data/site_data.json")
     a = ap.parse_args()
+    if a.refresh_blocks:
+        if not a.actual:
+            ap.error("--refresh-blocks needs --actual")
+        n = refresh_actual_blocks(a.actual, a.refresh_blocks, a.roof, roof_json=a.roof_json)
+        print(f"{a.actual}: {n} blocks from {a.refresh_blocks}")
     update_roof(a.yield_json, a.actual, a.below_note, a.out, label=a.label,
                 footprints=a.footprints, usable=a.usable, reserved=a.reserved)
 

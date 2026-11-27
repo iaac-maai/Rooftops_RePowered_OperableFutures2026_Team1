@@ -8,7 +8,7 @@
   "source": "CEP9 presentation",
   "source_url": "https://elpoblenou.cat/wp-content/uploads/2024/10/presentacio-CEP9_v2.pptx.pdf",
   "panel_wp_note": "58.32 kWp / 108 panels = 540 W (our calculation)",
-  "traced_by": "step 02 (existing_panels.py): panel areas on the ICGC orthophoto, checked against LiDAR and fitted as rectangles snapped to the roof edges and to whole 540 W panels",
+  "traced_by": "step 02 (existing_panels.py): panel areas on the ICGC orthophoto, checked against LiDAR and fitted as rectangles snapped to the roof edges and to whole 540 W panels; rectangles 4-7 removed after Breno checked the photo by eye on 27 Nov 2026 (not_panels.csv) and by the rectangle check (size and LiDAR roughness)",
   "blocks": [
     {
       "name": "Institut Quatre Cantons (yellow) rectangle 1",
@@ -93,118 +93,6 @@
       ],
       "panels_estimate": 10,
       "angle_deg": 141.5
-    },
-    {
-      "name": "Institut Quatre Cantons (yellow) rectangle 4",
-      "roof": "yellow",
-      "corners": [
-        [
-          433134.9,
-          4583945.62
-        ],
-        [
-          433133.12,
-          4583947.04
-        ],
-        [
-          433126.77,
-          4583939.06
-        ],
-        [
-          433128.56,
-          4583937.64
-        ],
-        [
-          433134.9,
-          4583945.62
-        ]
-      ],
-      "panels_estimate": 8,
-      "angle_deg": 141.5
-    },
-    {
-      "name": "Institut Quatre Cantons (yellow) rectangle 5",
-      "roof": "yellow",
-      "corners": [
-        [
-          433136.92,
-          4583954.79
-        ],
-        [
-          433138.04,
-          4583956.19
-        ],
-        [
-          433131.54,
-          4583961.36
-        ],
-        [
-          433130.42,
-          4583959.95
-        ],
-        [
-          433136.92,
-          4583954.79
-        ]
-      ],
-      "panels_estimate": 5,
-      "angle_deg": 51.5
-    },
-    {
-      "name": "Institut Quatre Cantons (yellow) rectangle 6",
-      "roof": "yellow",
-      "corners": [
-        [
-          433129.19,
-          4583945.14
-        ],
-        [
-          433132.06,
-          4583948.75
-        ],
-        [
-          433130.17,
-          4583950.25
-        ],
-        [
-          433127.3,
-          4583946.65
-        ],
-        [
-          433129.19,
-          4583945.14
-        ]
-      ],
-      "panels_estimate": 4,
-      "angle_deg": 51.5
-    },
-    {
-      "name": "Institut Quatre Cantons (yellow) rectangle 7",
-      "roof": "yellow",
-      "corners": [
-        [
-          433128.62,
-          4583951.84
-        ],
-        [
-          433127.21,
-          4583952.96
-        ],
-        [
-          433124.78,
-          4583949.91
-        ],
-        [
-          433126.19,
-          4583948.78
-        ],
-        [
-          433128.62,
-          4583951.84
-        ]
-      ],
-      "panels_estimate": 2,
-      "angle_deg": 141.5
     }
   ],
   "photo": {
@@ -227,9 +115,9 @@
   "by_roof_source": "CEP9, email from César Ochoa, 27 Nov 2026: all 108 panels on the Institut; Escola Pere IV is not part of CEP9",
   "detected": {
     "yellow": {
-      "existing_panels_m2": 309.8,
-      "existing_panels_estimate": 105,
-      "existing_panels_pixels_m2": 300.8
+      "existing_panels_m2": 253.6,
+      "existing_panels_estimate": 86,
+      "existing_panels_pixels_m2": 276.1
     }
   },
   "red_roof_what_if": {

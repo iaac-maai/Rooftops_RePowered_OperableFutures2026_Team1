@@ -35,12 +35,26 @@ Each reading reports:
 
 | Roof | Rectangles | Area | Panels estimate | Old pixel area | Real |
 |---|---|---|---|---|---|
-| Institut Quatre Cantons (yellow) | 7 | 310 m² | 105 | 301 m² | **all 108 CEP9 panels**, 279 m² of panel [CEP9 tender; CEP9, 27 Nov 2026] |
+| Institut Quatre Cantons (yellow) | 3 (was 7) | 254 m² (was 310) | 86 (was 105) | 276 m² | **all 108 CEP9 panels**, 279 m² of panel [CEP9 tender; CEP9, 27 Nov 2026] |
 | Escola Pere IV (red) | 5 | 333 m² | 111 | 321 m² | **not part of CEP9** [CEP9, 27 Nov 2026]: another installation |
 
-On the Institut the rectangles land on the real blocks, and 105 panels is within 3% of the real 108. **Correction from CEP9 (email from César Ochoa, 27 Nov 2026):** all 108 panels are on the Institut, and Escola Pere IV is not part of CEP9, as the tender (p5, p8) already said. The old 43 red / 65 yellow split (Breno's Google Earth count) was dropped from `examples/cep9_actual.json`. The panel rows on the red roof belong to another installation; they are kept in that file under `red_roof_what_if`, for the extra case "what if the school next door joined".
+**Existing-panel check on the Institut (Breno, by eye on the photo, 27 Nov 2026):** of the 7 rectangles, only 3 are real panels: the long thin strip on the north-west side, the block in the middle-left and the big block in the south-east (rectangles 3, 2 and 1 on `data\roof\cep9_yellow_existing_numbered.png`). Rectangles 4, 5, 6 and 7 are not panels; they are listed in `not_panels.csv` ("checked by eye, Breno 27 Nov 2026") and stay on the roof as obstacles, like the water heaters on the red roof. Now **3 rectangles, 253.6 m², about 86 panels**, against the real **108 panels and 279 m² of panel** [CEP9 tender]: 9% less area and 20% fewer panels. Our rectangles count panels on a south-row pitch with gaps; the real plant is East-West, back to back [CEP9, 27 Nov 2026], so more panels fit on the same area. **Correction from CEP9 (email from César Ochoa, 27 Nov 2026):** all 108 panels are on the Institut, and Escola Pere IV is not part of CEP9. The old 43 red / 65 yellow split was dropped from `examples/cep9_actual.json`, whose blocks are now these 3 rectangles (`update_roof.refresh_actual_blocks`). The panel rows on the red roof belong to another installation, kept under `red_roof_what_if`.
 
-**CEP9 validation, Institut only (27 Nov 2026), roof treated as empty, `cep9_540` panel, `--max-panels 108`:** our layout fits **97 panels (52.38 kWp) and 69,508 kWh a year**, against the real 108 panels (58.32 kWp) and about 73,750 kWh [CEP9 presentation]: 11 panels and 5.8% of the energy short, while per kWp we give 1,327 kWh against the real 1,265 (+5%). Our rows are spaced for no shade at a 25° sun (`layout.py`); the real plant is East-West "Delta Wing", back to back [CEP9, 27 Nov 2026]. Scaled to 108 panels (see Open items) it gives 77,390 kWh (+4.9%). Other settings don't reach 108 either: 98 keeping shaded panels (`--max-shade 1`), 100 in portrait, 97 with `--orient search`.
+**The rectangle check (general rule, `existing_panels.py` step 7, ASSUMPTIONS):** a rectangle is dropped when it has fewer than 6 panels (`MIN_KEEP_PANELS`), or when it is rough: LiDAR ripple above 0.10 m (`ROUGH_RIPPLE_M`, height spread after removing a tilted plane) AND more than 10% of its cells more than 0.10 m above the roof around it (`ROUGH_RAISED_SHARE`, `RAISED_M`). On the Institut, LiDAR measures of the 7 old rectangles:
+
+| Rectangle | Real? | Panels | Ripple | Cells raised > 0.1 m | Dropped by |
+|---|---|---|---|---|---|
+| 1 | yes | 60 | 0.068 m | 0% | kept |
+| 2 | yes | 16 | 0.067 m | 0% | kept |
+| 3 | yes | 10 | 0.065 m | 0% | kept |
+| 4 | no | 8 | 0.142 m | 12% | rough |
+| 5 | no | 5 | 0.042 m | 0% | fewer than 6 panels |
+| 6 | no | 4 | 0.167 m | 27% | fewer than 6 panels (and rough) |
+| 7 | no | 2 | 0.117 m | 31% | fewer than 6 panels (and rough) |
+
+Size alone (under 6 panels) would miss rectangle 4. A ripple window alone (0.05-0.10 m) would remove all four here, but not carry over: on the Escola Pere IV the real 75-panel block ripples 0.26 m (steeper rows) and an 18-panel block 0.01 m. With the rule above the red roof keeps its 75-, 18- and 12-panel blocks and drops a 4-panel rectangle (2.4 m above the roof) and a 2-panel one. Not tested on A160 yet (no existing-panel reading there).
+
+**CEP9 validation, Institut only (27 Nov 2026), roof treated as empty, `cep9_540` panel, `--max-panels 108`:** with the 4 look-alikes kept as obstacles, the usable roof is 577 m² (was 659 m²) and our layout fits **85 panels (45.90 kWp) and 60,920 kWh a year** (was 97 panels before the look-alike fix), against the real 108 panels (58.32 kWp) and about 73,750 kWh [CEP9 presentation]. Per kWp we give 1,327 kWh against the real 1,265 (+5%). Our rows are spaced for no shade at a 25° sun (`layout.py`); the real plant is East-West "Delta Wing", back to back [CEP9, 27 Nov 2026]. Scaled to 108 panels (see Open items) it gives 77,404 kWh (+5.0%).
 
 ```
 python -m step03_simulate_generation.shade_yield --lat 41.404361 --lon 2.2 --laz-dir data\lidar --usable data\roof\cep9_yellow_usable.geojson --panel cep9_540 --max-panels 108 --out data\pv\cep9_institut
@@ -77,8 +91,8 @@ Panel count and kWp come out of step 03 (`shade_yield` lays the panels and drops
 
 ## Open items
 
-- **East-West layout option in step 02/03.** CEP9's real plant is laid out East-West, "Delta Wing", at 10°, back to back with no gaps between rows [CEP9, email from César Ochoa, 27 Nov 2026]. Our layout only makes south-facing rows spaced for no shade at a 25° sun, so only 97 of its 108 panels fit on the Institut. Until there is an East-West option, the CEP9 case scales the 97-panel hourly output to 108 panels (`step03_simulate_generation/scale_panels.py`, ×108/97, **ASSUMPTION**: same yield per panel): 58.32 kWp and 77,390 kWh a year, against 73,750 reported (+4.9%).
-- **False positives in existing-panel detection** on the Institut: Breno found that 4 of the 7 rectangles are not panels (27 Nov 2026). Being fixed: see `data\roof\cep9_yellow_existing_numbered.png`.
+- **East-West layout option in step 02/03.** CEP9's real plant is laid out East-West, "Delta Wing", at 10°, back to back with no gaps between rows [CEP9, 27 Nov 2026]. Our layout only makes south-facing rows spaced for no shade at a 25° sun, so only 85 of its 108 panels fit on the Institut. Until there is an East-West option, the CEP9 case scales the 85-panel hourly output to 108 panels (`step03_simulate_generation/scale_panels.py`, ×108/85, **ASSUMPTION**: same yield per panel): 58.32 kWp and 77,404 kWh a year, against 73,750 reported (+5.0%).
+- **Existing-panel detection, done 27 Nov 2026:** the 4 false rectangles on the Institut are listed in `not_panels.csv` and the rectangle check above catches them too. Still to do: test the rule on A160 and on more roofs.
 
 ## Which way the panel rows point (`--orient` in step 03)
 

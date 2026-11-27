@@ -215,7 +215,7 @@
     },
     {
       "item": "Where the real panel blocks are",
-      "why": "All 108 panels are on the Institut [CEP9, email from César Ochoa, 27 Nov 2026]. Step 02 fits 7 rectangles there (310 m², about 105 panels). Our step 03 layout fits only 97 panels of 540 W on that roof (rows spaced for no shade at a 25° sun).",
+      "why": "All 108 panels are on the Institut [CEP9, email from César Ochoa, 27 Nov 2026]. Step 02 now finds 3 rectangles there (253.6 m², about 86 panels); 4 others were not panels (checked by eye, Breno 27 Nov 2026, step02_pv_capacity/not_panels.csv). Our step 03 layout fits only 85 panels of 540 W on that roof (south-facing rows spaced for no shade at a 25° sun); the real plant is East-West 'Delta Wing', back to back.",
       "next": "Ask CEP9 or the installer for the panel plan and row spacing, to explain the 11 missing panels."
     },
     {

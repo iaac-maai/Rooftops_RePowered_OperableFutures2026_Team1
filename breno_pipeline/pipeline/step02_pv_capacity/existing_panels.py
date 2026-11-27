@@ -23,9 +23,11 @@ How (on the 0.1 m photo grid, inside the footprint):
    panels show none.
 
 5. Things that look like panels but are not (solar water heaters, glazing) are listed
-   by hand in not_panels.csv (refcat, x, y, radius_m, what). A blob whose centre
-   is within radius_m of a listed point is not counted as a panel; it stays on the
-   roof as an obstacle, also when the roof is treated as empty.
+   by hand in not_panels.csv (refcat, x, y, radius_m, what). A blob, or a single
+   rectangle, whose centre is within radius_m of a listed point is not counted as a
+   panel; it stays on the roof as an obstacle, also when the roof is treated as empty.
+   (Rectangles are checked one by one, so a look-alike next to a real panel block
+   can be listed without losing the block.)
 
 6. Rectangles (fit_rectangles): real panels sit in neat rectangular groups, so each
    kept blob becomes one or more oriented rectangles. The angle is the roof's edge
@@ -35,6 +37,16 @@ How (on the 0.1 m photo grid, inside the footprint):
    changes its area by less than SNAP_MAX_CHANGE, close neighbours are merged, and
    rectangles under MIN_RECT_PANELS panels or under MIN_RECT_FILL blob pixels are
    dropped. The count comes from the panel pitch: panels per row x rows.
+
+7. Rectangle check (27 Nov 2026, after Breno found 4 false rectangles on the Institut
+   by eye): a rectangle is dropped when it has fewer than MIN_KEEP_PANELS panels, or
+   when it is ROUGH: LiDAR ripple (height spread after removing a tilted plane) above
+   ROUGH_RIPPLE_M AND more than ROUGH_RAISED_SHARE of its cells more than RAISED_M above
+   the roof around it (units, skylight frames, walls). Tested on the two CEP9 roofs:
+   it removes exactly the 4 false rectangles on the Institut (8, 5, 4 and 2 panels;
+   ripple 0.04-0.17 m) and keeps the 3 real ones (60, 16, 10 panels; ripple about
+   0.07 m). A ripple window alone does not carry over: the steeper real rows on the
+   Escola Pere IV ripple 0.26 m and a flat real block there only 0.01 m.
 
 All thresholds are ASSUMPTIONS, tuned by eye on the two CEP9 roofs
 (21 Nov 2026), where the photo shows dark grey modules on the Institut Quatre
@@ -67,6 +79,11 @@ MERGE_MAX_EMPTY = 0.15    # ... when the merged box is at most this much bigger 
 MIN_RECT_PANELS = 2       # smaller rectangles are dropped
 MIN_RECT_FILL = 0.6       # rectangles with less than this share of their area on blob pixels are dropped
 SNAP_MAX_CHANGE = 0.15    # snap a rectangle to whole panels only if that changes its area by less than this
+# rectangle check (step 7 above); ASSUMPTIONS tuned on the two CEP9 roofs, 27 Nov 2026
+MIN_KEEP_PANELS = 6       # rectangles with fewer panels are dropped (Breno's suggestion: "under 6 panels")
+ROUGH_RIPPLE_M = 0.10     # LiDAR ripple above this ...
+ROUGH_RAISED_SHARE = 0.10 # ... with more than this share of cells ...
+RAISED_M = 0.10           # ... more than this above the roof around them = not a panel block
 EXISTING_ROW_GAP_M = 0.18 # gap between existing panel rows: measured on the CEP9 Institut photo (the brightness repeats
                           # every 1.30 m across the rows, minus 1.134 m x cos 10 deg = 1.12 m of panel). The photo is
                           # about 0.25 m per pixel, so this is approximate: ASSUMPTION backed by one measurement
@@ -129,7 +146,7 @@ def detect(rgb, lroof, factor, not_panels=(), roof_angle_deg=None, module=None):
     lab, n = ndimage.label(cand)
     keep = np.zeros_like(cand)
     other = np.zeros_like(cand)
-    blobs, rectangles = [], []
+    blobs, rectangles, dropped, listed_rects = [], [], [], []
     for k in range(1, n + 1):
         cells = lab == k
         area = cells.sum() * px_m2
@@ -145,7 +162,15 @@ def detect(rgb, lroof, factor, not_panels=(), roof_angle_deg=None, module=None):
         coarse = cells.reshape(lroof.roof.shape[0], factor, lroof.roof.shape[1], factor).mean(axis=(1, 3)) >= 0.5
         h = lroof.dsm[coarse & np.isfinite(lroof.dsm)]
         rects, angle = fit_rectangles(cells, fine_grid, roof_angle_deg, module, brightness)
-        rectangles += rects
+        for r in rects:
+            r.update(rectangle_lidar(r, lroof, base))
+            why = rectangle_rejected(r, not_panels)
+            if why:
+                dropped.append({**r, "dropped_because": why})
+                if why.startswith("not_panels.csv"):
+                    listed_rects.append(r)
+            else:
+                rectangles.append(r)
         blobs.append({
             "area_m2": round(float(area), 1),
             "x": round(float(cx), 2),
@@ -155,13 +180,45 @@ def detect(rgb, lroof, factor, not_panels=(), roof_angle_deg=None, module=None):
             "rectangles": len(rects),
         })
     shape = (lroof.roof.shape[0], factor, lroof.roof.shape[1], factor)
+    if listed_rects:                     # rectangles listed in not_panels.csv stay on the roof as obstacles
+        other |= rectangles_mask(listed_rects, fine_grid) & roof_fine
     coarse_other = other.reshape(shape).mean(axis=(1, 3)) > 0
     rect_fine = rectangles_mask(rectangles, fine_grid) & roof_fine
     rect_coarse = rect_fine.reshape(shape).mean(axis=(1, 3)) >= 0.5
     return {"pixels": keep, "blobs": sorted(blobs, key=lambda b: -b["area_m2"]),
             "rectangles": sorted(rectangles, key=lambda r: -r["area_m2"]),
+            "dropped_rectangles": sorted(dropped, key=lambda r: -r["area_m2"]),
             "rect_fine": rect_fine, "rect_coarse": rect_coarse & lroof.roof,
             "look_alikes": coarse_other & lroof.roof, "roof_angle_deg": round(roof_angle_deg, 1)}
+
+
+def rectangle_lidar(rect, lroof, base):
+    """LiDAR measures of one rectangle: ripple (height spread after removing a tilted plane, m) and the share
+    of its cells more than RAISED_M above the roof around it (base = _surface_height)."""
+    cells = lroof.grid.mask(Polygon(rect["corners"])) & np.isfinite(lroof.dsm)
+    if cells.sum() < 4:
+        return {"lidar_ripple_m": None, "raised_share": None}
+    rows, cols = np.nonzero(cells)
+    h = lroof.dsm[cells]
+    a = np.column_stack([cols, rows, np.ones(rows.size)])
+    coef, *_ = np.linalg.lstsq(a, h, rcond=None)
+    return {"lidar_ripple_m": round(float(np.std(h - a @ coef)), 3),
+            "raised_share": round(float(np.mean((lroof.dsm - base)[cells] > RAISED_M)), 2)}
+
+
+def rectangle_rejected(rect, not_panels=()):
+    """Why a rectangle is not a panel block, or None if it is kept (step 7 in the module notes)."""
+    cx = sum(p[0] for p in rect["corners"][:-1]) / (len(rect["corners"]) - 1)
+    cy = sum(p[1] for p in rect["corners"][:-1]) / (len(rect["corners"]) - 1)
+    for x, y, r, what in not_panels:
+        if np.hypot(cx - x, cy - y) <= r:
+            return f"not_panels.csv: {what}"
+    if rect["panels_estimate"] < MIN_KEEP_PANELS:
+        return f"fewer than {MIN_KEEP_PANELS} panels"
+    rip, up = rect.get("lidar_ripple_m"), rect.get("raised_share")
+    if rip is not None and up is not None and rip > ROUGH_RIPPLE_M and up > ROUGH_RAISED_SHARE:
+        return f"rough: LiDAR ripple {rip:.2f} m and {up:.0%} of it more than {RAISED_M} m above the roof"
+    return None
 
 
 def _is_strip(cells, px_m):
@@ -195,6 +252,7 @@ def summary(found, module):
                                              f"{pv:.2f} m across ({module.label})",
             "existing_panels_pixels_m2": round(sum(b["area_m2"] for b in found["blobs"]), 1),
             "existing_panel_rectangles": rects,
+            "existing_panel_rectangles_dropped": found.get("dropped_rectangles", []),
             "existing_panel_blocks": found["blobs"]}
 
 

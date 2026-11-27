@@ -111,8 +111,8 @@ def spare_views(times, gen, host_use, member_ids=(), member_use=None, shares=Non
     return {"year": year, "days": days, "views": views, "colour_kwh": list(COLOUR_KWH),
             "holidays": [{"name": n, "from": a.isoformat(), "to": b.isoformat()} for n, a, b in HOLIDAYS.get(year, [])],
             "holiday_source": "Christmas and Easter: Catalan school calendars 2022-23 (Ordre EDU/113/2022) and 2023-24; "
-                              "July-August: Breno's choice. The demand model closes the Institut in July-August and "
-                              "23 Dec-7 Jan, but not at Easter.",
+                              "July-August: Breno's choice. The demand model closes the Institut in July-August, "
+                              "23 Dec-7 Jan and at Easter (Monday of Holy Week to Easter Monday).",
             "time_note": "Local time in Barcelona (Europe/Madrid, with summer time). Each row is one clock hour, "
                          "e.g. 13:00 = 13:00-14:00."}
 
