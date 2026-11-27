@@ -24,7 +24,7 @@ breno_pipeline/                       (inside the group repo Rooftops_RePowered_
 │   ├── step05_forecast_demand/       baseline profiles + Open Data BCN; AI model next     (from V1 + to build)
 │   ├── step06_prices_and_battery/    real hourly prices, price forecast, battery size     (new)
 │   ├── step07_share_energy/          best group of nearby buildings (one optimiser), battery agent, legal-share options (new)
-│   ├── step08_compare_investment/    owner and guest money, with and without battery      (new)
+│   ├── step08_compare_investment/    owner's 25-year return: grid, neighbours or battery  (new)
 │   ├── step09_publish_report/        one data file for the website                        (new)
 │   ├── tests/                        offline tests for every step
 │   └── examples/                     CEP9 school example roof and its real neighbours, for the offline tests and demo
@@ -58,9 +58,10 @@ python -m step06_prices_and_battery.battery_size --host-dir data\host\cep9 --com
 python -m step07_share_energy.optimise --host-dir data\host\cep9 --lat 41.40458605 --lon 2.20067448 --candidates-csv examples\cep9_members.csv --max-distance 2000 --join-rate 1 --out data\match\cep9
 python -m step07_share_energy.battery_agent --host-dir data\host\cep9 --neighbours-dir data\match\cep9 --out data\sharing\cep9
 python -m step08_compare_investment.investment --sharing-dir data\sharing\cep9 --kwp 53.34 --out data\investment\cep9
+python -m step08_compare_investment.roi --host-dir data\host\cep9 --battery-dir data\battery\cep9 --match-dir data\match\cep9 --sharing-dir data\sharing\cep9 --prices-dir data\prices --kwp 53.34 --connection legal --out data\roi\cep9_legal
 ```
 
-What it shows (details in each step's README): alone, the school uses 59% of its solar. Its four members (fire station, another institut, a civic centre and 30 homes) raise that to 99%. A battery is not worth it at an assumed €500/kWh. A better price forecast would add only about €3 a year, because tomorrow's prices are published the day before.
+What it shows (details in each step's README): alone, the school uses 59% of its solar. Its four members (fire station, another institut, a civic centre and 30 homes) raise that to 99%. A battery is not worth it at €590/kWh installed (step 08: on the 65.88 kWp layout it pays only below about €70/kWh). A better price forecast would add only about €3 a year, because tomorrow's prices are published the day before.
 
 The full run for a real host is in [pipeline/README.md](pipeline/README.md).
 
@@ -71,7 +72,7 @@ The full run for a real host is in [pipeline/README.md](pipeline/README.md).
 | 01-03 | Working (V1, tested live on Eixample roofs). Needs LiDAR tiles for the new site |
 | 04 | Working. Waiting for real meter data; proxy profiles until then |
 | 05 | Rule-based estimate working. A trained model only with real meter data |
-| 06 | Working on real 2023-2025 prices. Battery prices for Europe still an ASSUMPTION; get an installer quote |
+| 06 | Working on real 2023-2025 prices. Battery price now €590/kWh installed (vendor blog, range €460-720) from `step08_compare_investment/costs.csv`; get a Barcelona installer quote |
 | 07 | One optimiser that tries many groups of buildings, in wired (100 m) and Spanish legal (500 m, fixed shares) modes. Run on the 4 real CEP9 members; not yet run on a full Catastro search. The battery agent plans with predicted use only |
-| 08 | Working. Panel costs are assumptions |
+| 08 | Working. `roi.py` (27 Nov 2026) compares A sell to the grid, B neighbours (legal or wired), C battery and B+C over 25 years: NPV, ROI, paybacks, monthly compensation cap, battery and cable break-evens, tornado sensitivity. Costs in `costs.csv`, each sourced or marked ASSUMPTION. Run on CEP9 (65.88 kWp): legal route B wins (NPV €36,231), wired loses to A |
 | 09 | Website working on the demo data (see `website/README.md`). 3D view and the real case still to do |

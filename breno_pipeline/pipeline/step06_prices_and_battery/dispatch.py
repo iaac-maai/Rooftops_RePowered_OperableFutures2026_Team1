@@ -151,8 +151,26 @@ def simulate_year(gen, demand, pvpc, export_price, battery, guest_discount=0.10,
     return out
 
 
-def account(flows, gen, demand, pvpc, export_price, guest_discount, ids, battery):
-    """kWh and EUR for the year from simulate_year()'s flows, at the REAL prices."""
+def monthly(flows, demand, pvpc, export_price, months):
+    """Month-by-month figures that step 08 needs for the monthly cap on grid compensation.
+    months[h] = 1..12 (local month of each hour). Lists of 12 values, January first:
+    export_kwh, export_spot_eur (export x wholesale price), host_grid_kwh and host_grid_eur
+    (what the host still buys from the grid, at PVPC)."""
+    months = np.asarray(months)
+    host_grid = np.asarray(demand, dtype=float)[0] - flows["pv_to"][0] - flows["bat_to"][0]
+    out = {"export_kwh": [], "export_spot_eur": [], "host_grid_kwh": [], "host_grid_eur": []}
+    for m in range(1, 13):
+        k = months == m
+        out["export_kwh"].append(round(float(flows["export"][k].sum()), 3))
+        out["export_spot_eur"].append(round(float((flows["export"][k] * export_price[k]).sum()), 3))
+        out["host_grid_kwh"].append(round(float(host_grid[k].sum()), 3))
+        out["host_grid_eur"].append(round(float((host_grid[k] * pvpc[k]).sum()), 3))
+    return out
+
+
+def account(flows, gen, demand, pvpc, export_price, guest_discount, ids, battery, months=None):
+    """kWh and EUR for the year from simulate_year()'s flows, at the REAL prices.
+    With months (the local month 1..12 of each hour), also adds "monthly" (see monthly())."""
     demand = np.asarray(demand, dtype=float)
     got = flows["pv_to"] + flows["bat_to"]                          # kWh each building gets from the roof
     grid = demand - got                                             # kWh each building still buys
@@ -182,7 +200,8 @@ def account(flows, gen, demand, pvpc, export_price, guest_discount, ids, battery
     host_saving = per[ids[0]]["saving_eur"]
     sales = sum((1.0 - guest_discount) * per[i]["roof_kwh_at_grid_price_eur"] for i in ids[1:])
     export_eur = float((flows["export"] * export_price).sum())
-    return {
+    extra = {"monthly": monthly(flows, demand, pvpc, export_price, months)} if months is not None else {}
+    return {**extra,
         "generated_kwh": round(total), "used_by_buildings_kwh": round(used),
         "exported_kwh": round(float(flows["export"].sum())), "curtailed_kwh": round(float(flows["curtail"].sum())),
         "battery_losses_kwh": round(float(losses)),

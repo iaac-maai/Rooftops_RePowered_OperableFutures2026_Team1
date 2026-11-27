@@ -144,7 +144,7 @@ def test_battery_investment_rows_and_guest_slider():
     rows = inv.evaluate_battery(sharing, kwp=10)
     assert {r["scenario"] for r in rows} == {"direct_no_battery", "direct_with_battery"}
     w = next(r for r in rows if r["scenario"] == "direct_with_battery" and r["case"] == "central")
-    assert w["capex_eur"] == 10 * 1061 + 10 * 195
+    assert w["capex_eur"] == round(10 * 1061 + 10 * bt.LFP_CAPEX_EUR_PER_KWH)
     r = res["with_battery"]
     assert inv.owner_total_at_discount(r, 0.10) == pytest.approx(r["owner_total_eur"], abs=1)
     assert inv.owner_total_at_discount(r, 0.30) < inv.owner_total_at_discount(r, 0.10)

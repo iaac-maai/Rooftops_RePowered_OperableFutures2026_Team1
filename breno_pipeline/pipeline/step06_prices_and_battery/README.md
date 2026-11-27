@@ -99,18 +99,18 @@ Before that there is a quick **screen** with no battery model: day by day, how m
 
 ## Result so far
 
-No real result yet. The only run is on the CEP9 school, whose use is an estimate (the 2018 average of Barcelona's municipal institutes, not the school's meter) and whose battery price is an ASSUMPTION. The earlier run used €500/kWh, where no size paid. The price is now €195/kWh (see below), so that result is out of date: rerun step 06 `battery_size` on the laptop. **Do not use this to decide a battery size.** The decision needs the owner's real meter data and a Barcelona installer's quote.
+Run of 27 Nov 2026 on the CEP9 school, both roofs, 540 W "best blocks" layout (65.88 kWp, 122 panels), at €590/kWh installed: **no size pays for itself for the host alone.** The smallest (5 kWh) gains €172 a year but costs €465 a year; the break-even installed price is €104-218/kWh depending on size (`data\battery\cep9\battery_sizing.json`). The school's use is still an estimate (the 2018 average of Barcelona's municipal institutes, not its meter). Step 08's `roi.py` looks at the same sizes over 25 years with replacements and the monthly cap on grid compensation. **Do not use this to decide a battery size** until there is real meter data and a Barcelona installer's quote.
 
 ## Battery numbers and where they come from
 
 | Type | €/kWh installed | Round trip | Cycle life | Calendar life | Usable share |
 |---|---|---|---|---|---|
-| LFP (default) | 195 (shop price, one product; **ASSUMPTION** for big buildings) | 85% [NREL ATB 2024] | 2,400 [PNNL 2022] | 15 y [NREL ATB 2024] | 80% [PNNL 2022] |
-| NMC | 220 (LFP × 435/385 [PNNL 2022]) | 85% [NREL ATB 2024] | 1,520 [PNNL 2022] | 13 y [PNNL 2022] | 80% [PNNL 2022] |
+| LFP (default) | 590, range 460-720 [pvb.com C&I BESS 2026], read from `step08_compare_investment/costs.csv` | 85% [NREL ATB 2024] | 2,400 [PNNL 2022] | 15 y [NREL ATB 2024] | 80% [PNNL 2022] |
+| NMC | 667 (LFP × 435/385 [PNNL 2022]) | 85% [NREL ATB 2024] | 1,520 [PNNL 2022] | 13 y [PNNL 2022] | 80% [PNNL 2022] |
 
 Both: upkeep 2.5% of capex a year [NREL ATB 2024] and charge or discharge at up to half the size per hour (a 2-hour battery, **ASSUMPTION**).
 
-**How reliable is this data?** The performance numbers (efficiency, cycles, life) come from two US government labs' studies of grid-scale batteries [NREL ATB 2024, PNNL 2022]; they are published and checkable but describe utility-size plants, not a 50 kWh unit in a Barcelona basement. The price is the weak spot: we found **no checkable installed price for a 20-500 kWh building battery in Spain or the EU**. The one recent figure we found is a UK installer blog in pounds, £200-800 per kWh depending on size, which even contradicts itself between sizes [Reonic 2026], so we did not use it. The cost ratio between LFP and NMC comes from PNNL's 100 MW plants. Before the final report, get a quote from a Barcelona installer and change `LFP_CAPEX_EUR_PER_KWH` in `battery_types.py`. Suggested message to an installer is in the pipeline README ("Open questions").
+**How reliable is this data?** The performance numbers (efficiency, cycles, life) come from two US government labs' studies of grid-scale batteries [NREL ATB 2024, PNNL 2022]; they are published and checkable but describe utility-size plants, not a 50 kWh unit in a Barcelona basement. The price is the weak spot. **Changed on 27 Nov 2026:** the LFP price is now read from `step08_compare_investment/costs.csv` (`battery_installed_eur_per_kwh`, €590 per kWh, range €460-720), from a vendor's guide to installed costs of a ~241 kWh commercial system in Europe [pvb.com C&I BESS 2026]. The old €195 was one shop's box price for a 5 kWh home unit with no installation or inverter, so it was not an installed price. A UK installer blog (£200-800 per kWh, contradicting itself between sizes [Reonic 2026]) is still not used. The cost ratio between LFP and NMC comes from PNNL's 100 MW plants. Before the final report, get a quote from a Barcelona installer and change the row in `costs.csv` (not `battery_types.py`). Suggested message to an installer is in the pipeline README ("Open questions").
 
 ## Tests
 

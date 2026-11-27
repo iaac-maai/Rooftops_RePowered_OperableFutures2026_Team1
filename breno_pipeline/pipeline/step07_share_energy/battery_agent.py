@@ -42,6 +42,7 @@ from pathlib import Path
 import numpy as np
 
 from step04_read_host_demand.host_table import read_host_table
+from step05_forecast_demand.baseline_profiles import local_hours
 from step06_prices_and_battery import battery_types as bt
 from step06_prices_and_battery import dispatch
 from step06_prices_and_battery.battery_size import size_battery
@@ -53,10 +54,10 @@ GUEST_DISCOUNT = 0.10      # team choice (15 Nov 2026): guests pay PVPC - 10%; a
 PRICE_YEARS = ("typical", 2023, 2024, 2025)
 
 
-def run_year(gen, demand, ids, sy, year, battery, discount, plan_price=None, export_limit=None):
+def run_year(gen, demand, ids, sy, year, battery, discount, plan_price=None, export_limit=None, months=None):
     pvpc, spot = sy["pvpc"][year], sy["spot"][year]
     flows = dispatch.simulate_year(gen, demand, pvpc, spot, battery, discount, plan_price, export_limit)
-    return flows, dispatch.account(flows, gen, demand, pvpc, spot, discount, ids, battery)
+    return flows, dispatch.account(flows, gen, demand, pvpc, spot, discount, ids, battery, months)
 
 
 def write_decisions(path, times, gen, pvpc, ids, demand, flows):
@@ -99,12 +100,14 @@ def main():
     gen = host["generation_kwh"]
     sy = read_solar_year_prices(Path(args.prices_dir) / "prices_hourly_solar_year.csv")
     limit = 0.0 if args.no_export else None
+    _, _, months = local_hours(host["times"])     # local month of each hour, for step 08's monthly cap
 
     sizing_rows = []
     if args.battery_kwh is None:
         print(f"Re-checking the battery size with {len(ids) - 1} guests ...")
         sizing_rows, best = size_battery(gen, demand, sy["pvpc"]["typical"], sy["spot"]["typical"], ids,
-                                         [args.type], args.sizes, args.guest_discount, export_limit=limit)
+                                         [args.type], args.sizes, args.guest_discount, export_limit=limit,
+                                         months=months)
         kwh = best[args.type]["battery_kwh"] if best[args.type] else 0.0
     else:
         kwh = args.battery_kwh
@@ -113,8 +116,8 @@ def main():
 
     years = {}
     for y in PRICE_YEARS:
-        _, with_b = run_year(gen, demand, ids, sy, y, battery, args.guest_discount, export_limit=limit)
-        _, without = run_year(gen, demand, ids, sy, y, none, args.guest_discount, export_limit=limit)
+        _, with_b = run_year(gen, demand, ids, sy, y, battery, args.guest_discount, export_limit=limit, months=months)
+        _, without = run_year(gen, demand, ids, sy, y, none, args.guest_discount, export_limit=limit, months=months)
         years[str(y)] = {"with_battery": with_b, "without_battery": without,
                          "battery_gain_eur": with_b["owner_total_eur"] - without["owner_total_eur"]}
 

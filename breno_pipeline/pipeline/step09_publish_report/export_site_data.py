@@ -104,6 +104,26 @@ def actual_variant(a, variants):
             "check_notes": [x for x in (a.get("not_panels"), a.get("reserved")) if x]}
 
 
+ROI_KEYS = ("capex_eur", "capex_parts", "cash_in", "cash_out", "cumulative_cash", "npv_eur", "roi_lifetime",
+            "simple_payback_y", "discounted_payback_y", "money_breakdown", "year1", "battery_kwh",
+            "battery_capex_eur", "battery_life_years", "connection", "connection_parts")
+
+
+def roi_block(summary):
+    """Step 08's roi_summary.json -> what the website needs to redraw the line and recompute NPV with sliders:
+    per option the yearly cash in and out (years 1..N), capex, NPV, ROI, paybacks and breakdown; the
+    recommendation, break-evens, sensitivity, and the costs.csv rows used (value, low, high, source, status)."""
+    return {"connection": summary["connection"], "kwp": summary["kwp"], "price_year": summary["price_year"],
+            "cable_m": summary["cable_m"], "cable_m_source": summary["cable_m_source"],
+            "options": {k: {kk: o[kk] for kk in ROI_KEYS if kk in o} | {"grid_lost_to_cap_eur": o["grid"]["lost_to_cap_eur"],
+                                                                     "grid_rule": o["grid"]["rule"]}
+                        for k, o in summary["options"].items()},
+            "recommended": summary["recommended"], "recommendation": summary["recommendation"],
+            "break_even": summary["break_even"], "most_sensitive": summary["most_sensitive"],
+            "sensitivity": summary["sensitivity"], "costs": summary["costs_used"], "warnings": summary["warnings"],
+            "roi_note": summary["roi_note"]}
+
+
 def monthly_solar_days(times, gen):
     hour, _ = local_hour(times)
     month = times.astype("datetime64[M]").astype(int) % 12
@@ -198,6 +218,9 @@ def main():
     ap.add_argument("--compare-caption", default="", help="what the comparison picture shows and where it is from")
     ap.add_argument("--actual", help="a JSON describing the real system on this roof (e.g. examples\\cep9_actual.json); "
                     "adds an 'Actual' tab to the roof section")
+    ap.add_argument("--roi-dir", action="append", default=[],
+                    help="step 08 roi.py output folder (roi_summary.json); repeat it for legal and wired. "
+                         "Default: the folders <name>_legal and <name>_wired in data/roi, if they exist")
     ap.add_argument("--sources", default="../docs/SOURCES.md")
     ap.add_argument("--out", default="../website/data/site_data.json")
     args = ap.parse_args()
@@ -339,7 +362,14 @@ def main():
               "gaps": json.loads(gaps_path.read_text(encoding="utf-8")) if gaps_path.exists() else [],
               "run_command": 'python -m step01_select_host.find_building "<address>, Barcelona" --laz-dir data\\lidar',
               "cases": site_cases()}
+    roi = {}
+    for rd in args.roi_dir or [d / "roi" / f"{n}_legal", d / "roi" / f"{n}_wired"]:
+        rp = Path(rd) / "roi_summary.json"
+        if rp.exists():
+            r = json.loads(rp.read_text(encoding="utf-8"))
+            roi[r["connection"]] = roi_block(r)
     data = {
+        "roi": roi,
         "step01": step01, "match": match, "warnings": warnings,
         "compare": {"file": args.compare_image, "caption": args.compare_caption} if args.compare_image else None,
         "meta": {"case": args.label, "address": y["building"]["query"], "refcat": y["building"]["refcat"],

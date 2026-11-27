@@ -21,13 +21,15 @@ Battery life used by the tool = the shorter of calendar_years and cycle_life / c
 so a battery that cycles every day wears out sooner (step 08 adds the replacement cost).
 """
 
-LFP_CAPEX_EUR_PER_KWH = 195.0   # 999 EUR / 5.12 kWh nominal = 195 EUR per nameplate kWh. One shop price, tax included,
-                                # for a home-size unit (Deye SE-G5.1 Pro-B, 5.12 kWh nominal, 4.6 kWh usable), without
-                                # installation or inverter [tienda-solar.es product page, read 15 Nov 2026].
-                                # ASSUMPTION for a 20-500 kWh building battery: commercial systems add installation and
-                                # an inverter but get volume discounts, so the real price could be higher or lower.
-                                # Breno asked for an average of shop prices; only this one price could be read
-                                # (the category page lists no products to the fetch tool). Replace with a Barcelona quote.
+from step08_compare_investment.costs import value as _cost
+
+# Installed LFP price per nameplate kWh, read from step08_compare_investment/costs.csv
+# (battery_installed_eur_per_kwh, central 590, range 460-720): [pvb.com C&I BESS 2026], a vendor blog giving
+# 460-720 EUR/kWh installed for a ~241 kWh commercial system in Europe, updated June 2026.
+# Changed on 27 Nov 2026: the old 195 EUR/kWh was one shop's box price for a 5 kWh home unit
+# (Deye SE-G5.1 Pro-B on tienda-solar.es) with no installation or inverter, so it was not an installed price.
+# To change the battery price, edit costs.csv, not this file.
+LFP_CAPEX_EUR_PER_KWH = _cost("battery_installed_eur_per_kwh")
 
 TYPES = {
     "lfp": {

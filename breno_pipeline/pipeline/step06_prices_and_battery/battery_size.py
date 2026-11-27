@@ -41,6 +41,7 @@ from pathlib import Path
 import numpy as np
 
 from step04_read_host_demand.host_table import read_host_table
+from step05_forecast_demand.baseline_profiles import local_hours
 from step06_prices_and_battery import battery_types as bt
 from step06_prices_and_battery import dispatch
 from step06_prices_and_battery.prices import read_solar_year_prices
@@ -79,8 +80,10 @@ def money(battery, gain_eur, cycles):
 
 
 def size_battery(gen, demand, pvpc, spot, ids=("host",), types=(bt.DEFAULT,), sizes=SIZES_KWH,
-                 guest_discount=0.10, plan_price=None, export_limit=None):
-    """Run the controller for every type and size. demand[n, H]. -> (rows, {type: best row or None})."""
+                 guest_discount=0.10, plan_price=None, export_limit=None, months=None):
+    """Run the controller for every type and size. demand[n, H]. -> (rows, {type: best row or None}).
+    With months (local month 1..12 of each hour), every row also gets "monthly" export and host grid
+    figures, which step 08 (roi.py) needs for the monthly cap on grid compensation."""
     demand = np.atleast_2d(demand)
     rows, best = [], {}
     for name in types:
@@ -88,7 +91,7 @@ def size_battery(gen, demand, pvpc, spot, ids=("host",), types=(bt.DEFAULT,), si
         for kwh in sizes:
             b = {**bt.get(name), "kwh": float(kwh)}
             flows = dispatch.simulate_year(gen, demand, pvpc, spot, b, guest_discount, plan_price, export_limit)
-            a = dispatch.account(flows, gen, demand, pvpc, spot, guest_discount, list(ids), b)
+            a = dispatch.account(flows, gen, demand, pvpc, spot, guest_discount, list(ids), b, months)
             if base is None:
                 base = a if kwh == 0 else dispatch.account(
                     dispatch.simulate_year(gen, demand, pvpc, spot, {**b, "kwh": 0.0}, guest_discount, plan_price,
@@ -99,7 +102,11 @@ def size_battery(gen, demand, pvpc, spot, ids=("host",), types=(bt.DEFAULT,), si
                          "wasted_kwh": a["wasted_kwh"], "exported_kwh": a["exported_kwh"],
                          "battery_losses_kwh": a["battery_losses_kwh"],
                          "cycles_per_year": a["battery_cycles_per_year"], "owner_total_eur": a["owner_total_eur"],
-                         "guests_saving_eur": a["guests_saving_eur"], **m})
+                         "guests_saving_eur": a["guests_saving_eur"],
+                         "owner_host_saving_eur": a["owner_host_saving_eur"],
+                         "owner_sales_to_guests_eur": a["owner_sales_to_guests_eur"],
+                         "owner_export_income_eur": a["owner_export_income_eur"], **m,
+                         **({"monthly": a["monthly"]} if "monthly" in a else {})})
         mine = [r for r in rows if r["battery_type"] == name and r["battery_kwh"] > 0]
         top = max(mine, key=lambda r: r["net_per_year_eur"]) if mine else None
         best[name] = top if top and top["net_per_year_eur"] > 0 else None
@@ -125,12 +132,13 @@ def main():
     print(f"Screen: {s['surplus_kwh']:,} kWh surplus a year; at most {s['max_shiftable_kwh']:,} kWh could be "
           f"moved to the host's own later use ({s['days_with_shiftable_over_1kwh']} days with more than 1 kWh).")
     types = list(bt.TYPES) if args.compare_types else [args.type]
+    _, _, months = local_hours(host["times"])
     rows, best = size_battery(gen, use[None, :], sy["pvpc"][year], sy["spot"][year], types=types,
-                              sizes=args.sizes, export_limit=0.0 if args.no_export else None)
+                              sizes=args.sizes, export_limit=0.0 if args.no_export else None, months=months)
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     with open(out / "battery_sizing.csv", "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=list(rows[0]))
+        w = csv.DictWriter(f, fieldnames=[k for k in rows[0] if k != "monthly"], extrasaction="ignore")
         w.writeheader()
         w.writerows(rows)
     rec = best.get(args.type) if not args.compare_types else best.get(bt.DEFAULT)
