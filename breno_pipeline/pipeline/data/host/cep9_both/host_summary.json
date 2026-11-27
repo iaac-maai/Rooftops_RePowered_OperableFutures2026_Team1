@@ -1,0 +1,29 @@
+{
+  "building_id": "cep9",
+  "solar_file": "data\\pv\\cep9_v2\\cep9_hourly_540_best.csv",
+  "demand_source": "proxy_school",
+  "metered_file": null,
+  "generation_kwh": 89284,
+  "host_demand_kwh": 108702,
+  "self_consumed_kwh": 49790,
+  "self_consumption_ratio": 0.558,
+  "surplus_kwh": 39493,
+  "surplus_share": 0.442,
+  "hours_with_surplus": 2060,
+  "surplus_weekday_kwh": 18347,
+  "surplus_weekend_kwh": 21146,
+  "surplus_by_month_kwh": {
+    "Jan": 1088,
+    "Feb": 961,
+    "Mar": 1943,
+    "Apr": 3388,
+    "May": 3731,
+    "Jun": 3869,
+    "Jul": 9730,
+    "Aug": 9066,
+    "Sep": 2308,
+    "Oct": 1233,
+    "Nov": 859,
+    "Dec": 1318
+  }
+}

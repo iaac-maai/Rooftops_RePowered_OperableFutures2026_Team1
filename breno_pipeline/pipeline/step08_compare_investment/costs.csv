@@ -4,14 +4,14 @@ panel_om_eur_per_kwp_yr,15,EUR/kWp/yr,,,"close to NREL ATB 2024",ASSUMPTION
 panel_degradation_per_yr,0.005,fraction,0.004,0.007,"typical datasheet warranty",ASSUMPTION
 inverter_replacement_eur_per_kwp,100,EUR/kWp,,,"once, in year 13",ASSUMPTION
 inverter_replacement_year,13,year,,,"",ASSUMPTION
-grid_compensation_eur_per_kwh,0.06,EUR/kWh,0.04,0.10,"Selectra 'Compensación de excedentes' updated 9 Feb 2026; Endesa Solar Plus 0.06",sourced
+grid_compensation_eur_per_kwh,0.06,EUR/kWh,0.04,0.10,"Selectra 'Compensación de excedentes' updated 9 Feb 2026; Endesa Solar Plus 0.06; read 26 Nov 2026",sourced
 simplified_compensation_max_kw,100,kW,,,"Over 100 kW you must register as a producer and sell at market (OMIE). Selectra, Endesa",sourced
-cable_buried_eur_per_m,24.46,EUR/m,,,"CYPE Generador de Precios IEL010: RZ1-K 5G10 mm2 in 75 mm tube, excavation and main backfill NOT included",sourced
+cable_buried_eur_per_m,24.46,EUR/m,,,"CYPE Generador de Precios IEL010: RZ1-K 5G10 mm2 in 75 mm tube, excavation and main backfill NOT included; read 26 Nov 2026",sourced
 trench_and_repave_eur_per_m,150,EUR/m,100,200,"city street excavation + repaving",ASSUMPTION
-guest_connection_kit_eur,1500,EUR/guest,,,"protection, switchgear, meter per guest",ASSUMPTION
+guest_connection_kit_eur,1500,EUR/guest building,,,"protection, switchgear, meter; one per guest building (a block of homes = 1)",ASSUMPTION
 legal_net_meter_eur,500,EUR,,,"net generation meter required (IDAE Guía Autoconsumo Colectivo v2.1, Jul 2024, s3.1); price not published",ASSUMPTION
-legal_manager_eur_per_member_yr,25,EUR/member/yr,0,50,"gestor de autoconsumo fee; no figure found",ASSUMPTION
-battery_installed_eur_per_kwh,590,EUR/kWh,460,720,"pvb.com C&I BESS Europe, updated Jun 2026: ~241 kWh system 460-720 EUR/kWh installed (vendor blog)",sourced
+legal_manager_eur_per_member_yr,25,EUR/member/yr,0,50,"gestor de autoconsumo fee; no figure found. CEP9 pays 0 (Barcelona Energy Agency prepares the coefficient file; CEP9, email from César Ochoa, 27 Nov 2026): use --manager-fee-eur-per-member 0",ASSUMPTION
+battery_installed_eur_per_kwh,590,EUR/kWh,460,720,"pvb.com C&I BESS Europe, updated Jun 2026: ~241 kWh system 460-720 EUR/kWh installed (vendor blog); read 26 Nov 2026",sourced
 battery_om_share_of_capex_yr,0.025,fraction,,,"NREL ATB 2024 (already in battery_types.py)",sourced
 analysis_years,25,years,,,"typical panel warranty",ASSUMPTION
 discount_rate,0.05,fraction,0.03,0.08,"",ASSUMPTION

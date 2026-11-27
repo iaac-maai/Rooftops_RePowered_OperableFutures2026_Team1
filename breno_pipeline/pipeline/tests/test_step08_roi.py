@@ -119,15 +119,42 @@ def test_max_cable_times_cost_per_metre_is_the_npv_gap(costs):
     assert at_limit["B"]["npv_eur"] == pytest.approx(o["A"]["npv_eur"])
 
 
-def test_connection_costs_count_dwellings(costs):
+def test_wired_kits_per_building_legal_fee_per_member(costs):
     c = values(costs)
-    guests = _case()["guests"]                            # 1 office + 3 homes = 4 guests
+    guests = _case()["guests"]                            # 1 office building + 1 block of 3 homes
     w = roi.connection_terms("wired", guests, c, 100.0)
+    # one kit per guest BUILDING: the block of homes is one building, one kit
+    assert w["parts"]["guest_buildings"] == 2
     assert w["capex_eur"] == pytest.approx(100 * (c["cable_buried_eur_per_m"] + c["trench_and_repave_eur_per_m"])
-                                           + 4 * c["guest_connection_kit_eur"])
+                                           + 2 * c["guest_connection_kit_eur"])
+    homes_30 = [{"id": "homes_30", "use_type": "home", "distance_m": 0.0, "count": 30}]
+    assert roi.connection_terms("wired", homes_30, c, 0.0)["capex_eur"] == pytest.approx(c["guest_connection_kit_eur"])
+    # the legal manager fee stays per member (supply point): host + 1 office + 3 homes = 5
     lg = roi.connection_terms("legal", guests, c, 100.0)
     assert lg["capex_eur"] == c["legal_net_meter_eur"]
-    assert lg["yearly_eur"] == pytest.approx(5 * c["legal_manager_eur_per_member_yr"])   # host + 4 guests
+    assert lg["yearly_eur"] == pytest.approx(5 * c["legal_manager_eur_per_member_yr"])
+    assert roi.connection_terms("legal", homes_30, c, 0.0)["parts"]["members"] == 31
+
+
+def test_reference_row_cep9_terms_is_never_recommended(costs):
+    c = values(costs)
+    gen = np.r_[np.zeros(6), np.full(6, 20.0), np.zeros(12)]
+    demand = np.full(24, 3.0)
+    months = np.full(24, 6)
+    pvpc, spot = np.full(24, 0.15), np.full(24, 0.05)
+    money = roi.reference_money(gen, demand, 0.30, months, pvpc, spot)
+    # host gets 0.30 x 20 = 6 kWh in each sunny hour, uses 3, sends 3 to the grid
+    assert money["host_saving_eur"] == pytest.approx(6 * 3 * 0.15)
+    assert sum(money["monthly"]["export_kwh"]) == pytest.approx(6 * 3)
+    assert money["guest_sales_eur"] == 0
+    case = {**_case(), "REF": {**_case()["A"], "host_saving_eur": 99999.0},       # make REF the best on purpose
+            "REF_terms": {"host_share": 0.3, "shares": {}, "guest_price_share_of_grid": 0.0,
+                          "members": [{"id": "homes_3", "count": 3}]}}
+    opts = roi.evaluate(case, c, "wired", 0.0)
+    assert "REF" in opts and opts["REF"]["npv_eur"] > max(v["npv_eur"] for k, v in opts.items() if k != "REF")
+    assert roi.recommended(opts) != "REF"
+    assert opts["REF"]["connection"] == "legal"                                   # CEP9 terms use the legal route
+    assert opts["REF"]["capex_parts"]["option_eur"] == c["legal_net_meter_eur"]
 
 
 def test_discounted_payback_is_none_when_npv_is_negative(costs):

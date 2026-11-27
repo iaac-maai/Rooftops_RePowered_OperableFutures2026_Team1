@@ -1,8 +1,9 @@
 """Step 08: the roof owner's return over 25 years, for three ways of using the surplus.
 
     python -m step08_compare_investment.roi --host-dir data\\host\\cep9 --battery-dir data\\battery\\cep9 ^
-        --match-dir data\\match\\cep9_wired --sharing-dir data\\sharing\\cep9 --prices-dir data\\prices ^
-        --kwp 65.88 --connection legal --out data\\roi\\cep9_legal
+        --match-dir data\\match\\cep9_wired --sharing-dir data\\sharing\\cep9 --agreed-dir data\\agreed\\cep9 ^
+        --prices-dir data\\prices --kwp 52.38 --connection legal --out data\\roi\\cep9_legal
+    add --manager-fee-eur-per-member 0 for CEP9's real case (no manager fee)
 
 The owner pays for the panels and keeps them. The host uses what it can (the same in every option).
 The options differ only in what happens to the SURPLUS, the solar the host doesn't use itself:
@@ -12,6 +13,10 @@ The options differ only in what happens to the SURPLUS, the solar the host doesn
        (default discount 10%); what they don't take goes to the grid as in A
   C    a battery at the host, charged only from the panels; what is left goes to the grid as in A
   B+C  both: neighbours and a battery
+  REF  "CEP9 real terms", for reference only (never recommended): fixed shares agreed in advance
+       (step 07 agreed_shares.py, e.g. host 0.30), the power given to the members for free. The owner
+       gets only the host's own share x PVPC, plus compensation for the part of that share the host
+       doesn't use. Legal-route costs apply.
 
 All options use the same panels. Nothing is simulated here: the kWh and EUR come from the files
 the earlier steps wrote.
@@ -19,6 +24,8 @@ the earlier steps wrote.
   B    step 07 battery_agent_summary.json, "without_battery" (guests, no battery)
   C    step 06 battery_sizing.json, one row per battery size
   B+C  step 07 battery_agent_summary.json, "sizing_with_guests" (guests, one row per battery size)
+  REF  step 07 agreed_shares_summary.json (in --agreed-dir): the host's share and the members;
+       the host's hourly kWh are worked out from host_table.csv x that share
   guests and distances: step 07 shortlist.csv (in --match-dir)
 
 MONEY IN, YEAR 1
@@ -44,8 +51,10 @@ METRICS
 Every cost comes from step08_compare_investment/costs.csv (value, low, high, source, status).
 The choices made in this file (all ASSUMPTIONS, also listed in the README):
   - ROUTE_FACTOR 1.3: a cable is 1.3 x the straight-line distance (streets aren't straight)
-  - a "home" candidate with N dwellings counts as N guests (N connection kits, N legal members);
-    any other building counts as 1. Legal members = host + guests.
+  - wired: one connection kit per guest BUILDING (30 homes in one block = 1 kit).
+  - legal: the manager fee is per member (supply point): a "home" candidate with N dwellings is N
+    members, any other building 1; members = host + guests.
+  - REF: the members' unused shares are compensated on their own bills, not the owner's.
   - the cap compares the compensation with the host's grid kWh x the WHOLE PVPC price. The real
     rule caps it at the energy part of the bill only, so our cap is a bit generous.
   - the cap is applied to the host's bill only (with guests too).
@@ -72,7 +81,8 @@ from step06_prices_and_battery.prices import read_solar_year_prices
 from step08_compare_investment.costs import COSTS_CSV, load_costs, values
 
 ROUTE_FACTOR = 1.3          # ASSUMPTION: cable route length / straight-line distance
-OPTIONS = ("A", "B", "C", "B+C")
+OPTIONS = ("A", "B", "C", "B+C", "REF")
+REFERENCE = ("REF",)        # shown next to the options, never recommended
 BATTERY_PRICE_MAX = 5000.0  # EUR/kWh: the break-even search looks between 0 and this
 
 
@@ -121,8 +131,17 @@ def read_guests(match_dir, ids):
     return out
 
 
+def reference_money(gen, demand, host_share, months, pvpc, spot):
+    """REF: the host gets host_share x every hour's output; it uses what it needs, the rest of its share
+    goes to the grid (compensated on its bill); the other members' shares are free, so no money for them."""
+    alloc = host_share * gen
+    used = np.minimum(alloc, demand)
+    return {"battery_kwh": 0.0, "cycles_per_year": 0.0, "host_saving_eur": float((used * pvpc).sum()),
+            "guest_sales_eur": 0.0, "monthly": _monthly_from_hours(months, alloc - used, spot, demand - used, pvpc)}
+
+
 def read_inputs(host_dir, battery_dir, sharing_dir, match_dir, prices_dir, kwp, price_year="typical",
-                battery_type=bt.DEFAULT):
+                battery_type=bt.DEFAULT, agreed_dir=None):
     """Everything roi needs, from the output folders of steps 04, 06 and 07."""
     host = read_host_table(host_dir)
     sy = read_solar_year_prices(Path(prices_dir) / "prices_hourly_solar_year.csv")
@@ -155,6 +174,15 @@ def read_inputs(host_dir, battery_dir, sharing_dir, match_dir, prices_dir, kwp, 
                                             "battery_agent_summary.json")]
         inputs["guests"] = read_guests(match_dir or sharing_dir, sh["buildings"][1:])
         inputs["guest_discount"] = sh["guest_discount"]
+    if agreed_dir:
+        ag = json.loads((Path(agreed_dir) / "agreed_shares_summary.json").read_text(encoding="utf-8"))
+        per = ag["per_building"]
+        share = float(per["host"]["share"])
+        inputs["REF"] = reference_money(host["generation_kwh"], host["host_demand_kwh"], share, months, pvpc, spot)
+        inputs["REF_terms"] = {"host_share": share, "shares": {k: v["share"] for k, v in per.items()},
+                               "guest_price_share_of_grid": ag.get("guest_price_share_of_grid", 0.0),
+                               "members": [{"id": k, "count": int(v.get("dwellings") or 1)} for k, v in per.items()
+                                           if k != "host"]}
     return inputs
 
 
@@ -230,13 +258,15 @@ def battery_terms(kwh, cycles, price, c, battery_type=bt.DEFAULT):
 
 def connection_terms(connection, guests, c, cable_m):
     """Extra capex and yearly cost of linking the guests: a cable (wired) or the legal route (no cable)."""
-    n_guests = sum(g["count"] for g in guests)
     if connection == "wired":
+        # one connection kit per guest BUILDING (a block of 30 homes is one building, one kit)
+        buildings = len(guests)
         per_m = c["cable_buried_eur_per_m"] + c["trench_and_repave_eur_per_m"]
-        return {"capex_eur": cable_m * per_m + n_guests * c["guest_connection_kit_eur"], "yearly_eur": 0.0,
+        return {"capex_eur": cable_m * per_m + buildings * c["guest_connection_kit_eur"], "yearly_eur": 0.0,
                 "parts": {"cable_m": cable_m, "cable_eur": cable_m * per_m,
-                          "kits_eur": n_guests * c["guest_connection_kit_eur"], "guests": n_guests}}
-    members = 1 + n_guests
+                          "kits_eur": buildings * c["guest_connection_kit_eur"], "guest_buildings": buildings}}
+    # legal route: the manager fee is per member (supply point): each home signs the sharing agreement
+    members = 1 + sum(g["count"] for g in guests)
     return {"capex_eur": c["legal_net_meter_eur"], "yearly_eur": members * c["legal_manager_eur_per_member_yr"],
             "parts": {"net_meter_eur": c["legal_net_meter_eur"], "members": members,
                       "manager_eur_per_year": members * c["legal_manager_eur_per_member_yr"]}}
@@ -295,11 +325,18 @@ def evaluate(inputs, c, connection="legal", cable_m=0.0):
         if inputs["BC_rows"]:
             out["B+C"] = best_battery("B+C", inputs["BC_rows"], kwp, c, price, bt_type, conn["capex_eur"],
                                       conn["yearly_eur"], det)
+    if inputs.get("REF"):            # CEP9's real terms: legal route, fixed shares, power given free
+        terms = inputs["REF_terms"]
+        conn = connection_terms("legal", terms["members"], c, 0.0)
+        out["REF"] = build_option("REF", inputs["REF"], kwp, c, conn["capex_eur"], conn["yearly_eur"],
+                                  details={"connection": "legal", "connection_parts": conn["parts"],
+                                           "reference": True, "label": "CEP9 real terms", **terms})
     return {k: out[k] for k in OPTIONS if out.get(k) is not None}
 
 
 def recommended(options):
-    return max(options, key=lambda k: options[k]["npv_eur"])
+    """The option with the highest NPV; reference rows (REF) are never recommended."""
+    return max((k for k in options if k not in REFERENCE), key=lambda k: options[k]["npv_eur"])
 
 
 def battery_break_even(inputs, c):
@@ -370,7 +407,7 @@ def sensitivity(inputs, costs, connection, cable_m, base_rec):
         r = {"key": key, "low": row["low"], "high": row["high"], "status": row["status"]}
         for side in ("low", "high"):
             opts = evaluate(inputs, {**base, key: row[side]}, connection, cable_m)
-            others = [v["npv_eur"] for k, v in opts.items() if k != base_rec]
+            others = [v["npv_eur"] for k, v in opts.items() if k != base_rec and k not in REFERENCE]
             r[f"npv_{side}"] = {k: round(v["npv_eur"]) for k, v in opts.items()}
             r[f"recommended_{side}"] = recommended(opts)
             r[f"margin_{side}"] = round(opts[base_rec]["npv_eur"] - max(others)) if others else None
@@ -427,7 +464,7 @@ def run(inputs, costs, connection="legal", cable_m=None):
 
 
 # ---------------------------------------------------------------- outputs
-COLOURS = {"A": (90, 90, 90), "B": (31, 119, 180), "C": (214, 120, 20), "B+C": (44, 150, 70)}
+COLOURS = {"A": (90, 90, 90), "B": (31, 119, 180), "C": (214, 120, 20), "B+C": (44, 150, 70), "REF": (148, 103, 189)}
 
 
 def _font(size):
@@ -491,7 +528,7 @@ def draw_line(summary, path):
         if p is not None:
             cx, cy = x(p), y(o["cumulative_cash"][p])
             d.ellipse([cx - 6, cy - 6, cx + 6, cy + 6], outline=col, width=3)
-        short = {"A": "grid", "B": "neighbours", "C": "battery", "B+C": "both"}[name]
+        short = {"A": "grid", "B": "neighbours", "C": "battery", "B+C": "both", "REF": "CEP9 real terms"}[name]
         if o.get("battery_kwh"):
             short += f" {o['battery_kwh']:g} kWh"
         label = f"{name} {short}: NPV {o['npv_eur'] / 1000:,.1f}k" + (f", pays in {p} y" if p is not None else ", never pays")
@@ -562,14 +599,30 @@ def main():
                          "wired = a cable and a connection kit per guest")
     ap.add_argument("--cable-m", type=float, help="total cable length in metres (wired); default: the guests' "
                                                   f"straight-line distances x {ROUTE_FACTOR}")
+    ap.add_argument("--manager-fee-eur-per-member", type=float,
+                    help="legal route: yearly manager fee per member, replacing costs.csv's "
+                         "legal_manager_eur_per_member_yr (CEP9 pays 0: the Barcelona Energy Agency prepares "
+                         "the coefficient file)")
+    ap.add_argument("--agreed-dir", help="step 07 agreed_shares output folder: adds the reference row "
+                                         "'CEP9 real terms' (fixed shares, power given free)")
     ap.add_argument("--battery-type", default=bt.DEFAULT, choices=list(bt.TYPES))
     ap.add_argument("--costs", default=str(COSTS_CSV), help="the costs file (default: step08's costs.csv)")
     ap.add_argument("--out", default="data/roi")
     args = ap.parse_args()
     inputs = read_inputs(args.host_dir, args.battery_dir, args.sharing_dir, args.match_dir, args.prices_dir, args.kwp,
-                         args.price_year, args.battery_type)
-    summary = run(inputs, load_costs(args.costs), args.connection, args.cable_m)
+                         args.price_year, args.battery_type, args.agreed_dir)
+    costs = load_costs(args.costs)
+    overrides = {}
+    if args.manager_fee_eur_per_member is not None:
+        costs["legal_manager_eur_per_member_yr"] = {**costs["legal_manager_eur_per_member_yr"],
+                                                    "value": args.manager_fee_eur_per_member,
+                                                    "source": "--manager-fee-eur-per-member (this run)",
+                                                    "status": costs["legal_manager_eur_per_member_yr"]["status"]}
+        overrides["legal_manager_eur_per_member_yr"] = args.manager_fee_eur_per_member
+    summary = run(inputs, costs, args.connection, args.cable_m)
+    summary["overrides"] = overrides
     summary["inputs"] = {"host_dir": args.host_dir, "battery_dir": args.battery_dir, "match_dir": args.match_dir,
+                         "agreed_dir": args.agreed_dir,
                          "sharing_dir": args.sharing_dir, "prices_dir": args.prices_dir, "costs": args.costs}
     write_outputs(summary, args.out)
     print_table(summary)

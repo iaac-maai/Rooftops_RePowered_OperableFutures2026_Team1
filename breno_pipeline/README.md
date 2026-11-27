@@ -61,7 +61,7 @@ python -m step08_compare_investment.investment --sharing-dir data\sharing\cep9 -
 python -m step08_compare_investment.roi --host-dir data\host\cep9 --battery-dir data\battery\cep9 --match-dir data\match\cep9 --sharing-dir data\sharing\cep9 --prices-dir data\prices --kwp 53.34 --connection legal --out data\roi\cep9_legal
 ```
 
-What it shows (details in each step's README): alone, the school uses 59% of its solar. Its four members (fire station, another institut, a civic centre and 30 homes) raise that to 99%. A battery is not worth it at €590/kWh installed (step 08: on the 65.88 kWp layout it pays only below about €70/kWh). A better price forecast would add only about €3 a year, because tomorrow's prices are published the day before.
+What it shows (details in each step's README): alone, the school uses 59% of its solar. Its four members (fire station, another institut, a civic centre and 30 homes) raise that to 99%. A battery is not worth it at €590/kWh installed (step 08: on the Institut roof it pays only below about €69/kWh). A better price forecast would add only about €3 a year, because tomorrow's prices are published the day before.
 
 The full run for a real host is in [pipeline/README.md](pipeline/README.md).
 
@@ -74,5 +74,5 @@ The full run for a real host is in [pipeline/README.md](pipeline/README.md).
 | 05 | Rule-based estimate working. A trained model only with real meter data |
 | 06 | Working on real 2023-2025 prices. Battery price now €590/kWh installed (vendor blog, range €460-720) from `step08_compare_investment/costs.csv`; get a Barcelona installer quote |
 | 07 | One optimiser that tries many groups of buildings, in wired (100 m) and Spanish legal (500 m, fixed shares) modes. Run on the 4 real CEP9 members; not yet run on a full Catastro search. The battery agent plans with predicted use only |
-| 08 | Working. `roi.py` (27 Nov 2026) compares A sell to the grid, B neighbours (legal or wired), C battery and B+C over 25 years: NPV, ROI, paybacks, monthly compensation cap, battery and cable break-evens, tornado sensitivity. Costs in `costs.csv`, each sourced or marked ASSUMPTION. Run on CEP9 (65.88 kWp): legal route B wins (NPV €36,231), wired loses to A |
+| 08 | Working. `roi.py` (27 Nov 2026) compares A sell to the grid, B neighbours (legal or wired), C battery and B+C over 25 years: NPV, ROI, paybacks, monthly compensation cap, battery and cable break-evens, tornado sensitivity. Costs in `costs.csv`, each sourced or marked ASSUMPTION. Reference row "CEP9 real terms" (fixed shares, power given free). Run on CEP9, Institut roof only (52.38 kWp; all 108 real panels are on the Institut, our layout fits 97): legal route B wins (NPV €23,276, or €35,256 with no manager fee as in CEP9), wired loses to A (wires pay only below 57 m of cable). Results in `pipeline/examples/roi/` |
 | 09 | Website working on the demo data (see `website/README.md`). 3D view and the real case still to do |

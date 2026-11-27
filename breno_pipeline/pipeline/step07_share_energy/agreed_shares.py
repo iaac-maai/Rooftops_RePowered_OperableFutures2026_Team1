@@ -1,7 +1,8 @@
 """Step 07, second way of sharing: fixed shares agreed in advance, as real communities do.
 
     python -m step07_share_energy.agreed_shares --host-dir data\\host\\cep9 ^
-        --neighbours-dir data\\neighbours\\cep9 --shares host=0.30,homes_30=0.232 ^
+        --neighbours-dir data\\neighbours\\cep9 ^
+        --shares host=0.30,maria_espinalt=0.13,can_felipa=0.13,bombers_llevant=0.14,homes_30=0.30 ^
         --guest-price 0 --out data\\agreed\\cep9
 
 The battery agent (battery_agent.py) decides every hour who gets the solar, and guests
@@ -11,7 +12,9 @@ sharing contract), and a public owner may give it away for free. A member's shar
 hour when it doesn't need it goes to the grid.
 
 --shares   building_id=share pairs; members not listed split what is left equally.
-           "host" is the roof's own building.
+           "host" is the roof's own building. CEP9's real fixed split (CEP9, email from
+           César Ochoa, 27 Nov 2026): host 0.30, maria_espinalt 0.13, can_felipa 0.13,
+           bombers_llevant 0.14, homes_30 0.30.
 --guest-price  what guests pay, as a share of the grid price (0 = free, 0.9 = 10% off).
 
 Values use the typical-year PVPC (step 06), without taxes, like the rest of the tool.

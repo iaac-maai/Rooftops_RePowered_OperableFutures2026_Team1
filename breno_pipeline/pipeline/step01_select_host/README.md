@@ -65,7 +65,7 @@ python -m step01_select_host.cases --map    # rebuild the map footprints
 python -m step01_select_host.cases --site   # copy the cases into the website data
 ```
 
-Main findings: CEP9's power comes from two roofs, Escola Pere IV (red, 3241427DF3834A) and Institut Quatre Cantons (yellow, 3241428DF3834A). The Institut's own address geocodes onto the red plot, so run the yellow roof from its point. Maria Espinalt, the Llevant fire station and ITAEB have a plot but no building in Catastro, so their footprints are traced from LiDAR at points Breno checked on the map. The fire station's plot runs onto LiDAR sheet 432584, which we don't have yet, so its outline is cut off. Only Can Felipa is within the 100 m default, and all A160 guests are 105-243 m away.
+Main findings: CEP9's power comes from one roof, the Institut Quatre Cantons (yellow, 3241428DF3834A); the Escola Pere IV next door (red, 3241427DF3834A) is not part of CEP9 [CEP9, email from César Ochoa, 27 Nov 2026]. The Institut's own address geocodes onto the red plot, so run the yellow roof from its point. Maria Espinalt, the Llevant fire station and ITAEB have a plot but no building in Catastro, so their footprints are traced from LiDAR at points Breno checked on the map. The fire station's plot runs onto LiDAR sheet 432584, which we don't have yet, so its outline is cut off. Only Can Felipa is within the 100 m default, and all A160 guests are 105-243 m away.
 
 For the website's step 01 map: `--map` rebuilds `cases/<case>_map.geojson` (needs internet, plus the LiDAR traces in `data/host/`), and `--site` copies the cases into `website/data/site_data.json` without rerunning the other steps.
 

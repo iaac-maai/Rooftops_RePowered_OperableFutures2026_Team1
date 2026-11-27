@@ -35,12 +35,18 @@ Each reading reports:
 
 | Roof | Rectangles | Area | Panels estimate | Old pixel area | Real |
 |---|---|---|---|---|---|
-| Institut Quatre Cantons (yellow) | 7 | 310 m² | 105 | 301 m² | tender: all 108 panels, 279 m² of panel; Breno's count: 65 |
-| Escola Pere IV (red) | 5 | 333 m² | 111 | 321 m² | tender: none; Breno's count: 43 |
+| Institut Quatre Cantons (yellow) | 7 | 310 m² | 105 | 301 m² | **all 108 CEP9 panels**, 279 m² of panel [CEP9 tender; CEP9, 27 Nov 2026] |
+| Escola Pere IV (red) | 5 | 333 m² | 111 | 321 m² | **not part of CEP9** [CEP9, 27 Nov 2026]: another installation |
 
-On the Institut the rectangles land on the real blocks, and 105 panels is within 3% of the tender's 108. The tender (p5, p8) puts all 108 panels on the Institut, so the light-blue rows on Escola Pere IV are probably another installation or not panels at all. The 43 / 65 split in `examples/cep9_actual.json` is kept as it is.
+On the Institut the rectangles land on the real blocks, and 105 panels is within 3% of the real 108. **Correction from CEP9 (email from César Ochoa, 27 Nov 2026):** all 108 panels are on the Institut, and Escola Pere IV is not part of CEP9, as the tender (p5, p8) already said. The old 43 red / 65 yellow split (Breno's Google Earth count) was dropped from `examples/cep9_actual.json`. The panel rows on the red roof belong to another installation; they are kept in that file under `red_roof_what_if`, for the extra case "what if the school next door joined".
 
-**CEP9 validation (both roofs, roof treated as empty, `cep9_540` panel):** 540 W neat blocks give red 70 + yellow 63 = 133 panels and 96,731 kWh, against 108 panels and 73,750 kWh real. (With the old 2.28 x 1.13 m size it was 61 + 63 = 124.)
+**CEP9 validation, Institut only (27 Nov 2026), roof treated as empty, `cep9_540` panel, `--max-panels 108`:** our layout fits **97 panels (52.38 kWp) and 69,508 kWh a year**, against the real 108 panels (58.32 kWp) and about 73,750 kWh [CEP9 presentation]: 11 panels and 5.8% of the energy short, while per kWp we give 1,327 kWh against the real 1,265 (+5%). Our rows are spaced for no shade at a 25° sun (`layout.py`); the real rows are packed tighter. Other settings don't reach 108 either: 98 keeping shaded panels (`--max-shade 1`), 100 in portrait, 97 with `--orient search`.
+
+```
+python -m step03_simulate_generation.shade_yield --lat 41.404361 --lon 2.2 --laz-dir data\lidar --usable data\roof\cep9_yellow_usable.geojson --panel cep9_540 --max-panels 108 --out data\pv\cep9_institut
+```
+
+**Extra case "what if the school next door joined" (both roofs, roof treated as empty, `cep9_540` panel):** 540 W neat blocks give red 70 + yellow 63 = 133 panels and 96,731 kWh. (With the old 2.28 x 1.13 m size it was 61 + 63 = 124.) This used to be called the CEP9 validation; it is not, because the red roof is not part of CEP9.
 
 Two rules on the red roof, both from Breno (21 Nov 2026):
 - The light-blue rows are mostly panels. The two northernmost rows are **solar water heaters**: they are listed in `not_panels.csv`, are not counted as panels, and stay on the roof as obstacles.
