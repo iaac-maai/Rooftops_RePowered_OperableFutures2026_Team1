@@ -27,7 +27,7 @@ breno_pipeline/                       (inside the group repo Rooftops_RePowered_
 │   ├── step08_compare_investment/    owner's 25-year return: grid, neighbours or battery  (new)
 │   ├── step09_publish_report/        one data file for the website                        (new)
 │   ├── tests/                        offline tests for every step
-│   └── examples/                     CEP9 school example roof and its real neighbours, for the offline tests and demo
+│   └── examples/                     CEP9 Institut example roof and its real neighbours, for the offline tests and demo
 ├── website/                          the results page (GitHub Pages)
 ├── sites/                            one settings file per candidate test site (Poblenou, UPC)
 └── docs/SOURCES.md                   every source, and what each one backs up
@@ -47,7 +47,7 @@ pip install -r requirements.txt
 python -m pytest tests                 (should end with "86 passed")
 ```
 
-**Try steps 04-09 now**, on the CEP9 school roof and its real neighbours (building use is an estimate, not meters). Step 06 needs the price file once (`download_prices.py`, a few minutes, needs internet); everything else runs offline:
+**Try steps 04-09 now**, on the CEP9 Institut roof and its real neighbours (building use is an estimate, not meters). Step 06 needs the price file once (`download_prices.py`, a few minutes, needs internet); everything else runs offline:
 
 ```
 python -m step04_read_host_demand.host_table --solar examples\cep9_hourly.csv --host-kind school --host-floor-m2 1811.7 --building-id cep9 --out data\host\cep9
@@ -55,13 +55,13 @@ python step06_prices_and_battery\download_prices.py
 python -m step06_prices_and_battery.prices
 python -m step06_prices_and_battery.price_model
 python -m step06_prices_and_battery.battery_size --host-dir data\host\cep9 --compare-types --out data\battery\cep9
-python -m step07_share_energy.optimise --host-dir data\host\cep9 --lat 41.40458605 --lon 2.20067448 --candidates-csv examples\cep9_members.csv --max-distance 2000 --join-rate 1 --out data\match\cep9
+python -m step07_share_energy.optimise --host-dir data\host\cep9 --lat 41.404361 --lon 2.2 --candidates-csv examples\cep9_members.csv --max-distance 2000 --join-rate 1 --out data\match\cep9
 python -m step07_share_energy.battery_agent --host-dir data\host\cep9 --neighbours-dir data\match\cep9 --out data\sharing\cep9
 python -m step08_compare_investment.investment --sharing-dir data\sharing\cep9 --kwp 53.34 --out data\investment\cep9
 python -m step08_compare_investment.roi --host-dir data\host\cep9 --battery-dir data\battery\cep9 --match-dir data\match\cep9 --sharing-dir data\sharing\cep9 --prices-dir data\prices --kwp 53.34 --connection legal --out data\roi\cep9_legal
 ```
 
-What it shows (details in each step's README): alone, the school uses 59% of its solar. Its four members (fire station, another institut, a civic centre and 30 homes) raise that to 99%. A battery is not worth it at €590/kWh installed (step 08: on the Institut roof it pays only below about €69/kWh). A better price forecast would add only about €3 a year, because tomorrow's prices are published the day before.
+What it shows (details in each step's README): alone, the Institut uses 59% of its solar. Its four members (fire station, another institut, a civic centre and 30 homes) raise that to 99%. A battery is not worth it at €590/kWh installed (step 08: on the Institut roof it pays only below about €69/kWh). A better price forecast would add only about €3 a year, because tomorrow's prices are published the day before.
 
 The full run for a real host is in [pipeline/README.md](pipeline/README.md).
 
@@ -74,5 +74,5 @@ The full run for a real host is in [pipeline/README.md](pipeline/README.md).
 | 05 | Rule-based estimate working. A trained model only with real meter data |
 | 06 | Working on real 2023-2025 prices. Battery price now €590/kWh installed (vendor blog, range €460-720) from `step08_compare_investment/costs.csv`; get a Barcelona installer quote |
 | 07 | One optimiser that tries many groups of buildings, in wired (100 m) and Spanish legal (500 m, fixed shares) modes. Run on the 4 real CEP9 members; not yet run on a full Catastro search. The battery agent plans with predicted use only |
-| 08 | Working. `roi.py` (27 Nov 2026) compares A sell to the grid, B neighbours (legal or wired), C battery and B+C over 25 years: NPV, ROI, paybacks, monthly compensation cap, battery and cable break-evens, tornado sensitivity. Costs in `costs.csv`, each sourced or marked ASSUMPTION. Reference row "CEP9 real terms" (fixed shares, power given free). Run on CEP9, Institut roof only (52.38 kWp; all 108 real panels are on the Institut, our layout fits 97): legal route B wins (NPV €23,276, or €35,256 with no manager fee as in CEP9), wired loses to A (wires pay only below 57 m of cable). Results in `pipeline/examples/roi/` |
-| 09 | Website working on the demo data (see `website/README.md`). 3D view and the real case still to do |
+| 08 | Working. `roi.py` (27 Nov 2026) compares A sell to the grid, B neighbours (legal or wired), C battery and B+C over 25 years: NPV, ROI, paybacks, monthly compensation cap, battery and cable break-evens, tornado sensitivity. Costs in `costs.csv`, each sourced or marked ASSUMPTION. Reference row "CEP9 real terms" (fixed shares, power given free). Run on CEP9's real plant on the Institut (108 panels, 58.32 kWp; our layout fits 97, scaled ×108/97, ASSUMPTION): legal route B wins (NPV €27,198, or €39,178 with no manager fee as in CEP9), wired loses to A (wires pay only below 76 m of cable; the members are 10-258 m away). Results in `pipeline/examples/roi/` |
+| 09 | Website shows the real CEP9 case (Institut only, 58.32 kWp), with the 25-year return, the spare-solar views (total, the Institut's share, to the grid under CEP9's split and with our tool) and seasonal average days (see `website/README.md`). 3D view still to do |

@@ -25,6 +25,7 @@
       <li><a href="#prices"><span>06</span>Prices</a></li>
       <li><a href="#battery"><span>06-08</span>Battery</a></li>
       <li><a href="#money"><span>09</span>Money</a></li>
+      <li><a href="#roi"><span>08</span>25-year return</a></li>
       <li><a href="#sources"><span>—</span>Sources</a></li>
     </ul>
     <p class="rail-note">Step numbers match the folders in the pipeline. Each number on this page shows where it comes from.</p>
@@ -162,9 +163,12 @@
         <h2>When the roof has power to spare</h2>
         <p class="lede" id="surplus-lede"></p>
         <div class="card">
-          <div class="card-head"><h3>Spare solar, every hour of the year</h3><span class="chip" data-kind="modelled">modelled · step 04</span></div>
+          <div class="card-head"><h3>Spare solar, every hour of the year</h3><span class="chip" data-kind="modelled">modelled · steps 04 and 07</span></div>
+          <div class="seg" role="group" aria-label="Which spare solar" id="spare-view"></div>
           <div id="heatmap"></div>
           <div class="legend" id="heat-legend"></div>
+          <p class="note" id="heat-sentence"></p>
+          <p class="small" id="heat-total"></p>
         </div>
       </section>
 
@@ -175,6 +179,11 @@
         <div class="card">
           <div class="card-head">
             <h3>Average day: solar and each building's use</h3>
+            <div class="seg" role="group" aria-label="Season" id="season">
+              <button type="button" aria-pressed="false" data-v="winter">Winter</button>
+              <button type="button" aria-pressed="true" data-v="spring_autumn">Spring and autumn</button>
+              <button type="button" aria-pressed="false" data-v="summer">Summer</button>
+            </div>
             <div class="seg" role="group" aria-label="Day type" id="daytype">
               <button type="button" aria-pressed="true" data-v="weekday">Weekday</button>
               <button type="button" aria-pressed="false" data-v="weekend">Weekend</button>
@@ -182,7 +191,7 @@
           </div>
           <div id="profiles"></div>
           <div class="legend" id="profiles-legend"></div>
-          <p class="small">Building use is <span class="chip" data-kind="assumption">assumption</span> (step 05 profiles from floor area and use type) until we have meter data. Solar is the mean of June-August for weekdays and weekends alike.</p>
+          <p class="small" id="profiles-note">Building use is <span class="chip" data-kind="assumption">assumption</span> (step 05 profiles from floor area and use type) until we have meter data. Solar and use come from the same months: winter is December-February, spring and autumn March-May and September-November, summer June-August. The Institut is closed in July and August in our use estimate, so its summer weekdays are low.</p>
         </div>
         <div class="card" id="match-card" hidden>
           <div class="card-head">
@@ -274,6 +283,35 @@
           <p class="note" id="agreed-intro"></p>
           <div class="table-wrap"><table id="agreed-table"></table></div>
           <p class="small" id="agreed-note"></p>
+        </div>
+      </section>
+
+      <section id="roi">
+        <span class="eyebrow">Step 08 · the owner's 25-year return</span>
+        <h2>Grid, neighbours or a battery: what pays the owner most?</h2>
+        <p class="lede">The owner pays for the panels. The host uses what it can; the options differ only in what happens to the rest: <b>A</b> sell it to the grid, <b>B</b> sell it to the neighbours at the grid price minus 10%, <b>C</b> store it in a battery for the host, <b>B+C</b> both. <b>CEP9 real terms</b> is shown for comparison: fixed shares, power given for free. Change how the guests are linked, or the discount rate, and the lines and the NPV update.</p>
+        <div class="card" id="roi-card">
+          <div class="card-head"><h3>Money the owner has made so far, discounted</h3><span class="chip" data-kind="modelled">modelled · step 08 roi.py</span></div>
+          <div class="controls">
+            <label class="field" for="roi-run">How the guests are linked
+              <select id="roi-run"></select>
+            </label>
+            <label class="field" for="roi-rate"><span>Discount rate: <b id="roi-rate-out" class="num"></b> a year</span>
+              <input type="range" id="roi-rate" min="0" max="10" step="0.5" value="5">
+            </label>
+          </div>
+          <p class="note" id="roi-sentence"></p>
+          <div id="roi-chart"></div>
+          <div class="legend" id="roi-legend"></div>
+          <p class="small" id="roi-chart-note"></p>
+          <div class="table-wrap"><table id="roi-table"></table></div>
+          <p class="small" id="roi-breakeven"></p>
+        </div>
+        <div class="card" id="roi-sens-card">
+          <div class="card-head"><h3>What moves the answer most</h3><span class="chip" data-kind="modelled">modelled · low and high values from costs.csv</span></div>
+          <p class="note">Each cost with a low and a high value is set to each in turn and every option is worked out again. "Lead" is how far the recommended option is ahead of the next best; below zero, the recommendation changes.</p>
+          <div class="table-wrap"><table id="roi-sens"></table></div>
+          <p class="small" id="roi-warnings"></p>
         </div>
       </section>
 

@@ -1,6 +1,6 @@
 """Step 07 (neighbours and sharing in one tool): find the best group of neighbours to share the roof with.
 
-    python -m step07_share_energy.optimise --host-dir data\\host\\cep9 --lat 41.40458605 --lon 2.20067448 ^
+    python -m step07_share_energy.optimise --host-dir data\\host\\cep9 --lat 41.404361 --lon 2.2 ^
         --candidates-csv examples\\cep9_members.csv --mode wired --out data\\match\\cep9
 
 Step 07 used to pick the closest buildings and step 07 then shared the power. This tool does both

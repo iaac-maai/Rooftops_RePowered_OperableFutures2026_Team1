@@ -32,6 +32,7 @@ from step06_prices_and_battery import battery_types as bt
 from step06_prices_and_battery import dispatch
 from step06_prices_and_battery.prices import local_hour, read_solar_year_prices
 from step07_share_energy.candidates import read_demand
+from step09_publish_report.site_views import SEASON_LABELS, season_profiles, spare_views
 
 SHOWCASE_KWH = 10.0        # battery size used only to illustrate a day when the agent picks none
 
@@ -106,7 +107,8 @@ def actual_variant(a, variants):
 
 ROI_KEYS = ("capex_eur", "capex_parts", "cash_in", "cash_out", "cumulative_cash", "npv_eur", "roi_lifetime",
             "simple_payback_y", "discounted_payback_y", "money_breakdown", "year1", "battery_kwh",
-            "battery_capex_eur", "battery_life_years", "connection", "connection_parts")
+            "battery_capex_eur", "battery_life_years", "connection", "connection_parts", "reference", "label",
+            "shares")
 
 
 def roi_block(summary):
@@ -198,6 +200,8 @@ def main():
     ap.add_argument("--label", required=True, help="what the website calls this case")
     ap.add_argument("--host-label", default="Host", help="the host's name on the site, e.g. 'Institut Quatre Cantons'")
     ap.add_argument("--host-kind", default="office", help="office, school or shop (as given to step 04)")
+    ap.add_argument("--host-short", help="the host's short name with its article, for sentences, e.g. 'the Institut' "
+                                         "(default: --host-label)")
     ap.add_argument("--host-use-note", default="step 05 profile from floor area and use type; replace with meter data",
                     help="where the host's yearly use comes from (shown with the number)")
     ap.add_argument("--note", default="", help="a sentence for the banner at the top (e.g. what is assumed)")
@@ -220,7 +224,7 @@ def main():
                     "adds an 'Actual' tab to the roof section")
     ap.add_argument("--roi-dir", action="append", default=[],
                     help="step 08 roi.py output folder (roi_summary.json); repeat it for legal and wired. "
-                         "Default: the folders <name>_legal and <name>_wired in data/roi, if they exist")
+                         "Default: the folders <name>_legal, <name>_legal_fee0 and <name>_wired in data/roi, if they exist")
     ap.add_argument("--sources", default="../docs/SOURCES.md")
     ap.add_argument("--out", default="../website/data/site_data.json")
     args = ap.parse_args()
@@ -250,17 +254,22 @@ def main():
         variants.append(actual_variant(json.loads(Path(args.actual).read_text(encoding="utf-8")), variants))
     typ = share["price_years"]["typical"]
 
-    # buildings
+    # buildings: distance as step 07 measured it; "location private" when the position is not published
     buildings = [{"id": "host", "label": f"{args.host_label} (host)", "kind": args.host_kind, "distance_m": 0,
-                  "yearly_kwh": hs["host_demand_kwh"], "source": hs["demand_source"],
-                  "profile": profiles(times, host["host_demand_kwh"])}]
+                  "distance_label": "host", "yearly_kwh": hs["host_demand_kwh"], "source": hs["demand_source"],
+                  "profile": profiles(times, host["host_demand_kwh"]),
+                  "profile_by_season": season_profiles(times, host["host_demand_kwh"])}]
     for f in cands["features"]:
         p = f["properties"]
         if p["building_id"] in others:
+            private = str(p.get("location_private") or "").lower() in ("yes", "true", "1")
             buildings.append({"id": p["building_id"], "label": p.get("name") or p["building_id"].replace("_", " "),
-                              "kind": p["use_type"], "distance_m": p["distance_m"], "yearly_kwh": p["yearly_kwh"],
+                              "kind": p["use_type"], "distance_m": None if private else p["distance_m"],
+                              "distance_label": "location private" if private else f"{p['distance_m']:,} m",
+                              "distance_source": p.get("distance_source"), "yearly_kwh": p["yearly_kwh"],
                               "fit_kwh": p["fit_kwh"], "source": p["demand_source"],
-                              "profile": profiles(times, others[p["building_id"]])})
+                              "profile": profiles(times, others[p["building_id"]]),
+                              "profile_by_season": season_profiles(times, others[p["building_id"]])})
     candidates = [{**f["properties"], "lon": f["geometry"]["coordinates"][0], "lat": f["geometry"]["coordinates"][1],
                    "joined": f["properties"]["building_id"] in others}
                   for f in cands["features"] if f["geometry"]["type"] == "Point"]
@@ -279,6 +288,19 @@ def main():
                      "battery_out": r(flows["bat_to"].sum(0)), "charge": r(flows["charge"]),
                      "export": r(flows["export"] + flows["curtail"]), "level": r(flows["soc"]),
                      "use_host": r(demand[0]), "use_guests": r(demand[1:].sum(0))}
+
+    # spare-solar views (step 04, CEP9 split, our tool), 365 days x 24 local hours, computed here
+    shares = None
+    if agreed and all(i in agreed["per_building"] for i in ids):
+        shares = [agreed["per_building"][i]["share"] for i in ids]
+    dec_path = d / "sharing" / n / "decisions_hourly.csv"
+    our_grid = None
+    if dec_path.exists():
+        with open(dec_path, newline="", encoding="utf-8") as fh:
+            our_grid = np.array([float(r["export_kwh"]) + float(r["curtailed_kwh"]) for r in csv.DictReader(fh)])
+    spare = spare_views(times, gen, host["host_demand_kwh"], ids, demand, shares, our_grid,
+                        host_label=args.host_short or args.host_label)
+    solar_by_season = season_profiles(times, gen)
 
     # surplus map: 365 days x 24 local hours
     surplus = host["surplus_kwh"]
@@ -362,12 +384,13 @@ def main():
               "gaps": json.loads(gaps_path.read_text(encoding="utf-8")) if gaps_path.exists() else [],
               "run_command": 'python -m step01_select_host.find_building "<address>, Barcelona" --laz-dir data\\lidar',
               "cases": site_cases()}
-    roi = {}
-    for rd in args.roi_dir or [d / "roi" / f"{n}_legal", d / "roi" / f"{n}_wired"]:
+    roi = {}       # one entry per step 08 run, named after its folder without the case name: legal, legal_fee0, wired
+    for rd in args.roi_dir or [d / "roi" / f"{n}_{k}" for k in ("legal", "legal_fee0", "wired")]:
         rp = Path(rd) / "roi_summary.json"
         if rp.exists():
             r = json.loads(rp.read_text(encoding="utf-8"))
-            roi[r["connection"]] = roi_block(r)
+            key = Path(rd).name.removeprefix(f"{n}_")
+            roi[key] = {**roi_block(r), "overrides": r.get("overrides", {})}
     data = {
         "roi": roi,
         "step01": step01, "match": match, "warnings": warnings,
@@ -386,7 +409,8 @@ def main():
                  "variants": variants,
                  "chosen": {"panel_wp": ry["yield"].get("panel_wp", 420), "option": ry["yield"].get("layout", "max")}},
         "host": {"surplus_by_month_kwh": hs["surplus_by_month_kwh"], "surplus_map": smap,
-                 "first_day": str(times[0].astype("datetime64[D]"))},
+                 "first_day": str(times[0].astype("datetime64[D]")), "spare": spare,
+                 "solar_by_season": solar_by_season, "season_labels": SEASON_LABELS},
         "buildings": buildings,
         "candidates": candidates,
         "max_distance_m": args.max_distance,

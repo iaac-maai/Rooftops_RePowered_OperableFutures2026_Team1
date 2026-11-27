@@ -80,7 +80,7 @@ Changes made 15 Nov 2026 after review: a block is judged the same whichever way 
 
 The run prints a table of all six layouts and draws them in `<out>_options.png`. All layouts are listed under `variants` in `<out>_yield.json`, each with its `funnel` (how many panels at each step) and `left_out` (which panels and why). `--layout neat --panel-wp 540` makes that layout the main output (`<out>_hourly.csv`), which steps 04-09 use.
 
-First test, CEP9 school (15 Nov 2026): the real system is 108 panels of 540 W in tidy rows; our "fill the roof" placed 197 of 420 W, including about 85 scattered on the cluttered south roof. **The numbers on the website for neat and best blocks were made with the old rule (6+ panels, 3+ per row); rerun step 03 and step 09 to refresh them.**
+First test, CEP9 Institut (15 Nov 2026): the real system is 108 panels of 540 W in tidy rows; our "fill the roof" placed 197 of 420 W, including about 85 scattered on the cluttered south roof. **The numbers on the website for neat and best blocks were made with the old rule (6+ panels, 3+ per row); rerun step 03 and step 09 to refresh them.**
 
 ## Fewer panels (`--max-panels`)
 

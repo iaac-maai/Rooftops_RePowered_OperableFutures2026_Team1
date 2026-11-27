@@ -1,0 +1,232 @@
+{
+  "case": "cep9_next_door",
+  "role": "what-if case, not shown by default",
+  "name": "What if the school next door joined: CEP9 (Institut Quatre Cantons) + Escola Pere IV",
+  "site_file": "poblenou_quatre_cantons",
+  "checked": "2026-11-21, live ICGC geocoder + Catastro Consulta_RCCOOR + INSPIRE Buildings WFS; host corrected 27 Nov 2026 [CEP9, email from César Ochoa, 27 Nov 2026]",
+  "host": {
+    "name": "Institut Quatre Cantons + Escola Pere IV roofs",
+    "kind": "school",
+    "note": "NOT the real CEP9: Escola Pere IV (red) is not part of CEP9 [CEP9, email from César Ochoa, 27 Nov 2026]. This case adds its roof to the Institut's to see what the school next door would add (data/pv/cep9_v2, data/host/cep9_both, data/roi/cep9_both_legal and cep9_both_wired). It has no map file, so the website does not show it.",
+    "roofs": [
+      {
+        "roof": "red",
+        "school": "Escola Pere IV",
+        "addresses": [
+          "Carrer de Bilbao 103-117, Barcelona"
+        ],
+        "catastro_address": "CL BILBAO 103 BARCELONA (BARCELONA)",
+        "refcat": "3241427DF3834A",
+        "lat": 41.40458605,
+        "lon": 2.20067448,
+        "current_use": "4_3_publicServices",
+        "year_built": 2008,
+        "floors_above_ground": 3,
+        "footprint_m2": 1422.5,
+        "lidar_sheets": [
+          "433583",
+          "433584"
+        ],
+        "step01_output": "examples/cep9_building.json",
+        "note": "NOT part of CEP9 [CEP9, email from César Ochoa, 27 Nov 2026]. The panel rows on this roof belong to another installation. Kept only for the extra case 'what if the school next door joined' (data/host/cep9_both)."
+      },
+      {
+        "roof": "yellow",
+        "school": "Institut Quatre Cantons",
+        "addresses": [
+          "Camí Antic de València 37-39, Barcelona",
+          "Carrer de Batista 1, Barcelona"
+        ],
+        "catastro_address": "CL BATISTA 1 BARCELONA (BARCELONA)",
+        "refcat": "3241428DF3834A",
+        "lat": 41.404361,
+        "lon": 2.2,
+        "current_use": "4_3_publicServices",
+        "year_built": 2011,
+        "floors_above_ground": 4,
+        "footprint_m2": 1081.5,
+        "lidar_sheets": [
+          "433583"
+        ],
+        "step01_output": "data/host/cep9_yellow.json",
+        "panels_counted": 108,
+        "panels_source": "CEP9, email from César Ochoa, 27 Nov 2026"
+      }
+    ],
+    "real_system": {
+      "kwp": 58.32,
+      "panels": 108,
+      "panel_wp": 540,
+      "yearly_kwh": 73750,
+      "self_use_share": 0.3,
+      "source": "CEP9 presentation (elpoblenou.cat, Oct 2024); self-use share from The Guardian, 25 Jul 2022; shares and roof: CEP9, email from César Ochoa, 27 Nov 2026",
+      "file": "examples/cep9_actual.json",
+      "shares": {
+        "host": 0.3,
+        "maria_espinalt": 0.13,
+        "can_felipa": 0.13,
+        "bombers_llevant": 0.14,
+        "homes_30": 0.3
+      },
+      "shares_source": "CEP9, email from César Ochoa, 27 Nov 2026"
+    }
+  },
+  "participants": [
+    {
+      "id": "quatre_cantons",
+      "name": "Institut Quatre Cantons (host, uses its own power)",
+      "role": "host self-use",
+      "address": "Camí Antic de València 37-39, Barcelona",
+      "refcat": "3241428DF3834A",
+      "distance_m": 0,
+      "source": "CEP9 presentation",
+      "note": "Yellow roof; all 108 panels; keeps a 0.30 share [CEP9, email from César Ochoa, 27 Nov 2026]."
+    },
+    {
+      "id": "can_felipa",
+      "name": "Can Felipa civic centre",
+      "role": "member",
+      "address": "Plaça de Josep Maria Huertas Claveria 1, Barcelona",
+      "catastro_address": "CM ANTIC DE VALENCIA 28 BARCELONA (BARCELONA)",
+      "refcat": "3241702DF3834A",
+      "lat": 41.403653,
+      "lon": 2.200481,
+      "current_use": "4_3_publicServices",
+      "year_built": 2001,
+      "floors_above_ground": 5,
+      "footprint_m2": 1948.6,
+      "distance_m": 10,
+      "yearly_kwh_estimate": 85100,
+      "yearly_kwh_source": "Barcelona municipal buildings, 2018 average per civic centre (Consums Energètics Edificis 2008-2018)",
+      "source": "CEP9 presentation; address from Barcelona Cultura",
+      "distance_note": "from the Institut: edge to edge between the Institut Quatre Cantons outline and the member's outline, step 01 map (cases/cep9_map.geojson), 27 Nov 2026. Until then the case gave 34 / 211 / 151 m, measured from the Escola Pere IV point (the old host point) to each member's outline"
+    },
+    {
+      "id": "maria_espinalt",
+      "name": "Institut Maria Espinalt",
+      "role": "member",
+      "address": "Camí Antic de València 82, Barcelona",
+      "catastro_address": "CM ANTIC DE VALENCIA 82 N2-90 BARCELONA (BARCELONA)",
+      "refcat": "3543235DF3834D",
+      "lat": 41.406083,
+      "lon": 2.202694,
+      "current_use": "school (from the member list; Catastro has no building record)",
+      "footprint_m2": 1278.5,
+      "distance_m": 258,
+      "yearly_kwh_estimate": 108700,
+      "yearly_kwh_source": "Barcelona municipal buildings, 2018 average per institut",
+      "catastro_note": "Catastro has the plot (4,876 m²) but no building on it. Footprint traced from LiDAR; low strips around the playground (3-6 m high) are left out. Checked against the LiDAR height image.",
+      "source": "CEP9 presentation; address from Sant Martí services guide 2020",
+      "coords_source": "Breno, 21 Nov 2026 (41°24'21.9\"N 2°12'09.7\"E)",
+      "building_height_m": 16.8,
+      "flat_roof": true,
+      "flat_share": 0.648,
+      "plot_m2": 4876,
+      "footprint_source": "lidar (Catastro has no building on this plot); step01 run: data/host/maria_espinalt.json",
+      "lidar_sheets": [
+        "433584"
+      ],
+      "distance_note": "from the Institut: edge to edge between the Institut Quatre Cantons outline and the member's outline, step 01 map (cases/cep9_map.geojson), 27 Nov 2026. Until then the case gave 34 / 211 / 151 m, measured from the Escola Pere IV point (the old host point) to each member's outline"
+    },
+    {
+      "id": "bombers_llevant",
+      "name": "Parc de Bombers de Llevant (fire station)",
+      "role": "member",
+      "address": "Carrer de Castella 6, Barcelona",
+      "catastro_address": "CL CASTELLA 6 BARCELONA (BARCELONA)",
+      "refcat": "3142449DF3834C",
+      "lat": 41.405306,
+      "lon": 2.198583,
+      "current_use": null,
+      "footprint_m2": 949.1,
+      "distance_m": 83,
+      "yearly_kwh_estimate": 172800,
+      "yearly_kwh_source": "Barcelona municipal buildings, 2018 average per fire station",
+      "catastro_note": "Catastro has the plot (6,391 m²) but no building on it. Footprint traced from LiDAR and checked on the orthophoto, but CUT OFF: the plot's west end is on LiDAR sheet 432584, which we do not have (92% of the plot covered).",
+      "source": "CEP9 presentation; address from Sant Martí services guide 2020",
+      "coords_source": "Breno, 21 Nov 2026 (41°24'19.1\"N 2°11'54.9\"E); the point is in the yard, the building is the long block on the south-west street",
+      "footprint_source": "lidar (Catastro has no building on this plot); step01 run: data/host/bombers_llevant.json",
+      "building_height_m": 12.3,
+      "flat_roof": true,
+      "flat_share": 0.604,
+      "lidar_sheets": [
+        "433584"
+      ],
+      "existing_pv": "yes, many panels on the roof (Breno; visible on the ICGC orthophoto). Size unknown.",
+      "distance_note": "from the Institut: edge to edge between the Institut Quatre Cantons outline and the member's outline, step 01 map (cases/cep9_map.geojson), 27 Nov 2026. Until then the case gave 34 / 211 / 151 m, measured from the Escola Pere IV point (the old host point) to each member's outline"
+    },
+    {
+      "id": "homes_30",
+      "name": "30 households",
+      "role": "member",
+      "address": null,
+      "refcat": null,
+      "count": 30,
+      "yearly_kwh_each_range": [
+        400,
+        700
+      ],
+      "yearly_kwh_source": "the share of CEP9 energy each home gets (400-700 kWh/yr), not what each home uses",
+      "source": "CEP9 presentation",
+      "note": "Each home gets 500 W free in exchange for community work; share 0.30 for the 30 homes [CEP9, email from César Ochoa, 27 Nov 2026]."
+    }
+  ],
+  "available_data": [
+    {
+      "item": "Catastro plot + building data for Escola Pere IV (red, NOT CEP9; the address lands here)",
+      "file": "examples/cep9_building.json",
+      "status": "have"
+    },
+    {
+      "item": "Catastro + LiDAR record for the CEP9 roof (Institut, yellow)",
+      "file": "data/host/cep9_yellow.json",
+      "status": "have"
+    },
+    {
+      "item": "ICGC LiDAR sheets 433583 and 433584 (2021-2023)",
+      "file": "data/lidar/lidar-territorial-v3r1-full1km433584-2021-2023.laz",
+      "status": "have"
+    },
+    {
+      "item": "Real system totals (kWp, panels, yearly kWh)",
+      "file": "examples/cep9_actual.json",
+      "status": "have"
+    },
+    {
+      "item": "Real panel blocks fitted by step 02 on the ICGC orthophoto (Institut: 7 rectangles, about 105 panels)",
+      "file": "examples/cep9_actual.json",
+      "status": "have"
+    },
+    {
+      "item": "Roof layout + hourly yield, Institut only, 540 W, 108 panels asked, 97 fit (steps 02-03)",
+      "file": "data/pv/cep9_institut_yield.json",
+      "status": "have"
+    },
+    {
+      "item": "Member list with yearly-use estimates",
+      "file": "examples/cep9_members.csv",
+      "status": "have, estimates only"
+    },
+    {
+      "item": "Hourly prices OMIE + PVPC 2023-2025",
+      "file": "data/prices/pvpc_hourly.csv",
+      "status": "have"
+    },
+    {
+      "item": "Demand shape model trained on GoiEner meters",
+      "file": "data/models/demand_profile/report.json",
+      "status": "have"
+    },
+    {
+      "item": "Barcelona typical weather year",
+      "file": "data/weather/barcelona_tmy.json",
+      "status": "have"
+    },
+    {
+      "item": "Metered hourly demand of the school or any member",
+      "file": null,
+      "status": "missing"
+    }
+  ],
+  "unknowns": []
+}

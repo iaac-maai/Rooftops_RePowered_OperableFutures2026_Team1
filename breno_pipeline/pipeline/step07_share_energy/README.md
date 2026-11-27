@@ -12,8 +12,8 @@ Steps 07 (find neighbours) and 08 (share energy) used to be separate: step 07 to
 A building only counts if it adds at least 250 kWh a year of used solar on top of the others, and a group has at most 6 guests (both **ASSUMPTIONS**; the first is the stopping rule of the team's matchmaker diagram). No guest ever pays more than the grid: guests pay (1 − discount) × the PVPC of every hour.
 
 ```
-python -m step07_share_energy.optimise --host-dir data\host\cep9 --lat 41.40458605 --lon 2.20067448 --candidates-csv examples\cep9_members.csv --mode wired --max-distance 2000 --join-rate 1 --out data\match\cep9_wired
-python -m step07_share_energy.optimise --host-dir data\host\cep9 --lat 41.40458605 --lon 2.20067448 --candidates-csv examples\cep9_members.csv --mode legal --max-distance 2000 --join-rate 1 --out data\match\cep9_legal
+python -m step07_share_energy.optimise --host-dir data\host\cep9 --lat 41.404361 --lon 2.2 --candidates-csv examples\cep9_members.csv --mode wired --max-distance 2000 --join-rate 1 --out data\match\cep9_wired
+python -m step07_share_energy.optimise --host-dir data\host\cep9 --lat 41.404361 --lon 2.2 --candidates-csv examples\cep9_members.csv --mode legal --max-distance 2000 --join-rate 1 --out data\match\cep9_legal
 ```
 
 Leave out `--candidates-csv` to search Catastro for every plot within reach (needs internet, from a laptop).
@@ -40,7 +40,7 @@ With few buildings, every combination is tried (exhaustive). With many, it start
 - `match_summary.json`: every candidate with distance and fit; the number of groups tried; the host alone, the best group and the top 10 groups with kWh used, kWh to the grid, owner money and guests' savings; what each building in the best group adds
 - the chosen group in step 07's format (`shortlist.csv`, `candidate_buildings.geojson`, `demand_hourly.csv`), so the next tools run on it unchanged
 
-## Result on the CEP9 school (modelled; building use is an estimate, not meters)
+## Result on the CEP9 Institut (modelled; building use is an estimate, not meters)
 
 | | Solar used | To the grid | Owner €/yr | Guests save €/yr |
 |---|---|---|---|---|

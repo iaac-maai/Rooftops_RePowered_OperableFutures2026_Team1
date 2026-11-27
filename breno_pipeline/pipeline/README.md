@@ -33,7 +33,7 @@ Download the ICGC LiDAR tiles (LAZ) for your site into `data\lidar\`.
 
 ## A real host, start to end
 
-Example with the CEP9 school (Institut Quatre Cantons, Poblenou). It needs LiDAR sheets 433583 and 433584 in `data\lidar`. Steps 01-03 need internet (from a laptop); the rest runs offline once the price file is downloaded.
+Example with the CEP9 Institut (Institut Quatre Cantons, Poblenou). It needs LiDAR sheets 433583 and 433584 in `data\lidar`. Steps 01-03 need internet (from a laptop); the rest runs offline once the price file is downloaded.
 
 ```
 python -m step01_select_host.find_building "Camí Antic de València 35, Barcelona" --laz-dir data\lidar
@@ -44,7 +44,7 @@ python step06_prices_and_battery\download_prices.py
 python -m step06_prices_and_battery.prices
 python -m step06_prices_and_battery.price_model
 python -m step06_prices_and_battery.battery_size --host-dir data\host\cep9 --compare-types --out data\battery\cep9
-python -m step07_share_energy.optimise --host-dir data\host\cep9 --lat 41.40458605 --lon 2.20067448 --candidates-csv examples\cep9_members.csv --mode wired --max-distance 2000 --join-rate 1 --out data\match\cep9
+python -m step07_share_energy.optimise --host-dir data\host\cep9 --lat 41.404361 --lon 2.2 --candidates-csv examples\cep9_members.csv --mode wired --max-distance 2000 --join-rate 1 --out data\match\cep9
 python -m step07_share_energy.battery_agent --host-dir data\host\cep9 --neighbours-dir data\match\cep9 --out data\sharing\cep9
 python -m step08_compare_investment.investment --sharing-dir data\sharing\cep9 --kwp <kWp from data\pv\cep9_yield.json> --out data\investment\cep9
 ```
@@ -59,7 +59,7 @@ No meter file yet? That is the situation today: use `--host-kind` and `--host-fl
 2. **Battery price**: a Barcelona installer quote for 20-100 kWh LFP (the only checkable price we have is UK and in pounds).
 3. **Building demand**: which source for hourly use by building type? GoiEner (Spain, hourly, includes offices and public buildings, not Barcelona) or something from Madrid (we have not found one).
 4. **Google Solar**: a screenshot of the same roof, for the comparison on the website.
-5. **Meters**: ask CEP9 / the school for real hourly use.
+5. **Meters**: ask CEP9 / the Institut for real hourly use (CEP9 has monitoring data; requested 27 Nov 2026).
 
 ## Where outputs go
 

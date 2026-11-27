@@ -92,13 +92,13 @@ Other **ASSUMPTIONS** in `roi.py` (listed in SOURCES.md):
 
 ## How to run it
 
-From `pipeline\`, after steps 04, 06 and 07 (including `agreed_shares`) have run for the case. The commands are in `step09_publish_report/README.md`. For CEP9, Institut roof only, 97 panels of 540 W (52.38 kWp):
+From `pipeline\`, after steps 04, 06 and 07 (including `agreed_shares`) have run for the case. The commands are in `step09_publish_report/README.md`. For CEP9, the real plant on the Institut (108 panels, 58.32 kWp):
 
 ```powershell
 cd C:\Users\breno\OneDrive\Desktop\Rooftops_RePowered_OperableFutures2026_Team1\breno_pipeline\pipeline
-.venv\Scripts\python.exe -m step08_compare_investment.roi --host-dir data\host\cep9 --battery-dir data\battery\cep9 --match-dir data\match\cep9_wired --sharing-dir data\sharing\cep9 --agreed-dir data\agreed\cep9 --prices-dir data\prices --kwp 52.38 --connection legal --out data\roi\cep9_legal
-.venv\Scripts\python.exe -m step08_compare_investment.roi --host-dir data\host\cep9 --battery-dir data\battery\cep9 --match-dir data\match\cep9_wired --sharing-dir data\sharing\cep9 --agreed-dir data\agreed\cep9 --prices-dir data\prices --kwp 52.38 --connection legal --manager-fee-eur-per-member 0 --out data\roi\cep9_legal_fee0
-.venv\Scripts\python.exe -m step08_compare_investment.roi --host-dir data\host\cep9 --battery-dir data\battery\cep9 --match-dir data\match\cep9_wired --sharing-dir data\sharing\cep9 --agreed-dir data\agreed\cep9 --prices-dir data\prices --kwp 52.38 --connection wired --out data\roi\cep9_wired
+.venv\Scripts\python.exe -m step08_compare_investment.roi --host-dir data\host\cep9 --battery-dir data\battery\cep9 --match-dir data\neighbours\cep9 --sharing-dir data\sharing\cep9 --agreed-dir data\agreed\cep9 --prices-dir data\prices --kwp 58.32 --connection legal --out data\roi\cep9_legal
+.venv\Scripts\python.exe -m step08_compare_investment.roi --host-dir data\host\cep9 --battery-dir data\battery\cep9 --match-dir data\neighbours\cep9 --sharing-dir data\sharing\cep9 --agreed-dir data\agreed\cep9 --prices-dir data\prices --kwp 58.32 --connection legal --manager-fee-eur-per-member 0 --out data\roi\cep9_legal_fee0
+.venv\Scripts\python.exe -m step08_compare_investment.roi --host-dir data\host\cep9 --battery-dir data\battery\cep9 --match-dir data\neighbours\cep9 --sharing-dir data\sharing\cep9 --agreed-dir data\agreed\cep9 --prices-dir data\prices --kwp 58.32 --connection wired --out data\roi\cep9_wired
 ```
 
 Other options:
@@ -119,7 +119,7 @@ Other options:
 - `examples\roi\cep9_legal_fee0\`: legal route, no manager fee (CEP9's real case)
 - `examples\roi\cep9_wired\`
 
-Step 09 (`export_site_data.py`) puts both runs into the website's `site_data.json` as a `roi` block, so the page can redraw the chart and recompute the NPV with sliders.
+Step 09 (`export_site_data.py`) puts the three runs into the website's `site_data.json` as a `roi` block; the page's "25-year return" section draws them and recomputes the NPV with a discount-rate slider.
 
 ## How to read `roi_line.png`
 
@@ -133,34 +133,36 @@ Step 09 (`export_site_data.py`) puts both runs into the website's `site_data.jso
 
 ## Result for CEP9 (27 Nov 2026)
 
-**The case: Institut Quatre Cantons roof only.** CEP9 told us on 27 Nov 2026 that all 108 panels are on the Institut and that the Escola Pere IV next door is not part of CEP9 [CEP9, 27 Nov 2026].
-- **Panels:** our step 03 layout fits only **97 of the 540 W panels, 52.38 kWp, 69,508 kWh a year**. The real system is 108 panels, 58.32 kWp and about 73,750 kWh [CEP9 presentation]. Our rows are spaced for no shade at a 25° sun; the real rows are packed tighter. So we are 11 panels and 5.8% of the energy short, but per kWp we give 1,327 kWh against the real 1,265 (+5%). Everything below uses `--kwp 52.38`, so cost and output match.
-- **Demand and prices:** the school's use is an estimate, about 108,700 kWh a year [Consums Energètics Edificis 2008-2018]. The guests are the 4 real CEP9 members, with typical-year prices.
+**The case: the real plant on the Institut Quatre Cantons, 108 panels of 540 W, 58.32 kWp** [CEP9, 27 Nov 2026].
+- **Plant size:** the real plant is East-West ("Delta Wing", 10°, back to back). Our step 03 layout only makes south-facing rows with shade gaps and fits 97 panels (52.38 kWp, 69,508 kWh). So the 97-panel hourly output is scaled by 108/97 (`step03_simulate_generation/scale_panels.py`; **ASSUMPTION**: same yield per panel). That gives **77,390 kWh a year against the real 73,750 [CEP9 presentation], +4.9%**. The 97-panel runs are kept as "what our layout fits" (`data\host\cep9_97`, `data\roi\cep9_97_*`).
+- **Demand:** the Institut's use is an estimate, about 108,700 kWh a year [Consums Energètics Edificis 2008-2018].
+- **Guests:** the 4 real CEP9 members. Distances are edge to edge from the Institut's outline: Can Felipa 10 m, fire station 83 m, Maria Espinalt 258 m; the 30 homes' location is private. Typical-year prices.
 
 | | A grid | B neighbours | C battery 5 kWh | B+C, 10 kWh | REF CEP9 real terms |
 |---|---|---|---|---|---|
-| Capex, legal / wired | €55,575 | €56,075 / €85,389 | €58,525 | €61,975 / €91,289 | €56,075 |
-| Year 1: own use + guests + grid | 5,295 + 0 + 1,338 | 5,295 + 2,487 + 41 | 5,489 + 0 + 1,162 | 5,360 + 2,487 + 27 | 2,025 + 0 + 265 |
-| Lost to the compensation cap, year 1 | €394 | €0 | €412 | €0 | €0 |
-| **NPV, legal, manager fee €25 per member** | €19,764 | **€23,276** | €12,880 | €13,142 | −€51,122 |
-| **NPV, legal, no manager fee (CEP9's real case)** | €19,764 | **€35,256** | €12,880 | €25,122 | −€39,142 |
-| **NPV, wired** | **€19,764** | €5,942 | €12,880 | −€4,192 | −€51,122 |
+| Capex, legal / wired | €61,878 | €62,378 / €147,484 | €64,828 | €68,278 / €153,384 | €62,378 |
+| Year 1: own use + guests + grid | 5,797 + 0 + 1,467 | 5,797 + 2,832 + 71 | 5,998 + 0 + 1,276 | 5,872 + 2,833 + 55 | 2,199 + 0 + 329 |
+| Lost to the compensation cap, year 1 | €518 | €0 | €533 | €0 | €0 |
+| **NPV, legal, manager fee €25 per member** | €20,360 | **€27,198** | €12,246 | €17,177 | −€55,794 |
+| **NPV, legal, no manager fee (CEP9's real case)** | €20,360 | **€39,178** | €12,246 | €29,157 | −€43,814 |
+| **NPV, wired** | **€20,360** | −€45,928 | €12,246 | −€55,949 | −€55,794 |
+| ROI over 25 years, not discounted (legal €25 / no fee / wired) | 132% | 150% / 184% / 20% | 105% | 116% / 148% / 10% | −83% / −49% |
+| Simple payback (legal €25 / no fee / wired) | 9.7 y | 8.9 / 8.0 / 18.8 y | 10.2 y | 9.9 / 8.8 / 19.8 y | 77.7 / 37.7 y |
 
-- **Legal, fee €25:** "Recommended: share with 4 neighbouring buildings (33 guests) through the legal route. Payback 9.1 years, NPV EUR 23,276, ROI 146% over 25 years. A battery pays only below EUR 69/kWh installed. Wires pay only if the guests are within 57 m of cable in total."
-- **Legal, no fee:** "Recommended: share with 4 neighbouring buildings (33 guests) through the legal route. Payback 8.0 years, NPV EUR 35,256, ROI 184% over 25 years." (the same two break-evens)
-- **Wired:** "Recommended: sell the surplus to the grid. Payback 9.5 years, NPV EUR 19,764, ROI 136% over 25 years." The 4 connection kits (one per building) cost €6,000. The default 136 m of cable (€23,814) is only Can Felipa's 105 m × 1.3, because the other three members are listed at the host's own position. **Wired break-even: 57 m of cable in total**, so wires beat selling to the grid only if all four buildings can be reached with less than 57 m of trench.
+- **Legal, fee €25:** "Recommended: share with 4 neighbouring buildings (33 guests) through the legal route. Payback 8.9 years, NPV EUR 27,198, ROI 150% over 25 years. A battery pays only below EUR 68/kWh installed. Wires pay only if the guests are within 76 m of cable in total."
+- **Legal, no fee:** "Recommended: share with 4 neighbouring buildings (33 guests) through the legal route. Payback 8.0 years, NPV EUR 39,178, ROI 184% over 25 years." (the same two break-evens)
+- **Wired:** "Recommended: sell the surplus to the grid. Payback 9.7 years, NPV EUR 20,360, ROI 132% over 25 years." The cable is (10 + 83 + 258) m × 1.3 = 456 m, plus 4 kits (one per building). **Wired break-even: 76 m of cable in total**, so wires lose.
 - **What moves the answer most:**
-  - Legal, fee €25: the manager fee FLIPS it (at €50 per member A wins), and so does the compensation price (at €0.10 per kWh A wins); then price change per year.
-  - Legal, no fee: only the manager fee flips it, if it went up to €50. Then the battery price and the discount rate.
+  - Legal, fee €25: the manager fee and the compensation price both FLIP it to A; then price change per year.
+  - Legal, no fee: only a manager fee of €50 would flip it; then the battery price and the discount rate.
   - Wired: battery price, discount rate, compensation price; none flips it.
-- **CEP9's real terms (REF):** the owner gets only the host's 30% share, and gives the other 70% away. So from the owner's money alone it never pays back (NPV −€39,142 with no manager fee). The value goes to the members: in step 07's `agreed_shares` they save about €5,370 a year together, about €74 a year per home (€94 with taxes).
+- **CEP9's real terms (REF):** the owner gets only the Institut's 30% share and gives the other 70% away, so from the owner's money alone it never pays back (NPV −€43,814 with no manager fee). The value goes to the members: about €80 a year per home (€102 with taxes) in step 07's `agreed_shares`.
 
-**Flag: surplus under CEP9's real split.** With the fixed split, **7,129 of 69,508 kWh (10.3%) goes to the grid**, just above the ~10% we treat as "not much". The host alone sends 4,409 kWh of its 20,852 kWh share. CEP9 says "there isn't much production going into surplus" [CEP9, 27 Nov 2026], so **our demand estimates are probably too low**, the host's above all. They are averages of building types, not meters. Real meter data would raise own use and lower the surplus. With our hourly sharing (option B) only 940 kWh (1.4%) goes to the grid.
+**Flag: surplus under CEP9's real split.** With the fixed split, **9,458 of 77,390 kWh (12.2%)** goes to the grid, above the ~10% we treat as "not much". The Institut alone sends 5,476 kWh of its 23,217 kWh share. CEP9 says "there isn't much production going into surplus" [CEP9, 27 Nov 2026], so **check our demand estimates when CEP9's monitoring data arrives** (requested). With our hourly sharing (option B), 1,593 kWh (2.1%) goes to the grid.
 
-**Extra case, "what if the school next door joined"** (Institut + Escola Pere IV, 540 W "best blocks", 65.88 kWp, 89,284 kWh a year; folders `data\host\cep9_both`, `data\roi\cep9_both_legal`, `data\roi\cep9_both_wired`):
-- Legal: B wins, NPV €36,231.
-- Wired: A wins, NPV €24,415, against €18,897 for B wired.
-- Wired break-even: 105 m of cable.
+**What our layout fits (97 panels, 52.38 kWp), same day, before the member distances were fixed:** legal B NPV €23,276 (fee €25) / €35,256 (no fee); wired A €19,764. In `data\roi\cep9_97_*`.
+
+**Extra case, "what if the school next door joined"** (Institut + Escola Pere IV, 540 W "best blocks", 65.88 kWp, 89,284 kWh a year; step 01 case `cep9_next_door`, folders `data\host\cep9_both`, `data\roi\cep9_both_*`): legal B wins with NPV €36,231; wired A wins with NPV €24,415; wired break-even 105 m.
 
 ## The older tool: `investment.py`
 

@@ -126,6 +126,7 @@ def read_guests(match_dir, ids):
         dwellings = r.get("dwellings") or ""
         homes = r.get("use_type") == "home" and dwellings not in ("", "None")
         out.append({"id": i, "use_type": r.get("use_type"),
+                    "location_private": str(r.get("location_private") or "").lower() in ("yes", "true", "1"),
                     "distance_m": float(r["distance_m"]) if r.get("distance_m") not in (None, "", "None") else None,
                     "count": int(float(dwellings)) if homes else 1})
     return out
@@ -427,12 +428,12 @@ def run(inputs, costs, connection="legal", cable_m=None):
     if cable_m is None:
         cable_m = ROUTE_FACTOR * sum(d or 0.0 for d in dist)
         cable_source = f"sum of the guests' straight-line distances x {ROUTE_FACTOR} (ASSUMPTION)"
-        at_host = [g["id"] for g in inputs["guests"] if not g["distance_m"]]
+        at_host = [g["id"] + (" (location private)" if g.get("location_private") else "")
+                   for g in inputs["guests"] if not g["distance_m"]]
         if at_host and connection == "wired":
-            warnings.append(f"{len(at_host)} of {len(inputs['guests'])} guests ({', '.join(at_host)}) are 0 m from the "
-                            f"host in step 07's list (their positions may not be checked), so their cable costs "
-                            f"nothing here. Give --cable-m with a real length; max_cable_m shows how much cable "
-                            f"the wired option can afford.")
+            warnings.append(f"{len(at_host)} of {len(inputs['guests'])} guests ({', '.join(at_host)}) have no known "
+                            f"distance and count as 0 m, so their cable costs nothing here. Give --cable-m with a real "
+                            f"length; max_cable_m shows how much cable the wired option can afford.")
     else:
         cable_source = "--cable-m"
     if inputs["kwp"] <= c["simplified_compensation_max_kw"]:

@@ -390,7 +390,7 @@
       $("monthly-chip").dataset.kind = v.actual ? "reported" : "modelled";
       $("monthly-chip").textContent = v.actual ? "reported total · our monthly shape" : "modelled · step 03";
       $("layout-rule").textContent = v.actual
-        ? `The system that is really on the two roofs: ${fmt(v.panels)} panels, ${fmt(v.kwp, 2)} kWp and about ${fmt(v.yearly_kwh)} kWh a year [${v.source}]. ${v.panel_wp_note}. The CEP9 source gives no monthly figures and no panel plan, so the months follow our model's shape and the panel areas are the ones step 02 finds on the roof photo. For this check the model treats both roofs as empty and lays its own panels, to see how close it gets to the real system.` + (v.by_roof ? ` By roof: ${v.by_roof.map((r) => `${r.roof} ${r.panels} panels`).join(", ")} [${v.by_roof_source}].` : "")
+        ? `The system that is really on the Institut Quatre Cantons roof: ${fmt(v.panels)} panels, ${fmt(v.kwp, 2)} kWp and about ${fmt(v.yearly_kwh)} kWh a year [${v.source}]. ${v.panel_wp_note}. The Escola Pere IV next door is not part of CEP9 [CEP9, 27 Nov 2026]. The CEP9 source gives no monthly figures and no panel plan, so the months follow our model's shape and the panel areas are the ones step 02 finds on the roof photo. For this check the model treats the roof as empty and lays its own panels, to see how close it gets to the real system.` + (v.by_roof ? ` By roof: ${v.by_roof.map((r) => `${r.roof} ${r.panels} panels`).join(", ")} [${v.by_roof_source}].` : "")
         : `${v.name}: ${v.rule}.` + (v.blocks ? ` ${v.blocks} blocks.` : "") + (v.roofs ? ` By roof: ${v.roofs.map((r) => `${r.roof} ${r.panels} panels`).join(", ")}.` : "");
       const st = $("layout-stats");
       st.replaceChildren();
@@ -603,40 +603,69 @@
     const F = D.facts;
     const kind = D.meta.host_kind || "building", hl = D.meta.host_label || "The host";
     $("surplus-lede").textContent = `${hl} (a ${kind} using about ${fmt(F.host_use_kwh.v)} kWh a year) uses ${pct(F.host_self_share.v)} of the solar itself. The other ${fmt(F.surplus_kwh.v)} kWh a year is spare, and ${fmt(F.surplus_weekend_kwh.v)} kWh of it comes at weekends, when the ${kind} is closed.`;
-    const map = D.host.surplus_map;
-    const host = $("heatmap");
-    host.replaceChildren();
-    const W = 730, H = 24 * 7 + 40, m = { l: 44, t: 8, b: 26 };
-    const f = frame(host, W, H, { l: m.l, r: 6, t: m.t, b: m.b });
-    const cw = (W - m.l - 6) / 365, ch = (H - m.t - m.b) / 24;
-    const max = Math.max(...map.flat());
-    const steps = ["--seq-0", "--seq-1", "--seq-2", "--seq-3", "--seq-4", "--seq-5"].map(css);
-    const bins = [0, 0.25, 1, 2, 4, Infinity].map((x) => x * (max / 8));
-    const colorOf = (v) => (v <= 0.01 ? steps[0] : steps[Math.min(5, 1 + bins.findIndex((b, i) => v <= bins[i + 1]))]);
-    const g = el("g", {}, f.svg);
-    map.forEach((day, d) => day.forEach((v, h) => {
-      el("rect", { x: m.l + d * cw, y: m.t + h * ch, width: cw + 0.3, height: ch + 0.3, fill: colorOf(v) }, g);
-    }));
-    for (let h = 0; h < 24; h += 6) el("text", { x: m.l - 6, y: m.t + h * ch + ch, "text-anchor": "end", text: String(h).padStart(2, "0") + ":00" }, f.svg);
-    const start = new Date(D.host.first_day + "T00:00:00Z");
-    for (let mo = 0; mo < 12; mo++) {
-      const d = Math.round((Date.UTC(start.getUTCFullYear(), mo, 1) - start) / 864e5);
-      el("text", { x: m.l + d * cw + 2, y: H - 8, text: MONTHS[mo] }, f.svg);
+    const SP = D.host.spare;
+    if (!SP) return;
+    // every view uses the same kWh colour steps (COLOUR_KWH in step09_publish_report/site_views.py), so they compare
+    const cuts = SP.colour_kwh;                                     // e.g. [0, 10, 20, 30]
+    const steps = ["--seq-0", "--seq-2", "--seq-3", "--seq-4", "--seq-5"].map(css);
+    const colorOf = (v) => (v < 0.05 ? steps[0] : steps[1 + Math.min(cuts.length - 1, cuts.slice(1).filter((c) => v >= c).length)]);
+    const keys = Object.keys(SP.views);
+    let view = keys[0];
+    const seg = $("spare-view");
+    seg.replaceChildren();
+    for (const k of keys) {
+      const b = el("button", { type: "button", "aria-pressed": String(k === view), "data-v": k, text: SP.views[k].label }, seg);
+      b.addEventListener("click", () => { view = k; for (const x of seg.children) x.setAttribute("aria-pressed", String(x === b)); draw(); });
     }
-    const hit = el("rect", { x: m.l, y: m.t, width: 365 * cw, height: 24 * ch, fill: "transparent" }, f.svg);
-    hit.addEventListener("pointermove", (evt) => {
-      const r = f.svg.getBoundingClientRect();
-      const d = Math.max(0, Math.min(364, Math.floor((((evt.clientX - r.left) / r.width) * W - m.l) / cw)));
-      const h = Math.max(0, Math.min(23, Math.floor((((evt.clientY - r.top) / r.height) * H - m.t) / ch)));
-      const date = new Date(start.getTime() + d * 864e5);
-      showTip(evt, date.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" }) + " · " + String(h).padStart(2, "0") + ":00", [{ value: fmt(map[d][h], 1) + " kWh", label: "spare solar" }]);
-    });
-    hit.addEventListener("pointerleave", hideTip);
-    const lg = $("heat-legend");
-    lg.replaceChildren();
-    const labels = ["none", "a little", "", "", "", "most"];
-    steps.forEach((c, i) => { if (labels[i] !== "") { const s = el("span", {}, lg); el("i", { style: "background:" + c }, s); s.appendChild(document.createTextNode(labels[i])); } });
-    el("span", { class: "small", text: "Rows: local hour. Columns: days of the typical year. Weekends show as darker stripes." }, lg);
+    const days = SP.days;
+    const nd = days.length;
+    const W = 730, m = { l: 48, t: 22, b: 44 }, ch = 7, H = m.t + 24 * ch + m.b;
+
+    function draw() {
+      const V = SP.views[view];
+      const f = frame($("heatmap"), W, H, { l: m.l, r: 6, t: m.t, b: m.b });
+      const cw = (W - m.l - 6) / nd;
+      const top = m.t, bottom = m.t + 24 * ch;
+      // school holidays: a labelled band above the grid and thin lines down it
+      for (const hday of SP.holidays) {
+        const i0 = days.findIndex((d) => d.date === hday.from), i1 = days.findIndex((d) => d.date === hday.to);
+        if (i0 < 0 || i1 < 0) continue;
+        const x0 = m.l + i0 * cw, x1 = m.l + (i1 + 1) * cw;
+        el("rect", { x: x0, y: 4, width: x1 - x0, height: 12, fill: css("--accent-soft"), stroke: css("--accent"), "stroke-width": 0.6 }, f.svg);
+        if (x1 - x0 > 40) el("text", { x: (x0 + x1) / 2, y: 13.5, "text-anchor": "middle", text: hday.name }, f.svg);
+        for (const x of [x0, x1]) el("line", { x1: x, x2: x, y1: 16, y2: bottom, stroke: css("--accent"), "stroke-width": 0.8, "stroke-dasharray": "2 2" }, f.svg);
+      }
+      const g = el("g", {}, f.svg);
+      V.grid.forEach((day, d) => day.forEach((v, h) => {
+        el("rect", { x: m.l + d * cw, y: top + h * ch, width: cw + 0.3, height: ch + 0.3, fill: colorOf(v) }, g);
+      }));
+      // weekends: a row of marks under the grid
+      days.forEach((d, i) => { if (d.weekend) el("rect", { x: m.l + i * cw, y: bottom + 3, width: Math.max(cw, 1.2), height: 5, fill: css("--ink-3") }, f.svg); });
+      // hour labels centred on their row (row h = h:00 to h+1:00, local time)
+      for (let h = 0; h < 24; h += 3) el("text", { x: m.l - 6, y: top + (h + 0.5) * ch + 4, "text-anchor": "end", text: String(h).padStart(2, "0") + ":00" }, f.svg);
+      days.forEach((d, i) => { if (d.date.endsWith("-01")) el("text", { x: m.l + i * cw + 2, y: H - 14, text: MONTHS[+d.date.slice(5, 7) - 1] }, f.svg); });
+      const hit = el("rect", { x: m.l, y: top, width: nd * cw, height: 24 * ch, fill: "transparent" }, f.svg);
+      hit.addEventListener("pointermove", (evt) => {
+        const r = f.svg.getBoundingClientRect();
+        const d = Math.max(0, Math.min(nd - 1, Math.floor((((evt.clientX - r.left) / r.width) * W - m.l) / cw)));
+        const h = Math.max(0, Math.min(23, Math.floor((((evt.clientY - r.top) / r.height) * H - top) / ch)));
+        const day = days[d];
+        const type = day.weekend ? " (weekend)" : day.holiday ? ` (${day.holiday} holidays)` : " (weekday)";
+        const hh = (x) => String(x).padStart(2, "0") + ":00";
+        showTip(evt, `${day.day}${type} · ${hh(h)}-${hh((h + 1) % 24)}`, [{ value: fmt(V.grid[d][h], 1) + " kWh", label: V.label.toLowerCase() }]);
+      });
+      hit.addEventListener("pointerleave", hideTip);
+      const lg = $("heat-legend");
+      lg.replaceChildren();
+      const names = ["0", `under ${cuts[1]}`, ...cuts.slice(1, -1).map((c, i) => `${c}-${cuts[i + 2]}`), `${cuts[cuts.length - 1]}+ kWh`];
+      steps.forEach((c, i) => { const s = el("span", {}, lg); el("i", { style: "background:" + c }, s); s.appendChild(document.createTextNode(names[i])); });
+      const we = el("span", {}, lg); el("i", { style: "background:" + css("--ink-3") + ";height:5px" }, we); we.appendChild(document.createTextNode("Sat/Sun (row under the grid)"));
+      const ho = el("span", {}, lg); el("i", { style: "background:" + css("--accent-soft") + ";border:1px solid " + css("--accent") }, ho); ho.appendChild(document.createTextNode("school holidays"));
+      el("span", { class: "small", text: `kWh in one hour, same colours in every view. ${SP.time_note}` }, lg);
+      $("heat-sentence").textContent = V.sentence;
+      $("heat-total").textContent = `${V.label}: ${fmt(V.total_kwh)} kWh a year, ${pct(V.share_of_solar)} of the solar. Shows ${V.what}. Holidays: ${SP.holiday_source}`;
+    }
+    draw();
   }
 
   const BCOL = ["--s1", "--s2", "--s3", "--s7"];
@@ -645,29 +674,36 @@
     $("nb-lede").textContent = D.meta.reach_note || `Guests are wired directly to the host, so the tool only looks within ${fmt(D.max_distance_m)} m and takes the closest buildings that can use some of the spare solar.`;
     const B = D.buildings;
     const colors = B.map((_, i) => css(BCOL[i] || "--ink-3"));
-    let daytype = "weekday";
-    const sun = D.roof.solar_day_by_month;
-    const solar = Array.from({ length: 24 }, (_, h) => (sun[5][h] + sun[6][h] + sun[7][h]) / 3);
+    let daytype = "weekday", season = "spring_autumn";
+    // solar and use from the same months (step09_publish_report/site_views.py season_profiles)
+    const SS = D.host.solar_by_season;
+    const SL = D.host.season_labels || {};
+    const use = (b) => (b.profile_by_season ? b.profile_by_season[season][daytype] : b.profile[daytype]);
+    const who = (b) => (b.id === "host" ? b.label : `${b.label} (${b.distance_label || fmt(b.distance_m) + " m"})`);
+    let solar;
     function draw() {
+      solar = SS ? SS[season][daytype] : D.roof.solar_day_by_month[6];
       const f = frame($("profiles"), 720, 280, { l: 44, r: 10, t: 24, b: 26 });
-      const all = [solar, ...B.map((b) => b.profile[daytype])];
+      const all = [solar, ...B.map((b) => use(b))];
       const max = niceMax(Math.max(...all.flat()));
       yAxis(f, max, 4, (v) => fmt(v, max < 5 ? 1 : 0), "kWh per hour");
       hourAxis(f, 24);
       const area = linePath(solar, f, max, 24) + `L${f.m.l + (23.5 / 24) * f.iw},${f.m.t + f.ih}L${f.m.l + (0.5 / 24) * f.iw},${f.m.t + f.ih}Z`;
       el("path", { d: area, fill: css("--solar-soft"), stroke: css("--solar"), "stroke-width": 2 }, f.svg);
-      B.forEach((b, i) => el("path", { d: linePath(b.profile[daytype], f, max, 24), fill: "none", stroke: colors[i], "stroke-width": 2 }, f.svg));
-      crosshair(f, 24, (i) => String(i).padStart(2, "0") + ":00 · " + daytype,
-        (i) => [{ value: fmt(solar[i], 1) + " kWh", label: "solar (summer)", color: css("--solar") },
-          ...B.map((b, k) => ({ value: fmt(b.profile[daytype][i], 1) + " kWh", label: b.label, color: colors[k] }))]);
+      B.forEach((b, i) => el("path", { d: linePath(use(b), f, max, 24), fill: "none", stroke: colors[i], "stroke-width": 2 }, f.svg));
+      crosshair(f, 24, (i) => String(i).padStart(2, "0") + ":00 · " + (SL[season] || season) + " · " + daytype,
+        (i) => [{ value: fmt(solar[i], 1) + " kWh", label: "solar, same months", color: css("--solar") },
+          ...B.map((b, k) => ({ value: fmt(use(b)[i], 1) + " kWh", label: who(b), color: colors[k] }))]);
+      legend($("profiles-legend"), [{ label: `Solar, ${(SL[season] || season).toLowerCase()} average`, color: css("--solar") }, ...B.map((b, i) => ({ label: who(b), color: colors[i], line: true }))]);
     }
-    legend($("profiles-legend"), [{ label: "Solar, summer average", color: css("--solar") }, ...B.map((b, i) => ({ label: b.label, color: colors[i], line: true }))]);
-    $("daytype").addEventListener("click", (e) => {
-      const b = e.target.closest("button"); if (!b) return;
-      daytype = b.dataset.v;
-      for (const x of $("daytype").children) x.setAttribute("aria-pressed", String(x === b));
-      draw();
-    });
+    for (const [id, set] of [["daytype", (v) => { daytype = v; }], ["season", (v) => { season = v; }]]) {
+      $(id).addEventListener("click", (e) => {
+        const b = e.target.closest("button"); if (!b) return;
+        set(b.dataset.v);
+        for (const x of $(id).children) x.setAttribute("aria-pressed", String(x === b));
+        draw();
+      });
+    }
     draw();
     // list
     const list = $("blist");
@@ -676,7 +712,7 @@
       el("span", { class: "dot", style: "background:" + colors[i] }, r);
       const t = el("div", {}, r);
       el("div", { text: b.label }, t);
-      el("div", { class: "meta", text: (b.id === "host" ? "Host · " : b.distance_m + " m away · ") + b.kind + " · " + (b.source.startsWith("proxy") ? "estimated use" : b.source) }, t);
+      el("div", { class: "meta", text: (b.id === "host" ? "Host · " : (b.distance_label === "location private" ? "location private · " : b.distance_label + " away · ")) + b.kind + " · " + (b.source.startsWith("proxy") ? "estimated use" : b.source) }, t);
       el("div", { class: "num", text: fmt(b.yearly_kwh) + " kWh/yr" }, r);
     });
     // map
@@ -705,7 +741,9 @@
     el("rect", { x: S / 2 - 8, y: S / 2 - 8, width: 16, height: 16, rx: 3, fill: colors[0], stroke: css("--panel"), "stroke-width": 2 }, f.svg);
     el("text", { x: S / 2 + 12, y: S / 2 + 18, text: "host" }, f.svg);
     const out = all.filter((p) => p.distance_m > D.max_distance_m);
-    $("map-note").textContent = "Distances between building centres. Hover a dot for details. " +
+    const how = [...new Set(C.map((c) => c.distance_source).filter(Boolean))];
+    $("map-note").textContent = "Dots at each building's position; buildings whose location is private are drawn at the host. Distances: " +
+      (how.length ? how.join("; ") : "between building centres") + " (see the member list's notes). Hover a dot for details. " +
       (out.length ? "Too far (grey" + (far.length ? ", or off the plan" : "") + "): " + out.map((p) => p.building_id.replace(/_/g, " ") + " " + p.distance_m + " m").join(", ") + "." : "");
   }
 
@@ -874,7 +912,7 @@
     if (!A) return;
     $("agreed-card").hidden = false;
     const ours = D.sharing.typical.without.per_building || {};
-    $("agreed-intro").textContent = `Our tool: every hour the agent sends the solar where it is needed, and guests pay the grid price minus ${pct(D.money.default_discount)}. CEP9: each member gets a fixed share of every hour's output, for free${A.per_building.host ? `, and the school keeps ${pct(A.per_building.host.share)}` : ""}. A share a member can't use that hour goes to the grid. Typical-year PVPC, without taxes.`;
+    $("agreed-intro").textContent = `Our tool: every hour the agent sends the solar where it is needed, and guests pay the grid price minus ${pct(D.money.default_discount)}. CEP9: each member gets a fixed share of every hour's output, for free, the same every hour, weekends and holidays included${A.per_building.host ? `; the Institut keeps ${pct(A.per_building.host.share)}` : ""}. A share a member can't use that hour goes to the grid. Typical-year PVPC, without taxes.`;
     const t = $("agreed-table");
     t.replaceChildren();
     const hr = el("tr", {}, el("thead", {}, t));
@@ -893,6 +931,136 @@
     }
     const tot = D.sharing.typical.without;
     $("agreed-note").textContent = `Solar used: our tool ${pct(tot.used_share)}, CEP9 terms ${pct(A.used_share)} (${fmt(A.to_grid_kwh)} kWh a year goes to the grid because a share isn't always needed). ` + (D.compare_note || "");
+  }
+
+  // ---- step 08: 25-year return (roi.py) -----------------------------------------
+  // The only maths here: re-discounting the yearly cash in and out that roi.py wrote, when the
+  // discount-rate slider moves. Same formula as roi.py: running total = -capex + sum (in - out) / (1 + r)^t.
+  function roi(D) {
+    const R = D.roi || {};
+    const keys = ["legal", "legal_fee0", "wired"].filter((k) => R[k]).concat(Object.keys(R).filter((k) => !["legal", "legal_fee0", "wired"].includes(k)));
+    if (!keys.length) {
+      $("roi-card").replaceChildren(el("p", { class: "note", text: "No step 08 results in site_data.json yet. Run step08_compare_investment.roi, then step 09." }));
+      $("roi-sens-card").hidden = true;
+      return;
+    }
+    const NAMES = { A: "A · sell to the grid", B: "B · neighbours", C: "C · battery", "B+C": "B+C · neighbours + battery", REF: "CEP9 real terms" };
+    const COLOR = { A: "--ink-3", B: "--s1", C: "--s2", "B+C": "--s3", REF: "--s7" };
+    const LABEL = {
+      panel_capex_eur_per_kwp: "Panel price, €/kWp", panel_degradation_per_yr: "Panel ageing a year", grid_compensation_eur_per_kwh: "Grid compensation, €/kWh",
+      trench_and_repave_eur_per_m: "Trench and repaving, €/m", legal_manager_eur_per_member_yr: "Manager fee, € per member a year",
+      battery_installed_eur_per_kwh: "Battery price, €/kWh installed", discount_rate: "Discount rate", price_escalation_per_yr: "Price change a year",
+    };
+    const runLabel = (k) => {
+      const r = R[k];
+      if (r.connection === "wired") return "Wired: a cable to each building";
+      const fee = r.costs.legal_manager_eur_per_member_yr.value;
+      return `Legal route, manager fee €${fmt(fee)} per member a year` + (fee === 0 ? " (CEP9's real case)" : "");
+    };
+    const sel = $("roi-run");
+    for (const k of keys) el("option", { value: k, text: runLabel(k) }, sel);
+    sel.value = keys[0];
+    const rate = $("roi-rate");
+    const baseRate = R[keys[0]].costs.discount_rate.value;
+    rate.value = baseRate * 100;
+    const money = (v) => (v < 0 ? "−€" : "€") + fmt(Math.abs(v));
+
+    function series(o, r) {
+      const cum = [-o.capex_eur];
+      o.cash_in.forEach((cin, i) => cum.push(cum[i] + (cin - o.cash_out[i]) / Math.pow(1 + r, i + 1)));
+      const npv = cum[cum.length - 1];
+      let pb = null;
+      if (npv >= 0) { let last = -1; cum.forEach((v, i) => { if (v < 0) last = i; }); pb = last + 1; }
+      return { cum, npv, pb };
+    }
+
+    function draw() {
+      const run = R[sel.value];
+      const r = rate.value / 100;
+      $("roi-rate-out").textContent = fmt(rate.value, 1) + "%";
+      const opts = Object.entries(run.options);
+      const S = Object.fromEntries(opts.map(([k, o]) => [k, series(o, r)]));
+      const choices = opts.filter(([k, o]) => !o.reference);
+      const best = choices.reduce((a, b) => (S[b[0]].npv > S[a[0]].npv ? b : a))[0];
+      const atBase = Math.abs(r - baseRate) < 1e-9;
+      $("roi-sentence").textContent = atBase ? run.recommendation
+        : `At ${fmt(rate.value, 1)}% a year the best option is ${NAMES[best]} (NPV ${money(S[best].npv)}). At the pipeline's ${fmt(baseRate * 100)}%: ${run.recommendation}`;
+
+      // chart: one line per option, year 0..N, zero line, discounted-payback circles
+      const n = S.A.cum.length - 1;
+      const all = Object.values(S).flatMap((s) => s.cum);
+      const lo = Math.min(0, ...all), hi = Math.max(0, ...all);
+      const span = niceMax(hi - lo), step = span / 5;
+      const yMin = Math.floor(lo / step) * step, yMax = Math.ceil(hi / step) * step;
+      const f = frame($("roi-chart"), 720, 300, { l: 64, r: 14, t: 22, b: 28 });
+      const X = (t) => f.m.l + (t / n) * f.iw, Y = (v) => f.m.t + f.ih - ((v - yMin) / (yMax - yMin)) * f.ih;
+      const g = el("g", { class: "grid" }, f.svg);
+      for (let v = yMin; v <= yMax + 1e-6; v += step) {
+        el("line", { x1: f.m.l, x2: f.m.l + f.iw, y1: Y(v), y2: Y(v) }, g);
+        el("text", { x: f.m.l - 6, y: Y(v) + 4, "text-anchor": "end", text: (v < 0 ? "−" : "") + "€" + fmt(Math.abs(v) / 1000) + "k" }, f.svg);
+      }
+      for (let t = 0; t <= n; t += 5) el("text", { x: X(t), y: f.h - 8, "text-anchor": "middle", text: "year " + t }, f.svg);
+      el("line", { x1: f.m.l, x2: f.m.l + f.iw, y1: Y(0), y2: Y(0), stroke: css("--ink"), "stroke-width": 1.4 }, f.svg);
+      for (const [k, o] of opts) {
+        const s = S[k];
+        el("path", { d: s.cum.map((v, t) => `${t ? "L" : "M"}${X(t).toFixed(1)},${Y(v).toFixed(1)}`).join(""), fill: "none", stroke: css(COLOR[k] || "--ink-3"),
+          "stroke-width": k === best ? 3.5 : 1.8, "stroke-dasharray": o.reference ? "6 4" : "none", "stroke-linejoin": "round" }, f.svg);
+        if (s.pb != null) el("circle", { cx: X(s.pb), cy: Y(s.cum[s.pb]), r: 5, fill: css("--panel"), stroke: css(COLOR[k]), "stroke-width": 2.5 }, f.svg);
+      }
+      const hair = el("line", { y1: f.m.t, y2: f.m.t + f.ih, stroke: css("--ink-3"), "stroke-width": 1, opacity: 0 }, f.svg);
+      const hit = el("rect", { x: f.m.l, y: f.m.t, width: f.iw, height: f.ih, fill: "transparent" }, f.svg);
+      hit.addEventListener("pointermove", (evt) => {
+        const b = f.svg.getBoundingClientRect();
+        const t = Math.max(0, Math.min(n, Math.round((((evt.clientX - b.left) / b.width) * f.w - f.m.l) / f.iw * n)));
+        hair.setAttribute("x1", X(t)); hair.setAttribute("x2", X(t)); hair.setAttribute("opacity", 0.6);
+        showTip(evt, "Year " + t, opts.map(([k]) => ({ value: money(S[k].cum[t]), label: NAMES[k], color: css(COLOR[k]) })));
+      });
+      hit.addEventListener("pointerleave", () => { hideTip(); hair.setAttribute("opacity", 0); });
+      legend($("roi-legend"), opts.map(([k, o]) => ({ color: css(COLOR[k]), line: true,
+        label: `${NAMES[k]}${o.battery_kwh ? " " + fmt(o.battery_kwh) + " kWh" : ""}: NPV ${money(S[k].npv)}${S[k].pb != null ? ", pays back in year " + S[k].pb : ", never pays back"}` })));
+      $("roi-chart-note").textContent = `Each line starts below zero at the cost on day one and climbs as the yearly money comes in, discounted at ${fmt(rate.value, 1)}% a year. Where a line crosses zero the option has paid back (circle). The end of each line, year ${n}, is its NPV. Dips are replacements: the inverter in year 13, a battery every few years. Thick line: the best option at this rate. Dashed: CEP9's real terms, for comparison only.`;
+
+      // table
+      const t = $("roi-table");
+      t.replaceChildren();
+      const hr = el("tr", {}, el("thead", {}, t));
+      for (const h of ["Option", "Cost on day one", "Own use, year 1", "Guests pay, year 1", "Grid, year 1", "Lost to the cap", "NPV", "ROI over 25 y*", "Simple payback", "Discounted payback"])
+        el("th", { text: h, class: h === "Option" ? "" : "n" }, hr);
+      const tb = el("tbody", {}, t);
+      for (const [k, o] of opts) {
+        const tr = el("tr", { class: k === best ? "pick" : "" }, tb);
+        el("td", { text: NAMES[k] + (o.battery_kwh ? ` (${fmt(o.battery_kwh)} kWh)` : "") }, tr);
+        for (const v of [money(o.capex_eur), money(o.year1.own_use_eur), money(o.year1.guest_sales_eur), money(o.year1.grid_income_eur), money(o.grid_lost_to_cap_eur),
+          money(S[k].npv), pct(o.roi_lifetime), o.simple_payback_y ? fmt(o.simple_payback_y, 1) + " y" : "never", S[k].pb != null ? "year " + S[k].pb : "never"])
+          el("td", { class: "n", text: v }, tr);
+      }
+      const be = run.break_even;
+      const cp = (run.options.B || {}).connection_parts || {};
+      $("roi-breakeven").textContent = `*ROI over 25 years is not discounted; NPV and the discounted payback are. ` +
+        `Lost to the cap: up to 100 kW, exports earn €${fmt(run.costs.grid_compensation_eur_per_kwh.value, 2)} per kWh, but never more in a month than the host's own grid bill; the rest is lost. ` +
+        (be.battery_eur_per_kwh == null ? "A battery doesn't pay even if free. " : `A battery pays only below €${fmt(be.battery_eur_per_kwh)} per kWh installed (today €${fmt(run.costs.battery_installed_eur_per_kwh.value)}). `) +
+        (be.max_cable_m == null ? "" : be.max_cable_m <= 0 ? "Wires never beat selling to the grid. " : `Wires pay only with less than ${fmt(be.max_cable_m)} m of cable in total`) +
+        (run.connection === "wired" ? ` (this run assumes ${fmt(run.cable_m)} m: ${run.cable_m_source}; ${fmt(cp.guest_buildings)} connection kits, one per building).` : ".") +
+        (run.connection === "legal" && cp.members ? ` Legal route: a net meter (€${fmt(cp.net_meter_eur)}) and a manager fee for ${fmt(cp.members)} members (each home is a member): €${fmt(cp.manager_eur_per_year)} a year.` : "");
+
+      // sensitivity table
+      const st = $("roi-sens");
+      st.replaceChildren();
+      const sh = el("tr", {}, el("thead", {}, st));
+      for (const h of ["Cost", "Low → high", `Lead of ${run.recommended} at low`, "at high", "Best at low / high"]) el("th", { text: h, class: h === "Cost" ? "" : "n" }, sh);
+      const sb = el("tbody", {}, st);
+      for (const s of run.sensitivity) {
+        const tr = el("tr", { class: s.flips ? "pick" : "" }, sb);
+        el("td", { text: (LABEL[s.key] || s.key) + (s.flips ? " · changes the answer" : "") }, tr);
+        const unit = (run.costs[s.key] || {}).unit;
+        const fv = (v) => (unit === "fraction" ? fmt(v * 100, 1) + "%" : "€" + fmt(v, Math.abs(v) < 1 ? 2 : 0));
+        for (const v of [`${fv(s.low)} → ${fv(s.high)}`, money(s.margin_low), money(s.margin_high), `${s.recommended_low} / ${s.recommended_high}`]) el("td", { class: "n", text: v }, tr);
+      }
+      $("roi-warnings").textContent = "Notes: " + run.warnings.join(" ");
+    }
+    sel.addEventListener("change", draw);
+    rate.addEventListener("input", draw);
+    draw();
   }
 
   function sources(D) {
@@ -924,7 +1092,7 @@
   }
 
   function start(D) {
-    for (const fn of [overview, property, siteMap, roof, surplus, neighbours, match, prices, battery, money, agreed, sources]) {
+    for (const fn of [overview, property, siteMap, roof, surplus, neighbours, match, prices, battery, money, agreed, roi, sources]) {
       try { fn(D); } catch (err) { console.error(fn.name, err); }
     }
     trackSteps();

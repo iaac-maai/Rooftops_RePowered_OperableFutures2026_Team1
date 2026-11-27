@@ -58,6 +58,18 @@ def distance_m(a, b):
     return 2 * 6371000 * math.asin(math.sqrt(h))
 
 
+def candidate_distance(row, host_latlon):
+    """-> (metres, how it was measured). A candidate list may give distance_m itself (for CEP9: edge to edge
+    between building outlines, from step 01's map); location_private = yes means the position is not published
+    (counted as 0 m); otherwise the straight line between the two points."""
+    if str(row.get("location_private") or "").strip().lower() in ("yes", "true", "1"):
+        return 0.0, "location private (counted as 0 m)"
+    given = str(row.get("distance_m") or "").strip()
+    if given:
+        return float(given), "given in the candidate list"
+    return distance_m(host_latlon, (float(row["lat"]), float(row["lon"]))), "between the two points"
+
+
 def fit_kwh(surplus, demand):
     """kWh of the host's surplus this building could use, hour by hour, over the year."""
     return float(np.minimum(surplus, demand).sum())
@@ -120,10 +132,10 @@ def shortlist(host, candidates, host_latlon, max_distance=MAX_DISTANCE_M, n=SHOR
     for row in candidates:
         if row["building_id"] in exclude:
             continue
-        d = distance_m(host_latlon, (float(row["lat"]), float(row["lon"])))
+        d, how = candidate_distance(row, host_latlon)
         use, source = demand_for(row, times, shapes, join_rate)
         status = "tentative: within distance" if d <= reach else "out of reach"
-        scored.append({**row, "distance_m": round(d), "eligible_status": status,
+        scored.append({**row, "distance_m": round(d), "distance_source": how, "eligible_status": status,
                        "yearly_kwh": round(float(use.sum())), "fit_kwh": round(fit_kwh(surplus, use)),
                        "demand_source": source})
         demand[row["building_id"]] = use
@@ -141,7 +153,8 @@ def write_outputs(out_dir, times, scored, best, demand):
     feats = []
     for r in scored:
         geom = r.get("geometry")
-        props = {k: r.get(k) for k in ("building_id", "name", "use_type", "distance_m", "eligible_status", "dwellings",
+        props = {k: r.get(k) for k in ("building_id", "name", "use_type", "distance_m", "distance_source",
+                                       "location_private", "eligible_status", "dwellings",
                                        "yearly_kwh", "fit_kwh", "demand_source")}
         if geom is not None:
             from shapely.geometry import mapping
@@ -159,7 +172,8 @@ def write_outputs(out_dir, times, scored, best, demand):
             flag = "ok" if r["demand_source"] == "metered" else "assumed"
             for s, v in zip(stamps, demand[r["building_id"]]):
                 w.writerow([r["building_id"], s, round(float(v), 4), r["demand_source"], flag])
-    cols = ["building_id", "use_type", "distance_m", "dwellings", "yearly_kwh", "fit_kwh", "demand_source", "eligible_status"]
+    cols = ["building_id", "use_type", "distance_m", "distance_source", "location_private", "dwellings", "yearly_kwh",
+            "fit_kwh", "demand_source", "eligible_status"]
     with open(out_dir / "shortlist.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=cols, extrasaction="ignore")
         w.writeheader()

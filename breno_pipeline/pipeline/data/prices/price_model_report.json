@@ -1,0 +1,103 @@
+{
+  "what": "PVPC EUR/kWh, forecast d days ahead; trained on 2023, 2024, tested on 2025",
+  "test_hours": 8760,
+  "mean_price_test": 0.1364,
+  "horizons": {
+    "2_days": {
+      "model": {
+        "mae": 0.0202,
+        "rmse": 0.027
+      },
+      "same_hour_last_week": {
+        "mae": 0.025,
+        "rmse": 0.0351
+      },
+      "typical_year": {
+        "mae": 0.0225,
+        "rmse": 0.0296
+      },
+      "model_beats_baselines": true,
+      "error_cut_vs_best_baseline": 0.102
+    },
+    "3_days": {
+      "model": {
+        "mae": 0.0212,
+        "rmse": 0.0285
+      },
+      "same_hour_last_week": {
+        "mae": 0.025,
+        "rmse": 0.0351
+      },
+      "typical_year": {
+        "mae": 0.0225,
+        "rmse": 0.0296
+      },
+      "model_beats_baselines": true,
+      "error_cut_vs_best_baseline": 0.058
+    },
+    "4_days": {
+      "model": {
+        "mae": 0.0216,
+        "rmse": 0.0291
+      },
+      "same_hour_last_week": {
+        "mae": 0.025,
+        "rmse": 0.0351
+      },
+      "typical_year": {
+        "mae": 0.0225,
+        "rmse": 0.0296
+      },
+      "model_beats_baselines": true,
+      "error_cut_vs_best_baseline": 0.04
+    },
+    "5_days": {
+      "model": {
+        "mae": 0.0219,
+        "rmse": 0.0295
+      },
+      "same_hour_last_week": {
+        "mae": 0.025,
+        "rmse": 0.0351
+      },
+      "typical_year": {
+        "mae": 0.0225,
+        "rmse": 0.0296
+      },
+      "model_beats_baselines": true,
+      "error_cut_vs_best_baseline": 0.027
+    },
+    "6_days": {
+      "model": {
+        "mae": 0.022,
+        "rmse": 0.03
+      },
+      "same_hour_last_week": {
+        "mae": 0.025,
+        "rmse": 0.0351
+      },
+      "typical_year": {
+        "mae": 0.0225,
+        "rmse": 0.0296
+      },
+      "model_beats_baselines": true,
+      "error_cut_vs_best_baseline": 0.022
+    },
+    "7_days": {
+      "model": {
+        "mae": 0.0234,
+        "rmse": 0.0318
+      },
+      "same_hour_last_week": {
+        "mae": 0.025,
+        "rmse": 0.0351
+      },
+      "typical_year": {
+        "mae": 0.0225,
+        "rmse": 0.0296
+      },
+      "model_beats_baselines": false,
+      "error_cut_vs_best_baseline": -0.04
+    }
+  }
+}
